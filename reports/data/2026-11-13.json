@@ -3,29 +3,38 @@
  "items": [
   {
    "id": 121,
-   "title": "Gemini 4 Hydrogen",
-   "summary": "Article URL: https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-hydrogen/ Comments URL: https://news.ycombinator.com/item?id=50471431 Points: 23 # Comments: 1",
+   "title": "Outlook is down, and so is Microsoft's status page",
+   "summary": "Article URL: https://gvwire.com/2026/11/12/microsoft-outlook-down-for-thousands-of-users-downdetector-shows/ Comments URL: https://news.ycombinator.com/item?id=50471731 Points: 4 # Comments: 0",
    "feed_name": "Hacker News",
-   "published_at": "2026-11-12T18:01:48+00:00",
-   "fetched_at": "2026-11-12T18:16:30+00:00",
-   "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-hydrogen/"
+   "published_at": "2026-11-12T18:20:48+00:00",
+   "fetched_at": "2026-11-12T18:35:21+00:00",
+   "url": "https://gvwire.com/2026/11/12/microsoft-outlook-down-for-thousands-of-users-downdetector-shows/"
   },
   {
    "id": 122,
-   "title": "Show HN: Kapso – Iterative learning from enterprise data",
-   "summary": "Hey HN! We're Alireza and Majid building Leeroo ( https://leeroo.com/ ). Previously we’ve built AI systems for products with millions of users, including at LinkedIn and Meta. We’re now focusing on building AI systems for enterprise data. Today, we're open-sourcing Kapso ( https://github.com/Leeroo-AI/kapso ), an engine that runs experiments, deploys the best solution, and learns from every run. The nature of data work is iterative: investigate, form hypotheses, experiment, and improve based on ",
+   "title": "Ask HN: Microsoft/Azure Outage?",
+   "summary": "For the past 5 minutes all of our Microsoft Cloud connections are down. Anyone else? The Status page won't even load. Comments URL: https://news.ycombinator.com/item?id=50471668 Points: 15 # Comments: 10",
    "feed_name": "Hacker News",
-   "published_at": "2026-11-12T17:51:23+00:00",
-   "fetched_at": "2026-11-12T18:16:30+00:00",
-   "url": "https://news.ycombinator.com/item?id=50471281"
+   "published_at": "2026-11-12T18:17:13+00:00",
+   "fetched_at": "2026-11-12T18:35:21+00:00",
+   "url": "https://news.ycombinator.com/item?id=50471668"
   },
   {
    "id": 141,
+   "title": "Casualties continue to rise after Brooklyn building collapses",
+   "summary": "First responders continue to search for survivors after a building in Brooklyn collapsed, leaving at least eight dead and dozens injured.",
+   "feed_name": "NPR",
+   "published_at": "2026-11-12T18:15:00+00:00",
+   "fetched_at": "2026-11-12T18:35:22+00:00",
+   "url": "https://www.npr.org/sections/the-picture-show/2026/11/12/g-s1-153229/brooklyn-building-collapse-photos"
+  },
+  {
+   "id": 142,
    "title": "Democrats want to stop Trump's arch, golf course and more. What are their options?",
    "summary": "As Trump's arch and other projects make their way through the courts, many critics are looking to Congress to stop them. Democrats have a few tools, including funding and oversight.",
    "feed_name": "NPR",
    "published_at": "2026-11-12T17:13:54+00:00",
-   "fetched_at": "2026-11-12T18:16:31+00:00",
+   "fetched_at": "2026-11-12T18:35:22+00:00",
    "url": "https://www.npr.org/2026/11/12/nx-s1-6034539/democrats-congress-trump-arch-ballroom-funding-oversight"
   },
   {
@@ -34,17 +43,8 @@
    "summary": "IT之家 11 月 13 日消息，AMD Software: Adrenalin Edition 26.11.1 可选版（Optional）显卡驱动现已发布，本次更新重点修复了此前广受关注的系统盘异常写入问题，同时公布了多项游戏与平台兼容方面的已知问题及临时解决方案。 问题修复 修复 Radeon RX 7000 系列及以上显卡在系统空闲时， 持续对系统盘进行异常写入 的问题；该问题此前被报道写入速率可达 0.3MB/s 至 5MB/s，单日累计写入量最高超 400GB，可能影响 SSD 寿命。 修复移动或调整应用窗口大小时，触发系统盘异常写入的问题。 已知问题与临时方案 在 Radeon RX 7000 系列显卡上游玩《刺客信条：黑旗重制版》时，可能间歇性出现应用崩溃或驱动超时； 在 Radeon RX 5000 系列显卡上游玩《战争雷霆》时可能间歇性出现驱动超时，遇到该问题的用户建议回退至 AMD Software: Adrenalin Edition 26.9.1； 部分 Radeon RX 9000 系列显卡在副显示器播放视频时，若同时开启 AMD FSR 超分辨率、Radeo",
    "feed_name": "IT之家",
    "published_at": "2026-11-12T16:30:42+00:00",
-   "fetched_at": "2026-11-12T18:16:25+00:00",
+   "fetched_at": "2026-11-12T18:35:13+00:00",
    "url": "https://www.ithome.com/1/026/442.htm"
-  },
-  {
-   "id": 142,
-   "title": "The SS United States takes its final voyage to the bottom of the Gulf of Mexico",
-   "summary": "A ship bigger than the Titanic is being sunk off the coast of Florida to make an artificial reef.",
-   "feed_name": "NPR",
-   "published_at": "2026-11-12T16:20:04+00:00",
-   "fetched_at": "2026-11-12T18:16:31+00:00",
-   "url": "https://www.npr.org/2026/11/12/g-s1-153219/the-deliberate-sinking-of-the-ss-united-states"
   },
   {
    "id": 12,
@@ -52,7 +52,7 @@
    "summary": "IT之家 11 月 13 日消息，Epic 本周送出的游戏是《斗阵骑士 Knightica》，下周送出的游戏是《Alien: Isolation》，《Mark of the Deep》。 领取链接： 《斗阵骑士 Knightica》 IT之家附《斗阵骑士 Knightica》游戏简介： 《Knightica》是一款回合制类 Roguelike 自走棋游戏，在这里，各类身负绝技的单位将为你所用，集结成团，听你号令。征招、部署部队，带领大家为解放王国而战。尽情探索它们的协同效果、收集恶魔精魂、迎战危险怪物，一步步领导你的军队走向胜利！ 组建军队，运筹帷幄 单位的队形各异，大小不同，禀赋各有千秋，每一支都蓄势待发，等候你的征召！至于怎么部署位置，调整朝向，充分发挥各自的作用，全部由你决定！你是想要成为不死军团的领袖，还是选择将身家性命托付给魔法师公会呢？ 你的选择，至关重要 从指挥官、部队到物品，再到军队的前进道路，你将面临重重选择。前面那个古怪的商店是否值得一探？你觉得自己是否已经准备妥当，能与精英恶魔正面对决？每一局都是一次全新的冒险，让你可以不断尝试出精彩的组合，绝对不会无聊。 不断尝",
    "feed_name": "IT之家",
    "published_at": "2026-11-12T16:05:20+00:00",
-   "fetched_at": "2026-11-12T18:16:25+00:00",
+   "fetched_at": "2026-11-12T18:35:13+00:00",
    "url": "https://www.ithome.com/1/026/440.htm"
   },
   {
@@ -61,7 +61,7 @@
    "summary": "根据尼尔森的 Gracenote 对美国、巴西、法国、德国、墨西哥和英国的 3000 名 18 岁及以上的流媒体用户进行的调查：虽然流媒体平台内容无比丰富，但用户经常找不到想要看的内容。逾 51% 的受访者表示：内容和流媒体服务的极度丰富，反而让人更难找到想看的东西。19.2% 的受访者表示，他们总是或经常遇到这种情况：不知道该看什么，也找不到想看的内容，最终只能去做别的事。27.4% 的受访者表示，他们总是或经常在试图观看特定节目时却因无法在流媒体平台上找到它，最终只好放弃。47% 的受访者表示，他们花在寻找观看内容上的时间比一年前更多了，平均耗时 12 分钟。72.3% 的受访者表示，他们希望拥有一份整合所有已订阅流媒体平台中可用节目的完整指南。",
    "feed_name": "Solidot",
    "published_at": "2026-11-12T14:42:28+00:00",
-   "fetched_at": "2026-11-12T18:16:26+00:00",
+   "fetched_at": "2026-11-12T18:35:14+00:00",
    "url": "https://www.solidot.org/story?sid=85874"
   },
   {
@@ -70,7 +70,7 @@
    "summary": "黑皮衣传奇谢幕 #欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。",
    "feed_name": "爱范儿",
    "published_at": "2026-11-12T14:36:47+00:00",
-   "fetched_at": "2026-11-12T18:16:28+00:00",
+   "fetched_at": "2026-11-12T18:35:16+00:00",
    "url": "https://www.ifanr.com/1689249?utm_source=rss&utm_medium=rss&utm_campaign="
   },
   {
@@ -79,7 +79,7 @@
    "summary": "塔塔电子位于泰米尔纳德邦、为苹果公司 iPhone 生产零部件的工厂发生三名处理废水处理设施的合同工死亡事故。事故发生于周一晚间，地点位于 Krishnagiri 的 Hosur。工人在检查一个外部纳滤罐时吸入了气体导致了悲剧的发生。三名工人被送往一家私立医院，医生在他们抵达时确认其已经死亡。塔塔电子承担了印度约 40% 的 iPhone 组装工作，其余由富士康负责。近几个月塔塔电子的 iPhone 业务面临诸多挑战，包括遭遇勒索软件攻击，以及引发了水污染的担忧。随着苹果将生产扩大到中国之外地区，印度已成为一个关键的制造枢纽，目前全球约四分之一的 iPhone 产自印度。",
    "feed_name": "Solidot",
    "published_at": "2026-11-12T14:28:40+00:00",
-   "fetched_at": "2026-11-12T18:16:26+00:00",
+   "fetched_at": "2026-11-12T18:35:14+00:00",
    "url": "https://www.solidot.org/story?sid=85873"
   },
   {
@@ -88,7 +88,7 @@
    "summary": "这还是熟悉的比亚迪吗？ #欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。",
    "feed_name": "爱范儿",
    "published_at": "2026-11-12T13:39:12+00:00",
-   "fetched_at": "2026-11-12T18:16:28+00:00",
+   "fetched_at": "2026-11-12T18:35:16+00:00",
    "url": "https://www.ifanr.com/1689232?utm_source=rss&utm_medium=rss&utm_campaign="
   },
   {
@@ -97,7 +97,7 @@
    "summary": "This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. What to know about this year’s UN climate talks Thousands of delegates, lobbyists, and journalists have gathered in Antalya, Turkey, for COP31, the annual UN climate talks. But this year’s negotiations…",
    "feed_name": "MIT Technology Review",
    "published_at": "2026-11-12T13:10:00+00:00",
-   "fetched_at": "2026-11-12T18:16:28+00:00",
+   "fetched_at": "2026-11-12T18:35:16+00:00",
    "url": "https://www.technologyreview.com/2026/11/12/1148444/the-download-cop31-climate-talks-cognitive-immortality/"
   },
   {
@@ -106,7 +106,7 @@
    "summary": "在炎热但逐渐清爽的夏末，我和女朋友去了一趟日本。我尝试用眼用心记录下所见所感，转写成文字。当我重新阅读这些词句，闭上眼睛，仿佛又回到了关西。我希望能把这份心情与光景，也分享给你。4:3/3:4比例的图 ... 查看全文",
    "feed_name": "少数派",
    "published_at": "2026-11-12T08:37:25+00:00",
-   "fetched_at": "2026-11-12T18:16:24+00:00",
+   "fetched_at": "2026-11-12T18:35:13+00:00",
    "url": "https://sspai.com/post/118366"
   },
   {
@@ -115,7 +115,7 @@
    "summary": "内存、存储涨价但又得换 Mac？记得收下这份选购指南。 查看全文",
    "feed_name": "少数派",
    "published_at": "2026-11-12T06:42:04+00:00",
-   "fetched_at": "2026-11-12T18:16:24+00:00",
+   "fetched_at": "2026-11-12T18:35:13+00:00",
    "url": "https://sspai.com/post/85735"
   },
   {
@@ -124,7 +124,7 @@
    "summary": "It’s that time of year again: Thousands of delegates, lobbyists, and journalists are gathered for the annual UN climate talks, taking place this time in Antalya, Turkey. COP31 officially kicked off on November 8, marking the beginning of negotiations on one of the biggest stages of the climate world. Turkey and Australia are cohosting this…",
    "feed_name": "MIT Technology Review",
    "published_at": "2026-11-11T17:00:00+00:00",
-   "fetched_at": "2026-11-12T18:16:28+00:00",
+   "fetched_at": "2026-11-12T18:35:16+00:00",
    "url": "https://www.technologyreview.com/2026/11/11/1148308/un-climate-talks/"
   }
  ]
