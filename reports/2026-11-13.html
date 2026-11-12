@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>因果簿简报 2026-11-13</title>
+<style>
+:root { color-scheme: light; --ink:#111827; --muted:#6b7280; --line:#e5e7eb;
+  --paper:#f7f8fa; --card:#ffffff; --accent:#1d4ed8; --accent-soft:#eff6ff;
+  --ok:#047857; --ok-soft:#ecfdf5; --warn:#b45309; --warn-soft:#fffbeb; --danger:#b91c1c; }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin:0; background:var(--paper); color:var(--ink);
+  font: 15px/1.65 "Segoe UI","Microsoft YaHei",system-ui,sans-serif; }
+.page { max-width: 1120px; margin: 0 auto; padding: 34px 24px 64px; }
+.masthead { border-bottom: 1px solid var(--line); padding-bottom: 18px; margin-bottom: 22px; }
+.brand { font-size: 12px; letter-spacing: .18em; color: var(--accent); text-transform: uppercase; }
+h1 { margin: 6px 0 4px; font: 700 30px/1.25 "Noto Serif SC","Songti SC",Georgia,serif; }
+.lede { margin: 0; color: var(--muted); }
+.today { margin: 10px 0 0; font-size: 15.5px; color: #1f2937; }
+.jumpnav { position: sticky; top: 0; z-index: 5; margin-top: 14px; display: flex; gap: 16px; flex-wrap: wrap;
+  background: rgba(247,248,250,.94); padding: 8px 0; }
+.jumpnav a { color: var(--accent); text-decoration: none; font-size: 13px; }
+.jumpnav a:hover { text-decoration: underline; }
+.kpis { display: grid; grid-template-columns: repeat(auto-fit,minmax(134px,1fr)); gap: 10px; margin: 22px 0 30px; }
+.tile { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; }
+.tile .num { display:block; font-size: 25px; font-weight: 700; line-height:1.2; }
+.tile .label { font-size: 12px; color: var(--muted); }
+.tile.warn .num { color: var(--warn); }
+.tile.danger .num { color: var(--danger); }
+section { margin: 34px 0; }
+h2 { margin: 0 0 14px; font: 700 19px/1.3 "Noto Serif SC","Songti SC",Georgia,serif; }
+h2 .hint { font: 400 12px/1.4 "Segoe UI",sans-serif; color: var(--muted); margin-left: 8px; }
+.alerts { display: grid; gap: 10px; }
+.alert { display:flex; gap: 14px; background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; }
+.alert.urgent { border-left: 4px solid var(--danger); }
+.alert-kind { flex: 0 0 auto; font-size: 12px; font-weight: 700; color: var(--accent); background: var(--accent-soft); border-radius: 999px; padding: 3px 10px; height: fit-content; }
+.alert.urgent .alert-kind { color: var(--danger); background: #fef2f2; }
+.alert p { margin: 0 0 4px; }
+.cards { display: grid; grid-template-columns: repeat(auto-fit,minmax(430px,1fr)); gap: 14px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 16px; display:flex; flex-direction:column; gap: 8px; box-shadow: 0 1px 2px rgba(17,24,39,.03); }
+.badges { display:flex; flex-wrap:wrap; gap:6px; }
+.badge { font-size: 11px; padding: 2px 9px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); background: #fafafa; }
+.badge.source { color: var(--accent); border-color: #dbeafe; background: var(--accent-soft); }
+.badge.ok { color: var(--ok); border-color: #d1fae5; background: var(--ok-soft); }
+.badge.warn { color: var(--warn); border-color: #fde68a; background: var(--warn-soft); }
+.card h3 { margin: 0; font-size: 16px; line-height: 1.45; font-weight: 650; }
+.card h3 a { color: var(--ink); text-decoration: none; }
+.card h3 a:hover { color: var(--accent); }
+.excerpt { margin: 0; color: #374151; font-size: 13.5px; }
+.personal { margin: 0; padding: 8px 10px; border-left: 3px solid var(--accent);
+  background: #f8f6f0; color: #4a463e; font-size: 12.5px; border-radius: 0 6px 6px 0; }
+.card-foot { margin-top: auto; display:flex; justify-content: space-between; align-items:center; gap: 10px; padding-top: 8px; border-top: 1px dashed var(--line); }
+.time { font-size: 12px; color: var(--muted); }
+.links { display:flex; gap: 12px; }
+.jump, .external { font-size: 12.5px; color: var(--accent); text-decoration: none; }
+.external { color: var(--muted); }
+.jump:hover, .external:hover { text-decoration: underline; }
+.panels { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.panel { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 16px; }
+svg.bars { width: 100%; height: auto; }
+.bar-label { fill: #6b7280; font-size: 12px; }
+.bar-value { fill: #111827; font-size: 12px; }
+.detail { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 20px 22px; margin: 16px 0; scroll-margin-top: 18px; }
+.detail-head h3 { margin: 6px 0 2px; font: 700 21px/1.4 "Noto Serif SC","Songti SC",Georgia,serif; }
+.meta { margin: 0; color: var(--muted); font-size: 12.5px; }
+.detail-body { display: grid; grid-template-columns: minmax(0,1.6fr) minmax(260px,1fr); gap: 22px; margin-top: 14px; }
+h4 { margin: 0 0 8px; font-size: 13px; letter-spacing: .04em; color: var(--muted); text-transform: uppercase; }
+.fulltext { margin: 0 0 14px; font-size: 14.5px; color: #1f2937; }
+.ledger { border-radius: 10px; padding: 12px 14px; font-size: 13.5px; }
+.ledger.empty { background: var(--warn-soft); border: 1px solid #fde68a; }
+.ledger.ok { background: var(--ok-soft); border: 1px solid #d1fae5; }
+.ledger p { margin: 0 0 8px; }
+.claims, .preds { margin: 6px 0 0; padding-left: 18px; }
+.claims li { margin: 6px 0; }
+.preds li { margin: 4px 0; color: #374151; }
+.prov { display: grid; grid-template-columns: 92px 1fr; gap: 4px 10px; margin: 0 0 14px; font-size: 12.5px; }
+.prov dt { color: var(--muted); }
+.prov dd { margin: 0; word-break: break-all; }
+code { display: inline-block; background: #f3f4f6; border: 1px solid var(--line); border-radius: 6px; padding: 2px 7px; font-size: 12px; color: #1f2937; margin: 4px 6px 0 0; word-break: break-all; }
+.small { font-size: 12px; }
+.muted { color: var(--muted); }
+.empty { background: var(--card); border: 1px dashed var(--line); border-radius: 12px; padding: 18px; color: var(--muted); }
+.detail-foot { display:flex; justify-content: space-between; border-top: 1px dashed var(--line); margin-top: 16px; padding-top: 10px; }
+.boundary { margin-top: 40px; border-top: 1px solid var(--line); padding-top: 16px; color: var(--muted); font-size: 12.5px; }
+@media (max-width: 820px) { .panels, .detail-body { grid-template-columns: 1fr; } }
+@media print { body { background:#fff; } .jumpnav, .card-foot .links, .detail-foot, .alerts { display:none; } .page { max-width:none; padding:0; } }
+</style>
+</head>
+<body>
+<div class="page">
+  <header class="masthead">
+    <div class="brand">causal_ledger · daily brief</div>
+    <h1>因果簿 · 今日简报</h1>
+    <p class="lede">2026-11-13 · 7 源成功 / 0 源失败 · 本次新增 150 条 · 关注主题：未设置（使用全部订阅）</p>
+    <p class="today">今天 4 条值得看：来自 NPR、Hacker News、IT之家、Solidot；其中 0 条已接账。</p>
+    <nav class="jumpnav">
+      <a href="#actions">待办</a><a href="#brief">值得注意</a><a href="#stats">来源与趋势</a><a href="#details">详细内容</a>
+    </nav>
+  </header>
+
+  <div class="kpis"><div class="tile "><span class="num">137</span><span class="label">未读 · 2 天窗口</span></div><div class="tile "><span class="num">0</span><span class="label">已接账条目</span></div><div class="tile "><span class="num">0</span><span class="label">主张</span></div><div class="tile "><span class="num">0</span><span class="label">待结算预测</span></div><div class="tile "><span class="num">0</span><span class="label">其中到期/逾期</span></div></div>
+
+  <section id="actions">
+    <h2>待你处理 <span class="hint">人工操作，系统不会自动核实或外发</span></h2>
+    <div class="alerts"><div class="alert"><span class="alert-kind">建议接账</span><div><p>推荐条目 I#141 尚未转成主张，可离线接账：</p><code>ingest 141 --claim "一句话主张"</code></div></div></div>
+  </section>
+
+  <section id="brief">
+    <h2>值得注意 <span class="hint">4 条 · 未核验 · 同题源数为启发式提示</span></h2>
+    <div class="cards">
+<article class="card">
+  <div class="badges"><span class="badge source">NPR</span><span class="badge ">同题1源</span><span class="badge warn">未接账</span><span class="badge muted">未核验</span></div>
+  <h3><a class="detail-link" href="#d-141">Democrats want to stop Trump&#x27;s arch, golf course and more. What are their options?</a></h3>
+  <p class="excerpt">As Trump&#x27;s arch and other projects make their way through the courts, many critics are looking to Congress to stop them. Democrats have a fe…</p>
+  
+  <div class="card-foot">
+    <span class="time">2026-11-12T17:13</span>
+    <span class="links">
+      <a class="jump" href="#d-141">详情 ↓</a>
+      <a class="external" href="https://www.npr.org/2026/11/12/nx-s1-6034539/democrats-congress-trump-arch-ballroom-funding-oversight" target="_blank" rel="noopener noreferrer">原文 ↗</a>
+    </span>
+  </div>
+</article>
+<article class="card">
+  <div class="badges"><span class="badge source">Hacker News</span><span class="badge ">同题1源</span><span class="badge warn">未接账</span><span class="badge muted">未核验</span></div>
+  <h3><a class="detail-link" href="#d-121">AWS Lambda Web Functions keep billing memory ~7 minutes after the last request</a></h3>
+  <p class="excerpt">Article URL: https://www.easel.sh/blog/lambda-web-functions-idle-memory Comments URL: https://news.ycombinator.com/item?id=50470445 Points:…</p>
+  
+  <div class="card-foot">
+    <span class="time">2026-11-12T16:59</span>
+    <span class="links">
+      <a class="jump" href="#d-121">详情 ↓</a>
+      <a class="external" href="https://www.easel.sh/blog/lambda-web-functions-idle-memory" target="_blank" rel="noopener noreferrer">原文 ↗</a>
+    </span>
+  </div>
+</article>
+<article class="card">
+  <div class="badges"><span class="badge source">IT之家</span><span class="badge ">同题1源</span><span class="badge warn">未接账</span><span class="badge muted">未核验</span></div>
+  <h3><a class="detail-link" href="#d-11">AMD 发布肾上腺素 26.11.1 可选驱动：修复 SSD 异常写入问题，公布多项已知游戏兼容问题</a></h3>
+  <p class="excerpt">AMD Software: Adrenalin Edition 26.11.1 可选版（Optional）显卡驱动现已发布，本次更新重点修复了此前广受关注的系统盘异常写入问题，同时公布了多项游戏与平台兼容方面的已知问题及临时解决方案。 问题修复 修复 Radeon RX 7000…</p>
+  
+  <div class="card-foot">
+    <span class="time">2026-11-12T16:30</span>
+    <span class="links">
+      <a class="jump" href="#d-11">详情 ↓</a>
+      <a class="external" href="https://www.ithome.com/1/026/442.htm" target="_blank" rel="noopener noreferrer">原文 ↗</a>
+    </span>
+  </div>
+</article>
+<article class="card">
+  <div class="badges"><span class="badge source">Solidot</span><span class="badge ">同题1源</span><span class="badge warn">未接账</span><span class="badge muted">未核验</span></div>
+  <h3><a class="detail-link" href="#d-71">用户抱怨难以在流媒体服务上找到想看的内容</a></h3>
+  <p class="excerpt">根据尼尔森的 Gracenote 对美国、巴西、法国、德国、墨西哥和英国的 3000 名 18 岁及以上的流媒体用户进行的调查：虽然流媒体平台内容无比丰富，但用户经常找不到想要看的内容。逾 51% 的受访者表示：内容和流媒体服务的极度丰富，反而让人更难找到想看的东西。19.2%…</p>
+  
+  <div class="card-foot">
+    <span class="time">2026-11-12T14:42</span>
+    <span class="links">
+      <a class="jump" href="#d-71">详情 ↓</a>
+      <a class="external" href="https://www.solidot.org/story?sid=85874" target="_blank" rel="noopener noreferrer">原文 ↗</a>
+    </span>
+  </div>
+</article></div>
+  </section>
+
+  <section id="stats">
+    <h2>来源与趋势</h2>
+    <div class="panels">
+      <div class="panel"><h4>近 7 天采集</h4><svg class="bars" viewBox="0 0 460 188" role="img"><text x="0" y="17" class="bar-label">11-06</text><rect x="140" y="5" width="2" height="14" rx="4" fill="#2563eb"/><text x="150" y="17" class="bar-value">0</text><text x="0" y="43" class="bar-label">11-07</text><rect x="140" y="31" width="2" height="14" rx="4" fill="#2563eb"/><text x="150" y="43" class="bar-value">0</text><text x="0" y="69" class="bar-label">11-08</text><rect x="140" y="57" width="2" height="14" rx="4" fill="#2563eb"/><text x="150" y="69" class="bar-value">0</text><text x="0" y="95" class="bar-label">11-09</text><rect x="140" y="83" width="2" height="14" rx="4" fill="#2563eb"/><text x="150" y="95" class="bar-value">0</text><text x="0" y="121" class="bar-label">11-10</text><rect x="140" y="109" width="2" height="14" rx="4" fill="#2563eb"/><text x="150" y="121" class="bar-value">0</text><text x="0" y="147" class="bar-label">11-11</text><rect x="140" y="135" width="2" height="14" rx="4" fill="#2563eb"/><text x="150" y="147" class="bar-value">0</text><text x="0" y="173" class="bar-label">11-12</text><rect x="140" y="161" width="264" height="14" rx="4" fill="#2563eb"/><text x="412" y="173" class="bar-value">150</text></svg></div>
+      <div class="panel"><h4>来源条目分布</h4><svg class="bars" viewBox="0 0 460 188" role="img"><text x="0" y="17" class="bar-label">IT之家</text><rect x="140" y="5" width="264" height="14" rx="4" fill="#047857"/><text x="412" y="17" class="bar-value">60</text><text x="0" y="43" class="bar-label">Solidot</text><rect x="140" y="31" width="88" height="14" rx="4" fill="#047857"/><text x="236" y="43" class="bar-value">20</text><text x="0" y="69" class="bar-label">爱范儿</text><rect x="140" y="57" width="88" height="14" rx="4" fill="#047857"/><text x="236" y="69" class="bar-value">20</text><text x="0" y="95" class="bar-label">Hacker News</text><rect x="140" y="83" width="88" height="14" rx="4" fill="#047857"/><text x="236" y="95" class="bar-value">20</text><text x="0" y="121" class="bar-label">少数派</text><rect x="140" y="109" width="44" height="14" rx="4" fill="#047857"/><text x="192" y="121" class="bar-value">10</text><text x="0" y="147" class="bar-label">MIT Technology R</text><rect x="140" y="135" width="44" height="14" rx="4" fill="#047857"/><text x="192" y="147" class="bar-value">10</text><text x="0" y="173" class="bar-label">NPR</text><rect x="140" y="161" width="44" height="14" rx="4" fill="#047857"/><text x="192" y="173" class="bar-value">10</text></svg></div>
+    </div>
+  </section>
+
+  <section id="details">
+    <h2>详细内容 <span class="hint">完整摘要、出处与台账状态；可返回简报</span></h2>
+    
+<article class="detail" id="d-141">
+  <header class="detail-head">
+    <div class="badges"><span class="badge source">NPR</span><span class="badge ">同题1源</span><span class="badge warn">未接账</span><span class="badge muted">未核验</span></div>
+    <h3>Democrats want to stop Trump&#x27;s arch, golf course and more. What are their options?</h3>
+    <p class="meta">2026-11-12T17:13 · NPR</p>
+  </header>
+  <div class="detail-body">
+    <section class="content">
+      <h4>订阅摘要原文（未核验）</h4>
+      <p class="fulltext">As Trump&#x27;s arch and other projects make their way through the courts, many critics are looking to Congress to stop them. Democrats have a few tools, including funding and oversight.</p>
+      
+      
+      <div class="ledger empty"><p><strong>未接账。</strong>该条目尚未转成文档/主张，因此没有出处链、分数或预测。人工确认后可离线接账：</p><code>ingest 141 --claim "一句话主张" --domain tech</code></div>
+    </section>
+    <aside class="evidence">
+      <h4>出处与时间</h4>
+      <dl class="prov"><dt>订阅来源</dt><dd>NPR</dd><dt>条目编号</dt><dd>I#141</dd><dt>源称发布时间</dt><dd>2026-11-12T17:13:54+00:00</dd><dt>首次采集</dt><dd>2026-11-12T17:20:16+00:00</dd><dt>同题源数</dt><dd>1（启发式，仅提示）</dd><dt>原文链接</dt><dd>https://www.npr.org/2026/11/12/nx-s1-6034539/democrats-congress-trump-arch-ballroom-funding-oversight</dd></dl>
+      <h4>可以做什么</h4>
+      <p class="muted small">以下命令只作用于本地账簿；不会自动核实或外发。</p>
+      <code>read 141</code>
+      
+    </aside>
+  </div>
+  <footer class="detail-foot">
+    <a class="jump" href="#brief">↑ 返回简报</a>
+    <a class="external" href="https://www.npr.org/2026/11/12/nx-s1-6034539/democrats-congress-trump-arch-ballroom-funding-oversight" target="_blank" rel="noopener noreferrer">打开原文 ↗</a>
+  </footer>
+</article>
+<article class="detail" id="d-121">
+  <header class="detail-head">
+    <div class="badges"><span class="badge source">Hacker News</span><span class="badge ">同题1源</span><span class="badge warn">未接账</span><span class="badge muted">未核验</span></div>
+    <h3>AWS Lambda Web Functions keep billing memory ~7 minutes after the last request</h3>
+    <p class="meta">2026-11-12T16:59 · Hacker News</p>
+  </header>
+  <div class="detail-body">
+    <section class="content">
+      <h4>订阅摘要原文（未核验）</h4>
+      <p class="fulltext">Article URL: https://www.easel.sh/blog/lambda-web-functions-idle-memory Comments URL: https://news.ycombinator.com/item?id=50470445 Points: 3 # Comments: 0</p>
+      
+      
+      <div class="ledger empty"><p><strong>未接账。</strong>该条目尚未转成文档/主张，因此没有出处链、分数或预测。人工确认后可离线接账：</p><code>ingest 121 --claim "一句话主张" --domain tech</code></div>
+    </section>
+    <aside class="evidence">
+      <h4>出处与时间</h4>
+      <dl class="prov"><dt>订阅来源</dt><dd>Hacker News</dd><dt>条目编号</dt><dd>I#121</dd><dt>源称发布时间</dt><dd>2026-11-12T16:59:26+00:00</dd><dt>首次采集</dt><dd>2026-11-12T17:20:16+00:00</dd><dt>同题源数</dt><dd>1（启发式，仅提示）</dd><dt>原文链接</dt><dd>https://www.easel.sh/blog/lambda-web-functions-idle-memory</dd></dl>
+      <h4>可以做什么</h4>
+      <p class="muted small">以下命令只作用于本地账簿；不会自动核实或外发。</p>
+      <code>read 121</code>
+      
+    </aside>
+  </div>
+  <footer class="detail-foot">
+    <a class="jump" href="#brief">↑ 返回简报</a>
+    <a class="external" href="https://www.easel.sh/blog/lambda-web-functions-idle-memory" target="_blank" rel="noopener noreferrer">打开原文 ↗</a>
+  </footer>
+</article>
+<article class="detail" id="d-11">
+  <header class="detail-head">
+    <div class="badges"><span class="badge source">IT之家</span><span class="badge ">同题1源</span><span class="badge warn">未接账</span><span class="badge muted">未核验</span></div>
+    <h3>AMD 发布肾上腺素 26.11.1 可选驱动：修复 SSD 异常写入问题，公布多项已知游戏兼容问题</h3>
+    <p class="meta">2026-11-12T16:30 · IT之家</p>
+  </header>
+  <div class="detail-body">
+    <section class="content">
+      <h4>订阅摘要原文（未核验）</h4>
+      <p class="fulltext">IT之家 11 月 13 日消息，AMD Software: Adrenalin Edition 26.11.1 可选版（Optional）显卡驱动现已发布，本次更新重点修复了此前广受关注的系统盘异常写入问题，同时公布了多项游戏与平台兼容方面的已知问题及临时解决方案。 问题修复 修复 Radeon RX 7000 系列及以上显卡在系统空闲时， 持续对系统盘进行异常写入 的问题；该问题此前被报道写入速率可达 0.3MB/s 至 5MB/s，单日累计写入量最高超 400GB，可能影响 SSD 寿命。 修复移动或调整应用窗口大小时，触发系统盘异常写入的问题。 已知问题与临时方案 在 Radeon RX 7000 系列显卡上游玩《刺客信条：黑旗重制版》时，可能间歇性出现应用崩溃或驱动超时； 在 Radeon RX 5000 系列显卡上游玩《战争雷霆》时可能间歇性出现驱动超时，遇到该问题的用户建议回退至 AMD Software: Adrenalin Edition 26.9.1； 部分 Radeon RX 9000 系列显卡在副显示器播放视频时，若同时开启 AMD FSR 超分辨率、Radeon Anti-Lag 以及《赛博朋克 2077》游戏内帧生成功能，可能间歇性出现应用崩溃或驱动超时，建议关闭游戏内帧生成； 搭载锐龙 AI Max PRO 400 系列处理器的设备在游玩《使命召唤：现代战争重制版》时，使用 Alt+Tab 切换窗口可能导致游戏无响应； 搭载锐龙 AI 9 400 系列处理器的设备启动《战争机器：重制版》时可能出现黑屏，建议先将游戏显示模式切换为窗口化，再切回全屏； 部分无法正常访问 HuggingFace 与 GitHub 的区域，安装 AI Bundle 组件时可能失败； Windows 10 系统安装驱动后，AMD Smart Access Memory 功能可能被自动禁用； Radeon RX 9000 系列显卡游玩《对马岛之魂：零》时，角色头发部位可能出现画面异常，建议关闭游戏内的高品质头发特效； Radeon RX 9000 系列显卡游玩《使命召唤：现代战争重制版》时，可能出现黑色画面损坏。 该驱动为可选版本，面向 Radeon 系列独立显卡及锐龙 AI 系列核显平台，支持 Windows 10 64 位 1809 及以上版本与 Windows 11 系统。</p>
+      
+      
+      <div class="ledger empty"><p><strong>未接账。</strong>该条目尚未转成文档/主张，因此没有出处链、分数或预测。人工确认后可离线接账：</p><code>ingest 11 --claim "一句话主张" --domain tech</code></div>
+    </section>
+    <aside class="evidence">
+      <h4>出处与时间</h4>
+      <dl class="prov"><dt>订阅来源</dt><dd>IT之家</dd><dt>条目编号</dt><dd>I#11</dd><dt>源称发布时间</dt><dd>2026-11-12T16:30:42+00:00</dd><dt>首次采集</dt><dd>2026-11-12T17:20:10+00:00</dd><dt>同题源数</dt><dd>1（启发式，仅提示）</dd><dt>原文链接</dt><dd>https://www.ithome.com/1/026/442.htm</dd></dl>
+      <h4>可以做什么</h4>
+      <p class="muted small">以下命令只作用于本地账簿；不会自动核实或外发。</p>
+      <code>read 11</code>
+      
+    </aside>
+  </div>
+  <footer class="detail-foot">
+    <a class="jump" href="#brief">↑ 返回简报</a>
+    <a class="external" href="https://www.ithome.com/1/026/442.htm" target="_blank" rel="noopener noreferrer">打开原文 ↗</a>
+  </footer>
+</article>
+<article class="detail" id="d-71">
+  <header class="detail-head">
+    <div class="badges"><span class="badge source">Solidot</span><span class="badge ">同题1源</span><span class="badge warn">未接账</span><span class="badge muted">未核验</span></div>
+    <h3>用户抱怨难以在流媒体服务上找到想看的内容</h3>
+    <p class="meta">2026-11-12T14:42 · Solidot</p>
+  </header>
+  <div class="detail-body">
+    <section class="content">
+      <h4>订阅摘要原文（未核验）</h4>
+      <p class="fulltext">根据尼尔森的 Gracenote 对美国、巴西、法国、德国、墨西哥和英国的 3000 名 18 岁及以上的流媒体用户进行的调查：虽然流媒体平台内容无比丰富，但用户经常找不到想要看的内容。逾 51% 的受访者表示：内容和流媒体服务的极度丰富，反而让人更难找到想看的东西。19.2% 的受访者表示，他们总是或经常遇到这种情况：不知道该看什么，也找不到想看的内容，最终只能去做别的事。27.4% 的受访者表示，他们总是或经常在试图观看特定节目时却因无法在流媒体平台上找到它，最终只好放弃。47% 的受访者表示，他们花在寻找观看内容上的时间比一年前更多了，平均耗时 12 分钟。72.3% 的受访者表示，他们希望拥有一份整合所有已订阅流媒体平台中可用节目的完整指南。</p>
+      
+      
+      <div class="ledger empty"><p><strong>未接账。</strong>该条目尚未转成文档/主张，因此没有出处链、分数或预测。人工确认后可离线接账：</p><code>ingest 71 --claim "一句话主张" --domain tech</code></div>
+    </section>
+    <aside class="evidence">
+      <h4>出处与时间</h4>
+      <dl class="prov"><dt>订阅来源</dt><dd>Solidot</dd><dt>条目编号</dt><dd>I#71</dd><dt>源称发布时间</dt><dd>2026-11-12T14:42:28+00:00</dd><dt>首次采集</dt><dd>2026-11-12T17:20:12+00:00</dd><dt>同题源数</dt><dd>1（启发式，仅提示）</dd><dt>原文链接</dt><dd>https://www.solidot.org/story?sid=85874</dd></dl>
+      <h4>可以做什么</h4>
+      <p class="muted small">以下命令只作用于本地账簿；不会自动核实或外发。</p>
+      <code>read 71</code>
+      
+    </aside>
+  </div>
+  <footer class="detail-foot">
+    <a class="jump" href="#brief">↑ 返回简报</a>
+    <a class="external" href="https://www.solidot.org/story?sid=85874" target="_blank" rel="noopener noreferrer">打开原文 ↗</a>
+  </footer>
+</article>
+  </section>
+
+  <footer class="boundary">
+    实验分未经校准，不是真实概率；订阅条目、人工接账、预测与推荐结果均未核验；
+    同题源数来自链接/标题相似启发式，仅提示不合并；数据只存本地，不自动外发、不安装定时任务。
+    本地已保留 0 期推送记录（`digests` 可查）。
+  </footer>
+</div>
+</body>
+</html>
