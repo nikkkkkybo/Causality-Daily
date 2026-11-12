@@ -48,8 +48,9 @@ USER_TEMPLATE = """日期：{day}
   ]
 }}
 要求：
-- cause 的 id 必须来自上面数组，每条链 1–{max_cause} 个；
-- 最多 3 条链；不够就少给；
+- cause 的 id 必须来自上面数组，每条链 **2–{max_cause} 个**；只有一条信号的不要硬凑成链，
+  放进“存目”或不写；不够就少给链；
+- 最多 3 条链；
 - 全部中文（专有名词可保留原文）；
 - 不输出 URL、不输出 Markdown、不输出代码块。"""
 
@@ -106,6 +107,8 @@ def validate_synthesis(data: dict, items: list[dict]) -> dict:
                 break
         if not causes:
             continue
+        if len(causes) < 2:
+            continue  # a single signal is not a chain; leave it as 存目
         effects = [str(x).strip()[:300] for x in (chain.get("effect") or []) if str(x).strip()][:4]
         if not effects:
             continue

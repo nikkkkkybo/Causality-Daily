@@ -74,6 +74,11 @@ def test_synthesize_rejects_broken_json_and_invalid_ids():
                                          "effect": ["x"], "reasoning": "x", "doubt": "x"}]}
     with pytest.raises(synth.SynthesisError):
         synth.validate_synthesis(invalid, ITEMS)
+    single = {"thesis": "x", "chains": [{"title": "x", "strength": "中",
+                                        "cause": [{"id": 1, "text": "单条"}],
+                                        "effect": ["x"], "reasoning": "x", "doubt": "x"}]}
+    with pytest.raises(synth.SynthesisError):
+        synth.validate_synthesis(single, ITEMS)
 
 
 def test_daily_page_uses_synthesis_rewrite():

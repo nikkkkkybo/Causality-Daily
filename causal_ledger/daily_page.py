@@ -304,6 +304,7 @@ def render_daily_page(items: list[dict], day: str | None = None, *, title: str =
             chain_html.append(_chain_section(
                 index, theme["label"], strong, strength_note, signals, effects,
                 theme["reasoning"], theme["doubt"], len(group)))
+    rendered_chain_count = len(chain_html)
 
     return f"""<!DOCTYPE html>
 <html lang="zh-CN"><head><meta charset="utf-8">
@@ -379,7 +380,7 @@ h1 {{ margin:0; font-size:42px; letter-spacing:.06em; }}
   <div>
     <div class="kicker">{_text(kicker)}</div>
     <h1>{_text(title)}</h1>
-    <div class="date">{_text(period_line)} · {len(items)} 条信号 · 取 {len(chains)} 条链</div>
+    <div class="date">{_text(period_line)} · {len(items)} 条信号 · 取 {rendered_chain_count} 条链</div>
   </div>
   <div class="seal" aria-hidden="true">事报</div>
 </header>
