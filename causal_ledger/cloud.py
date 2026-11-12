@@ -103,9 +103,11 @@ li {{ border-bottom:1px solid #d8d0c0; padding:14px 2px; }}
 a {{ color:#1b1a17; text-decoration:none; font-size:19px; }}
 a:hover {{ color:#9e3b2e; }}
 .empty {{ color:#8a8376; font-size:14px; }}
+.muted {{ color:#8a8376; font-size:12px; }}
 .foot {{ color:#8a8376; font-size:12px; margin-top:28px; }}
 </style></head><body><div class="page">
 <h1>{title}</h1>
+<p><a href="latest.html">最新一期 →</a>　<span class="muted">这个链接不会随日期变化</span></p>
 <p>每周保留《本周事报》；日报在周报产出后归档。条目均未核验。</p>
 <h2>本周事报</h2>
 <ul>{links(weekly, "还没有周报；周一 07:30 自动汇总。")}</ul>
@@ -161,6 +163,7 @@ def build_report(config_path, reports_dir, *, days: int = 2, limit: int = 30,
             conn.close()
     report = reports_dir / f"{day}.html"
     report.write_text(html, encoding="utf-8")
+    (reports_dir / "latest.html").write_text(html, encoding="utf-8")
     data_dir = reports_dir / "data"
     data_dir.mkdir(exist_ok=True)
     (data_dir / f"{day}.json").write_text(

@@ -54,12 +54,13 @@ def test_build_report_writes_static_files(tmp_path):
     assert Path(result["report"]).is_file()
     assert Path(result["index"]).is_file()
     assert Path(result["data"]).is_file()
+    assert (reports / "latest.html").is_file()
     text = Path(result["report"]).read_text(encoding="utf-8")
     assert "今日事报" in text
     assert "台账状态" not in text and "待你处理" not in text
     index = Path(result["index"]).read_text(encoding="utf-8")
+    assert 'href="latest.html"' in index
     assert 'href="2026-11-13.html"' in index
-    assert "2026-11-13" in index
 
 
 def test_serverchan_push_uses_key_and_never_logs_it(tmp_path):
