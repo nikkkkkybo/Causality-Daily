@@ -514,7 +514,9 @@ def cmd_cloud(args, conn):
             print("推送：已跳过（--no-push）。")
             return
         title, body = push_weekly_body(result["week_start"], result["week_end"], args.base_url)
-        pushed = send_push(args.channel, title, body)
+        weekly_html = Path(result["report"]).read_text(encoding="utf-8")
+        pushed = send_push(args.channel, title, body, html=weekly_html,
+                           filename=f"本周事报-{result['week_start']}.html")
         print(f"推送：{pushed.get('channel') or '无通道'} "
               + ("已发送。" if pushed["sent"] else f"未发送（{pushed.get('reason', '未知原因')}）。"))
         return
@@ -530,7 +532,8 @@ def cmd_cloud(args, conn):
         print("推送：已跳过（--no-push）。")
         return
     send_title, body = push_body(result["day"], args.base_url, title=args.title)
-    pushed = send_push(args.channel, send_title, body)
+    pushed = send_push(args.channel, send_title, body, html=result.get("html"),
+                       filename=f"今日事报-{result['day']}.html")
     print(f"推送：{pushed.get('channel') or '无通道'} "
           + ("已发送。" if pushed["sent"] else f"未发送（{pushed.get('reason', '未知原因')}）；报告仍已生成。"))
 
@@ -884,7 +887,7 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--weekly-only", action="store_true",
                    help="不抓取；把 reports/data 中上一周汇总为周报并移除该周日报")
     p.add_argument("--week-end", help="周报截止日 YYYY-MM-DD（默认上一个周日）")
-    p.add_argument("--channel", choices=["auto", "serverchan", "ntfy", "bark", "telegram", "none"],
+    p.add_argument("--channel", choices=["auto", "email", "serverchan", "ntfy", "bark", "telegram", "none"],
                    default="auto", help="推送通道；auto 按已配置的 Secret/环境变量选择")
     p.add_argument("--no-llm", action="store_true",
                    help="不用 DeepSeek 合成，直接输出确定性版本")

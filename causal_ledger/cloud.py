@@ -169,8 +169,8 @@ def build_report(config_path, reports_dir, *, days: int = 2, limit: int = 30,
     (reports_dir / "index.html").write_text(_index_html(reports_dir), encoding="utf-8")
     failures = [row for row in results if row.get("error")]
     return {"day": day, "report": str(report), "index": str(reports_dir / "index.html"),
-            "data": str(data_dir / f"{day}.json"), "synthesis": synthesis is not None,
-            "synthesis_error": synthesis_error,
+            "data": str(data_dir / f"{day}.json"), "html": html,
+            "synthesis": synthesis is not None, "synthesis_error": synthesis_error,
             "feeds": len(feeds), "failures": len(failures), "results": results}
 
 

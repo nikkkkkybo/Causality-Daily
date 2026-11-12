@@ -9,8 +9,10 @@ from __future__ import annotations
 import json
 import os
 import re
+import smtplib
 import urllib.parse
 import urllib.request
+from email.message import EmailMessage
 
 NTFY_TOPIC_RE = re.compile(r"^[A-Za-z0-9_-]{1,64}$")
 TELEGRAM_TOKEN_RE = re.compile(r"^\d{6,}:[A-Za-z0-9_-]{20,}$")
@@ -75,7 +77,44 @@ def send_serverchan(key: str, title: str, desp: str, *, opener=urllib.request.ur
         return {"sent": False, "reason": type(error).__name__, "channel": "serverchan"}
 
 
+def send_email(host: str, port: int, username: str, password: str, to: str,
+               subject: str, body: str, *, html: str | None = None,
+               filename: str = "今日事报.html", tls: str = "ssl",
+               from_addr: str = "") -> dict:
+    if not host or not to:
+        return {"sent": False, "reason": "未配置 SMTP_HOST / EMAIL_TO"}
+    try:
+        port = int(port or (465 if tls != "starttls" else 587))
+    except (TypeError, ValueError):
+        return {"sent": False, "reason": "SMTP_PORT 非法"}
+    message = EmailMessage()
+    message["Subject"] = subject[:200]
+    message["From"] = from_addr or username or "causal-daily@localhost"
+    message["To"] = to
+    message.set_content(body[:100_000])
+    if html:
+        message.add_attachment(html.encode("utf-8"), maintype="text", subtype="html",
+                               filename=filename)
+    try:
+        if tls == "starttls":
+            client = smtplib.SMTP(host, port, timeout=25)
+            client.ehlo()
+            client.starttls()
+            client.ehlo()
+        else:
+            client = smtplib.SMTP_SSL(host, port, timeout=25)
+        with client:
+            if username:
+                client.login(username, password)
+            client.send_message(message)
+        return {"sent": True, "channel": "email"}
+    except Exception as error:  # noqa: BLE001 - never log credentials
+        return {"sent": False, "reason": type(error).__name__, "channel": "email"}
+
+
 def _configured(environ: dict) -> str:
+    if environ.get("SMTP_HOST") and environ.get("EMAIL_TO"):
+        return "email"
     if environ.get("SERVERCHAN_KEY"):
         return "serverchan"
     if environ.get("NTFY_TOPIC"):
@@ -87,17 +126,24 @@ def _configured(environ: dict) -> str:
     return ""
 
 
-def send_push(channel: str, title: str, body: str, *, environ=None,
+def send_push(channel: str, title: str, body: str, *, html: str | None = None,
+              filename: str = "今日事报.html", environ=None,
               opener=urllib.request.urlopen) -> dict:
-    """channel: auto / serverchan / ntfy / bark / telegram / none."""
+    """channel: auto / email / serverchan / ntfy / bark / telegram / none."""
     environ = environ if environ is not None else os.environ
-    if channel not in ("auto", "serverchan", "ntfy", "bark", "telegram", "none"):
+    if channel not in ("auto", "email", "serverchan", "ntfy", "bark", "telegram", "none"):
         return {"sent": False, "reason": f"未知 channel：{channel}"}
     if channel == "none":
         return {"sent": False, "reason": "已选择不推送"}
     selected = _configured(environ) if channel == "auto" else channel
     if not selected:
         return {"sent": False, "reason": "没有配置任何推送通道"}
+    if selected == "email":
+        return send_email(environ.get("SMTP_HOST", ""), environ.get("SMTP_PORT", ""),
+                          environ.get("SMTP_USER", ""), environ.get("SMTP_PASSWORD", ""),
+                          environ.get("EMAIL_TO", ""), title, body, html=html,
+                          filename=filename, tls=environ.get("SMTP_TLS", "ssl"),
+                          from_addr=environ.get("SMTP_FROM", ""))
     if selected == "serverchan":
         return send_serverchan(environ.get("SERVERCHAN_KEY", ""), title, body, opener=opener)
     if selected == "ntfy":
