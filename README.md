@@ -23,7 +23,8 @@ python -m causal_ledger --db demo.sqlite3 claims
 - 文本简报、自包含 HTML、多页简报站；
 - 个体因果基线（`profile`）、保险箱（Windows DPAPI）、7 天校准（`calibrate`）、盲评/消融（`eval`）；
 - 本地单应用（`serve`）：阅读往期、提交末尾备注；
-- 零月费云发布（`cloud` + GitHub Actions + Pages + 可选 Server酱）。
+- 零月费云发布（`cloud` + GitHub Actions + Pages + 可选 Server酱），发布新版《今日事报》链式页；
+- 新旧格式边界见 [docs/新旧对照.md](docs/新旧对照.md)。
 
 ## 零月费云发布
 

@@ -1,8 +1,9 @@
-"""Zero-monthly-cost cloud publish: build a static daily report + index + optional push.
+"""Zero-monthly-cost cloud publish: build a static 今日事报 + index + optional push.
 
 Designed for GitHub Actions + GitHub Pages:
 - reads a small feed config (no database needed between runs);
-- creates a temporary SQLite DB, collects feeds, renders the static HTML brief;
+- creates a temporary SQLite DB, collects feeds, renders the current causal-chain
+  "今日事报" page (not the deprecated "因果簿简报" card layout);
 - writes reports/YYYY-MM-DD.html and reports/index.html;
 - optionally pushes a short WeChat message through ServerChan (key from env).
 No personal profile/vault is read or uploaded by this path.
@@ -19,9 +20,9 @@ from datetime import date, datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
+from .daily_page import render_daily_page
 from .db import connect
-from .feeds import add_subscription, collect_feeds
-from .html_report import render_brief_html
+from .feeds import add_subscription, collect_feeds, recommend
 
 DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 MAX_FEEDS = 30
@@ -115,9 +116,8 @@ def build_report(config_path, reports_dir, *, days: int = 2, limit: int = 10,
             for feed in feeds:
                 add_subscription(conn, feed["name"], feed["url"])
             results = [] if no_fetch else collect_feeds(conn)
-            html = render_brief_html(conn, days=days, limit=limit,
-                                     per_source=per_source, collection=results,
-                                     no_fetch=no_fetch, today=day)
+            items = recommend(conn, days=days, limit=limit, per_source=per_source)
+            html = render_daily_page(items, day)
         finally:
             conn.close()
     report = reports_dir / f"{day}.html"

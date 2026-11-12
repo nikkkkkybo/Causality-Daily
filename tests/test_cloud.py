@@ -54,7 +54,8 @@ def test_build_report_writes_static_files(tmp_path):
     assert Path(result["report"]).is_file()
     assert Path(result["index"]).is_file()
     text = Path(result["report"]).read_text(encoding="utf-8")
-    assert "今日事报" in text or "因果簿" in text
+    assert "今日事报" in text
+    assert "台账状态" not in text and "待你处理" not in text
     index = Path(result["index"]).read_text(encoding="utf-8")
     assert 'href="2026-11-13.html"' in index
     assert "2026-11-13" in index
