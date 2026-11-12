@@ -1,0 +1,43 @@
+name: daily-push
+
+on:
+  schedule:
+    # 23:30 UTC = 07:30 Asia/Shanghai (GitHub cron uses UTC)
+    - cron: "30 23 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: daily-push
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Build static daily report
+        env:
+          PAGES_BASE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
+          SERVERCHAN_KEY: ${{ secrets.SERVERCHAN_KEY }}
+        run: |
+          python -m causal_ledger cloud \
+            --config config/feeds.json \
+            --reports reports \
+            --base-url "$PAGES_BASE_URL" \
+            --days 2 --limit 10 --per-source 2
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: reports
+      - id: deployment
+        uses: actions/deploy-pages@v4

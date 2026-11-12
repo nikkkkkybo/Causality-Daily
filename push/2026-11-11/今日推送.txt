@@ -1,0 +1,79 @@
+订阅采集结果（不调用模型）
+  F#1 新增 10，重复 0
+  F#2 新增 60，重复 0
+  F#3 新增 20，重复 0
+  F#4 新增 20，重复 0
+  F#5 新增 10，重复 0
+  F#6 新增 20，重复 0
+  F#7 新增 10，重复 0
+
+待读推荐（未核验）
+回看 2 天，最多 10 条，每个订阅最多 2 条；按时间及主题筛选，不代表真实性或因果。
+只在已配置订阅中选择；不代表全网覆盖，不同订阅也不保证证据独立。
+  I#11 Adobe 公布四项 AI 实验项目：照片秒变 3D 场景，还能通过聊天设计 AI 角色  — IT之家
+      源称发布（未核实）：2026-11-11T14:32:05+00:00；首次采集：2026-11-11T14:48:38+00:00
+      推荐依据：近 2 天发布；主题匹配：未设置主题筛选；时间降序、同时间按 ID；每来源最多 2 条；仅检查最新 5000 条合格候选；相同 URL 去重不代表独立证据；未核验阅读队列
+      原文链接：https://www.ithome.com/1/025/815.htm
+      摘要：IT之家 11 月 11 日消息，每年举办的 Adobe MAX 大会上，Adobe 展示的最令人印象深刻的技术之一，往往是那些仍处于实验阶段、尚未正式推出的创新功能。今天，该公司公布了最新一批实验项目：它们能够将普通图片转换为可探索的 3D 场景，通过与 AI 角色对话来设计角色形象，还能让照片编辑变成简单的复制粘贴操作。 首先是非常奇特的 Project Screen Test 项目，其旨在让用户更轻松地创建 AI 生成角色，并将其应用于视频内容。 IT之家注意到，与传统
+  I#12 贴脸开大：当着 XBOX 高层的面，前《铁拳》总监原田胜弘直言希望别再推出 XSS 这样的主机  — IT之家
+      源称发布（未核实）：2026-11-11T14:31:08+00:00；首次采集：2026-11-11T14:48:38+00:00
+      推荐依据：近 2 天发布；主题匹配：未设置主题筛选；时间降序、同时间按 ID；每来源最多 2 条；仅检查最新 5000 条合格候选；相同 URL 去重不代表独立证据；未核验阅读队列
+      原文链接：https://www.ithome.com/1/025/814.htm
+      摘要：IT之家 11 月 11 日消息，前《铁拳》系列总监、现任 VS Studio CEO 原田胜弘向来说话毫不客气。最近，他又在一场开发者座谈会上当着 XBOX 团队成员的面直言，希望微软别再推出 XBOX Series S 这样的主机。 当地时间 9 日，据外媒 Inven Global 报道，原田胜弘出席了在韩国举行的 2026 年主机游戏开发者大会。座谈会由前索尼总裁吉田修平主持，参与讨论的还有《剑星》开发商 Shift Up CTO 李东基、《弹丸论破》开发商 Too 
+  I#121 Pharo in the Browser with WebAssembly  — Hacker News
+      源称发布（未核实）：2026-11-11T14:21:27+00:00；首次采集：2026-11-11T14:48:48+00:00
+      推荐依据：近 2 天发布；主题匹配：未设置主题筛选；时间降序、同时间按 ID；每来源最多 2 条；仅检查最新 5000 条合格候选；相同 URL 去重不代表独立证据；未核验阅读队列
+      原文链接：https://massimo-nocentini.github.io/pharo-vm/world.html
+      摘要：Article URL: https://massimo-nocentini.github.io/pharo-vm/world.html Comments URL: https://news.ycombinator.com/item?id=50453763 Points: 15 # Comments: 2
+  I#141 Following big Democratic wins, these swing voters are looking for results  — NPR
+      源称发布（未核实）：2026-11-11T14:19:42+00:00；首次采集：2026-11-11T14:48:48+00:00
+      推荐依据：近 2 天发布；主题匹配：未设置主题筛选；时间降序、同时间按 ID；每来源最多 2 条；仅检查最新 5000 条合格候选；相同 URL 去重不代表独立证据；未核验阅读队列
+      原文链接：https://www.npr.org/2026/11/11/nx-s1-6036790/swing-voters-swing-states-democrats-congress
+      摘要：For the swing voters NPR is regularly checking in with as part of its Swing Shift series, the election results brought mixed emotions, as does the pending Democratic control of Congress.
+  I#122 Atuin Threads: All your agent sessions on every machine  — Hacker News
+      源称发布（未核实）：2026-11-11T14:10:46+00:00；首次采集：2026-11-11T14:48:48+00:00
+      推荐依据：近 2 天发布；主题匹配：未设置主题筛选；时间降序、同时间按 ID；每来源最多 2 条；仅检查最新 5000 条合格候选；相同 URL 去重不代表独立证据；未核验阅读队列
+      原文链接：https://blog.atuin.sh/threads-agent-sessions/
+      摘要：Article URL: https://blog.atuin.sh/threads-agent-sessions/ Comments URL: https://news.ycombinator.com/item?id=50453637 Points: 9 # Comments: 2
+  I#142 Russia and Ukraine agree to a large exchange of prisoners of war, officials say  — NPR
+      源称发布（未核实）：2026-11-11T13:30:00+00:00；首次采集：2026-11-11T14:48:48+00:00
+      推荐依据：近 2 天发布；主题匹配：未设置主题筛选；时间降序、同时间按 ID；每来源最多 2 条；仅检查最新 5000 条合格候选；相同 URL 去重不代表独立证据；未核验阅读队列
+      原文链接：https://www.npr.org/2026/11/11/g-s1-152954/russia-ukraine-war-talks
+      摘要：Russia and Ukraine have agreed to a large exchange of prisoners of war. U.S.-mediated talks in Abu Dhabi led to this decision, marking the biggest humanitarian release since the war began in 2022.
+  I#111 The Download: preserving minds and weighing open AI risks  — MIT Technology Review
+      源称发布（未核实）：2026-11-11T13:10:00+00:00；首次采集：2026-11-11T14:48:41+00:00
+      推荐依据：近 2 天发布；主题匹配：未设置主题筛选；时间降序、同时间按 ID；每来源最多 2 条；仅检查最新 5000 条合格候选；相同 URL 去重不代表独立证据；未核验阅读队列
+      原文链接：https://www.technologyreview.com/2026/11/11/1148424/the-download-preserving-minds-open-ai-risks/
+      摘要：This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. Six wild ideas for perpetuating your mind As we age, we forget most of what we’ve experienced, yet the
+  I#91 曝字节要做「中国版 Muse」，给豆包造个「超级大脑」  — 爱范儿
+      源称发布（未核实）：2026-11-11T11:52:16+00:00；首次采集：2026-11-11T14:48:40+00:00
+      推荐依据：近 2 天发布；主题匹配：未设置主题筛选；时间降序、同时间按 ID；每来源最多 2 条；仅检查最新 5000 条合格候选；相同 URL 去重不代表独立证据；未核验阅读队列
+      原文链接：https://www.ifanr.com/1689016?utm_source=rss&utm_medium=rss&utm_campaign=
+      摘要：豆包走出屏幕 #欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。
+  I#71 黑猩猩后天习得部分叫声  — Solidot
+      源称发布（未核实）：2026-11-11T11:12:10+00:00；首次采集：2026-11-11T14:48:39+00:00
+      推荐依据：近 2 天发布；主题匹配：未设置主题筛选；时间降序、同时间按 ID；每来源最多 2 条；仅检查最新 5000 条合格候选；相同 URL 去重不代表独立证据；未核验阅读队列
+      原文链接：https://www.solidot.org/story?sid=85859
+      摘要：长期以来，人们认为野生黑猩猩的发声完全由遗传决定，无需学习。发表于 PNAS 期刊上的一项研究挑战了这一观点，首次发现了野生黑猩猩中存在任意性、习得性发声惯例的证据。该发现缩小了黑猩猩交流与人类交流之间的差距。词语在人类语言中具有任意性和习得性。这里的任意性指一个词语在不同背景或领域里含义可能完全不同。词语在使用过程中的任意性，最终形成了因社群而异的语言惯例。一个人之所以遵循这些惯例，是因为同伴都这样做；如果同伴改变了用法，个体也就会遵循这些改变。研究人员分析了野生黑猩猩和圈
+  I#72 刚果埃博拉病例突破 1.1 万例  — Solidot
+      源称发布（未核实）：2026-11-11T10:55:55+00:00；首次采集：2026-11-11T14:48:39+00:00
+      推荐依据：近 2 天发布；主题匹配：未设置主题筛选；时间降序、同时间按 ID；每来源最多 2 条；仅检查最新 5000 条合格候选；相同 URL 去重不代表独立证据；未核验阅读队列
+      原文链接：https://www.solidot.org/story?sid=85858
+      摘要：刚果政府周三宣布该国的埃博拉病例突破 1.1 万例达到 11,042 例，有 5,387 人死亡，这是刚果至今最致命的埃博拉疫情，感染者中近半数死亡。这场疫情已成为有记录以来扩散速度最快的埃博拉病毒爆发，其规模有可能超过 2014-2016 年席卷西非的埃博拉疫情——该波疫情有逾 1.1 万人死亡。这起疫情的病毒是罕见的 Bundibugyo 毒株，目前没有针对该毒株的获批疫苗或疗法。
+阅读后可用 read 条目ID 标记；订阅条目不会自动转为已核实主张。
+
+因果簿日报  2026-11-11  （回看 1 个自然日）
+实验分未经校准，不是真实概率；出处与独立性待核实；人工结算不证明因果。
+
+一、到期待结算（0）
+
+二、已结算（0）
+
+三、新增主张（0）
+
+四、实验分变动记录（0）
+
+五、来源档案（按领域；仅为类型先验，尚未校准）
+  （尚无来源记录）
+
+总计：主张 0  待结算 0  已结算 0  可计 Brier 0  平均 Brier -

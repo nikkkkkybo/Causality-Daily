@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>因果簿简报 2026-11-12</title>
+<style>
+:root { color-scheme: light; --ink:#111827; --muted:#6b7280; --line:#e5e7eb;
+  --paper:#f7f8fa; --card:#fff; --accent:#1d4ed8; --accent-soft:#eff6ff;
+  --ok:#047857; --ok-soft:#ecfdf5; --warn:#b45309; --warn-soft:#fffbeb; --danger:#b91c1c; }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin:0; background:var(--paper); color:var(--ink);
+  font:15px/1.65 "Segoe UI","Microsoft YaHei",system-ui,sans-serif; }
+.page { max-width:1100px; margin:0 auto; padding:32px 24px 56px; }
+.brand { font-size:12px; letter-spacing:.18em; color:var(--accent); text-transform:uppercase; }
+h1 { margin:6px 0 4px; font:700 30px/1.25 "Noto Serif SC","Songti SC",Georgia,serif; }
+h2 { margin:0 0 14px; font:700 19px/1.3 "Noto Serif SC","Songti SC",Georgia,serif; }
+h2 .hint { font:400 12px/1.4 "Segoe UI",sans-serif; color:var(--muted); margin-left:8px; }
+h3 { margin:0; }
+h4 { margin:0 0 8px; font-size:13px; letter-spacing:.04em; color:var(--muted); text-transform:uppercase; }
+a { color:var(--accent); text-decoration:none; }
+a:hover { text-decoration:underline; }
+.masthead { border-bottom:1px solid var(--line); padding-bottom:16px; margin-bottom:20px; }
+.lede, .meta { margin:0; color:var(--muted); }
+.today { margin:10px 0 0; font-size:15.5px; }
+.jumpnav { margin-top:12px; display:flex; gap:16px; flex-wrap:wrap; font-size:13px; }
+.kpis { display:grid; grid-template-columns:repeat(auto-fit,minmax(130px,1fr)); gap:10px; margin:20px 0 28px; }
+.tile { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:12px 14px; }
+.tile .num { display:block; font-size:24px; font-weight:700; line-height:1.2; }
+.tile .label { font-size:12px; color:var(--muted); }
+.tile.warn .num { color:var(--warn); } .tile.danger .num { color:var(--danger); }
+section { margin:32px 0; }
+.alerts { display:grid; gap:10px; }
+.alert { display:flex; gap:14px; background:var(--card); border:1px solid var(--line); border-radius:12px; padding:12px 14px; }
+.alert.urgent { border-left:4px solid var(--danger); }
+.alert-kind { flex:0 0 auto; font-size:12px; font-weight:700; color:var(--accent);
+  background:var(--accent-soft); border-radius:999px; padding:3px 10px; height:fit-content; }
+.alert.urgent .alert-kind { color:var(--danger); background:#fef2f2; }
+.alert p { margin:0 0 4px; }
+.cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(420px,1fr)); gap:14px; }
+.card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:16px;
+  display:flex; flex-direction:column; gap:8px; box-shadow:0 1px 2px rgba(17,24,39,.03); }
+.badges { display:flex; flex-wrap:wrap; gap:6px; }
+.badge { font-size:11px; padding:2px 9px; border-radius:999px; border:1px solid var(--line);
+  color:var(--muted); background:#fafafa; }
+.badge.source { color:var(--accent); border-color:#dbeafe; background:var(--accent-soft); }
+.badge.ok { color:var(--ok); border-color:#d1fae5; background:var(--ok-soft); }
+.badge.warn { color:var(--warn); border-color:#fde68a; background:var(--warn-soft); }
+.card h3 { font-size:16px; line-height:1.45; font-weight:650; }
+.card h3 a { color:var(--ink); } .card h3 a:hover { color:var(--accent); }
+.excerpt { margin:0; color:#374151; font-size:13.5px; }
+.card-foot { margin-top:auto; display:flex; justify-content:space-between; align-items:center;
+  gap:10px; padding-top:8px; border-top:1px dashed var(--line); }
+.time, .muted { color:var(--muted); font-size:12px; }
+.links { display:flex; gap:12px; }
+.links a { font-size:12.5px; }
+.links .external { color:var(--muted); }
+.panels { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+.panel { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:16px; }
+svg.bars { width:100%; height:auto; }
+.bar-label { fill:#6b7280; font-size:12px; } .bar-value { fill:#111827; font-size:12px; }
+code { display:inline-block; background:#f3f4f6; border:1px solid var(--line); border-radius:6px;
+  padding:2px 7px; font-size:12px; color:#1f2937; margin:4px 6px 0 0; word-break:break-all; }
+.detail { background:var(--card); border:1px solid var(--line); border-radius:16px; padding:22px 24px; }
+.detail-head h1 { font-size:25px; }
+.detail-body { display:grid; grid-template-columns:minmax(0,1.6fr) minmax(260px,1fr); gap:22px; margin-top:14px; }
+.fulltext { margin:0 0 14px; font-size:14.5px; color:#1f2937; white-space:pre-wrap; }
+.ledger { border-radius:10px; padding:12px 14px; font-size:13.5px; }
+.ledger.empty { background:var(--warn-soft); border:1px solid #fde68a; }
+.ledger.ok { background:var(--ok-soft); border:1px solid #d1fae5; }
+.ledger p { margin:0 0 8px; }
+.claims, .preds { margin:6px 0 0; padding-left:18px; }
+.claims li { margin:6px 0; } .preds li { margin:4px 0; color:#374151; }
+.prov { display:grid; grid-template-columns:92px 1fr; gap:4px 10px; margin:0 0 14px; font-size:12.5px; }
+.prov dt { color:var(--muted); } .prov dd { margin:0; word-break:break-all; }
+.note { background:#f8fafc; border:1px dashed var(--line); border-radius:10px; padding:10px 12px; font-size:12.5px; color:#475569; }
+.detail-foot { display:flex; justify-content:space-between; gap:12px; border-top:1px dashed var(--line);
+  margin-top:18px; padding-top:10px; font-size:13px; }
+.navpager { display:flex; justify-content:space-between; margin-top:14px; font-size:13px; }
+.boundary { margin-top:36px; border-top:1px solid var(--line); padding-top:14px; color:var(--muted); font-size:12.5px; }
+.empty { background:var(--card); border:1px dashed var(--line); border-radius:12px; padding:18px; color:var(--muted); }
+@media (max-width:820px) { .panels, .detail-body { grid-template-columns:1fr; } }
+@media print { body{background:#fff;} .jumpnav,.links,.detail-foot,.navpager,.alerts{display:none;}
+  .page{max-width:none;padding:0;} }
+</style>
+</head>
+<body>
+<div class="page">
+
+<header class="masthead">
+  <div class="brand">causal_ledger · daily brief</div>
+  <h1>因果簿 · 今日简报</h1>
+  <p class="lede">2026-11-12 · 未联网采集（仅使用本地已有条目） · 原文正文抓取 4/4 · 关注主题：未设置（使用全部订阅）</p>
+  <p class="today">今天 4 条值得看：来自 IT之家、Hacker News、NPR、MIT Technology Review；其中 1 条已接账。 另有 1 条预测到期，等你裁决。</p>
+  <nav class="jumpnav"><a href="#actions">待办</a><a href="#brief">值得注意</a>
+    <a href="#stats">来源与趋势</a><span class="muted">详情为独立页面</span></nav>
+</header>
+<div class="kpis"><div class="tile "><span class="num">134</span><span class="label">未读 · 2 天窗口</span></div><div class="tile "><span class="num">1</span><span class="label">已接账条目</span></div><div class="tile "><span class="num">1</span><span class="label">主张</span></div><div class="tile warn"><span class="num">2</span><span class="label">待结算预测</span></div><div class="tile danger"><span class="num">1</span><span class="label">其中到期/逾期</span></div></div>
+<section id="actions"><h2>待你处理</h2><div class="alerts"><div class="alert urgent"><span class="alert-kind">结算到期</span><div><p>P#2 截止 2026-11-11：2026-11-11 当日 Adobe 官网出现 Project Screen Test 页面或报名入口</p><code>settle P#2 hit|miss --note 依据</code></div></div><div class="alert"><span class="alert-kind">建议接账</span><div><p>推荐条目 I#121 尚未转成主张，可离线接账：</p><code>ingest 121 --claim "一句话主张"</code></div></div></div></section>
+<section id="brief"><h2>值得注意 <span class="hint">4 条 · 未核验 · 点"详情"进入独立页面</span></h2>
+  <div class="cards">
+<article class="card">
+  <div class="badges"><span class="badge source">IT之家</span><span class="badge ">同题1源</span><span class="badge ok">已接账 · 主张 1 / 待结算 2</span><span class="badge muted">未核验</span></div>
+  <h3><a href="detail/item-11.html">Adobe 公布四项 AI 实验项目：照片秒变 3D 场景，还能通过聊天设计 AI 角色</a></h3>
+  <p class="excerpt">Adobe 公布四项 AI 实验项目：照片秒变 3D 场景，还能通过聊天设计 AI 角色 - IT之家 首页 IT圈 最会买 设置 日夜间 随系统 浅色 深色 主题色 黑色 投稿 订阅 RSS订阅 收藏IT之家 软媒应用 App客户端 要知App 软媒魔方 业界 手机 电脑 测评…</p>
+  <div class="card-foot">
+    <span class="time">2026-11-11T14:32</span>
+    <span class="links"><a href="detail/item-11.html">详情 →</a><a class="external" href="https://www.ithome.com/1/025/815.htm" target="_blank" rel="noopener noreferrer">原文 ↗</a></span>
+  </div>
+</article>
+<article class="card">
+  <div class="badges"><span class="badge source">Hacker News</span><span class="badge ">同题1源</span><span class="badge warn">未接账</span><span class="badge muted">未核验</span></div>
+  <h3><a href="detail/item-121.html">Pharo in the Browser with WebAssembly</a></h3>
+  <p class="excerpt">Pharo World Stop Save Save as… Download Open File in Images Settings Console Loading Loading Pharo… ✕ Third-party notices Drop to file in or…</p>
+  <div class="card-foot">
+    <span class="time">2026-11-11T14:21</span>
+    <span class="links"><a href="detail/item-121.html">详情 →</a><a class="external" href="https://massimo-nocentini.github.io/pharo-vm/world.html" target="_blank" rel="noopener noreferrer">原文 ↗</a></span>
+  </div>
+</article>
+<article class="card">
+  <div class="badges"><span class="badge source">NPR</span><span class="badge ">同题1源</span><span class="badge warn">未接账</span><span class="badge muted">未核验</span></div>
+  <h3><a href="detail/item-141.html">Following big Democratic wins, these swing voters are looking for results</a></h3>
+  <p class="excerpt">After Democrats won big, swing voters are cautious, hopeful : NPR Accessibility links Skip to main content Keyboard shortcuts for audio play…</p>
+  <div class="card-foot">
+    <span class="time">2026-11-11T14:19</span>
+    <span class="links"><a href="detail/item-141.html">详情 →</a><a class="external" href="https://www.npr.org/2026/11/11/nx-s1-6036790/swing-voters-swing-states-democrats-congress" target="_blank" rel="noopener noreferrer">原文 ↗</a></span>
+  </div>
+</article>
+<article class="card">
+  <div class="badges"><span class="badge source">MIT Technology Review</span><span class="badge ">同题1源</span><span class="badge warn">未接账</span><span class="badge muted">未核验</span></div>
+  <h3><a href="detail/item-111.html">The Download: preserving minds and weighing open AI risks</a></h3>
+  <p class="excerpt">The Download: preserving minds and weighing open AI risks | MIT Technology Review Skip to Content Menu MIT Technology Review MIT Technology…</p>
+  <div class="card-foot">
+    <span class="time">2026-11-11T13:10</span>
+    <span class="links"><a href="detail/item-111.html">详情 →</a><a class="external" href="https://www.technologyreview.com/2026/11/11/1148424/the-download-preserving-minds-open-ai-risks/" target="_blank" rel="noopener noreferrer">原文 ↗</a></span>
+  </div>
+</article></div></section>
+<section id="stats"><h2>来源与趋势</h2><div class="panels">
+  <div class="panel"><h4>近 7 天采集</h4><svg class="bars" viewBox="0 0 460 188" role="img"><text x="0" y="17" class="bar-label">11-05</text><rect x="140" y="5" width="2" height="14" rx="4" fill="#2563eb"/><text x="150" y="17" class="bar-value">0</text><text x="0" y="43" class="bar-label">11-06</text><rect x="140" y="31" width="2" height="14" rx="4" fill="#2563eb"/><text x="150" y="43" class="bar-value">0</text><text x="0" y="69" class="bar-label">11-07</text><rect x="140" y="57" width="2" height="14" rx="4" fill="#2563eb"/><text x="150" y="69" class="bar-value">0</text><text x="0" y="95" class="bar-label">11-08</text><rect x="140" y="83" width="2" height="14" rx="4" fill="#2563eb"/><text x="150" y="95" class="bar-value">0</text><text x="0" y="121" class="bar-label">11-09</text><rect x="140" y="109" width="2" height="14" rx="4" fill="#2563eb"/><text x="150" y="121" class="bar-value">0</text><text x="0" y="147" class="bar-label">11-10</text><rect x="140" y="135" width="2" height="14" rx="4" fill="#2563eb"/><text x="150" y="147" class="bar-value">0</text><text x="0" y="173" class="bar-label">11-11</text><rect x="140" y="161" width="264" height="14" rx="4" fill="#2563eb"/><text x="412" y="173" class="bar-value">150</text></svg></div>
+  <div class="panel"><h4>来源条目分布</h4><svg class="bars" viewBox="0 0 460 188" role="img"><text x="0" y="17" class="bar-label">IT之家</text><rect x="140" y="5" width="264" height="14" rx="4" fill="#047857"/><text x="412" y="17" class="bar-value">60</text><text x="0" y="43" class="bar-label">Solidot</text><rect x="140" y="31" width="88" height="14" rx="4" fill="#047857"/><text x="236" y="43" class="bar-value">20</text><text x="0" y="69" class="bar-label">爱范儿</text><rect x="140" y="57" width="88" height="14" rx="4" fill="#047857"/><text x="236" y="69" class="bar-value">20</text><text x="0" y="95" class="bar-label">Hacker News</text><rect x="140" y="83" width="88" height="14" rx="4" fill="#047857"/><text x="236" y="95" class="bar-value">20</text><text x="0" y="121" class="bar-label">少数派</text><rect x="140" y="109" width="44" height="14" rx="4" fill="#047857"/><text x="192" y="121" class="bar-value">10</text><text x="0" y="147" class="bar-label">MIT Technology R</text><rect x="140" y="135" width="44" height="14" rx="4" fill="#047857"/><text x="192" y="147" class="bar-value">10</text><text x="0" y="173" class="bar-label">NPR</text><rect x="140" y="161" width="44" height="14" rx="4" fill="#047857"/><text x="192" y="173" class="bar-value">10</text></svg></div>
+</div></section>
+<footer class="boundary">
+  实验分未经校准，不是真实概率；订阅条目、人工接账、预测与推荐结果均未核验；
+  同题源数来自链接/标题相似启发式，仅提示不合并；数据只存本地，不自动外发、不安装定时任务。
+  本地已保留 15 期推送记录。
+</footer>
+</div>
+</body>
+</html>

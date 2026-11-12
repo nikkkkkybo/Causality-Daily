@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>因果簿简报 2026-11-12</title>
+<style>
+:root { color-scheme: light; --ink:#111827; --muted:#6b7280; --line:#e5e7eb;
+  --paper:#f7f8fa; --card:#ffffff; --accent:#1d4ed8; --accent-soft:#eff6ff;
+  --ok:#047857; --ok-soft:#ecfdf5; --warn:#b45309; --warn-soft:#fffbeb; --danger:#b91c1c; }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin:0; background:var(--paper); color:var(--ink);
+  font: 15px/1.65 "Segoe UI","Microsoft YaHei",system-ui,sans-serif; }
+.page { max-width: 1120px; margin: 0 auto; padding: 34px 24px 64px; }
+.masthead { border-bottom: 1px solid var(--line); padding-bottom: 18px; margin-bottom: 22px; }
+.brand { font-size: 12px; letter-spacing: .18em; color: var(--accent); text-transform: uppercase; }
+h1 { margin: 6px 0 4px; font: 700 30px/1.25 "Noto Serif SC","Songti SC",Georgia,serif; }
+.lede { margin: 0; color: var(--muted); }
+.today { margin: 10px 0 0; font-size: 15.5px; color: #1f2937; }
+.jumpnav { position: sticky; top: 0; z-index: 5; margin-top: 14px; display: flex; gap: 16px; flex-wrap: wrap;
+  background: rgba(247,248,250,.94); padding: 8px 0; }
+.jumpnav a { color: var(--accent); text-decoration: none; font-size: 13px; }
+.jumpnav a:hover { text-decoration: underline; }
+.kpis { display: grid; grid-template-columns: repeat(auto-fit,minmax(134px,1fr)); gap: 10px; margin: 22px 0 30px; }
+.tile { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; }
+.tile .num { display:block; font-size: 25px; font-weight: 700; line-height:1.2; }
+.tile .label { font-size: 12px; color: var(--muted); }
+.tile.warn .num { color: var(--warn); }
+.tile.danger .num { color: var(--danger); }
+section { margin: 34px 0; }
+h2 { margin: 0 0 14px; font: 700 19px/1.3 "Noto Serif SC","Songti SC",Georgia,serif; }
+h2 .hint { font: 400 12px/1.4 "Segoe UI",sans-serif; color: var(--muted); margin-left: 8px; }
+.alerts { display: grid; gap: 10px; }
+.alert { display:flex; gap: 14px; background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; }
+.alert.urgent { border-left: 4px solid var(--danger); }
+.alert-kind { flex: 0 0 auto; font-size: 12px; font-weight: 700; color: var(--accent); background: var(--accent-soft); border-radius: 999px; padding: 3px 10px; height: fit-content; }
+.alert.urgent .alert-kind { color: var(--danger); background: #fef2f2; }
+.alert p { margin: 0 0 4px; }
+.cards { display: grid; grid-template-columns: repeat(auto-fit,minmax(430px,1fr)); gap: 14px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 16px; display:flex; flex-direction:column; gap: 8px; box-shadow: 0 1px 2px rgba(17,24,39,.03); }
+.badges { display:flex; flex-wrap:wrap; gap:6px; }
+.badge { font-size: 11px; padding: 2px 9px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); background: #fafafa; }
+.badge.source { color: var(--accent); border-color: #dbeafe; background: var(--accent-soft); }
+.badge.ok { color: var(--ok); border-color: #d1fae5; background: var(--ok-soft); }
+.badge.warn { color: var(--warn); border-color: #fde68a; background: var(--warn-soft); }
+.card h3 { margin: 0; font-size: 16px; line-height: 1.45; font-weight: 650; }
+.card h3 a { color: var(--ink); text-decoration: none; }
+.card h3 a:hover { color: var(--accent); }
+.excerpt { margin: 0; color: #374151; font-size: 13.5px; }
+.card-foot { margin-top: auto; display:flex; justify-content: space-between; align-items:center; gap: 10px; padding-top: 8px; border-top: 1px dashed var(--line); }
+.time { font-size: 12px; color: var(--muted); }
+.links { display:flex; gap: 12px; }
+.jump, .external { font-size: 12.5px; color: var(--accent); text-decoration: none; }
+.external { color: var(--muted); }
+.jump:hover, .external:hover { text-decoration: underline; }
+.panels { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.panel { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 16px; }
+svg.bars { width: 100%; height: auto; }
+.bar-label { fill: #6b7280; font-size: 12px; }
+.bar-value { fill: #111827; font-size: 12px; }
+.detail { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 20px 22px; margin: 16px 0; scroll-margin-top: 18px; }
+.detail-head h3 { margin: 6px 0 2px; font: 700 21px/1.4 "Noto Serif SC","Songti SC",Georgia,serif; }
+.meta { margin: 0; color: var(--muted); font-size: 12.5px; }
+.detail-body { display: grid; grid-template-columns: minmax(0,1.6fr) minmax(260px,1fr); gap: 22px; margin-top: 14px; }
+h4 { margin: 0 0 8px; font-size: 13px; letter-spacing: .04em; color: var(--muted); text-transform: uppercase; }
+.fulltext { margin: 0 0 14px; font-size: 14.5px; color: #1f2937; }
+.ledger { border-radius: 10px; padding: 12px 14px; font-size: 13.5px; }
+.ledger.empty { background: var(--warn-soft); border: 1px solid #fde68a; }
+.ledger.ok { background: var(--ok-soft); border: 1px solid #d1fae5; }
+.ledger p { margin: 0 0 8px; }
+.claims, .preds { margin: 6px 0 0; padding-left: 18px; }
+.claims li { margin: 6px 0; }
+.preds li { margin: 4px 0; color: #374151; }
+.prov { display: grid; grid-template-columns: 92px 1fr; gap: 4px 10px; margin: 0 0 14px; font-size: 12.5px; }
+.prov dt { color: var(--muted); }
+.prov dd { margin: 0; word-break: break-all; }
+code { display: inline-block; background: #f3f4f6; border: 1px solid var(--line); border-radius: 6px; padding: 2px 7px; font-size: 12px; color: #1f2937; margin: 4px 6px 0 0; word-break: break-all; }
+.small { font-size: 12px; }
+.muted { color: var(--muted); }
+.empty { background: var(--card); border: 1px dashed var(--line); border-radius: 12px; padding: 18px; color: var(--muted); }
+.detail-foot { display:flex; justify-content: space-between; border-top: 1px dashed var(--line); margin-top: 16px; padding-top: 10px; }
+.boundary { margin-top: 40px; border-top: 1px solid var(--line); padding-top: 16px; color: var(--muted); font-size: 12.5px; }
+@media (max-width: 820px) { .panels, .detail-body { grid-template-columns: 1fr; } }
+@media print { body { background:#fff; } .jumpnav, .card-foot .links, .detail-foot, .alerts { display:none; } .page { max-width:none; padding:0; } }
+</style>
+</head>
+<body>
+<div class="page">
+  <header class="masthead">
+    <div class="brand">causal_ledger · daily brief</div>
+    <h1>因果簿 · 今日简报</h1>
+    <p class="lede">2026-11-12 · 未联网采集（仅使用本地已有条目） · 关注主题：未设置（使用全部订阅）</p>
+    <p class="today">今天 4 条值得看：来自 IT之家、Hacker News、NPR、MIT Technology Review；其中 1 条已接账。 另有 1 条预测到期，等你裁决。</p>
+    <nav class="jumpnav">
+      <a href="#actions">待办</a><a href="#brief">值得注意</a><a href="#stats">来源与趋势</a><a href="#details">详细内容</a>
+    </nav>
+  </header>
+
+  <div class="kpis"><div class="tile "><span class="num">135</span><span class="label">未读 · 2 天窗口</span></div><div class="tile "><span class="num">1</span><span class="label">已接账条目</span></div><div class="tile "><span class="num">1</span><span class="label">主张</span></div><div class="tile warn"><span class="num">2</span><span class="label">待结算预测</span></div><div class="tile danger"><span class="num">1</span><span class="label">其中到期/逾期</span></div></div>
+
+  <section id="actions">
+    <h2>待你处理 <span class="hint">人工操作，系统不会自动核实或外发</span></h2>
+    <div class="alerts"><div class="alert urgent"><span class="alert-kind">结算到期</span><div><p>P#2 截止 2026-11-11：2026-11-11 当日 Adobe 官网出现 Project Screen Test 页面或报名入口</p><code>settle P#2 hit|miss --note 依据</code></div></div><div class="alert"><span class="alert-kind">建议接账</span><div><p>推荐条目 I#121 尚未转成主张，可离线接账：</p><code>ingest 121 --claim "一句话主张"</code></div></div></div>
+  </section>
+
+  <section id="brief">
+    <h2>值得注意 <span class="hint">4 条 · 未核验 · 同题源数为启发式提示</span></h2>
+    <div class="cards">
+<article class="card">
+  <div class="badges"><span class="badge source">IT之家</span><span class="badge ">同题1源</span><span class="badge ok">已接账 · 主张 1 / 待结算 2</span><span class="badge muted">未核验</span></div>
+  <h3><a class="detail-link" href="#d-11">Adobe 公布四项 AI 实验项目：照片秒变 3D 场景，还能通过聊天设计 AI 角色</a></h3>
+  <p class="excerpt">每年举办的 Adobe MAX 大会上，Adobe 展示的最令人印象深刻的技术之一，往往是那些仍处于实验阶段、尚未正式推出的创新功能。今天，该公司公布了最新一批实验项目：它们能够将普通图片转换为可探索的 3D 场景，通过与 AI 角色对话来设计角色形象，还能让照片编辑变成简单的复…</p>
+  <div class="card-foot">
+    <span class="time">2026-11-11T14:32</span>
+    <span class="links">
+      <a class="jump" href="#d-11">详情 ↓</a>
+      <a class="external" href="https://www.ithome.com/1/025/815.htm" target="_blank" rel="noopener noreferrer">原文 ↗</a>
+    </span>
+  </div>
+</article>
+<article class="card">
+  <div class="badges"><span class="badge source">Hacker News</span><span class="badge ">同题1源</span><span class="badge warn">未接账</span><span class="badge muted">未核验</span></div>
+  <h3><a class="detail-link" href="#d-121">Pharo in the Browser with WebAssembly</a></h3>
+  <p class="excerpt">Article URL: https://massimo-nocentini.github.io/pharo-vm/world.html Comments URL: https://news.ycombinator.com/item?id=50453763 Points: 15…</p>
+  <div class="card-foot">
+    <span class="time">2026-11-11T14:21</span>
+    <span class="links">
+      <a class="jump" href="#d-121">详情 ↓</a>
+      <a class="external" href="https://massimo-nocentini.github.io/pharo-vm/world.html" target="_blank" rel="noopener noreferrer">原文 ↗</a>
+    </span>
+  </div>
+</article>
+<article class="card">
+  <div class="badges"><span class="badge source">NPR</span><span class="badge ">同题1源</span><span class="badge warn">未接账</span><span class="badge muted">未核验</span></div>
+  <h3><a class="detail-link" href="#d-141">Following big Democratic wins, these swing voters are looking for results</a></h3>
+  <p class="excerpt">For the swing voters NPR is regularly checking in with as part of its Swing Shift series, the election results brought mixed emotions, as do…</p>
+  <div class="card-foot">
+    <span class="time">2026-11-11T14:19</span>
+    <span class="links">
+      <a class="jump" href="#d-141">详情 ↓</a>
+      <a class="external" href="https://www.npr.org/2026/11/11/nx-s1-6036790/swing-voters-swing-states-democrats-congress" target="_blank" rel="noopener noreferrer">原文 ↗</a>
+    </span>
+  </div>
+</article>
+<article class="card">
+  <div class="badges"><span class="badge source">MIT Technology Review</span><span class="badge ">同题1源</span><span class="badge warn">未接账</span><span class="badge muted">未核验</span></div>
+  <h3><a class="detail-link" href="#d-111">The Download: preserving minds and weighing open AI risks</a></h3>
+  <p class="excerpt">This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. Si…</p>
+  <div class="card-foot">
+    <span class="time">2026-11-11T13:10</span>
+    <span class="links">
+      <a class="jump" href="#d-111">详情 ↓</a>
+      <a class="external" href="https://www.technologyreview.com/2026/11/11/1148424/the-download-preserving-minds-open-ai-risks/" target="_blank" rel="noopener noreferrer">原文 ↗</a>
+    </span>
+  </div>
+</article></div>
+  </section>
+
+  <section id="stats">
+    <h2>来源与趋势</h2>
+    <div class="panels">
+      <div class="panel"><h4>近 7 天采集</h4><svg class="bars" viewBox="0 0 460 188" role="img"><text x="0" y="17" class="bar-label">11-05</text><rect x="140" y="5" width="2" height="14" rx="4" fill="#2563eb"/><text x="150" y="17" class="bar-value">0</text><text x="0" y="43" class="bar-label">11-06</text><rect x="140" y="31" width="2" height="14" rx="4" fill="#2563eb"/><text x="150" y="43" class="bar-value">0</text><text x="0" y="69" class="bar-label">11-07</text><rect x="140" y="57" width="2" height="14" rx="4" fill="#2563eb"/><text x="150" y="69" class="bar-value">0</text><text x="0" y="95" class="bar-label">11-08</text><rect x="140" y="83" width="2" height="14" rx="4" fill="#2563eb"/><text x="150" y="95" class="bar-value">0</text><text x="0" y="121" class="bar-label">11-09</text><rect x="140" y="109" width="2" height="14" rx="4" fill="#2563eb"/><text x="150" y="121" class="bar-value">0</text><text x="0" y="147" class="bar-label">11-10</text><rect x="140" y="135" width="2" height="14" rx="4" fill="#2563eb"/><text x="150" y="147" class="bar-value">0</text><text x="0" y="173" class="bar-label">11-11</text><rect x="140" y="161" width="264" height="14" rx="4" fill="#2563eb"/><text x="412" y="173" class="bar-value">150</text></svg></div>
+      <div class="panel"><h4>来源条目分布</h4><svg class="bars" viewBox="0 0 460 188" role="img"><text x="0" y="17" class="bar-label">IT之家</text><rect x="140" y="5" width="264" height="14" rx="4" fill="#047857"/><text x="412" y="17" class="bar-value">60</text><text x="0" y="43" class="bar-label">Solidot</text><rect x="140" y="31" width="88" height="14" rx="4" fill="#047857"/><text x="236" y="43" class="bar-value">20</text><text x="0" y="69" class="bar-label">爱范儿</text><rect x="140" y="57" width="88" height="14" rx="4" fill="#047857"/><text x="236" y="69" class="bar-value">20</text><text x="0" y="95" class="bar-label">Hacker News</text><rect x="140" y="83" width="88" height="14" rx="4" fill="#047857"/><text x="236" y="95" class="bar-value">20</text><text x="0" y="121" class="bar-label">少数派</text><rect x="140" y="109" width="44" height="14" rx="4" fill="#047857"/><text x="192" y="121" class="bar-value">10</text><text x="0" y="147" class="bar-label">MIT Technology R</text><rect x="140" y="135" width="44" height="14" rx="4" fill="#047857"/><text x="192" y="147" class="bar-value">10</text><text x="0" y="173" class="bar-label">NPR</text><rect x="140" y="161" width="44" height="14" rx="4" fill="#047857"/><text x="192" y="173" class="bar-value">10</text></svg></div>
+    </div>
+  </section>
+
+  <section id="details">
+    <h2>详细内容 <span class="hint">完整摘要、出处与台账状态；可返回简报</span></h2>
+    
+<article class="detail" id="d-11">
+  <header class="detail-head">
+    <div class="badges"><span class="badge source">IT之家</span><span class="badge ">同题1源</span><span class="badge ok">已接账 · 主张 1 / 待结算 2</span><span class="badge muted">未核验</span></div>
+    <h3>Adobe 公布四项 AI 实验项目：照片秒变 3D 场景，还能通过聊天设计 AI 角色</h3>
+    <p class="meta">2026-11-11T14:32 · IT之家</p>
+  </header>
+  <div class="detail-body">
+    <section class="content">
+      <h4>订阅摘要原文（未核验）</h4>
+      <p class="fulltext">IT之家 11 月 11 日消息，每年举办的 Adobe MAX 大会上，Adobe 展示的最令人印象深刻的技术之一，往往是那些仍处于实验阶段、尚未正式推出的创新功能。今天，该公司公布了最新一批实验项目：它们能够将普通图片转换为可探索的 3D 场景，通过与 AI 角色对话来设计角色形象，还能让照片编辑变成简单的复制粘贴操作。 首先是非常奇特的 Project Screen Test 项目，其旨在让用户更轻松地创建 AI 生成角色，并将其应用于视频内容。 IT之家注意到，与传统方式不同，用户不再只是通过文字提示词描述角色应该如何说话、如何表现，而是可以直接与角色对话，在类似演员试镜的环境中对其进行指导。 使用时，用户首先需要描述角色的一些基本性格特征，例如“焦虑、害羞、笨拙”等，并为角色设置声音。声音可以从预设选项中选择，也可以通过文字提示词描述，或者上传一段音频样本，让 AI 以此为参考。 随后，用户可以像通过 FaceTime 与人视频通话一样，与 AI 角色展开对话，进一步完善其人物设定，包括成长背景、性格、目标、缺点、恐惧，以及一些独特的动作习惯等。 完成角色设计后，用户还可以描述希望角色置身其中的环境或情景，生成相应的动态试镜视频。 目前，Project Screen Test 仍然是一项独立的创意实验，尚不清楚其未来是否会被整合进 Adobe 现有的 AI 视频工具中。 从实际效果来看，与许多缺乏灵魂的 AI 动画角色相比，这项工具生成的角色拥有更加鲜明、连贯的个性。不过，这恰恰也是它存在的意义：与传统动画制作相比，AI 视频生成能够提供的创作控制权要少得多。在传统动画中，角色的每一个细节都经过创作者有意识的设计，而 AI 生成的角色很难做到这一点。 另一个项目是 Project Sight Span，它能够将普通照片和图片转换为可供用户探索的 3D 空间，从而重新调整画面的构图和视角。 这项技术可以生成原始画面之外的物体和背景，将一张平面图片扩展成完整的三维环境。即使用户转动视角，查看原本被拍摄者遮挡的背后区域，系统生成的内容也能与原始画面自然衔接。 不过，在 3D 环境中浏览时，画面中的物体和背景会显得像素化，细节也不够清晰。但当用户选定最终视角后，系统便会恢复相应画面的分辨率。 Sight Span 支持各种平面图像，包括照片、绘画和插画，同时能够保留并复现原作品的艺术风格。即使用户调整照片中人物的纹身位置或面部特征，这些细节依然能够令人惊讶地保持辨识度，并与原始参考图像高度一致。 这项技术有点像苹果 Spatial Reframing 空间重构功能的强化版：用户不仅可以更加大幅度地调整画面中的元素，甚至能够彻底改变拍摄角度。不过，经过如此大幅度调整后，最终作品似乎也已经不太适合继续称为一张照片了。 Project Sound Bender 则是一项 AI 音频混音功能，用户可以像在色轮上移动光标一样，自由调整视频中的音效。 使用时，用户只需上传一段视频，并通过文字提示词描述想要的声音效果，例如“冒着气泡的科幻炼金锅声音”。Sound Bender 随后会自动生成相应音效，并将其与视频同步。 与此同时，工具还会提供一个方形声音控制面板，让用户实时调整音效。面板的四个角会自动分配不同类型的 AI 生成声音，例如密集的咕噜声和气泡爆裂声、岩石沸腾般的轰鸣声、带有音高变化的电子音，以及噼啪作响的电火花声。 用户可以在面板上拖动光标，自由选择希望突出的声音类型，也可以分别为四个角设置不同的音效。 Adobe 展示的第四个项目是 Project Rinse Repeat，它能够让用户复制已经完成的编辑操作，并自动将相同的处理效果应用到同一张照片中的其他人物或物体上。 例如，用户花费大量时间为照片中的某个人物进行磨皮，去除痘痘和皮肤瑕疵后，Rinse Repeat 就可以根据用户已经完成的具体修改，自动将类似处理应用到合影中的其他人物身上。 这项功能也可以用于商业营销图片。例如，用户可以为产品添加阴影效果，即使其他产品的形状和尺寸不同，系统也能自动适配相应的阴影。 Rinse Repeat 基于 Photoshop 构建。值得注意的是，应用到其他人物或物体上的编辑效果仍然完全可编辑，因为工具会调用 Photoshop 原生功能重新创建这些修改，而不是简单地将处理后的图像覆盖上去。 需要注意的是，这些名为“Sneaks”的项目目前都只是技术预览，未来有可能被开发成 Adobe Creative Cloud 应用或 Firefly 平台中的正式工具，但并不保证所有项目最终都会推出。 不过，这些项目几乎全部围绕 Adobe 的生成式 AI 技术展开。考虑到 AI 工具如今已经成为 Adobe 增长战略的核心，至少有一部分实验功能最终正式上线的可能性相当高。 无论这些 AI 实验看起来有多么新奇或有趣，它们也释放出一个值得关注的信号：如果这些工具足够实用，未来 AI 就有可能取代创意专业人士目前使用的部分工具和素材库，而不管他们对这项技术抱有怎样复杂的态度。 这些实验项目还有一个显著的共同点：它们都在尝试降低照片编辑、视频制作和音频混音等复杂工作流程的使用门槛，让操作变得更加直观、互动性更强。 某些功能甚至看起来有点像玩具，但它们实际上能够帮助用户完成创意项目中的实际修改。 Adobe 资深首席研究科学家高塔姆 · 迈索尔（Gautham Mysore）在接受 The Verge 采访时表示：“让这些交互方式变得更加直观，同时也是为了让经验丰富的创作者获得更精准的控制能力。Sound Bender 的声音探索功能，以及 Sight Span 的摄像机视角调整功能，都展示了专业人士如何运用自己的判断力，更直接地调整和完善最终效果。如何让创作意图与实际控制能力更紧密地结合起来，正是我们目前探索的重要方向。”</p>
+      <div class="ledger ok"><p><strong>已接账 D#1</strong> · 主张 1 / 待结算 2（分数未经校准）</p><ul class="claims"><li>#1 [0.60] formation · Adobe 公布四项 AI 实验项目<ul class="preds"><li>P#2 pending · 截止 2026-11-11 · 2026-11-11 当日 Adobe 官网出现 Project Screen Test 页面或报名入口<br><code>settle P#2 hit|miss --note 依据</code></li><li>P#1 pending · 截止 2027-01-31 · 2027-01-31 前 Adobe 官网出现 Project Screen Test 的公开测试页或报名入口<br><code>settle P#1 hit|miss --note 依据</code></li></ul></li></ul></div>
+    </section>
+    <aside class="evidence">
+      <h4>出处与时间</h4>
+      <dl class="prov"><dt>订阅来源</dt><dd>IT之家</dd><dt>条目编号</dt><dd>I#11</dd><dt>源称发布时间</dt><dd>2026-11-11T14:32:05+00:00</dd><dt>首次采集</dt><dd>2026-11-11T14:48:38+00:00</dd><dt>同题源数</dt><dd>1（启发式，仅提示）</dd><dt>原文链接</dt><dd>https://www.ithome.com/1/025/815.htm</dd></dl>
+      <h4>可以做什么</h4>
+      <p class="muted small">以下命令只作用于本地账簿；不会自动核实或外发。</p>
+      <code>read 11</code>
+      <code>predict 1 --text 可观察承诺 --due YYYY-MM-DD --hint 核验方法 [--p 0-1]</code>
+    </aside>
+  </div>
+  <footer class="detail-foot">
+    <a class="jump" href="#brief">↑ 返回简报</a>
+    <a class="external" href="https://www.ithome.com/1/025/815.htm" target="_blank" rel="noopener noreferrer">打开原文 ↗</a>
+  </footer>
+</article>
+<article class="detail" id="d-121">
+  <header class="detail-head">
+    <div class="badges"><span class="badge source">Hacker News</span><span class="badge ">同题1源</span><span class="badge warn">未接账</span><span class="badge muted">未核验</span></div>
+    <h3>Pharo in the Browser with WebAssembly</h3>
+    <p class="meta">2026-11-11T14:21 · Hacker News</p>
+  </header>
+  <div class="detail-body">
+    <section class="content">
+      <h4>订阅摘要原文（未核验）</h4>
+      <p class="fulltext">Article URL: https://massimo-nocentini.github.io/pharo-vm/world.html Comments URL: https://news.ycombinator.com/item?id=50453763 Points: 15 # Comments: 2</p>
+      <div class="ledger empty"><p><strong>未接账。</strong>该条目尚未转成文档/主张，因此没有出处链、分数或预测。人工确认后可离线接账：</p><code>ingest 121 --claim "一句话主张" --domain tech</code></div>
+    </section>
+    <aside class="evidence">
+      <h4>出处与时间</h4>
+      <dl class="prov"><dt>订阅来源</dt><dd>Hacker News</dd><dt>条目编号</dt><dd>I#121</dd><dt>源称发布时间</dt><dd>2026-11-11T14:21:27+00:00</dd><dt>首次采集</dt><dd>2026-11-11T14:48:48+00:00</dd><dt>同题源数</dt><dd>1（启发式，仅提示）</dd><dt>原文链接</dt><dd>https://massimo-nocentini.github.io/pharo-vm/world.html</dd></dl>
+      <h4>可以做什么</h4>
+      <p class="muted small">以下命令只作用于本地账簿；不会自动核实或外发。</p>
+      <code>read 121</code>
+      
+    </aside>
+  </div>
+  <footer class="detail-foot">
+    <a class="jump" href="#brief">↑ 返回简报</a>
+    <a class="external" href="https://massimo-nocentini.github.io/pharo-vm/world.html" target="_blank" rel="noopener noreferrer">打开原文 ↗</a>
+  </footer>
+</article>
+<article class="detail" id="d-141">
+  <header class="detail-head">
+    <div class="badges"><span class="badge source">NPR</span><span class="badge ">同题1源</span><span class="badge warn">未接账</span><span class="badge muted">未核验</span></div>
+    <h3>Following big Democratic wins, these swing voters are looking for results</h3>
+    <p class="meta">2026-11-11T14:19 · NPR</p>
+  </header>
+  <div class="detail-body">
+    <section class="content">
+      <h4>订阅摘要原文（未核验）</h4>
+      <p class="fulltext">For the swing voters NPR is regularly checking in with as part of its Swing Shift series, the election results brought mixed emotions, as does the pending Democratic control of Congress.</p>
+      <div class="ledger empty"><p><strong>未接账。</strong>该条目尚未转成文档/主张，因此没有出处链、分数或预测。人工确认后可离线接账：</p><code>ingest 141 --claim "一句话主张" --domain tech</code></div>
+    </section>
+    <aside class="evidence">
+      <h4>出处与时间</h4>
+      <dl class="prov"><dt>订阅来源</dt><dd>NPR</dd><dt>条目编号</dt><dd>I#141</dd><dt>源称发布时间</dt><dd>2026-11-11T14:19:42+00:00</dd><dt>首次采集</dt><dd>2026-11-11T14:48:48+00:00</dd><dt>同题源数</dt><dd>1（启发式，仅提示）</dd><dt>原文链接</dt><dd>https://www.npr.org/2026/11/11/nx-s1-6036790/swing-voters-swing-states-democrats-congress</dd></dl>
+      <h4>可以做什么</h4>
+      <p class="muted small">以下命令只作用于本地账簿；不会自动核实或外发。</p>
+      <code>read 141</code>
+      
+    </aside>
+  </div>
+  <footer class="detail-foot">
+    <a class="jump" href="#brief">↑ 返回简报</a>
+    <a class="external" href="https://www.npr.org/2026/11/11/nx-s1-6036790/swing-voters-swing-states-democrats-congress" target="_blank" rel="noopener noreferrer">打开原文 ↗</a>
+  </footer>
+</article>
+<article class="detail" id="d-111">
+  <header class="detail-head">
+    <div class="badges"><span class="badge source">MIT Technology Review</span><span class="badge ">同题1源</span><span class="badge warn">未接账</span><span class="badge muted">未核验</span></div>
+    <h3>The Download: preserving minds and weighing open AI risks</h3>
+    <p class="meta">2026-11-11T13:10 · MIT Technology Review</p>
+  </header>
+  <div class="detail-body">
+    <section class="content">
+      <h4>订阅摘要原文（未核验）</h4>
+      <p class="fulltext">This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. Six wild ideas for perpetuating your mind As we age, we forget most of what we’ve experienced, yet there’s still undeniable continuity: At 30, or 50, or 70, you will still…</p>
+      <div class="ledger empty"><p><strong>未接账。</strong>该条目尚未转成文档/主张，因此没有出处链、分数或预测。人工确认后可离线接账：</p><code>ingest 111 --claim "一句话主张" --domain tech</code></div>
+    </section>
+    <aside class="evidence">
+      <h4>出处与时间</h4>
+      <dl class="prov"><dt>订阅来源</dt><dd>MIT Technology Review</dd><dt>条目编号</dt><dd>I#111</dd><dt>源称发布时间</dt><dd>2026-11-11T13:10:00+00:00</dd><dt>首次采集</dt><dd>2026-11-11T14:48:41+00:00</dd><dt>同题源数</dt><dd>1（启发式，仅提示）</dd><dt>原文链接</dt><dd>https://www.technologyreview.com/2026/11/11/1148424/the-download-preserving-minds-open-ai-risks/</dd></dl>
+      <h4>可以做什么</h4>
+      <p class="muted small">以下命令只作用于本地账簿；不会自动核实或外发。</p>
+      <code>read 111</code>
+      
+    </aside>
+  </div>
+  <footer class="detail-foot">
+    <a class="jump" href="#brief">↑ 返回简报</a>
+    <a class="external" href="https://www.technologyreview.com/2026/11/11/1148424/the-download-preserving-minds-open-ai-risks/" target="_blank" rel="noopener noreferrer">打开原文 ↗</a>
+  </footer>
+</article>
+  </section>
+
+  <footer class="boundary">
+    实验分未经校准，不是真实概率；订阅条目、人工接账、预测与推荐结果均未核验；
+    同题源数来自链接/标题相似启发式，仅提示不合并；数据只存本地，不自动外发、不安装定时任务。
+    本地已保留 12 期推送记录（`digests` 可查）。
+  </footer>
+</div>
+</body>
+</html>
+

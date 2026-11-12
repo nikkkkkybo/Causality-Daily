@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+  <channel>
+    <title>虚构演练订阅（完全虚构，仅用于离线功能演练）</title>
+    <link>https://example.org/demo-feed.xml</link>
+    <description>完全虚构的演示数据；不抓取、不联网，不代表任何真实来源、事实或结论。</description>
+    <item>
+      <guid isPermaLink="false">demo-battery-recent</guid>
+      <title>虚构演练：某实验室宣称新型钠电池循环寿命翻倍（完全虚构）</title>
+      <link>https://example.org/demo/battery-recent</link>
+      <pubDate>Mon, 09 Nov 2026 14:12:07 +0000</pubDate>
+      <description>完全虚构，仅用于演练：本条目没有真实出处，也不构成任何科学证据。标题与摘要中的电池、寿命等说法均为演示占位文本。</description>
+    </item>
+    <item>
+      <guid isPermaLink="false">demo-battery-undated</guid>
+      <title>虚构演练：社区流传的电池回收补贴传闻（完全虚构）</title>
+      <link>https://example.org/demo/battery-undated</link>
+      <description>完全虚构，仅用于演练：本条故意不提供 pubDate，用来演示「发布时间未知，按首次采集时间筛选」的边界说明。请勿当作真实新闻。</description>
+    </item>
+    <item>
+      <guid isPermaLink="false">demo-grid-old</guid>
+      <title>虚构演练：区域电网储能项目招标观察（完全虚构）</title>
+      <link>https://example.org/demo/grid-old</link>
+      <pubDate>Mon, 12 Oct 2026 14:12:07 +0000</pubDate>
+      <description>完全虚构，仅用于演练：本条 pubDate 为 30 天前，主题也不含电池，用来演示 --days 7 与 --topic 电池 的过滤效果。</description>
+    </item>
+  </channel>
+</rss>

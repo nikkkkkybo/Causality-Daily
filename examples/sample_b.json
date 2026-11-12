@@ -1,0 +1,25 @@
+{
+  "reporter": {"name": "虚构财经账号乙", "type": "anonymous"},
+  "claims": [
+    {
+      "text": "虚构芯片公司计划 12 月 1 日前推出新一代推理芯片",
+      "canonical_key": "虚构芯片公司|发布|新一代推理芯片|2026-12-01",
+      "domain": "tech",
+      "layer": "plan",
+      "origin": {"name": "虚构芯片公司投资者公告", "type": "official"},
+      "quote": "公司在投资者公告中称将于 12 月 1 日前推出新品",
+      "hard_signal": "待查：交易所公告编号（虚构演练，未获取证据）",
+      "predictions": []
+    },
+    {
+      "text": "虚构芯片公司 2026 年第三季度营收同比增长 40%",
+      "canonical_key": "虚构芯片公司|营收同比增长|40%|2026Q3",
+      "domain": "finance",
+      "layer": "manifestation",
+      "origin": {"name": "虚构芯片公司投资者公告", "type": "official"},
+      "quote": "三季度营收同比增长 40%",
+      "hard_signal": "待查：季度财报原文（虚构演练，未获取证据）",
+      "predictions": []
+    }
+  ]
+}

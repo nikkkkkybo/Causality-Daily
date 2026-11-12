@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>个体因果基线 · 前置问卷</title>
+<style>
+:root { --paper:#f6f2ea; --ink:#1b1a17; --soft:#4a463e; --muted:#8a8376; --line:#d8d0c0; --red:#9e3b2e; --green:#3f6b4f; }
+* { box-sizing: border-box; }
+body { margin:0; background:radial-gradient(1200px 600px at 10% -10%, #fbf8f2, transparent 60%), var(--paper);
+  color:var(--ink); font:16px/1.75 "Songti SC","Noto Serif SC",Georgia,serif; }
+.page { max-width: 860px; margin:0 auto; padding:44px 22px 72px; }
+.kicker { font-size:12px; letter-spacing:.26em; color:var(--red); margin-bottom:10px; }
+h1 { font-size:38px; line-height:1.2; margin:0 0 10px; letter-spacing:.04em; }
+.lede { color:var(--soft); font-size:15px; margin:0 0 26px; }
+.privacy-box { border:1px solid var(--line); background:rgba(255,255,255,.35); padding:16px 18px; margin:0 0 30px; }
+.privacy-box h2 { font-size:16px; margin:0 0 8px; letter-spacing:.08em; }
+.privacy-box p { margin:0 0 6px; font-size:13.5px; color:var(--soft); }
+.tier { display:inline-block; font-size:12px; letter-spacing:.08em; border:1px solid var(--line); padding:2px 8px; margin:2px 6px 2px 0; color:var(--soft); }
+.tier.a { color:var(--green); border-color:#b7c9ba; }
+.tier.c { color:var(--red); border-color:#d9b5ad; }
+section { margin:34px 0 0; border-top:1px solid var(--line); padding-top:20px; }
+h2.sec { font-size:23px; margin:0 0 4px; letter-spacing:.05em; }
+.sec-note { color:var(--muted); font-size:13px; margin:0 0 18px; }
+.q { margin:0 0 20px; padding:0 0 16px; border-bottom:1px dashed var(--line); }
+.q:last-child { border-bottom:0; }
+.q label.qtext { display:block; font-size:16px; margin-bottom:8px; }
+.q .hint { color:var(--muted); font-size:12.5px; margin:0 0 8px; }
+input[type=text], textarea, select { width:100%; background:#fbf8f2; border:1px solid var(--line); border-radius:6px;
+  padding:9px 10px; color:var(--ink); font:15px/1.6 "Songti SC","Noto Serif SC",serif; }
+textarea { min-height:64px; resize:vertical; }
+.priv { display:flex; gap:10px; align-items:center; margin-top:8px; font-size:12.5px; color:var(--muted); flex-wrap:wrap; }
+.priv select { width:auto; padding:4px 8px; font-size:12.5px; }
+.scale { display:flex; gap:6px; flex-wrap:wrap; }
+.scale label { border:1px solid var(--line); border-radius:999px; padding:4px 10px; font-size:13px; cursor:pointer; color:var(--soft); }
+.scale input { display:none; }
+.scale input:checked + span { color:var(--red); font-weight:600; }
+.domains { display:grid; grid-template-columns:1fr 1fr; gap:10px 22px; }
+.domain { display:flex; align-items:center; justify-content:space-between; gap:10px; font-size:14.5px; }
+.domain select { width:82px; padding:5px; }
+.actions { margin-top:34px; display:flex; gap:12px; flex-wrap:wrap; }
+button { background:var(--red); color:var(--paper); border:0; border-radius:999px; padding:10px 22px;
+  font:14px "Songti SC","Noto Serif SC",serif; letter-spacing:.06em; cursor:pointer; }
+button.ghost { background:transparent; color:var(--soft); border:1px solid var(--line); }
+button:hover { opacity:.9; }
+#out-wrap { margin-top:22px; display:none; }
+#out { width:100%; min-height:220px; font:12.5px/1.6 Consolas,monospace; }
+.tip { color:var(--muted); font-size:12.5px; margin:8px 0 0; }
+footer { margin-top:46px; border-top:1px solid var(--line); padding-top:14px; color:var(--muted); font-size:12px; }
+@media (max-width:620px) { .domains { grid-template-columns:1fr; } h1 { font-size:30px; } }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="kicker">前置问卷 · 核心版 · 约 12–15 分钟</div>
+  <h1>个体因果基线</h1>
+  <p class="lede">这份问卷不是为了给你贴标签，也不是算命。它用三个视角拼一张"个体因果基线"：当前问题（HUMAN 3.0，仅作假设）、因果位置（命理语法，去术语）、心理与行为（心理学，测量与验证）。可以跳过任何题；填完导出 JSON 交给系统即可。<br><br>不填也能运行：系统走**通线**（通用读者版）；填了之后走**个体线**，基线作为**强潜意识**隐性加权，不会在页面上贴"你的档案说……"。</p>
+
+  <div class="privacy-box">
+    <h2>先看隐私规则</h2>
+    <p><span class="tier a">A 可回答</span>参与排序，可在脱敏后进入模型。</p>
+    <p><span class="tier">B 本地私密</span>本地保存，只生成粗粒度特征，默认不外发。</p>
+    <p><span class="tier c">C 保险箱</span>默认不读取；仅在你针对某个问题临时解锁时使用，永不外发。</p>
+    <p><span class="tier">D 永不采集</span>身份证、密码、他人隐私、病历原件等，不填。</p>
+    <p style="margin-top:8px;">每题都可以选"不回答"或"只存保险箱"；敏感题默认保险箱。页面不联网、不上传；数据只在你本机的浏览器里，导出后由你保管。</p>
+  </div>
+
+  <form id="qform">
+    <section>
+      <h2 class="sec">0 · 基础</h2>
+      <p class="sec-note">只用于决定推送的时间、长度和形态。</p>
+
+      <div class="q">
+        <label class="qtext" for="timezone">你的时区</label>
+        <input type="text" id="timezone" placeholder="例如 Asia/Shanghai" value="Asia/Shanghai">
+      </div>
+
+      <div class="q">
+        <label class="qtext" for="rhythm">7:30 时你通常是什么状态？</label>
+        <select id="rhythm">
+          <option value="刚醒，想先看一眼">刚醒，想先看一眼</option>
+          <option value="在通勤，适合短读">在通勤，适合短读</option>
+          <option value="已开始工作，想快速抓重点">已开始工作，想快速抓重点</option>
+          <option value="晚上才有空细读">晚上才有空细读</option>
+          <option value="不固定">不固定</option>
+        </select>
+      </div>
+
+      <div class="q">
+        <label class="qtext" for="length">你希望事报多长？</label>
+        <select id="length">
+          <option value="3 条链，每条 5 行以内">3 条链，每条 5 行以内</option>
+          <option value="1 条深链 + 2 条短链">1 条深链 + 2 条短链</option>
+          <option value="只要 1 条今天最该看的">只要 1 条今天最该看的</option>
+          <option value="先给摘要，想深读再展开">先给摘要，想深读再展开</option>
+        </select>
+      </div>
+
+      <div class="q">
+        <label class="qtext" for="opposite">要不要同时给"反方/替代解释"？</label>
+        <select id="opposite">
+          <option value="要，简短一句即可">要，简短一句即可</option>
+          <option value="要，展开讲">要，展开讲</option>
+          <option value="不用，先给判断">不用，先给判断</option>
+        </select>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="sec">1 · 你现在的位置</h2>
+      <p class="sec-note">只影响"时机"与"可行动性"，不预测命运。</p>
+
+      <div class="q">
+        <label class="qtext" for="phase">你现在更接近哪种状态？</label>
+        <select id="phase">
+          <option value="不和谐期：对现状不满，想变">不和谐期：对现状不满，想变</option>
+          <option value="不确定期：在探索，还没定">不确定期：在探索，还没定</option>
+          <option value="发现期：刚找到方向，在积累">发现期：刚找到方向，在积累</option>
+          <option value="说不清">说不清</option>
+        </select>
+      </div>
+
+      <div class="q">
+        <label class="qtext" for="problem">用一句话说：你当前最想解决的一个问题是什么？</label>
+        <textarea id="problem" placeholder="例如：把工作从执行转向能自己定义问题"></textarea>
+      </div>
+
+      <div class="q">
+        <label class="qtext" for="goal">未来 3–6 个月，最想推动的一件事？</label>
+        <textarea id="goal" placeholder="具体到一个可观察的结果"></textarea>
+      </div>
+
+      <div class="q">
+        <label class="qtext" for="leverage">你手里真正能动用的资源/能力（1–3 个）？</label>
+        <textarea id="leverage" placeholder="例如：写作、行业人脉、每天两小时、一项技术"></textarea>
+      </div>
+
+      <div class="q">
+        <label class="qtext">现在主要受什么约束？（可多选）</label>
+        <div class="scale">
+          <label><input type="checkbox" name="constraint" value="时间"><span>时间</span></label>
+          <label><input type="checkbox" name="constraint" value="钱"><span>钱</span></label>
+          <label><input type="checkbox" name="constraint" value="精力"><span>精力</span></label>
+          <label><input type="checkbox" name="constraint" value="责任/家庭"><span>责任/家庭</span></label>
+          <label><input type="checkbox" name="constraint" value="技能"><span>技能</span></label>
+          <label><input type="checkbox" name="constraint" value="授权/资格"><span>授权/资格</span></label>
+        </div>
+      </div>
+
+      <div class="q">
+        <label class="qtext" for="events">最近 1–3 个月，有没有影响你判断的事？</label>
+        <p class="hint">可只写范围，不写细节；默认只存保险箱。</p>
+        <textarea id="events" data-default-priv="保险箱" placeholder="例如：换工作、家人生病、搬家、项目失败……"></textarea>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="sec">1.5 · 因果位置</h2>
+      <p class="sec-note">来源：命理语法（去术语）。只问关系位置，不出现体用/十神/四化，不作吉凶判断。</p>
+
+      <div class="q">
+        <label class="qtext" for="causal_role">在你在意的事情里，你通常是？</label>
+        <select id="causal_role">
+          <option value="主动方">主动方：能推动事情</option>
+          <option value="被动受影响">被动受影响：等结果</option>
+          <option value="旁观者">旁观者：看别人发生</option>
+          <option value="多重角色">多重角色：既受影响也要行动</option>
+          <option value="说不清">说不清</option>
+        </select>
+      </div>
+
+      <div class="q">
+        <label class="qtext" for="causal_protect">你现在最想守住或推进的是什么？</label>
+        <textarea id="causal_protect" placeholder="例如：收入稳定、一个产品、一段关系、身体状态"></textarea>
+      </div>
+
+      <div class="q">
+        <label class="qtext" for="causal_event">当前最牵动你的"外部之事"是什么？</label>
+        <p class="hint">只写范围，不写细节；默认只存本地私密。</p>
+        <textarea id="causal_event" data-default-priv="本地私密" placeholder="例如：行业政策、公司变动、家里的事"></textarea>
+      </div>
+
+      <div class="q">
+        <label class="qtext" for="causal_force">这件事对你更像？</label>
+        <select id="causal_force">
+          <option value="增益">增益：给我资源/机会</option>
+          <option value="消耗">消耗：花时间/精力/钱</option>
+          <option value="同类">同类：和我在做的事同向</option>
+          <option value="冲突">冲突：和我的目标相抵</option>
+          <option value="说不清">说不清</option>
+        </select>
+      </div>
+
+      <div class="q">
+        <label class="qtext" for="causal_horizon">你关注的时间窗？</label>
+        <select id="causal_horizon">
+          <option value="周">周</option>
+          <option value="月">月</option>
+          <option value="季" selected>季</option>
+          <option value="年">年</option>
+          <option value="不固定">不固定</option>
+        </select>
+      </div>
+
+      <div class="q">
+        <label class="qtext">你身边主要的关系力（可多选）</label>
+        <div class="scale">
+          <label><input type="checkbox" name="causal_relation" value="资源"><span>资源</span></label>
+          <label><input type="checkbox" name="causal_relation" value="规则"><span>规则</span></label>
+          <label><input type="checkbox" name="causal_relation" value="竞争"><span>竞争</span></label>
+          <label><input type="checkbox" name="causal_relation" value="表达"><span>表达</span></label>
+          <label><input type="checkbox" name="causal_relation" value="学习"><span>学习</span></label>
+          <label><input type="checkbox" name="causal_relation" value="庇护"><span>庇护</span></label>
+          <label><input type="checkbox" name="causal_relation" value="说不清"><span>说不清</span></label>
+        </div>
+      </div>
+
+      <div class="q">
+        <label class="qtext" for="causal_role_pos">你现在的角色/位置（只写范围）</label>
+        <textarea id="causal_role_pos" data-default-priv="本地私密" placeholder="例如：家庭里的照顾者、组织里的执行者、行业里的新人"></textarea>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="sec">2 · 四象限（Human 3.0 视角，仅作假设）</h2>
+      <p class="sec-note">来源 H：只用来定位当前问题，不判断层级高低、不贴人格标签、不评分。</p>
+
+      <div class="q">
+        <label class="qtext" for="mind_info">一条信息与你世界观冲突时，你通常怎么判断它？</label>
+        <textarea id="mind_info" placeholder="例如：先找来源，再看有没有可验证的后果"></textarea>
+      </div>
+
+      <div class="q">
+        <label class="qtext" for="mind_change">最近一次观点改变，是什么触发的？</label>
+        <textarea id="mind_change" data-default-priv="保险箱" placeholder="可跳过"></textarea>
+      </div>
+
+      <div class="q">
+        <label class="qtext" for="body_relation">你与身体的关系更像？</label>
+        <select id="body_relation">
+          <option value="盟友：互相支持">盟友：互相支持</option>
+          <option value="工具：用完再说">工具：用完再说</option>
+          <option value="敌人：总在拖后腿">敌人：总在拖后腿</option>
+          <option value="说不清">说不清</option>
+        </select>
+      </div>
+
+      <div class="q">
+        <label class="qtext" for="body_energy">当前睡眠/精力（粗粒度）</label>
+        <select id="body_energy">
+          <option value="低">低</option>
+          <option value="中">中</option>
+          <option value="高">高</option>
+          <option value="波动大">波动大</option>
+        </select>
+      </div>
+
+      <div class="q">
+        <label class="qtext" for="spirit_meaning">一切都没意义时，你靠什么获得意义？</label>
+        <textarea id="spirit_meaning" data-default-priv="保险箱" placeholder="可跳过"></textarea>
+      </div>
+
+      <div class="q">
+        <label class="qtext" for="spirit_community">社群对你来说更像？</label>
+        <select id="spirit_community">
+          <option value="必要：没有会空">必要：没有会空</option>
+          <option value="可选：有更好">可选：有更好</option>
+          <option value="想远离">想远离</option>
+          <option value="说不清">说不清</option>
+        </select>
+      </div>
+
+      <div class="q">
+        <label class="qtext" for="vocation_meaning">工作对你来说更像？</label>
+        <select id="vocation_meaning">
+          <option value="做的事：一份差事">做的事：一份差事</option>
+          <option value="拥有的东西：收入/地位">拥有的东西：收入/地位</option>
+          <option value="你本身：使命/身份">你本身：使命/身份</option>
+          <option value="说不清">说不清</option>
+        </select>
+      </div>
+
+      <div class="q">
+        <label class="qtext" for="vocation_constraint">当前最大的职业约束？</label>
+        <select id="vocation_constraint">
+          <option value="时间">时间</option>
+          <option value="资金">资金</option>
+          <option value="能力/技能">能力/技能</option>
+          <option value="授权/资格">授权/资格</option>
+          <option value="关系/人脉">关系/人脉</option>
+          <option value="方向不清">方向不清</option>
+        </select>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="sec">2.5 · 心理与行为基线</h2>
+      <p class="sec-note">来源 P：Schwartz 价值观、自我效能、负荷、改变阶段、社会支持。非诊断、不评分、不贴标签。</p>
+
+      <div class="q">
+        <label class="qtext">价值观 top 3（可多选，最多 3 个）</label>
+        <div class="scale">
+          <label><input type="checkbox" name="values" value="自我导向"><span>自我导向</span></label>
+          <label><input type="checkbox" name="values" value="刺激"><span>刺激</span></label>
+          <label><input type="checkbox" name="values" value="享乐"><span>享乐</span></label>
+          <label><input type="checkbox" name="values" value="成就"><span>成就</span></label>
+          <label><input type="checkbox" name="values" value="权力"><span>权力</span></label>
+          <label><input type="checkbox" name="values" value="安全"><span>安全</span></label>
+          <label><input type="checkbox" name="values" value="顺从"><span>顺从</span></label>
+          <label><input type="checkbox" name="values" value="传统"><span>传统</span></label>
+          <label><input type="checkbox" name="values" value="仁善"><span>仁善</span></label>
+          <label><input type="checkbox" name="values" value="普遍主义"><span>普遍主义</span></label>
+        </div>
+      </div>
+
+      <div class="q">
+        <label class="qtext" for="efficacy">面对当前目标，你的信心（1–5）</label>
+        <select id="efficacy">
+          <option value="1">1 很低</option><option value="2">2</option><option value="3" selected>3</option><option value="4">4</option><option value="5">5 很高</option>
+        </select>
+      </div>
+
+      <div class="q">
+        <label class="qtext" for="load">当前负荷/压力（1–5）</label>
+        <select id="load">
+          <option value="1">1 很轻</option><option value="2">2</option><option value="3" selected>3</option><option value="4">4</option><option value="5">5 很重</option>
+        </select>
+      </div>
+
+      <div class="q">
+        <label class="qtext" for="change_stage">改变阶段</label>
+        <select id="change_stage">
+          <option value="没想">没想：还没打算变</option>
+          <option value="在想">在想：知道有问题，还没定</option>
+          <option value="准备">准备：打算近期行动</option>
+          <option value="行动">行动：已经在做</option>
+          <option value="维持">维持：已经稳定一段时间</option>
+        </select>
+      </div>
+
+      <div class="q">
+        <label class="qtext" for="support">社会支持（1–5）</label>
+        <select id="support">
+          <option value="1">1 很少</option><option value="2">2</option><option value="3" selected>3</option><option value="4">4</option><option value="5">5 很多</option>
+        </select>
+      </div>
+
+      <div class="q">
+        <label class="qtext" for="financial">财务压力（粗粒度）</label>
+        <p class="hint">不给金额；默认只存本地私密。</p>
+        <select id="financial" data-default-priv="本地私密">
+          <option value="低">低</option><option value="中" selected>中</option><option value="高">高</option>
+        </select>
+      </div>
+
+      <div class="q">
+        <label class="qtext" for="sleep">睡眠（粗粒度）</label>
+        <select id="sleep" data-default-priv="本地私密">
+          <option value="低">低</option><option value="中" selected>中</option><option value="高">高</option>
+        </select>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="sec">3 · 领域权重</h2>
+      <p class="sec-note">只用于排序：同一件事，落在你在乎的领域才值得打扰你。0 = 不重要，3 = 非常重要。</p>
+      <div class="domains">
+        <div class="domain"><span>事业/职业</span><select data-domain="career"><option>0</option><option>1</option><option>2</option><option selected>3</option></select></div>
+        <div class="domain"><span>财务/资产</span><select data-domain="wealth"><option>0</option><option>1</option><option>2</option><option selected>2</option></select></div>
+        <div class="domain"><span>健康/精力</span><select data-domain="health"><option>0</option><option>1</option><option selected>2</option><option>3</option></select></div>
+        <div class="domain"><span>亲密关系</span><select data-domain="relationship"><option>0</option><option>1</option><option selected>2</option><option>3</option></select></div>
+        <div class="domain"><span>家庭/责任</span><select data-domain="family"><option>0</option><option>1</option><option selected>2</option><option>3</option></select></div>
+        <div class="domain"><span>学习/认知</span><select data-domain="learning"><option>0</option><option>1</option><option>2</option><option selected>3</option></select></div>
+        <div class="domain"><span>社交/圈层</span><select data-domain="social"><option>0</option><option selected>1</option><option>2</option><option>3</option></select></div>
+        <div class="domain"><span>内在状态/意义</span><select data-domain="inner"><option>0</option><option>1</option><option selected>2</option><option>3</option></select></div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="sec">4 · 因果与边界</h2>
+      <p class="sec-note">这部分决定"我替你盯什么"和"什么绝不碰"。</p>
+
+      <div class="q">
+        <label class="qtext">最希望系统替你盯住哪类因果？（可多选）</label>
+        <div class="scale">
+          <label><input type="checkbox" name="watch" value="风险"><span>风险</span></label>
+          <label><input type="checkbox" name="watch" value="机会"><span>机会</span></label>
+          <label><input type="checkbox" name="watch" value="人/关系"><span>人/关系</span></label>
+          <label><input type="checkbox" name="watch" value="政策/规则"><span>政策/规则</span></label>
+          <label><input type="checkbox" name="watch" value="技术/工具"><span>技术/工具</span></label>
+          <label><input type="checkbox" name="watch" value="健康/身体"><span>健康/身体</span></label>
+        </div>
+      </div>
+
+      <div class="q">
+        <label class="qtext" for="useful">什么算"这条推送对我有用"？</label>
+        <select id="useful">
+          <option value="提前知道">提前知道</option>
+          <option value="少踩坑">少踩坑</option>
+          <option value="帮我做出决定">帮我做出决定</option>
+          <option value="让我理解结构">让我理解结构</option>
+        </select>
+      </div>
+
+      <div class="q">
+        <label class="qtext" for="show_personal">"个体因果"要不要显式写进每条链？</label>
+        <select id="show_personal">
+          <option value="要：加一句为什么与我有关">要：加一句为什么与我有关</option>
+          <option value="只要影响排序，不要显示">只要影响排序，不要显示</option>
+          <option value="看情况">看情况</option>
+        </select>
+      </div>
+
+      <div class="q">
+        <label class="qtext" for="birth">出生日期/时间/地点（可选）</label>
+        <p class="hint">默认进保险箱；不给也能运行。只作为内部"时间层"标签，不输出命理结论。</p>
+        <textarea id="birth" data-default-priv="保险箱" placeholder="可留空"></textarea>
+      </div>
+
+      <div class="q">
+        <label class="qtext" for="model_use">是否允许脱敏后的派生特征进入外部模型？</label>
+        <select id="model_use">
+          <option value="不允许">不允许（默认）</option>
+          <option value="允许：只发派生特征，不发原文">允许：只发派生特征，不发原文</option>
+          <option value="先问我">先问我</option>
+        </select>
+      </div>
+
+      <div class="q">
+        <label class="qtext" for="keep_raw">原始答案怎么处理？</label>
+        <select id="keep_raw">
+          <option value="只保留派生特征，原始答案导出后由我保管">只保留派生特征，原始答案导出后由我保管</option>
+          <option value="本地保留原始答案">本地保留原始答案</option>
+          <option value="填完就删">填完就删</option>
+        </select>
+      </div>
+    </section>
+
+    <div class="actions">
+      <button type="button" id="make">生成档案 JSON</button>
+      <button type="button" id="download">下载 JSON</button>
+      <button type="button" class="ghost" id="reset">清空</button>
+    </div>
+    <div id="out-wrap">
+      <p class="tip">把下面这段 JSON 交给系统（或保存文件后导入）。页面不会自动上传。</p>
+      <textarea id="out" readonly></textarea>
+    </div>
+  </form>
+
+  <footer>个体因果基线 · 核心版 · 本地离线问卷 · 无外部资源 · 不诊断、不评分、不预测命运</footer>
+</div>
+
+<script>
+(function () {
+  var sensitive = ["events", "mind_change", "spirit_meaning", "birth"];
+  var ids = ["timezone","rhythm","length","opposite","phase","problem","goal","leverage","events",
+             "causal_role","causal_protect","causal_event","causal_force","causal_horizon","causal_role_pos",
+             "mind_info","mind_change","body_relation","body_energy","spirit_meaning","spirit_community",
+             "vocation_meaning","vocation_constraint","efficacy","load","change_stage","support","financial","sleep",
+             "useful","show_personal","birth","model_use","keep_raw"];
+
+  function privacyFor(el) {
+    var d = el.getAttribute("data-default-priv");
+    return d || "参与排序";
+  }
+
+  function addPrivSelect(wrap, el) {
+    var row = document.createElement("div");
+    row.className = "priv";
+    var label = document.createElement("span");
+    label.textContent = "此题：";
+    var select = document.createElement("select");
+    select.className = "priv-select";
+    ["参与排序","本地私密","保险箱","不回答"].forEach(function (v) {
+      var o = document.createElement("option");
+      o.value = v; o.textContent = v;
+      if (v === privacyFor(el)) o.selected = true;
+      select.appendChild(o);
+    });
+    row.appendChild(label); row.appendChild(select);
+    wrap.appendChild(row);
+  }
+
+  function decorate() {
+    ids.forEach(function (id) {
+      var el = document.getElementById(id);
+      if (!el) return;
+      var q = el.closest(".q");
+      if (q && !q.querySelector(".priv")) addPrivSelect(q, el);
+    });
+    document.querySelectorAll("[data-domain]").forEach(function (el) {
+      var q = el.closest(".q") || el.closest(".domains");
+      if (q && !q.querySelector(".priv")) addPrivSelect(q, el);
+    });
+  }
+
+  function checked(name) {
+    return Array.prototype.slice.call(document.querySelectorAll('input[name="' + name + '"]:checked'))
+      .map(function (x) { return x.value; });
+  }
+
+  function collect() {
+    var answers = {};
+    ids.forEach(function (id) {
+      var el = document.getElementById(id);
+      if (!el) return;
+      var q = el.closest(".q");
+      var sel = q ? q.querySelector(".priv-select") : null;
+      var value = el.type === "checkbox" ? checked(id) : el.value.trim();
+      answers[id] = { value: value, privacy: sel ? sel.value : privacyFor(el) };
+    });
+    var constraints = checked("constraint");
+    var watch = checked("watch");
+    var domains = {};
+    document.querySelectorAll("[data-domain]").forEach(function (el) {
+      domains[el.getAttribute("data-domain")] = Number(el.value);
+    });
+    return {
+      version: "individual-baseline-v2",
+      created_at: new Date().toISOString(),
+      note: "本地离线问卷 v2；三源标注：H=HUMAN 3.0（假设）、M=命理语法（去术语）、P=心理学。隐私档：参与排序/本地私密/保险箱/不回答。",
+      basics: {
+        timezone: answers.timezone.value,
+        rhythm: answers.rhythm.value,
+        length: answers.length.value,
+        opposite: answers.opposite.value
+      },
+      position: {
+        phase: answers.phase.value,
+        problem: answers.problem.value,
+        goal: answers.goal.value,
+        leverage: answers.leverage.value,
+        constraints: constraints,
+        events: answers.events.value
+      },
+      causal_position: {
+        role: answers.causal_role.value,
+        protect: answers.causal_protect.value,
+        event: answers.causal_event.value,
+        force: answers.causal_force.value,
+        horizon: answers.causal_horizon.value,
+        relations: checked("causal_relation"),
+        role_pos: answers.causal_role_pos.value
+      },
+      quadrants: {
+        mind: { info: answers.mind_info.value, change: answers.mind_change.value },
+        body: { relation: answers.body_relation.value, energy: answers.body_energy.value },
+        spirit: { meaning: answers.spirit_meaning.value, community: answers.spirit_community.value },
+        vocation: { meaning: answers.vocation_meaning.value, constraint: answers.vocation_constraint.value }
+      },
+      psychology: {
+        values: checked("values"),
+        efficacy: answers.efficacy.value,
+        load: answers.load.value,
+        change_stage: answers.change_stage.value,
+        support: answers.support.value,
+        financial: answers.financial.value,
+        sleep: answers.sleep.value
+      },
+      domains: domains,
+      causality: {
+        watch: watch,
+        useful: answers.useful.value,
+        show_personal: answers.show_personal.value,
+        birth: answers.birth.value
+      },
+      privacy: {
+        model_use: answers.model_use.value,
+        keep_raw: answers.keep_raw.value,
+        answers: answers
+      }
+    };
+  }
+
+  function render() {
+    var data = collect();
+    document.getElementById("out").value = JSON.stringify(data, null, 2);
+    document.getElementById("out-wrap").style.display = "block";
+    return data;
+  }
+
+  document.getElementById("make").addEventListener("click", render);
+
+  document.getElementById("download").addEventListener("click", function () {
+    var data = render();
+    var blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
+    var a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "individual-baseline.json";
+    a.click();
+    setTimeout(function () { URL.revokeObjectURL(a.href); }, 1000);
+  });
+
+  document.getElementById("reset").addEventListener("click", function () {
+    location.reload();
+  });
+
+  document.querySelectorAll('input[name="values"]').forEach(function (el) {
+    el.addEventListener("change", function () {
+      if (document.querySelectorAll('input[name="values"]:checked').length > 3) {
+        el.checked = false;
+      }
+    });
+  });
+
+  decorate();
+})();
+</script>
+</body>
+</html>

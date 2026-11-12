@@ -1,0 +1,11 @@
+{
+  "feeds": [
+    {"name": "少数派", "url": "https://sspai.com/feed"},
+    {"name": "IT之家", "url": "https://www.ithome.com/rss/"},
+    {"name": "Solidot", "url": "https://www.solidot.org/index.rss"},
+    {"name": "爱范儿", "url": "https://www.ifanr.com/feed"},
+    {"name": "MIT Technology Review", "url": "https://www.technologyreview.com/feed/"},
+    {"name": "Hacker News", "url": "https://hnrss.org/frontpage"},
+    {"name": "NPR", "url": "https://feeds.npr.org/1001/rss.xml"}
+  ]
+}

@@ -1,0 +1,20 @@
+因果簿简报  2026-11-12（本地生成；条目与分数均未核验）
+采集：未联网采集（仅使用本地已有条目）
+关注主题：未设置（使用全部订阅）
+一、值得注意（4）
+  1. Adobe 公布四项 AI 实验项目：照片秒变 3D 场景，还能通过聊天设计 AI 角色 — IT之家
+     2026-11-11T14:32 · 同题1源 · 已接账 D#1（主张1/待结算2） · 未核验 · https://www.ithome.com/1/025/815.htm
+  2. Pharo in the Browser with WebAssembly — Hacker News
+     2026-11-11T14:21 · 同题1源 · 未接账 · 未核验 · https://massimo-nocentini.github.io/pharo-vm/world.html
+  3. Following big Democratic wins, these swing voters are looking for results — NPR
+     2026-11-11T14:19 · 同题1源 · 未接账 · 未核验 · https://www.npr.org/2026/11/11/nx-s1-6036790/swing-voters-swing-states-democrats-congress
+  4. The Download: preserving minds and weighing open AI risks — MIT Technology Review
+     2026-11-11T13:10 · 同题1源 · 未接账 · 未核验 · https://www.technologyreview.com/2026/11/11/1148424/the-download-preserving-minds-open-ai-risks/
+二、台账状态
+  未读：135 条；已接账条目：1；主张：1；到期/逾期预测：1；待结算：2；今日新增主张：0
+三、待你处理（人工）
+  - 结算到期：P#2 截止 2026-11-11（settle P#2 hit|miss --note 依据）
+  - 接账：ingest 121 --claim "一句话主张"（离线、不调用模型）
+  - 登记预测：predict 主张ID --text 可观察承诺 --due YYYY-MM-DD --hint 核验方法 [--p 0-1]
+四、边界
+  实验分未经校准，不是真实概率；订阅条目、推荐与检索结果均未核验；不自动外发、不安装定时任务。

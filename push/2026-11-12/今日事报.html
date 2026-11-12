@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>今日事报 · 2026-11-12</title>
+<style>
+:root {
+  --paper: #f6f2ea;
+  --paper-deep: #efe9dd;
+  --ink: #1b1a17;
+  --ink-soft: #4a463e;
+  --muted: #8a8376;
+  --line: #d8d0c0;
+  --red: #9e3b2e;
+  --red-soft: #b8604f;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background:
+    radial-gradient(1200px 600px at 15% -10%, #fbf8f2 0%, transparent 60%),
+    radial-gradient(900px 500px at 90% 0%, #f3ecdf 0%, transparent 55%),
+    var(--paper);
+  color: var(--ink);
+  font: 16px/1.85 "Songti SC", "Noto Serif SC", "SimSun", Georgia, serif;
+}
+.page { max-width: 1080px; margin: 0 auto; padding: 56px 34px 72px; }
+.masthead { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px;
+  border-bottom: 1px solid var(--ink); padding-bottom: 18px; }
+.seal { width: 54px; height: 54px; border: 1.5px solid var(--red); color: var(--red);
+  display: grid; place-items: center; font-size: 15px; line-height: 1.1; letter-spacing: .18em;
+  writing-mode: vertical-rl; text-orientation: upright; user-select: none; }
+.masthead h1 { margin: 0; font-size: 44px; line-height: 1.15; letter-spacing: .06em; font-weight: 700; }
+.masthead .date { color: var(--muted); font-size: 13px; letter-spacing: .16em; margin-top: 8px; }
+.masthead .kicker { color: var(--red); font-size: 13px; letter-spacing: .28em; margin-bottom: 10px; }
+.thesis { margin: 34px 0 10px; font-size: 21px; line-height: 1.8; color: var(--ink); }
+.thesis em { font-style: normal; border-bottom: 2px solid var(--red-soft); padding-bottom: 2px; }
+.lede { color: var(--ink-soft); font-size: 14.5px; margin: 0 0 40px; }
+.chain { margin: 46px 0 0; }
+.chain-head { display: flex; align-items: baseline; gap: 14px; border-top: 1px solid var(--line); padding-top: 18px; }
+.chain-no { font-size: 12px; letter-spacing: .3em; color: var(--red); }
+.chain-title { margin: 0; font-size: 27px; letter-spacing: .05em; font-weight: 700; }
+.strength { margin-left: auto; font-size: 12px; letter-spacing: .18em; color: var(--muted); }
+.strength.strong { color: var(--red); }
+.spread { display: grid; grid-template-columns: minmax(0, 1fr) 44px minmax(0, 1fr); margin-top: 22px; }
+.cause, .effect { padding: 0 4px; }
+.axis { position: relative; display: flex; justify-content: center; }
+.axis::before { content: ""; position: absolute; top: 6px; bottom: 6px; width: 1px;
+  background: linear-gradient(var(--line), var(--ink-soft), var(--line)); opacity: .55; }
+.axis .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--red); margin-top: 44px;
+  position: relative; z-index: 1; box-shadow: 0 0 0 5px var(--paper); }
+.col-head { font-size: 13px; letter-spacing: .22em; color: var(--muted); margin: 0 0 12px; }
+.col-head b { color: var(--ink); font-weight: 600; letter-spacing: .1em; }
+.signal { margin: 0 0 16px; }
+.signal .t { font-size: 16.5px; line-height: 1.7; margin: 0; }
+.signal .src { margin: 4px 0 0; font-size: 12px; color: var(--muted); letter-spacing: .04em; }
+.signal .src a { color: var(--muted); text-decoration: none; border-bottom: 1px dotted var(--muted); }
+.signal .src a:hover { color: var(--red); border-color: var(--red); }
+.effect li { margin: 0 0 12px; padding-left: 1.2em; position: relative; font-size: 16px; line-height: 1.8; }
+.effect ul { list-style: none; margin: 0; padding: 0; }
+.effect li::before { content: "—"; position: absolute; left: 0; color: var(--red-soft); }
+.reasoning { margin: 20px 0 0; padding: 16px 18px; border: 1px solid var(--line);
+  background: linear-gradient(180deg, rgba(255,255,255,.35), rgba(255,255,255,0)); }
+.reasoning .label { font-size: 12px; letter-spacing: .24em; color: var(--red); margin: 0 0 8px; }
+.reasoning p { margin: 0 0 8px; font-size: 14.5px; color: var(--ink-soft); }
+.reasoning .doubt { color: var(--muted); font-size: 13px; margin: 0; }
+.algorithm { margin-top: 58px; border-top: 1px solid var(--ink); padding-top: 22px; }
+.algorithm h2 { font-size: 22px; margin: 0 0 14px; letter-spacing: .08em; }
+.algorithm ol { margin: 0; padding-left: 1.3em; color: var(--ink-soft); font-size: 14.5px; }
+.algorithm li { margin: 0 0 8px; }
+.algorithm .hidden { color: var(--muted); font-size: 13px; margin-top: 12px; }
+@media (max-width: 760px) {
+  .page { padding: 34px 20px 54px; }
+  .masthead h1 { font-size: 34px; }
+  .spread { grid-template-columns: 1fr; }
+  .axis { display: none; }
+  .effect { margin-top: 18px; }
+  .foot { flex-direction: column; }
+}
+@media print {
+  body { background: #fff; }
+  .page { max-width: none; padding: 0; }
+  .seal { border-color: var(--red); }
+  .reasoning, .algorithm { break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="masthead">
+    <div>
+      <div class="kicker">今日事报 · 第一版</div>
+      <h1>今日事报</h1>
+      <div class="date">2026-11-12 · 七源 · 一百五十条 · 取三条</div>
+    </div>
+    <div class="seal" aria-hidden="true">事报</div>
+  </header>
+
+  <p class="thesis">今天真正的共同信号，不是“AI 又发新品”，而是<em>记忆、代理与生成</em>正在把人外化成一组可存储、可代理、可伪造的数据。</p>
+  <p class="lede">因与果都摆在下面；中间的链路完整写出。但为什么是这三条、为什么这样连——有一部分来自我受过的训练，那部分不可见，我也不声称看见它。</p>
+
+  <!-- 链一 -->
+  <section class="chain">
+    <div class="chain-head">
+      <span class="chain-no">链一</span>
+      <h2 class="chain-title">替身与记忆</h2>
+      <span class="strength strong">强 · 独立源同向</span>
+    </div>
+    <div class="spread">
+      <div class="cause">
+        <p class="col-head"><b>因</b>　今天出现的信号</p>
+        <div class="signal">
+          <p class="t">MIT Technology Review 提出“保存心智的六种设想”，把意识延续当作可讨论的技术议程。</p>
+          <p class="src">MIT Technology Review · 11-11 13:10 UTC · <a href="https://www.technologyreview.com/2026/11/11/1148424/the-download-preserving-minds-open-ai-risks/">原文</a></p>
+        </div>
+        <div class="signal">
+          <p class="t">Adobe 的实验项目让照片变成可探索的 3D 场景，并能通过对话设计 AI 角色。</p>
+          <p class="src">IT之家 · 11-11 14:32 UTC · <a href="https://www.ithome.com/1/025/815.htm">原文</a></p>
+        </div>
+        <div class="signal">
+          <p class="t">Atuin Threads 把“agent 会话”变成跨机器同步的对象——代理的经验第一次像文件一样被搬运。</p>
+          <p class="src">Hacker News · 11-11 14:10 UTC · <a href="https://blog.atuin.sh/threads-agent-sessions/">原文</a></p>
+        </div>
+        <div class="signal">
+          <p class="t">字节被传要做“中国版 Muse”，给豆包造一个“超级大脑”。</p>
+          <p class="src">爱范儿 · 11-11 11:52 UTC · <a href="https://www.ifanr.com/1689016">原文</a></p>
+        </div>
+      </div>
+      <div class="axis"><span class="dot"></span></div>
+      <div class="effect">
+        <p class="col-head"><b>果</b>　我由此推断</p>
+        <ul>
+          <li>记忆、人格与代理正在从“叙事”变成“数据层”：可存储、可迁移、可复制、可交易。</li>
+          <li>“我是谁”会逐渐变成一个版本管理问题；身份验证与代理责任会成为下一轮基础设施争点。</li>
+          <li>平台竞争从“生成内容”转向“承接你的连续性”：谁保存你的记忆，谁就定义你的代理。</li>
+        </ul>
+      </div>
+    </div>
+    <div class="reasoning">
+      <p class="label">我的链路</p>
+      <p>四条来自不同领域（媒体议程、创作工具、开发基础设施、产品传闻），但动作相同：把原本只存在于人身上的东西（心智、形象、经验、陪伴）搬到系统里。强度来自独立源同向，不来自数量。</p>
+      <p class="doubt">不过，这可能只是几家在同一季度做产品叙事，彼此并没有传导；我手里暂时没有下游产品与政策信号来分辨。</p>
+    </div>
+  </section>
+
+  <!-- 链二 -->
+  <section class="chain">
+    <div class="chain-head">
+      <span class="chain-no">链二</span>
+      <h2 class="chain-title">伪形与辨伪</h2>
+      <span class="strength">中 · 跨领域同构</span>
+    </div>
+    <div class="spread">
+      <div class="cause">
+        <p class="col-head"><b>因</b>　今天出现的信号</p>
+        <div class="signal">
+          <p class="t">有人用 10 亿 Token 开源“万只假鸟”，AI 伪科普正在污染下一代对自然的常识。</p>
+          <p class="src">爱范儿 · 11-11 07:03 UTC · <a href="https://www.ifanr.com/1689012">原文</a></p>
+        </div>
+        <div class="signal">
+          <p class="t">一位完全依赖 AI 写代码的资深开发者承认：AI 代码库难以满足高可用、可维护的工程要求。</p>
+          <p class="src">Solidot · 11-11 10:43 UTC · <a href="https://www.solidot.org/story?sid=85860">原文</a></p>
+        </div>
+        <div class="signal">
+          <p class="t">Apple 下周关闭官方 Support Community 论坛，一个长期存在的“权威解释入口”消失。</p>
+          <p class="src">Hacker News · 11-11 14:02 UTC · <a href="https://www.theverge.com/tech/1031507/apple-community-support-forum-shutting-down">原文</a></p>
+        </div>
+      </div>
+      <div class="axis"><span class="dot"></span></div>
+      <div class="effect">
+        <p class="col-head"><b>果</b>　我由此推断</p>
+        <ul>
+          <li>生成成本趋零、官方解释退场，两边同时抬高“辨认一个东西是不是真的”的成本。</li>
+          <li>下一阶段的基础设施不是更强的生成，而是“可追溯的传述链”：谁先说、谁转述、哪里可复核。</li>
+          <li>个人层面的应对不是更努力地读，而是保留来源与分歧的结构——这也是账簿该待的位置。</li>
+        </ul>
+      </div>
+    </div>
+    <div class="reasoning">
+      <p class="label">我的链路</p>
+      <p>把“伪科普、不可靠代码、官方社区关闭”放在一起，不是因为题材相同，而是三者都在削弱同一件事：<em>可追溯的权威解释</em>。一个伪造自然，一个伪造工程，一个撤走解释者。</p>
+      <p class="doubt">也可能是我对“信任结构”太敏感，把责任主体、时间尺度都不同的三件事硬放进一条链；这是先看见的同构，不是已证实的传导。</p>
+    </div>
+  </section>
+
+  <!-- 链三 -->
+  <section class="chain">
+    <div class="chain-head">
+      <span class="chain-no">链三</span>
+      <h2 class="chain-title">远方的硬事件</h2>
+      <span class="strength">弱 · 存目，不强行归因</span>
+    </div>
+    <div class="spread">
+      <div class="cause">
+        <p class="col-head"><b>因</b>　今天出现的信号</p>
+        <div class="signal">
+          <p class="t">俄乌同意大规模交换战俘，阿布扎比的美方斡旋会谈达成协议，为 2022 年以来最大规模的人道释放。</p>
+          <p class="src">NPR · 11-11 13:30 UTC · <a href="https://www.npr.org/2026/11/11/g-s1-152954/russia-ukraine-war-talks">原文</a></p>
+        </div>
+        <div class="signal">
+          <p class="t">刚果埃博拉病例突破 1.1 万例、死亡逾 5,300 人，为迄今最致命的一轮，且无获批疫苗。</p>
+          <p class="src">Solidot · 11-11 10:55 UTC · <a href="https://www.solidot.org/story?sid=85858">原文</a></p>
+        </div>
+      </div>
+      <div class="axis"><span class="dot"></span></div>
+      <div class="effect">
+        <p class="col-head"><b>果</b>　我由此推断</p>
+        <ul>
+          <li>这类低频高影响事件与今天的技术主线没有直接因果，但会改变技术叙事的背景条件：制裁、供应链、公共卫生、跨境数据。</li>
+          <li>它们更适合“存目”而不是“解释”：先记住位置，等它们与主线真正相交时再连。</li>
+        </ul>
+      </div>
+    </div>
+    <div class="reasoning">
+      <p class="label">我的链路</p>
+      <p>这一条我故意标弱。把它放进来，是因为一个只推“强连接”的系统会失去广度；但我不把并存误写成因果。</p>
+      <p class="doubt">也可能是我偏爱长周期，低估了即时的情绪与个体经验；这条目前只是位置记录，不是因果。</p>
+    </div>
+  </section>
+
+  <!-- 算法链 -->
+  <section class="algorithm">
+    <h2>今日算法链</h2>
+    <ol>
+      <li>输入：7 个公开源、150 条、近 2 天窗口；不做全网抓取。</li>
+      <li>筛选：时间窗、同题去重、来源多样性；不按点击历史排序。</li>
+      <li>结构：把信号归入“外化”“伪形”“长周期风险”三类骨架，再看独立源是否同向。</li>
+      <li>排序：同向的独立源越多、跨领域越远而动作越一致，链条越强；否则标弱。</li>
+      <li>输出：因、果、我的链路，以及我可能看错的地方；不给待办，不替你做核验。</li>
+    </ol>
+    <p class="hidden">有一部分判断来自我受过的训练；它影响我挑什么、怎么连，但它本身不在页面上展开。因与果可见，中间那段不可见——我也不声称自己完全看得见。</p>
+  </section>
+
+  <footer class="foot">
+    <span>推断，不是结论。核验、结算、预测在账簿里另做。</span>
+    <span>2026-11-12 · 今日事报 · 第一版</span>
+  </footer>
+
+</div>
+<!-- audit-v1
+{"date":"2026-11-12","items":[11,111,121,122,123,91,93,71,72,142],"chains":[{"id":1,"title":"替身与记忆","strength":"strong","templates":["externalization","multi-source"]},{"id":2,"title":"伪形与辨伪","strength":"medium","templates":["provenance","disproof"]},{"id":3,"title":"远方的硬事件","strength":"weak","templates":["long-cycle","multi-cause"]}],"baseline":"recency-only","note":"隐藏审计元数据：模板命中与强度用于后续消融/盲评，不显示在页面上。"}
+-->
+</body>
+</html>

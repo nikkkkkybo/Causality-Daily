@@ -1,0 +1,27 @@
+{
+  "reporter": {"name": "虚构科技博主甲", "type": "anonymous"},
+  "claims": [
+    {
+      "text": "虚构芯片公司将在 2026-12-01 前发布新一代推理芯片",
+      "canonical_key": "虚构芯片公司|发布|新一代推理芯片|2026-12-01",
+      "domain": "tech",
+      "layer": "plan",
+      "origin": {"name": "虚构通讯社", "type": "institutional_media"},
+      "quote": "据虚构通讯社报道，该公司计划 12 月初发布新一代推理芯片",
+      "hard_signal": null,
+      "predictions": [
+        {"text": "2026-12-01 前官网出现新品发布页或发布会邀请", "due_date": "2026-12-01", "check_hint": "查公司官网新闻页与投资者关系页"}
+      ]
+    },
+    {
+      "text": "虚构芯片公司明年会主导推理芯片市场",
+      "canonical_key": "虚构芯片公司|主导|推理芯片市场|2027",
+      "domain": "tech",
+      "layer": "intent",
+      "origin": null,
+      "quote": "我判断他们明年会主导整个推理市场",
+      "hard_signal": null,
+      "predictions": []
+    }
+  ]
+}
