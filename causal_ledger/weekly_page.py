@@ -9,8 +9,10 @@ from __future__ import annotations
 from .daily_page import render_daily_page
 
 
-def render_weekly_page(items: list[dict], start: str, end: str) -> str:
+def render_weekly_page(items: list[dict], start: str, end: str,
+                       synthesis: dict | None = None) -> str:
     if not start or not end:
         raise ValueError("weekly page needs start and end")
     return render_daily_page(items, end, title="本周事报",
-                             period_start=start, period_end=end, weekly=True)
+                             period_start=start, period_end=end, weekly=True,
+                             synthesis=synthesis)

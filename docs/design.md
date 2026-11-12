@@ -44,8 +44,9 @@
 21. 新版《今日事报》：`daily_page.render_daily_page` 输出链式页（今日判断 → 因/果/我的链路/可能看错 → 算法链），无待办/台账/KPI；`cloud` 已切到该页；旧 `render_brief_html`/`html_site` 保留为 legacy 兼容，不再接新功能
 22. 周报与保留：`weekly_page.render_weekly_page` 输出《本周事报》（周范围 + 链 + 本周信号清单）；`cloud --weekly-only` 汇总上一周 `reports/data/*.json`，成功后删除该周日报 HTML/JSON，只保留周报；周一 07:30 自动执行
 23. 推送通道：`push.send_push` 支持 ntfy / Bark / Telegram / ServerChan，`auto` 按已配置 Secret 选择，`none` 关闭；密钥只放 GitHub Secret；不绑死微信
+24. DeepSeek 二次合成：`synth.synthesize` 把 20–30 条信号翻译/改写为 thesis + 1–3 条链（cause.id 必须来自输入，防注入、不补事实）；`cloud` 日报/周报使用，失败或无 key 自动回退确定性版本；`--no-llm` 可关闭
 
-已实现：RSS/Atom 订阅、去重待读推荐、单次 `daily` 推送与本地历史、文本简报与 HTML 可视化简报/多页简报站、文档/主张查询、订阅条目转文档与人工接账、批量导入、跨源重复提示、关注主题、本地单应用、个体因果基线（通线/轻个体线/个体线）、保险箱（DPAPI 加密 + 解锁审计）、7 天校准、盲评与消融、零月费云发布（GitHub Actions + Pages + 可选多通道推送）、新版《今日事报》链式页、周报与日报保留策略、CLI 全局免责声明。尚未实现：旧 `daily --brief/--html/--html-dir` 迁移到新页、本地周报视图、备注云端回传、双端同步、实体关系图、证据独立性验证、自动事实核查、因果识别、来源校准、规则学习、Web UI。
+已实现：RSS/Atom 订阅、去重待读推荐、单次 `daily` 推送与本地历史、文本简报与 HTML 可视化简报/多页简报站、文档/主张查询、订阅条目转文档与人工接账、批量导入、跨源重复提示、关注主题、本地单应用、个体因果基线（通线/轻个体线/个体线）、保险箱（DPAPI 加密 + 解锁审计）、7 天校准、盲评与消融、零月费云发布（GitHub Actions + Pages + 可选多通道推送）、新版《今日事报》链式页、周报与日报保留策略、DeepSeek 二次合成、CLI 全局免责声明。尚未实现：旧 `daily --brief/--html/--html-dir` 迁移到新页、本地周报视图、备注云端回传、双端同步、实体关系图、证据独立性验证、自动事实核查、因果识别、来源校准、规则学习、Web UI。
 
 ## 评分规则（scoring.py，纯函数，全部留痕）
 
@@ -169,6 +170,7 @@ python -m pytest tests -q
 - `cloud --config ... --reports ...` 是零月费云发布：临时库抓订阅、生成**新版《今日事报》链式页**与归档、可选 Server酱；不读档案/保险箱。GitHub Actions 每天 07:30 CST 跑一次，Pages 发布；部署步骤见 [零月费部署](零月费部署.md)。
 - `cloud --weekly-only` 汇总上一周日报数据为《本周事报》，页内保留"本周信号清单（保留出处）"，成功后删除该周日报；周一 07:30 自动执行。详见 [周报与保留策略](周报与保留策略.md)。
 - `cloud --channel ntfy|bark|telegram|serverchan|none` 选择推送通道；`auto` 按已配置 Secret 选择；没配置时报告照常生成、只是不推送。详见 [推送通道](推送通道.md)。
+- `DEEPSEEK_API_KEY` 存在时，`cloud` 先用 `synth.synthesize` 生成 thesis + 1–3 条链（英文翻译/改写、不照抄、cause.id 必须来自输入），再渲染；无 key/失败自动回退确定性版本，`--no-llm` 可关闭。详见 [DeepSeek 合成](DeepSeek合成.md)。
 - 日报窗口采用本机日期的自然日；结算和导入时间以 UTC 存储。`daily` 是单次手动命令，不安装定时任务、不外发；可用 `--no-fetch` 纯离线生成，`--output` 只写新文件、不覆盖。
 - 畸形 JSON 在写库前拒绝、不写业务表（首次打开仍会创建 SQLite 文件与空表）；一次导入的数据库修改是原子的。
 - 当前为初始开发数据结构，不提供早期实验数据库的自动迁移；测试应使用新数据库。

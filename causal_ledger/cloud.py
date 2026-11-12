@@ -11,6 +11,7 @@ No personal profile/vault is read or uploaded by this path.
 from __future__ import annotations
 
 import json
+import os
 import re
 import sqlite3
 import tempfile
@@ -24,6 +25,7 @@ from .daily_page import render_daily_page
 from .db import connect
 from .feeds import add_subscription, collect_feeds, recommend
 from .push import send_push, send_serverchan
+from .synth import DEFAULT_MODEL, SynthesisError, synthesize
 from .weekly_page import render_weekly_page
 
 DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
@@ -128,7 +130,8 @@ def _item_record(item: dict) -> dict:
 
 def build_report(config_path, reports_dir, *, days: int = 2, limit: int = 30,
                  per_source: int = 2, no_fetch: bool = False,
-                 today: str | None = None) -> dict:
+                 today: str | None = None, use_llm: bool = True,
+                 model: str = DEFAULT_MODEL) -> dict:
     feeds = load_feeds(config_path)
     reports_dir = Path(reports_dir)
     reports_dir.mkdir(parents=True, exist_ok=True)
@@ -142,7 +145,18 @@ def build_report(config_path, reports_dir, *, days: int = 2, limit: int = 30,
                 add_subscription(conn, feed["name"], feed["url"])
             results = [] if no_fetch else collect_feeds(conn)
             items = recommend(conn, days=days, limit=limit, per_source=per_source)
-            html = render_daily_page(items, day)
+            synthesis = None
+            synthesis_error = None
+            key = os.environ.get("DEEPSEEK_API_KEY", "")
+            if use_llm and key and items:
+                try:
+                    synthesis = synthesize(items, day=day, scope="day", api_key=key,
+                                           model=model)
+                except SynthesisError as error:
+                    synthesis_error = str(error)
+                except Exception as error:  # noqa: BLE001 - fallback, never break the report
+                    synthesis_error = type(error).__name__
+            html = render_daily_page(items, day, synthesis=synthesis)
         finally:
             conn.close()
     report = reports_dir / f"{day}.html"
@@ -155,7 +169,8 @@ def build_report(config_path, reports_dir, *, days: int = 2, limit: int = 30,
     (reports_dir / "index.html").write_text(_index_html(reports_dir), encoding="utf-8")
     failures = [row for row in results if row.get("error")]
     return {"day": day, "report": str(report), "index": str(reports_dir / "index.html"),
-            "data": str(data_dir / f"{day}.json"),
+            "data": str(data_dir / f"{day}.json"), "synthesis": synthesis is not None,
+            "synthesis_error": synthesis_error,
             "feeds": len(feeds), "failures": len(failures), "results": results}
 
 
@@ -164,7 +179,8 @@ def _previous_sunday(today: str | None = None) -> date:
     return current - timedelta(days=(current.weekday() + 1) % 7)
 
 
-def build_weekly(reports_dir, *, end_day: str | None = None) -> dict:
+def build_weekly(reports_dir, *, end_day: str | None = None,
+                 use_llm: bool = True, model: str = DEFAULT_MODEL) -> dict:
     """Roll up the previous Mon–Sun daily JSONs, write the weekly page, and remove
     that week's daily pages/data (the weekly page keeps the source list)."""
     reports_dir = Path(reports_dir)
@@ -192,9 +208,20 @@ def build_weekly(reports_dir, *, end_day: str | None = None) -> dict:
             items.append(item)
     if not items:
         raise ValueError("没有可汇总的日报数据；保留日报，等下周再试")
+    synthesis = None
+    synthesis_error = None
+    key = os.environ.get("DEEPSEEK_API_KEY", "")
+    if use_llm and key:
+        try:
+            synthesis = synthesize(items, day=f"{start.isoformat()}~{end.isoformat()}",
+                                   scope="week", api_key=key, model=model)
+        except SynthesisError as error:
+            synthesis_error = str(error)
+        except Exception as error:  # noqa: BLE001
+            synthesis_error = type(error).__name__
     weekly = reports_dir / f"week-{start.isoformat()}.html"
-    weekly.write_text(render_weekly_page(items, start.isoformat(), end.isoformat()),
-                      encoding="utf-8")
+    weekly.write_text(render_weekly_page(items, start.isoformat(), end.isoformat(),
+                                         synthesis=synthesis), encoding="utf-8")
     removed = []
     for offset in range(7):
         day = (start + timedelta(days=offset)).isoformat()
@@ -205,7 +232,8 @@ def build_weekly(reports_dir, *, end_day: str | None = None) -> dict:
     (reports_dir / "index.html").write_text(_index_html(reports_dir), encoding="utf-8")
     return {"week_start": start.isoformat(), "week_end": end.isoformat(),
             "report": str(weekly), "index": str(reports_dir / "index.html"),
-            "days": len(source_days), "items": len(items), "removed": removed}
+            "days": len(source_days), "items": len(items), "removed": removed,
+            "synthesis": synthesis is not None, "synthesis_error": synthesis_error}
 
 
 def send_serverchan(key: str, title: str, desp: str, *, opener=urllib.request.urlopen) -> dict:

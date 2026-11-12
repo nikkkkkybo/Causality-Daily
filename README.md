@@ -24,6 +24,7 @@ python -m causal_ledger --db demo.sqlite3 claims
 - 个体因果基线（`profile`）、保险箱（Windows DPAPI）、7 天校准（`calibrate`）、盲评/消融（`eval`）；
 - 本地单应用（`serve`）：阅读往期、提交末尾备注；
 - 零月费云发布（`cloud` + GitHub Actions + Pages + 可选多通道推送：ntfy / Bark / Telegram / ServerChan），发布新版《今日事报》链式页；
+- DeepSeek 二次合成：加 `DEEPSEEK_API_KEY` 后由模型翻译/改写/成链；无 key 自动回退确定性版本。
 - 周报：周一 07:30 自动汇总上一周；周报保留，日报归档；见 [docs/周报与保留策略.md](docs/周报与保留策略.md)；
 - 新旧格式边界见 [docs/新旧对照.md](docs/新旧对照.md)。
 

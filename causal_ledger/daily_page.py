@@ -174,8 +174,8 @@ def _group_items(items: list[dict]) -> list[tuple[dict, list[dict]]]:
     return chosen
 
 
-def _item_html(item: dict) -> str:
-    title = _text(item.get("title") or "（无标题）")
+def _item_html(item: dict, text: str | None = None) -> str:
+    title = _text(text or item.get("title") or "（无标题）")
     source = _text(item.get("feed_name") or "未知来源")
     when = (item.get("published_at") or item.get("fetched_at") or "")[:16]
     when = _text(when)
@@ -183,6 +183,36 @@ def _item_html(item: dict) -> str:
     link = f'<a href="{_text(href)}" target="_blank" rel="noopener noreferrer">原文</a>' if href else ""
     meta = " · ".join(part for part in (source, when, link) if part)
     return f'<div class="signal"><p class="t">{title}</p><p class="src">{meta}</p></div>'
+
+
+def _chain_section(index: int, title: str, strength: str, strength_note: str,
+                   signals: str, effects: str, reasoning: str, doubt: str,
+                   count: int) -> str:
+    chain_no = ['一', '二', '三'][index - 1] if index <= 3 else str(index)
+    return f"""
+<section class="chain">
+  <div class="chain-head">
+    <span class="chain-no">链{chain_no}</span>
+    <h2 class="chain-title">{_text(title)}</h2>
+    <span class="strength">{_text(strength)} · {_text(strength_note)}</span>
+  </div>
+  <div class="spread">
+    <div class="cause">
+      <p class="col-head"><b>因</b>　今天出现的信号</p>
+      {signals}
+    </div>
+    <div class="axis"><span class="dot"></span></div>
+    <div class="effect">
+      <p class="col-head"><b>果</b>　我由此推断</p>
+      <ul>{effects}</ul>
+    </div>
+  </div>
+  <div class="reasoning">
+    <p class="label">我的链路</p>
+    <p>{_text(reasoning)}</p>
+    <p class="doubt">可能看错：{_text(doubt)} 本条基于 {count} 条信号、未核验。</p>
+  </div>
+</section>"""
 
 
 def _source_list(items: list[dict]) -> str:
@@ -205,7 +235,7 @@ def _source_list(items: list[dict]) -> str:
 
 def render_daily_page(items: list[dict], day: str | None = None, *, title: str = "今日事报",
                       period_start: str | None = None, period_end: str | None = None,
-                      weekly: bool = False) -> str:
+                      weekly: bool = False, synthesis: dict | None = None) -> str:
     day = day or period_end or datetime.now(LOCAL_TZ).date().isoformat()
     date.fromisoformat(day)
     if weekly:
@@ -241,34 +271,39 @@ def render_daily_page(items: list[dict], day: str | None = None, *, title: str =
             if weekly else
             "因与果都摆在下面；中间的链路完整写出。云端不读你的档案，所以这是通线版本；个体线仍在本地。")
     chain_html = []
-    for index, (theme, group) in enumerate(chains, 1):
-        strong, strength_note = _strength(group, theme)
-        effects = "".join(f"<li>{_text(line)}</li>" for line in theme["effects"])
-        signals = "".join(_item_html(item) for item in group[:3])
-        chain_html.append(f"""
-<section class="chain">
-  <div class="chain-head">
-    <span class="chain-no">链{['一','二','三'][index - 1] if index <= 3 else index}</span>
-    <h2 class="chain-title">{_text(theme['label'])}</h2>
-    <span class="strength">{_text(strong)} · {_text(strength_note)}</span>
-  </div>
-  <div class="spread">
-    <div class="cause">
-      <p class="col-head"><b>因</b>　今天出现的信号</p>
-      {signals}
-    </div>
-    <div class="axis"><span class="dot"></span></div>
-    <div class="effect">
-      <p class="col-head"><b>果</b>　我由此推断</p>
-      <ul>{effects}</ul>
-    </div>
-  </div>
-  <div class="reasoning">
-    <p class="label">我的链路</p>
-    <p>{_text(theme['reasoning'])}</p>
-    <p class="doubt">可能看错：{_text(theme['doubt'])} 本条基于 {len(group)} 条信号、未核验。</p>
-  </div>
-</section>""")
+    if synthesis:
+        item_by_id = {item.get("id"): item for item in items}
+        used_count = 0
+        for index, chain in enumerate(synthesis.get("chains") or [], 1):
+            signals = []
+            for cause in chain.get("cause") or []:
+                item = item_by_id.get(cause.get("id"))
+                if item is None:
+                    signals.append(f'<div class="signal"><p class="t">{_text(cause.get("text"))}</p></div>')
+                else:
+                    signals.append(_item_html(item, text=cause.get("text")))
+            effects = "".join(f"<li>{_text(line)}</li>" for line in chain.get("effect") or [])
+            used_count += len(chain.get("cause") or [])
+            chain_html.append(_chain_section(
+                index, chain.get("title") or "未命名", chain.get("strength") or "中",
+                "二次整理", "".join(signals), effects, chain.get("reasoning") or "",
+                chain.get("doubt") or "", len(chain.get("cause") or [])))
+        thesis = synthesis.get("thesis") or thesis
+        algorithm = (
+            (f"汇总 {len(items)} 条 / " if weekly else f"输入 {len(items)} 条 / ")
+            + f"{len({item.get('feed_name') or item.get('feed_id') for item in items})} 个源；"
+            f"DeepSeek 二次整理为 {len(chain_html)} 条链、引用 {used_count} 条信号；"
+            "本页由 DeepSeek 二次翻译/整理，不是原文摘抄；云端通线不读个人档案；条目未核验；"
+            "强度只是启发式提示。"
+        )
+    else:
+        for index, (theme, group) in enumerate(chains, 1):
+            strong, strength_note = _strength(group, theme)
+            effects = "".join(f"<li>{_text(line)}</li>" for line in theme["effects"])
+            signals = "".join(_item_html(item) for item in group[:3])
+            chain_html.append(_chain_section(
+                index, theme["label"], strong, strength_note, signals, effects,
+                theme["reasoning"], theme["doubt"], len(group)))
 
     return f"""<!DOCTYPE html>
 <html lang="zh-CN"><head><meta charset="utf-8">

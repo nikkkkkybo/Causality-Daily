@@ -503,9 +503,13 @@ def cmd_cloud(args, conn):
     from .push import send_push
 
     if args.weekly_only:
-        result = build_weekly(args.reports, end_day=args.week_end)
+        result = build_weekly(args.reports, end_day=args.week_end,
+                              use_llm=not args.no_llm, model=args.model)
         print(f"周报已生成：{result['report']}（{result['week_start']} ~ {result['week_end']}；"
-              f"{result['days']} 天 / {result['items']} 条；移除日报 {len(result['removed'])} 个文件）")
+              f"{result['days']} 天 / {result['items']} 条；移除日报 {len(result['removed'])} 个文件；"
+              f"合成：{'DeepSeek' if result['synthesis'] else '确定性回退'}）")
+        if result.get("synthesis_error"):
+            print(f"合成回退原因：{result['synthesis_error']}")
         if args.no_push:
             print("推送：已跳过（--no-push）。")
             return
@@ -516,9 +520,12 @@ def cmd_cloud(args, conn):
         return
     result = build_report(args.config, args.reports, days=args.days, limit=args.limit,
                           per_source=args.per_source, no_fetch=args.no_fetch,
-                          today=args.date)
+                          today=args.date, use_llm=not args.no_llm, model=args.model)
     print(f"云端报告已生成：{result['report']}（归档 {result['index']}；"
-          f"订阅 {result['feeds']} 个，失败 {result['failures']} 个）")
+          f"订阅 {result['feeds']} 个，失败 {result['failures']} 个；"
+          f"合成：{'DeepSeek' if result['synthesis'] else '确定性回退'}）")
+    if result.get("synthesis_error"):
+        print(f"合成回退原因：{result['synthesis_error']}")
     if args.no_push:
         print("推送：已跳过（--no-push）。")
         return
@@ -879,6 +886,9 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--week-end", help="周报截止日 YYYY-MM-DD（默认上一个周日）")
     p.add_argument("--channel", choices=["auto", "serverchan", "ntfy", "bark", "telegram", "none"],
                    default="auto", help="推送通道；auto 按已配置的 Secret/环境变量选择")
+    p.add_argument("--no-llm", action="store_true",
+                   help="不用 DeepSeek 合成，直接输出确定性版本")
+    p.add_argument("--model", default="deepseek-chat", help="DeepSeek 模型名")
     p.set_defaults(fn=cmd_cloud)
 
     p = sub.add_parser("eval", help="盲评与消融：比较通线/个体线，不宣称准确率")

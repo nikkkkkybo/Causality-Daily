@@ -34,6 +34,7 @@ jobs:
           BARK_KEY: ${{ secrets.BARK_KEY }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
         run: |
           python -m causal_ledger cloud \
             --config config/feeds.json \
@@ -43,6 +44,7 @@ jobs:
       - name: Weekly rollup (Monday Beijing)
         env:
           PAGES_BASE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
         run: |
           if [ "$(TZ=Asia/Shanghai date +%u)" = "1" ] && ls reports/data/*.json >/dev/null 2>&1; then
             python -m causal_ledger cloud --reports reports --weekly-only --no-push \
