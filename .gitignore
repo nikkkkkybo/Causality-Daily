@@ -1,8 +1,7 @@
-﻿# 本地数据与运行时产物，不进入仓库
+# 本地数据与运行时产物，不进入仓库
 *.sqlite3
 *.sqlite3-*
 *.db
-reports/
 eval-runs/
 .env
 app/app.sqlite3

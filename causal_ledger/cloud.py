@@ -15,8 +15,9 @@ import sqlite3
 import tempfile
 import urllib.parse
 import urllib.request
-from datetime import date
+from datetime import date, datetime
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 from .db import connect
 from .feeds import add_subscription, collect_feeds
@@ -25,6 +26,15 @@ from .html_report import render_brief_html
 DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 MAX_FEEDS = 30
 TITLE = "今日事报"
+LOCAL_TZ = ZoneInfo("Asia/Shanghai")
+
+
+def default_day() -> str:
+    """The report date is Beijing's calendar date, not the runner's UTC date."""
+    try:
+        return datetime.now(LOCAL_TZ).date().isoformat()
+    except Exception:  # noqa: BLE001 - fall back on systems without tzdata
+        return date.today().isoformat()
 
 
 def load_feeds(path) -> list[dict]:
@@ -96,7 +106,7 @@ def build_report(config_path, reports_dir, *, days: int = 2, limit: int = 10,
     feeds = load_feeds(config_path)
     reports_dir = Path(reports_dir)
     reports_dir.mkdir(parents=True, exist_ok=True)
-    day = today or date.today().isoformat()
+    day = today or default_day()
     if not DATE_RE.fullmatch(day):
         raise ValueError("today 必须是 YYYY-MM-DD")
     with tempfile.TemporaryDirectory() as temporary:
