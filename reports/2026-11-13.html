@@ -72,40 +72,86 @@ h1 { margin:0; font-size:42px; letter-spacing:.06em; }
   <div>
     <div class="kicker">今日事报 · 云端通线</div>
     <h1>今日事报</h1>
-    <div class="date">2026-11-13 · 14 条信号 · 取 1 条链</div>
+    <div class="date">2026-11-13 · 14 条信号 · 取 3 条链</div>
   </div>
   <div class="seal" aria-hidden="true">事报</div>
 </header>
-<p class="thesis">今日信号集中在两类：微软云服务出现可感知的中断，以及围绕英伟达换帅的突发传闻；其余多为产品更新、事故与消费类信息，彼此缺乏强关联，不宜强行归因。</p>
+<p class="thesis">今日信号集中在两类：微软云服务疑似大面积中断且状态页无法访问，以及消费电子与内容平台在体验和供应链上的持续摩擦；其余多为单点事件，暂不强行串联。</p>
 <p class="lede">因与果都摆在下面；中间的链路完整写出。云端不读你的档案，所以这是通线版本；个体线仍在本地。</p>
 
 <section class="chain">
   <div class="chain-head">
     <span class="chain-no">链一</span>
-    <h2 class="chain-title">微软云服务中断</h2>
+    <h2 class="chain-title">微软云服务疑似中断</h2>
     <span class="strength">中 · 二次整理</span>
   </div>
   <div class="spread">
     <div class="cause">
       <p class="col-head"><b>因</b>　今天出现的信号</p>
-      <div class="signal"><p class="t">有报道称 Outlook 出现大规模宕机，且微软的状态页面本身也无法正常访问。</p><p class="src">Hacker News · 2026-11-12T18:20 · <a href="https://gvwire.com/2026/11/12/microsoft-outlook-down-for-thousands-of-users-downdetector-shows/" target="_blank" rel="noopener noreferrer">原文</a></p></div><div class="signal"><p class="t">Hacker News 上有用户反映过去数分钟所有微软云连接中断，状态页同样打不开。</p><p class="src">Hacker News · 2026-11-12T18:17 · <a href="https://news.ycombinator.com/item?id=50471668" target="_blank" rel="noopener noreferrer">原文</a></p></div>
+      <div class="signal"><p class="t">有报道称 Outlook 出现宕机，且微软的状态页面本身也无法正常访问。</p><p class="src">Hacker News · 2026-11-12T18:20 · <a href="https://gvwire.com/2026/11/12/microsoft-outlook-down-for-thousands-of-users-downdetector-shows/" target="_blank" rel="noopener noreferrer">原文</a></p></div><div class="signal"><p class="t">有用户在 Hacker News 上反映，过去五分钟内所有微软云连接均中断，状态页同样打不开。</p><p class="src">Hacker News · 2026-11-12T18:17 · <a href="https://news.ycombinator.com/item?id=50471668" target="_blank" rel="noopener noreferrer">原文</a></p></div>
     </div>
     <div class="axis"><span class="dot"></span></div>
     <div class="effect">
       <p class="col-head"><b>果</b>　我由此推断</p>
-      <ul><li>用户难以通过官方状态页确认故障范围，可能加剧对企业云服务透明度的质疑。</li><li>若状态页与业务系统同时不可用，说明故障感知与信息发布环节可能存在耦合风险。</li></ul>
+      <ul><li>若状态页与故障同时不可用，用户获取官方进展的渠道会受限，可能加剧对恢复时间的不确定感。</li><li>企业用户可能临时转向替代通信工具，但现有信号不足以判断影响范围。</li></ul>
     </div>
   </div>
   <div class="reasoning">
     <p class="label">我的链路</p>
-    <p>两条信号指向同一时间窗口的微软服务异常，且都提到状态页不可用，因此合并为一条链。</p>
-    <p class="doubt">可能看错：目前仅有零散用户报告和一篇转载报道，无法确认中断的规模与根因。 本条基于 2 条信号、未核验。</p>
+    <p>两条信号指向同一时间窗口的微软服务异常，且都提到状态页不可用，因此合并为一条链；这是基于时间与描述的启发式关联。</p>
+    <p class="doubt">可能看错：两条信号均来自用户侧描述，缺少微软官方确认，故障范围与原因可能被高估或误判。 本条基于 2 条信号、未核验。</p>
+  </div>
+</section>
+<section class="chain">
+  <div class="chain-head">
+    <span class="chain-no">链二</span>
+    <h2 class="chain-title">AMD 驱动修复异常写入</h2>
+    <span class="strength">中 · 二次整理</span>
+  </div>
+  <div class="spread">
+    <div class="cause">
+      <p class="col-head"><b>因</b>　今天出现的信号</p>
+      <div class="signal"><p class="t">AMD 发布 Adrenalin 26.11.1 可选驱动，重点修复 RX 7000 系列及以上显卡在系统空闲时持续对系统盘异常写入的问题，并修复调整窗口大小时触发的同类写入。</p><p class="src">IT之家 · 2026-11-12T16:30 · <a href="https://www.ithome.com/1/026/442.htm" target="_blank" rel="noopener noreferrer">原文</a></p></div><div class="signal"><p class="t">少数派发布 2026 冬季 Mac 选购指南，提到内存与存储涨价但仍需换机。</p><p class="src">少数派 · 2026-11-12T06:42 · <a href="https://sspai.com/post/85735" target="_blank" rel="noopener noreferrer">原文</a></p></div>
+    </div>
+    <div class="axis"><span class="dot"></span></div>
+    <div class="effect">
+      <p class="col-head"><b>果</b>　我由此推断</p>
+      <ul><li>显卡驱动层面的异常写入若被修复，可能降低部分用户对 SSD 寿命的担忧，但可选驱动意味着覆盖节奏由用户自行决定。</li><li>存储涨价与硬件写入损耗的讨论同时出现，可能让消费者在换机或升级时更关注存储耐久性，但现有信号不足以建立因果。</li></ul>
+    </div>
+  </div>
+  <div class="reasoning">
+    <p class="label">我的链路</p>
+    <p>两条信号都涉及个人计算设备的存储与硬件维护成本，一条是驱动修复写入问题，一条是选购指南提及存储涨价，因此放在一起观察；这是启发式关联。</p>
+    <p class="doubt">可能看错：Mac 选购指南与 AMD 驱动修复分属不同平台，强行关联可能过度解读，二者未必有共同驱动因素。 本条基于 2 条信号、未核验。</p>
+  </div>
+</section>
+<section class="chain">
+  <div class="chain-head">
+    <span class="chain-no">链三</span>
+    <h2 class="chain-title">流媒体发现成本上升</h2>
+    <span class="strength">弱 · 二次整理</span>
+  </div>
+  <div class="spread">
+    <div class="cause">
+      <p class="col-head"><b>因</b>　今天出现的信号</p>
+      <div class="signal"><p class="t">尼尔森 Gracenote 对六国 3000 名流媒体用户的调查显示，超过半数受访者认为内容和服务过于丰富反而更难找到想看的内容，部分用户因找不到特定节目而放弃观看。</p><p class="src">Solidot · 2026-11-12T14:42 · <a href="https://www.solidot.org/story?sid=85874" target="_blank" rel="noopener noreferrer">原文</a></p></div><div class="signal"><p class="t">Epic 本周免费送出《斗阵骑士 Knightica》，下周将送出《Alien: Isolation》和《Mark of the Deep》。</p><p class="src">IT之家 · 2026-11-12T16:05 · <a href="https://www.ithome.com/1/026/440.htm" target="_blank" rel="noopener noreferrer">原文</a></p></div>
+    </div>
+    <div class="axis"><span class="dot"></span></div>
+    <div class="effect">
+      <p class="col-head"><b>果</b>　我由此推断</p>
+      <ul><li>内容供给充裕时，发现效率可能成为用户留存的关键摩擦点，但调查只反映用户主观感受，不能直接推导平台策略。</li><li>免费领取游戏与流媒体找片困难分属不同场景，只能说明内容消费端存在选择过载的讨论氛围。</li></ul>
+    </div>
+  </div>
+  <div class="reasoning">
+    <p class="label">我的链路</p>
+    <p>两条信号都涉及数字内容消费的选择与获取，一条是流媒体发现困难，一条是游戏平台限免，因此弱关联为内容过载话题；这是启发式归类。</p>
+    <p class="doubt">可能看错：流媒体调查与 Epic 限免没有直接因果关系，放在同一链中可能只是主题相近，实际联系很弱。 本条基于 2 条信号、未核验。</p>
   </div>
 </section>
 
 <section class="algorithm">
   <h2>今日算法链</h2>
-  <p>输入 14 条 / 7 个源；DeepSeek 二次整理为 1 条链、引用 2 条信号；本页由 DeepSeek 二次翻译/整理，不是原文摘抄；云端通线不读个人档案；条目未核验；强度只是启发式提示。</p>
+  <p>输入 14 条 / 7 个源；DeepSeek 二次整理为 3 条链、引用 6 条信号；本页由 DeepSeek 二次翻译/整理，不是原文摘抄；云端通线不读个人档案；条目未核验；强度只是启发式提示。</p>
   <p class="muted">不按点击历史排序；不自动外发除 Server酱 以外的内容；所有条目与推断均未核验。</p>
 </section>
 <footer class="foot">
