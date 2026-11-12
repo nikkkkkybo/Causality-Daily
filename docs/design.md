@@ -38,7 +38,7 @@
 15. 关注主题：`watch add/list/remove/enable/disable` 维护关注词；`inbox`/`daily` 在未给 `--topic` 时默认按启用主题筛选（仅标题/摘要），`--topic` 覆盖
 16. 本地单应用：`serve --reports 目录` 只服务事报阅读、往期归档与末尾备注；默认仅本机（127.0.0.1），局域网需显式 `--host 0.0.0.0` 并建议 `--token`；备注写入 `notes` 表，作为下一次取舍的潜意识，不是命令
 17. 个体因果基线：`profile import/show/clear` 管理本地档案；出生/事件/心境等"保险箱"字段用 **Windows DPAPI 加密**（`vault` 表），公开 JSON 只留派生可用部分；`profile unlock --reason` 按次解密并写入 `vault_audit`；`daily --mode auto|general|light|individual` 选择通线/轻个体线/个体线；无档案或基线不完整自动降级通线；个体线把领域/约束/位置作为"强潜意识"影响排序，并在简报加"与你有关/你在哪一段"（启发式，不是因果证明）
-18. 7 天校准：`calibrate [--days 7] [--apply]` 读近 N 天末尾备注，只有同时出现领域词与明确正/负向词才产生小幅权重调整（±0.05/域，单域上限 ±0.15）；先预览，`--apply` 写入 `calibrations`；`daily` 自动应用最近一次校准，只调权重、不改档案原文
+18. 7 天校准：`calibrate [--days 7] [--apply]` 读近 N 天末尾备注，只有同时出现领域词与明确正/负向词才产生小幅权重调整（±0.05/域，单域上限 ±0.15）；先预览，`--apply` 写入 `calibrations`；`daily` 自动应用最近一次校准；**校准产出独立 `intent_delta`，不写回档案基线**，`personalize` 以 `INTENT_FACTOR=0.5` 叠加，避免备注悄悄改写强潜意识
 19. 盲评与消融：`eval blind --dir DIR` 生成 A/B 两份简报（通线/个体线，归属随机隐藏），`eval vote A|B` 记录并揭晓，`eval stats` 统计；`eval ablate` 对比通线、完整个体线、无校准、均匀权重、轻个体线五个变体的前 4 条与重叠/同序；不宣称准确率
 20. 零月费云发布：`cloud --config config/feeds.json --reports reports` 在临时库抓订阅 → 生成静态报告与归档 → 可选 Server酱推送；GitHub Actions 每天 23:30 UTC（07:30 CST）运行，产物由 Pages 发布；不读取本地档案/保险箱，是云端通线
 21. 新版《今日事报》：`daily_page.render_daily_page` 输出链式页（今日判断 → 因/果/我的链路/可能看错 → 算法链），无待办/台账/KPI；`cloud` 已切到该页；旧 `render_brief_html`/`html_site` 保留为 legacy 兼容，不再接新功能

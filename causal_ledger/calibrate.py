@@ -98,17 +98,18 @@ def latest(conn: sqlite3.Connection) -> dict | None:
 
 
 def effective_features(conn: sqlite3.Connection, features: dict) -> tuple[dict, str]:
-    """Apply the latest calibration to a copy of features; return (features, note)."""
+    """Attach the latest note calibration as a separate `intent_delta`.
+
+    It deliberately does NOT overwrite the causal baseline (`domains`). The
+    personalize layer applies the intent delta with a smaller weight, so a note
+    cannot silently rewrite the strong subconscious profile.
+    """
     stored = latest(conn)
     if not stored or not stored["deltas"]:
         return copy.deepcopy(features), ""
     adjusted = copy.deepcopy(features)
-    domains = adjusted.setdefault("domains", {})
-    for domain, delta in stored["deltas"].items():
-        if domain not in DOMAIN_LABELS:
-            continue
-        current = float(domains.get(domain, 0.0))
-        domains[domain] = round(max(0.0, min(1.0, current + float(delta))), 3)
+    adjusted["intent_delta"] = {domain: float(delta) for domain, delta in stored["deltas"].items()}
+    adjusted["intent_calibration_id"] = stored["id"]
     parts = "、".join(f"{DOMAIN_LABELS.get(domain, domain)}{delta:+.2f}"
                       for domain, delta in stored["deltas"].items())
-    return adjusted, f"校准：应用最近一次（C#{stored['id']}，{stored['days']} 天备注）：{parts}"
+    return adjusted, f"意向校准：C#{stored['id']}（{stored['days']} 天备注）：{parts}"

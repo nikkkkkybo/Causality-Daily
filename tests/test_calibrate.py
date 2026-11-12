@@ -97,9 +97,10 @@ def test_apply_latest_and_effective_features_clamped(tmp_path):
         assert stored["deltas"]["career"] == pytest.approx(0.05)
         loaded = profile.load_profile(conn)
         adjusted, note = calibrate.effective_features(conn, loaded["features"])
-        assert adjusted["domains"]["career"] > loaded["features"]["domains"]["career"]
-        assert adjusted["domains"]["health"] < loaded["features"]["domains"]["health"]
-        assert "校准" in note and f"C#{calibration_id}" in note
+        assert adjusted["domains"] == loaded["features"]["domains"]  # baseline not overwritten
+        assert adjusted["intent_delta"]["career"] == pytest.approx(0.05)
+        assert adjusted["intent_delta"]["health"] == pytest.approx(-0.05)
+        assert "意向校准" in note and f"C#{calibration_id}" in note
         with pytest.raises(ValueError):
             calibrate.apply(conn, {"days": 7, "notes_count": 0, "deltas": {}})
     finally:
@@ -125,7 +126,7 @@ def test_cli_calibrate_preview_apply_and_daily(tmp_path):
 
     daily = cli(db, "daily", "--brief", "--no-fetch", "--mode", "auto")
     assert daily.returncode == 0, daily.stderr
-    assert "校准：应用" in daily.stdout
+    assert "意向校准" in daily.stdout
     conn = connect(str(db))
     try:
         summary = json.loads(conn.execute(

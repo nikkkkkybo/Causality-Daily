@@ -41,6 +41,21 @@ def _text(item: dict) -> str:
     return ((item.get("title") or "") + " " + (item.get("summary") or "")).casefold()
 
 
+INTENT_FACTOR = 0.5
+
+
+def _effective_weights(features: dict) -> dict[str, float]:
+    """Causal baseline plus a small, separate intent delta (never merged in place)."""
+    base = features.get("domains") or {}
+    intent = features.get("intent_delta") or {}
+    keys = set(base) | set(intent)
+    weights = {}
+    for domain in keys:
+        value = float(base.get(domain, 0.0)) + INTENT_FACTOR * float(intent.get(domain, 0.0))
+        weights[domain] = round(max(0.0, min(1.0, value)), 3)
+    return weights
+
+
 def classify_domains(text: str) -> dict[str, float]:
     """Return a 0/1 hit map. Multiple keywords still count once per domain."""
     folded = (text or "").casefold()
@@ -53,7 +68,7 @@ def classify_domains(text: str) -> dict[str, float]:
 
 def _personal_score(item: dict, features: dict) -> tuple[float, dict[str, float]]:
     hits = classify_domains(_text(item))
-    weights = features.get("domains") or {}
+    weights = _effective_weights(features)
     score = sum(float(weights.get(domain, 0.0)) for domain in hits)
     if score > 0:
         score = min(1.0, score / 2.0)  # two strong domains already saturate
@@ -61,7 +76,7 @@ def _personal_score(item: dict, features: dict) -> tuple[float, dict[str, float]
 
 
 def _why(item: dict, features: dict, hits: dict[str, float]) -> str:
-    weights = features.get("domains") or {}
+    weights = _effective_weights(features)
     ranked = [domain for domain in hits if float(weights.get(domain, 0.0)) > 0]
     ranked.sort(key=lambda domain: float(weights.get(domain, 0.0)), reverse=True)
     if not ranked:
