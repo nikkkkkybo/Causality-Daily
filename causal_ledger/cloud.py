@@ -16,13 +16,14 @@ import sqlite3
 import tempfile
 import urllib.parse
 import urllib.request
-from datetime import date, datetime
+from datetime import date, datetime, timedelta
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
 from .daily_page import render_daily_page
 from .db import connect
 from .feeds import add_subscription, collect_feeds, recommend
+from .weekly_page import render_weekly_page
 
 DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 MAX_FEEDS = 30
@@ -73,11 +74,16 @@ def load_feeds(path) -> list[dict]:
 
 
 def _index_html(reports_dir: Path, title: str = TITLE) -> str:
-    days = sorted((path.stem for path in reports_dir.glob("*.html") if DATE_RE.fullmatch(path.stem)),
-                  reverse=True)
-    items = "".join(f'<li><a href="{day}.html">{day}</a></li>' for day in days)
-    if not items:
-        items = '<li class="empty">还没有报告。</li>'
+    weekly = sorted((path.stem for path in reports_dir.glob("week-*.html")
+                     if path.stem.startswith("week-")), reverse=True)
+    dailies = sorted((path.stem for path in reports_dir.glob("*.html")
+                      if DATE_RE.fullmatch(path.stem)), reverse=True)
+
+    def links(names, empty):
+        if not names:
+            return f'<li class="empty">{empty}</li>'
+        return "".join(f'<li><a href="{name}.html">{name}</a></li>' for name in names)
+
     return f"""<!DOCTYPE html>
 <html lang="zh-CN"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -87,21 +93,39 @@ body {{ margin:0; background:#f6f2ea; color:#1b1a17;
   font:16px/1.7 "Songti SC","Noto Serif SC",Georgia,serif; }}
 .page {{ max-width:760px; margin:0 auto; padding:56px 22px; }}
 h1 {{ font-size:38px; letter-spacing:.06em; }}
+h2 {{ font-size:19px; margin:28px 0 6px; letter-spacing:.05em; }}
 p {{ color:#6f685c; }}
 ul {{ list-style:none; padding:0; border-top:1px solid #d8d0c0; }}
 li {{ border-bottom:1px solid #d8d0c0; padding:14px 2px; }}
 a {{ color:#1b1a17; text-decoration:none; font-size:19px; }}
 a:hover {{ color:#9e3b2e; }}
 .empty {{ color:#8a8376; font-size:14px; }}
+.foot {{ color:#8a8376; font-size:12px; margin-top:28px; }}
 </style></head><body><div class="page">
 <h1>{title}</h1>
-<p>每日因果推送 · 静态归档 · 未核验</p>
-<ul>{items}</ul>
+<p>每周保留《本周事报》；日报在周报产出后归档。条目均未核验。</p>
+<h2>本周事报</h2>
+<ul>{links(weekly, "还没有周报；周一 07:30 自动汇总。")}</ul>
+<h2>日报（周报产出前的临时页）</h2>
+<ul>{links(dailies, "暂无日报。")}</ul>
+<p class="foot">通线 · 不读个人档案 · 自动发布，不自动核实</p>
 </div></body></html>
 """
 
 
-def build_report(config_path, reports_dir, *, days: int = 2, limit: int = 10,
+def _item_record(item: dict) -> dict:
+    return {
+        "id": item.get("id"),
+        "title": item.get("title") or "",
+        "summary": (item.get("summary") or "")[:500],
+        "feed_name": item.get("feed_name") or "",
+        "published_at": item.get("published_at"),
+        "fetched_at": item.get("fetched_at"),
+        "url": item.get("url"),
+    }
+
+
+def build_report(config_path, reports_dir, *, days: int = 2, limit: int = 30,
                  per_source: int = 2, no_fetch: bool = False,
                  today: str | None = None) -> dict:
     feeds = load_feeds(config_path)
@@ -122,10 +146,65 @@ def build_report(config_path, reports_dir, *, days: int = 2, limit: int = 10,
             conn.close()
     report = reports_dir / f"{day}.html"
     report.write_text(html, encoding="utf-8")
+    data_dir = reports_dir / "data"
+    data_dir.mkdir(exist_ok=True)
+    (data_dir / f"{day}.json").write_text(
+        json.dumps({"day": day, "items": [_item_record(item) for item in items]},
+                   ensure_ascii=False, indent=1), encoding="utf-8")
     (reports_dir / "index.html").write_text(_index_html(reports_dir), encoding="utf-8")
     failures = [row for row in results if row.get("error")]
     return {"day": day, "report": str(report), "index": str(reports_dir / "index.html"),
+            "data": str(data_dir / f"{day}.json"),
             "feeds": len(feeds), "failures": len(failures), "results": results}
+
+
+def _previous_sunday(today: str | None = None) -> date:
+    current = date.fromisoformat(today) if today else date.fromisoformat(default_day())
+    return current - timedelta(days=(current.weekday() + 1) % 7)
+
+
+def build_weekly(reports_dir, *, end_day: str | None = None) -> dict:
+    """Roll up the previous Mon–Sun daily JSONs, write the weekly page, and remove
+    that week's daily pages/data (the weekly page keeps the source list)."""
+    reports_dir = Path(reports_dir)
+    end = date.fromisoformat(end_day) if end_day else _previous_sunday()
+    start = end - timedelta(days=6)
+    if start > end:
+        raise ValueError("end_day 不能早于开始日")
+    data_dir = reports_dir / "data"
+    items, seen, source_days = [], set(), []
+    for offset in range(7):
+        day = (start + timedelta(days=offset)).isoformat()
+        path = data_dir / f"{day}.json"
+        if not path.is_file():
+            continue
+        try:
+            payload = json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, ValueError):
+            continue
+        source_days.append(day)
+        for item in payload.get("items") or []:
+            key = item.get("url") or item.get("title")
+            if key in seen:
+                continue
+            seen.add(key)
+            items.append(item)
+    if not items:
+        raise ValueError("没有可汇总的日报数据；保留日报，等下周再试")
+    weekly = reports_dir / f"week-{start.isoformat()}.html"
+    weekly.write_text(render_weekly_page(items, start.isoformat(), end.isoformat()),
+                      encoding="utf-8")
+    removed = []
+    for offset in range(7):
+        day = (start + timedelta(days=offset)).isoformat()
+        for path in (reports_dir / f"{day}.html", data_dir / f"{day}.json"):
+            if path.is_file():
+                path.unlink()
+                removed.append(str(path))
+    (reports_dir / "index.html").write_text(_index_html(reports_dir), encoding="utf-8")
+    return {"week_start": start.isoformat(), "week_end": end.isoformat(),
+            "report": str(weekly), "index": str(reports_dir / "index.html"),
+            "days": len(source_days), "items": len(items), "removed": removed}
 
 
 def send_serverchan(key: str, title: str, desp: str, *, opener=urllib.request.urlopen) -> dict:
@@ -151,3 +230,13 @@ def push_body(day: str, base_url: str, *, title: str = TITLE) -> tuple[str, str]
     else:
         lines.append("（未配置 PAGES_BASE_URL，消息不含链接）")
     return f"{title} {day}", "\n\n".join(lines)
+
+
+def push_weekly_body(start: str, end: str, base_url: str) -> tuple[str, str]:
+    link = f"{base_url.rstrip('/')}/week-{start}.html" if base_url else ""
+    lines = [f"本周事报 · {start} ~ {end}", "本周事报已汇总；日报已归档，周报保留出处。"]
+    if link:
+        lines.append(f"[打开本周事报]({link})")
+    else:
+        lines.append("（未配置 PAGES_BASE_URL，消息不含链接）")
+    return f"本周事报 {start} ~ {end}", "\n\n".join(lines)

@@ -499,8 +499,21 @@ def cmd_eval(args, conn):
 def cmd_cloud(args, conn):
     import os
 
-    from .cloud import build_report, push_body, send_serverchan
+    from .cloud import (build_report, build_weekly, push_body, push_weekly_body,
+                        send_serverchan)
 
+    if args.weekly_only:
+        result = build_weekly(args.reports, end_day=args.week_end)
+        print(f"周报已生成：{result['report']}（{result['week_start']} ~ {result['week_end']}；"
+              f"{result['days']} 天 / {result['items']} 条；移除日报 {len(result['removed'])} 个文件）")
+        if args.no_push:
+            print("推送：已跳过（--no-push）。")
+            return
+        title, body = push_weekly_body(result["week_start"], result["week_end"], args.base_url)
+        pushed = send_serverchan(os.environ.get("SERVERCHAN_KEY", ""), title, body)
+        print("推送：周报已发送。" if pushed["sent"]
+              else f"推送：未发送（{pushed.get('reason', '未知原因')}）；周报仍已生成。")
+        return
     result = build_report(args.config, args.reports, days=args.days, limit=args.limit,
                           per_source=args.per_source, no_fetch=args.no_fetch,
                           today=args.date)
@@ -864,6 +877,9 @@ def build_parser() -> argparse.ArgumentParser:
                    help="GitHub Pages 基础 URL（默认读 PAGES_BASE_URL）")
     p.add_argument("--date", help="覆盖日期 YYYY-MM-DD（调试用）")
     p.add_argument("--title", default="今日事报")
+    p.add_argument("--weekly-only", action="store_true",
+                   help="不抓取；把 reports/data 中上一周汇总为周报并移除该周日报")
+    p.add_argument("--week-end", help="周报截止日 YYYY-MM-DD（默认上一个周日）")
     p.set_defaults(fn=cmd_cloud)
 
     p = sub.add_parser("eval", help="盲评与消融：比较通线/个体线，不宣称准确率")

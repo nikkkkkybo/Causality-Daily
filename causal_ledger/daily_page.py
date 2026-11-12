@@ -185,28 +185,61 @@ def _item_html(item: dict) -> str:
     return f'<div class="signal"><p class="t">{title}</p><p class="src">{meta}</p></div>'
 
 
-def render_daily_page(items: list[dict], day: str | None = None, *, title: str = "今日事报") -> str:
-    day = day or datetime.now(LOCAL_TZ).date().isoformat()
+def _source_list(items: list[dict]) -> str:
+    seen, rows = set(), []
+    for item in items:
+        key = item.get("url") or item.get("title")
+        if key in seen:
+            continue
+        seen.add(key)
+        title = _text(item.get("title") or "（无标题）")
+        source = _text(item.get("feed_name") or "")
+        when = _text((item.get("published_at") or item.get("fetched_at") or "")[:16])
+        href = _safe_href(item.get("url"))
+        link = f'<a href="{_text(href)}" target="_blank" rel="noopener noreferrer">原文</a>' if href else ""
+        meta = " · ".join(part for part in (source, when, link) if part)
+        rows.append(f'<li><span class="src-title">{title}</span><span class="src-meta">{meta}</span></li>')
+    return ('<section class="sources"><h2>本周信号清单（保留出处）</h2><ul>'
+            + "".join(rows) + "</ul></section>") if rows else ""
+
+
+def render_daily_page(items: list[dict], day: str | None = None, *, title: str = "今日事报",
+                      period_start: str | None = None, period_end: str | None = None,
+                      weekly: bool = False) -> str:
+    day = day or period_end or datetime.now(LOCAL_TZ).date().isoformat()
     date.fromisoformat(day)
+    if weekly:
+        if not period_start or not period_end:
+            raise ValueError("weekly 页面需要 period_start 和 period_end")
+        date.fromisoformat(period_start)
+        date.fromisoformat(period_end)
     items = list(items or [])
     chains = _group_items(items)
     real = [pair for pair in chains if pair[0] is not DEFAULT_THEME]
-    labels = "、".join(f"「{theme['label']}」" for theme, _ in real) or "（今日无候选）"
+    scope = "这一周" if weekly else "今天"
+    labels = "、".join(f"「{theme['label']}」" for theme, _ in real) or "（无候选）"
     if real:
-        thesis = (f"今天值得看的不是单条新闻，而是{labels}这几个方向的动作；"
+        thesis = (f"{scope}值得看的不是单条新闻，而是{labels}这几个方向的动作；"
                   "它们各自在改变成本、信任或背景条件。")
         if len(chains) > len(real):
             thesis += "另有一些只作存目的信号。"
     elif chains:
-        thesis = "今天没有形成清晰主题；以下只作存目，不强行造链。"
+        thesis = f"{scope}没有形成清晰主题；以下只作存目，不强行造链。"
     else:
-        thesis = "今天没有足够的候选信号；这份事报只保留位置，不强行造链。"
+        thesis = f"{scope}没有足够的候选信号；只保留位置，不强行造链。"
     used_count = sum(len(group) for _, group in chains)
     algorithm = (
-        f"输入 {len(items)} 条 / {len({item.get('feed_name') or item.get('feed_id') for item in items})} 个源；"
+        (f"汇总 {len(items)} 条 / " if weekly else f"输入 {len(items)} 条 / ")
+        + f"{len({item.get('feed_name') or item.get('feed_id') for item in items})} 个源；"
         f"入链 {used_count} 条、存目 {len(items) - used_count} 条；"
         "按主题聚类取前三；云端通线不读个人档案；条目未核验；强度只是启发式提示。"
     )
+    period_line = f"{period_start} ~ {period_end}" if weekly else day
+    kicker = f"{title} · 周报" if weekly else f"{title} · 云端通线"
+    section_title = "本周算法链" if weekly else "今日算法链"
+    lede = ("本周由日报汇总；因与果摆在下面，链路完整写出。云端不读你的档案，这是通线版本。"
+            if weekly else
+            "因与果都摆在下面；中间的链路完整写出。云端不读你的档案，所以这是通线版本；个体线仍在本地。")
     chain_html = []
     for index, (theme, group) in enumerate(chains, 1):
         strong, strength_note = _strength(group, theme)
@@ -288,6 +321,14 @@ h1 {{ margin:0; font-size:42px; letter-spacing:.06em; }}
 .algorithm h2 {{ font-size:20px; margin:0 0 8px; letter-spacing:.06em; }}
 .algorithm p {{ margin:0 0 6px; color:var(--soft); font-size:13.5px; }}
 .algorithm .muted {{ color:var(--muted); font-size:12.5px; }}
+.sources {{ margin-top:30px; border-top:1px solid var(--line); padding-top:16px; }}
+.sources h2 {{ font-size:19px; margin:0 0 10px; letter-spacing:.05em; }}
+.sources ul {{ list-style:none; margin:0; padding:0; }}
+.sources li {{ display:flex; justify-content:space-between; gap:14px; padding:7px 0;
+  border-bottom:1px dashed var(--line); font-size:13px; }}
+.sources .src-title {{ color:var(--ink); }}
+.sources .src-meta {{ color:var(--muted); white-space:nowrap; font-size:12px; }}
+.sources a {{ color:var(--muted); text-decoration:none; border-bottom:1px dotted var(--muted); }}
 .foot {{ margin-top:34px; padding-top:12px; border-top:1px solid var(--line);
   color:var(--muted); font-size:12px; display:flex; justify-content:space-between; gap:16px; }}
 @media (max-width:760px) {{
@@ -301,23 +342,24 @@ h1 {{ margin:0; font-size:42px; letter-spacing:.06em; }}
 </style></head><body><div class="page">
 <header class="masthead">
   <div>
-    <div class="kicker">{_text(title)} · 云端通线</div>
+    <div class="kicker">{_text(kicker)}</div>
     <h1>{_text(title)}</h1>
-    <div class="date">{_text(day)} · {len(items)} 条信号 · 取 {len(chains)} 条链</div>
+    <div class="date">{_text(period_line)} · {len(items)} 条信号 · 取 {len(chains)} 条链</div>
   </div>
   <div class="seal" aria-hidden="true">事报</div>
 </header>
 <p class="thesis">{_text(thesis)}</p>
-<p class="lede">因与果都摆在下面；中间的链路完整写出。云端不读你的档案，所以这是通线版本；个体线仍在本地。</p>
-{"".join(chain_html) if chain_html else '<p class="lede">今天没有可用候选；不强行造链。</p>'}
+<p class="lede">{_text(lede)}</p>
+{"".join(chain_html) if chain_html else f'<p class="lede">{scope}没有可用候选；不强行造链。</p>'}
+{_source_list(items) if weekly else ''}
 <section class="algorithm">
-  <h2>今日算法链</h2>
+  <h2>{_text(section_title)}</h2>
   <p>{_text(algorithm)}</p>
   <p class="muted">不按点击历史排序；不自动外发除 Server酱 以外的内容；所有条目与推断均未核验。</p>
 </section>
 <footer class="foot">
   <span>推断，不是结论。核验、结算、预测在本地账簿另做。</span>
-  <span>{_text(day)} · 通线</span>
+  <span>{_text(period_line)} · 通线</span>
 </footer>
 </div></body></html>
 """

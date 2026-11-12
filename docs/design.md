@@ -42,8 +42,9 @@
 19. 盲评与消融：`eval blind --dir DIR` 生成 A/B 两份简报（通线/个体线，归属随机隐藏），`eval vote A|B` 记录并揭晓，`eval stats` 统计；`eval ablate` 对比通线、完整个体线、无校准、均匀权重、轻个体线五个变体的前 4 条与重叠/同序；不宣称准确率
 20. 零月费云发布：`cloud --config config/feeds.json --reports reports` 在临时库抓订阅 → 生成静态报告与归档 → 可选 Server酱推送；GitHub Actions 每天 23:30 UTC（07:30 CST）运行，产物由 Pages 发布；不读取本地档案/保险箱，是云端通线
 21. 新版《今日事报》：`daily_page.render_daily_page` 输出链式页（今日判断 → 因/果/我的链路/可能看错 → 算法链），无待办/台账/KPI；`cloud` 已切到该页；旧 `render_brief_html`/`html_site` 保留为 legacy 兼容，不再接新功能
+22. 周报与保留：`weekly_page.render_weekly_page` 输出《本周事报》（周范围 + 链 + 本周信号清单）；`cloud --weekly-only` 汇总上一周 `reports/data/*.json`，成功后删除该周日报 HTML/JSON，只保留周报；周一 07:30 自动执行
 
-已实现：RSS/Atom 订阅、去重待读推荐、单次 `daily` 推送与本地历史、文本简报与 HTML 可视化简报/多页简报站、文档/主张查询、订阅条目转文档与人工接账、批量导入、跨源重复提示、关注主题、本地单应用、个体因果基线（通线/轻个体线/个体线）、保险箱（DPAPI 加密 + 解锁审计）、7 天校准、盲评与消融、零月费云发布（GitHub Actions + Pages + Server酱，使用新版《今日事报》链式页）、CLI 全局免责声明。尚未实现：旧 `daily --brief/--html/--html-dir` 迁移到新页、本地系统定时任务、备注云端回传、双端同步、实体关系图、证据独立性验证、自动事实核查、因果识别、来源校准、规则学习、Web UI。
+已实现：RSS/Atom 订阅、去重待读推荐、单次 `daily` 推送与本地历史、文本简报与 HTML 可视化简报/多页简报站、文档/主张查询、订阅条目转文档与人工接账、批量导入、跨源重复提示、关注主题、本地单应用、个体因果基线（通线/轻个体线/个体线）、保险箱（DPAPI 加密 + 解锁审计）、7 天校准、盲评与消融、零月费云发布（GitHub Actions + Pages + Server酱，使用新版《今日事报》链式页）、**周报与日报保留策略**、CLI 全局免责声明。尚未实现：旧 `daily --brief/--html/--html-dir` 迁移到新页、本地周报视图、备注云端回传、双端同步、实体关系图、证据独立性验证、自动事实核查、因果识别、来源校准、规则学习、Web UI。
 
 ## 评分规则（scoring.py，纯函数，全部留痕）
 
@@ -129,6 +130,7 @@ python -m causal_ledger --db app/app.sqlite3 eval blind --dir eval-runs/2026-11-
 python -m causal_ledger --db app/app.sqlite3 eval vote A --dir eval-runs/2026-11-13
 python -m causal_ledger --db app/app.sqlite3 eval ablate
 python -m causal_ledger cloud --config config/feeds.json --reports reports --no-fetch --no-push
+python -m causal_ledger cloud --reports reports --weekly-only --no-push
 python -m causal_ledger --db demo.sqlite3 watch add 关键词
 
 # 查询与桥接（离线）
@@ -163,6 +165,7 @@ python -m pytest tests -q
 - `calibrate --days 7` 只预览备注 → 权重的调整；`--apply` 写入 `calibrations`，之后 `daily` 自动应用最近一次；只调整领域权重，不改档案原文，证据只记录备注编号。
 - `eval blind --dir DIR` 生成通线/个体线 A/B（归属随机、先不看 `blind.json`）；`eval vote A|B` 记录并揭晓；`eval stats` 统计；`eval ablate` 对比五个变体的前 4 条与重叠/同序。样本小只作方向参考，不宣称准确率。
 - `cloud --config ... --reports ...` 是零月费云发布：临时库抓订阅、生成**新版《今日事报》链式页**与归档、可选 Server酱；不读档案/保险箱。GitHub Actions 每天 07:30 CST 跑一次，Pages 发布；部署步骤见 [零月费部署](零月费部署.md)。
+- `cloud --weekly-only` 汇总上一周日报数据为《本周事报》，页内保留"本周信号清单（保留出处）"，成功后删除该周日报；周一 07:30 自动执行。详见 [周报与保留策略](周报与保留策略.md)。
 - 日报窗口采用本机日期的自然日；结算和导入时间以 UTC 存储。`daily` 是单次手动命令，不安装定时任务、不外发；可用 `--no-fetch` 纯离线生成，`--output` 只写新文件、不覆盖。
 - 畸形 JSON 在写库前拒绝、不写业务表（首次打开仍会创建 SQLite 文件与空表）；一次导入的数据库修改是原子的。
 - 当前为初始开发数据结构，不提供早期实验数据库的自动迁移；测试应使用新数据库。

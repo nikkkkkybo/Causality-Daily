@@ -53,6 +53,7 @@ def test_build_report_writes_static_files(tmp_path):
     result = cloud.build_report(config, reports, no_fetch=True, today="2026-11-13")
     assert Path(result["report"]).is_file()
     assert Path(result["index"]).is_file()
+    assert Path(result["data"]).is_file()
     text = Path(result["report"]).read_text(encoding="utf-8")
     assert "今日事报" in text
     assert "台账状态" not in text and "待你处理" not in text
@@ -89,6 +90,62 @@ def test_push_body_contains_link():
     assert "https://example.github.io/repo/2026-11-13.html" in body
     _, no_link = cloud.push_body("2026-11-13", "")
     assert "未配置 PAGES_BASE_URL" in no_link
+
+
+def _seed_week(reports: Path):
+    data = reports / "data"
+    data.mkdir(parents=True, exist_ok=True)
+    for index, day in enumerate(("2026-11-02", "2026-11-03", "2026-11-04",
+                                 "2026-11-05", "2026-11-06", "2026-11-07", "2026-11-08")):
+        items = [
+            {"id": index * 10 + 1, "title": f"AI 模型工具 {day}", "summary": "模型与软件",
+             "feed_name": "源A", "published_at": day + "T01:00:00+00:00",
+             "url": f"https://example.org/a{index}"},
+            {"id": index * 10 + 2, "title": f"价格与招聘 {day}", "summary": "价格与招聘",
+             "feed_name": "源B", "published_at": day + "T02:00:00+00:00",
+             "url": f"https://example.org/b{index}"},
+        ]
+        (data / f"{day}.json").write_text(
+            json.dumps({"day": day, "items": items}, ensure_ascii=False), encoding="utf-8")
+        (reports / f"{day}.html").write_text("<html>daily</html>", encoding="utf-8")
+
+
+def test_build_weekly_rolls_up_and_removes_dailies(tmp_path):
+    reports = tmp_path / "reports"
+    _seed_week(reports)
+    result = cloud.build_weekly(reports, end_day="2026-11-08")
+    weekly = Path(result["report"])
+    assert weekly.is_file()
+    assert weekly.name == "week-2026-11-02.html"
+    text = weekly.read_text(encoding="utf-8")
+    assert "本周事报" in text and "本周信号清单（保留出处）" in text
+    assert result["days"] == 7 and result["items"] == 14
+    assert len(result["removed"]) == 14
+    assert not (reports / "2026-11-08.html").exists()
+    assert not (reports / "data" / "2026-11-08.json").exists()
+    index = (reports / "index.html").read_text(encoding="utf-8")
+    assert "week-2026-11-02.html" in index
+    assert "本周事报" in index
+
+
+def test_build_weekly_without_data_keeps_dailies(tmp_path):
+    reports = tmp_path / "reports"
+    reports.mkdir()
+    daily = reports / "2026-11-08.html"
+    daily.write_text("daily", encoding="utf-8")
+    with pytest.raises(ValueError):
+        cloud.build_weekly(reports, end_day="2026-11-08")
+    assert daily.is_file()
+
+
+def test_cli_cloud_weekly_only(tmp_path):
+    reports = tmp_path / "reports"
+    _seed_week(reports)
+    result = cli("cloud", "--reports", str(reports), "--weekly-only",
+                 "--no-push", "--week-end", "2026-11-08")
+    assert result.returncode == 0, result.stderr
+    assert "周报已生成" in result.stdout
+    assert (reports / "week-2026-11-02.html").is_file()
 
 
 def test_cli_cloud_no_fetch_no_push(tmp_path):

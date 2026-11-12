@@ -36,6 +36,14 @@ jobs:
             --reports reports \
             --base-url "$PAGES_BASE_URL" \
             --days 2 --limit 30 --per-source 2
+      - name: Weekly rollup (Monday Beijing)
+        env:
+          PAGES_BASE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
+        run: |
+          if [ "$(TZ=Asia/Shanghai date +%u)" = "1" ] && ls reports/data/*.json >/dev/null 2>&1; then
+            python -m causal_ledger cloud --reports reports --weekly-only --no-push \
+              --base-url "$PAGES_BASE_URL"
+          fi
       - name: Commit report archive
         run: |
           git config user.name "github-actions[bot]"
