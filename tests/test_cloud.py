@@ -77,7 +77,7 @@ def test_serverchan_push_uses_key_and_never_logs_it(tmp_path):
         return FakeResponse()
 
     result = cloud.send_serverchan("SECRET_KEY", "今日事报 2026-11-13", "正文", opener=opener)
-    assert result == {"sent": True, "status": 200}
+    assert result["sent"] is True and result["status"] == 200
     assert "SECRET_KEY.send" in seen["url"]
     assert "title=" in seen["data"].decode("utf-8")
     skipped = cloud.send_serverchan("", "标题", "正文", opener=opener)

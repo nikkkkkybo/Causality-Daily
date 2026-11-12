@@ -499,8 +499,8 @@ def cmd_eval(args, conn):
 def cmd_cloud(args, conn):
     import os
 
-    from .cloud import (build_report, build_weekly, push_body, push_weekly_body,
-                        send_serverchan)
+    from .cloud import (build_report, build_weekly, push_body, push_weekly_body)
+    from .push import send_push
 
     if args.weekly_only:
         result = build_weekly(args.reports, end_day=args.week_end)
@@ -510,9 +510,9 @@ def cmd_cloud(args, conn):
             print("推送：已跳过（--no-push）。")
             return
         title, body = push_weekly_body(result["week_start"], result["week_end"], args.base_url)
-        pushed = send_serverchan(os.environ.get("SERVERCHAN_KEY", ""), title, body)
-        print("推送：周报已发送。" if pushed["sent"]
-              else f"推送：未发送（{pushed.get('reason', '未知原因')}）；周报仍已生成。")
+        pushed = send_push(args.channel, title, body)
+        print(f"推送：{pushed.get('channel') or '无通道'} "
+              + ("已发送。" if pushed["sent"] else f"未发送（{pushed.get('reason', '未知原因')}）。"))
         return
     result = build_report(args.config, args.reports, days=args.days, limit=args.limit,
                           per_source=args.per_source, no_fetch=args.no_fetch,
@@ -522,13 +522,10 @@ def cmd_cloud(args, conn):
     if args.no_push:
         print("推送：已跳过（--no-push）。")
         return
-    key = os.environ.get("SERVERCHAN_KEY", "")
     send_title, body = push_body(result["day"], args.base_url, title=args.title)
-    pushed = send_serverchan(key, send_title, body)
-    if pushed["sent"]:
-        print("推送：Server酱已发送。")
-    else:
-        print(f"推送：未发送（{pushed.get('reason', '未知原因')}）；报告仍已生成。")
+    pushed = send_push(args.channel, send_title, body)
+    print(f"推送：{pushed.get('channel') or '无通道'} "
+          + ("已发送。" if pushed["sent"] else f"未发送（{pushed.get('reason', '未知原因')}）；报告仍已生成。"))
 
 
 def cmd_profile(args, conn):
@@ -880,6 +877,8 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--weekly-only", action="store_true",
                    help="不抓取；把 reports/data 中上一周汇总为周报并移除该周日报")
     p.add_argument("--week-end", help="周报截止日 YYYY-MM-DD（默认上一个周日）")
+    p.add_argument("--channel", choices=["auto", "serverchan", "ntfy", "bark", "telegram", "none"],
+                   default="auto", help="推送通道；auto 按已配置的 Secret/环境变量选择")
     p.set_defaults(fn=cmd_cloud)
 
     p = sub.add_parser("eval", help="盲评与消融：比较通线/个体线，不宣称准确率")

@@ -23,6 +23,7 @@ from zoneinfo import ZoneInfo
 from .daily_page import render_daily_page
 from .db import connect
 from .feeds import add_subscription, collect_feeds, recommend
+from .push import send_push, send_serverchan
 from .weekly_page import render_weekly_page
 
 DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
@@ -208,18 +209,9 @@ def build_weekly(reports_dir, *, end_day: str | None = None) -> dict:
 
 
 def send_serverchan(key: str, title: str, desp: str, *, opener=urllib.request.urlopen) -> dict:
-    if not key:
-        return {"sent": False, "reason": "未配置 SERVERCHAN_KEY"}
-    payload = urllib.parse.urlencode({"title": title[:100], "desp": desp[:30000]}).encode("utf-8")
-    request = urllib.request.Request(
-        f"https://sctapi.ftqq.com/{key}.send", data=payload,
-        headers={"Content-Type": "application/x-www-form-urlencoded"}, method="POST")
-    try:
-        with opener(request, timeout=15) as response:
-            status = getattr(response, "status", 200)
-            return {"sent": 200 <= status < 300, "status": status}
-    except Exception as error:  # noqa: BLE001 - reported, never fatal to report generation
-        return {"sent": False, "reason": type(error).__name__}
+    """Compatibility wrapper; the real implementation lives in push.py."""
+    from .push import send_serverchan as _send
+    return _send(key, title, desp, opener=opener)
 
 
 def push_body(day: str, base_url: str, *, title: str = TITLE) -> tuple[str, str]:
