@@ -8,6 +8,7 @@ This replaces the older "因果簿简报" card layout. It does not invent facts:
 """
 from __future__ import annotations
 
+import re
 from datetime import date, datetime
 from html import escape
 from urllib.parse import urlsplit
@@ -91,6 +92,28 @@ DEFAULT_THEME = {
     "doubt": "这一组是“存目”，不是“因果链”；不要把它当作已证实的联系。",
 }
 
+# Strong terms carry the theme; broad terms alone are not enough. This prevents
+# "平台/内容/公司" from dragging unrelated car or streaming stories into a chain.
+STRONG = {
+    "tech": ("ai", "人工智能", "模型", "芯片", "开源", "编程", "软件", "算法", "机器人",
+             "半导体", "算力", "webassembly", "agent"),
+    "trust": ("伪造", "谣言", "核验", "隐私", "审查", "监管", "误导", "事实核查",
+              "版权", "dmca", "假"),
+    "economy": ("价格", "房价", "就业", "裁员", "招聘", "通胀", "工资", "税",
+                "关税", "利率", "成本"),
+    "health": ("疾病", "疫苗", "疫情", "医院", "睡眠", "医疗", "健康", "病毒",
+               "药物", "医生", "体检"),
+    "world": ("战争", "选举", "制裁", "停火", "外交", "供应链", "灾害", "谈判",
+              "援助", "气候", "能源"),
+}
+
+
+def _match_keyword(text: str, word: str) -> bool:
+    word = word.casefold()
+    if word.isascii():
+        return re.search(r"(?<![a-z0-9])" + re.escape(word) + r"(?![a-z0-9])", text) is not None
+    return word in text
+
 
 def _safe_href(url: str | None) -> str:
     if not isinstance(url, str):
@@ -107,7 +130,13 @@ def _classify(item: dict) -> dict:
     text = ((item.get("title") or "") + " " + (item.get("summary") or "")).casefold()
     best, best_score = None, 0
     for theme in THEMES:
-        score = sum(1 for word in theme["keywords"] if word.casefold() in text)
+        strong = STRONG.get(theme["key"], ())
+        strong_hits = sum(1 for word in strong if _match_keyword(text, word))
+        if not strong_hits:
+            continue
+        weak_hits = sum(1 for word in theme["keywords"]
+                        if word not in strong and _match_keyword(text, word))
+        score = strong_hits * 2 + weak_hits * 0.5
         if score > best_score:
             best, best_score = theme, score
     return best or DEFAULT_THEME
@@ -129,13 +158,18 @@ def _group_items(items: list[dict]) -> list[tuple[dict, list[dict]]]:
     for item in items:
         theme = _classify(item)
         groups.setdefault(theme["key"], (theme, []))[1].append(item)
-    ordered = sorted(groups.values(), key=lambda pair: (-len(pair[1]), pair[0]["label"]))
-    chosen = ordered[:3]
-    if not chosen:
-        return []
-    used = {item["id"] for _, group in chosen for item in group}
+    real = []
+    for theme, group in groups.values():
+        if theme is DEFAULT_THEME:
+            continue
+        feeds = {item.get("feed_name") or item.get("feed_id") for item in group}
+        if len(group) >= 2 and len(feeds) >= 2:
+            real.append((theme, group))
+    real.sort(key=lambda pair: (-len(pair[1]), pair[0]["label"]))
+    chosen = real[:3]
+    used = {item.get("id") for _, group in chosen for item in group}
     leftovers = [item for item in items if item.get("id") not in used]
-    if leftovers and len(chosen) < 3:
+    if len(chosen) < 3 and leftovers:
         chosen.append((DEFAULT_THEME, leftovers))
     return chosen
 
@@ -156,14 +190,21 @@ def render_daily_page(items: list[dict], day: str | None = None, *, title: str =
     date.fromisoformat(day)
     items = list(items or [])
     chains = _group_items(items)
-    labels = "、".join(f"「{theme['label']}」" for theme, _ in chains) or "（今日无候选）"
-    if chains:
+    real = [pair for pair in chains if pair[0] is not DEFAULT_THEME]
+    labels = "、".join(f"「{theme['label']}」" for theme, _ in real) or "（今日无候选）"
+    if real:
         thesis = (f"今天值得看的不是单条新闻，而是{labels}这几个方向的动作；"
                   "它们各自在改变成本、信任或背景条件。")
+        if len(chains) > len(real):
+            thesis += "另有一些只作存目的信号。"
+    elif chains:
+        thesis = "今天没有形成清晰主题；以下只作存目，不强行造链。"
     else:
         thesis = "今天没有足够的候选信号；这份事报只保留位置，不强行造链。"
+    used_count = sum(len(group) for _, group in chains)
     algorithm = (
         f"输入 {len(items)} 条 / {len({item.get('feed_name') or item.get('feed_id') for item in items})} 个源；"
+        f"入链 {used_count} 条、存目 {len(items) - used_count} 条；"
         "按主题聚类取前三；云端通线不读个人档案；条目未核验；强度只是启发式提示。"
     )
     chain_html = []

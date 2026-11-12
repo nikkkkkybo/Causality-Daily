@@ -35,7 +35,7 @@ jobs:
             --config config/feeds.json \
             --reports reports \
             --base-url "$PAGES_BASE_URL" \
-            --days 2 --limit 10 --per-source 2
+            --days 2 --limit 30 --per-source 2
       - name: Commit report archive
         run: |
           git config user.name "github-actions[bot]"

@@ -856,7 +856,7 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--config", default="config/feeds.json", help="订阅配置 JSON")
     p.add_argument("--reports", default="reports", help="静态报告输出目录")
     p.add_argument("--days", type=int, default=2, help="回看天数（1到365）")
-    p.add_argument("--limit", type=int, default=10, help="最多条数（1到100）")
+    p.add_argument("--limit", type=int, default=30, help="最多条数（1到100）")
     p.add_argument("--per-source", type=int, default=2, help="每来源最多条数（1到100）")
     p.add_argument("--no-fetch", action="store_true", help="不联网，只用空库生成（调试用）")
     p.add_argument("--no-push", action="store_true", help="不发送 Server酱")
