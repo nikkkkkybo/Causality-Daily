@@ -72,63 +72,86 @@ h1 { margin:0; font-size:42px; letter-spacing:.06em; }
   <div>
     <div class="kicker">今日事报 · 云端通线</div>
     <h1>今日事报</h1>
-    <div class="date">2026-11-13 · 14 条信号 · 取 2 条链</div>
+    <div class="date">2026-11-13 · 14 条信号 · 取 3 条链</div>
   </div>
   <div class="seal" aria-hidden="true">事报</div>
 </header>
-<p class="thesis">今日信号分散在软件更新、平台故障、事故与人事变动上，缺乏统一主线；可勉强串起的是“技术系统与物理/组织系统的脆弱性同时暴露”，但证据强度有限。</p>
+<p class="thesis">今日信号集中在平台与基础设施的可见性：消费端功能更新让赛事和游戏状态更显眼，而企业端芯片追踪、云服务中断和供应链事故则暴露了系统运行的不透明与脆弱。</p>
 <p class="lede">因与果都摆在下面；中间的链路完整写出。云端不读你的档案，所以这是通线版本；个体线仍在本地。</p>
 
 <section class="chain">
   <div class="chain-head">
     <span class="chain-no">链一</span>
-    <h2 class="chain-title">技术脆弱性多点暴露</h2>
-    <span class="strength">弱 · 二次整理</span>
-  </div>
-  <div class="spread">
-    <div class="cause">
-      <p class="col-head"><b>因</b>　今天出现的信号</p>
-      <div class="signal"><p class="t">Outlook 出现大规模宕机，微软的状态页面本身也无法正常访问，用户难以获知故障进展。</p><p class="src">Hacker News · 2026-11-12T18:20 · <a href="https://gvwire.com/2026/11/12/microsoft-outlook-down-for-thousands-of-users-downdetector-shows/" target="_blank" rel="noopener noreferrer">原文</a></p></div><div class="signal"><p class="t">AMD 发布肾上腺素 26.11.1 可选驱动，修复 RX 7000 及以上显卡在系统空闲时持续异常写入系统盘的问题，此前报道写入速率可达 0.3MB/s 至 5MB/s、单日累计超 400GB。</p><p class="src">IT之家 · 2026-11-12T16:30 · <a href="https://www.ithome.com/1/026/442.htm" target="_blank" rel="noopener noreferrer">原文</a></p></div><div class="signal"><p class="t">塔塔电子位于泰米尔纳德邦为苹果生产 iPhone 零部件的工厂，三名合同工在检查外部纳滤罐时吸入气体死亡；该工厂近月还遭遇勒索软件攻击和水污染担忧。</p><p class="src">Solidot · 2026-11-12T14:28 · <a href="https://www.solidot.org/story?sid=85873" target="_blank" rel="noopener noreferrer">原文</a></p></div>
-    </div>
-    <div class="axis"><span class="dot"></span></div>
-    <div class="effect">
-      <p class="col-head"><b>果</b>　我由此推断</p>
-      <ul><li>用户对大型技术平台的可用性与透明度信任可能进一步受损，但单次宕机不足以证明系统性退化。</li><li>驱动层面的异常写入问题被修复，说明硬件厂商软件缺陷可对用户设备寿命产生实际影响，但影响范围限于特定显卡系列。</li><li>制造环节的安全与环保事故叠加网络攻击，可能加大苹果供应链在印度扩张的合规与声誉压力，但事故原因尚待调查。</li></ul>
-    </div>
-  </div>
-  <div class="reasoning">
-    <p class="label">我的链路</p>
-    <p>三条信号都指向技术系统在运行、维护或生产环节出现非预期故障或事故，但分属不同领域，只能作为脆弱性并发的启发式观察。</p>
-    <p class="doubt">可能看错：Outlook 宕机与 AMD 驱动问题、印度工厂事故之间没有直接因果，强行并列可能夸大共性。 本条基于 3 条信号、未核验。</p>
-  </div>
-</section>
-<section class="chain">
-  <div class="chain-head">
-    <span class="chain-no">链二</span>
-    <h2 class="chain-title">流媒体发现困境</h2>
+    <h2 class="chain-title">平台功能向实时状态延伸</h2>
     <span class="strength">中 · 二次整理</span>
   </div>
   <div class="spread">
     <div class="cause">
       <p class="col-head"><b>因</b>　今天出现的信号</p>
-      <div class="signal"><p class="t">尼尔森 Gracenote 对六国 3000 名成年流媒体用户的调查显示，逾 51% 受访者认为内容和服务极度丰富反而更难找到想看的东西；19.2% 总是或经常不知道看什么而转做别事；27.4% 总是或经常因找不到特定节目而放弃；47% 称寻找时间比一年前更多，平均耗时 12 分钟。</p><p class="src">Solidot · 2026-11-12T14:42 · <a href="https://www.solidot.org/story?sid=85874" target="_blank" rel="noopener noreferrer">原文</a></p></div><div class="signal"><p class="t">Epic 本周免费送出《斗阵骑士 Knightica》，下周将送出《Alien: Isolation》和《Mark of the Deep》。</p><p class="src">IT之家 · 2026-11-12T16:05 · <a href="https://www.ithome.com/1/026/440.htm" target="_blank" rel="noopener noreferrer">原文</a></p></div>
+      <div class="signal"><p class="t">Apple Sports 应用更新至 4.6 版本，新增中国足球超级联赛、俄罗斯和瑞典足球超级联赛的赛事支持，并引入 UFC 赛事内容，可查看实时比分、赛程和击打部位热力图。</p><p class="src">IT之家 · 2026-11-13T03:24 · <a href="https://www.ithome.com/1/026/589.htm" target="_blank" rel="noopener noreferrer">原文</a></p></div><div class="signal"><p class="t">小米澎湃 OS 宣布超级岛支持《王者荣耀》，可实时提醒复活时间，但需将手机管家和游戏空间升级至指定版本，且需澎湃 OS 4。</p><p class="src">IT之家 · 2026-11-13T03:21 · <a href="https://www.ithome.com/1/026/588.htm" target="_blank" rel="noopener noreferrer">原文</a></p></div>
     </div>
     <div class="axis"><span class="dot"></span></div>
     <div class="effect">
       <p class="col-head"><b>果</b>　我由此推断</p>
-      <ul><li>内容供给增加未必提升用户满意度，平台可能面临发现机制与推荐效率的改进压力。</li><li>免费领取游戏作为获客手段，可能部分缓解用户的选择成本，但无法解决跨平台搜索与内容分散的结构性问题。</li></ul>
+      <ul><li>消费电子厂商正把实时赛事和游戏状态作为系统级入口来运营，而非仅停留在应用内。</li><li>此类功能对系统版本和配套应用版本有明确依赖，实际覆盖范围可能受机型与升级节奏限制。</li></ul>
     </div>
   </div>
   <div class="reasoning">
     <p class="label">我的链路</p>
-    <p>两条信号都涉及用户在海量内容中做选择，一条是调查揭示的发现困难，一条是平台用限免降低尝试门槛，可作弱关联。</p>
-    <p class="doubt">可能看错：Epic 限免与尼尔森调查没有直接联系，且调查仅覆盖六国，不能推广为全球趋势。 本条基于 2 条信号、未核验。</p>
+    <p>两条信号都指向手机操作系统或预装应用将外部实时数据（比分、复活倒计时）提升为锁屏或系统级可见信息，属于同一产品逻辑。</p>
+    <p class="doubt">可能看错：两条信号分别来自苹果和小米，生态封闭且用户群不同，未必构成行业统一趋势。 本条基于 2 条信号、未核验。</p>
+  </div>
+</section>
+<section class="chain">
+  <div class="chain-head">
+    <span class="chain-no">链二</span>
+    <h2 class="chain-title">芯片追踪可行性与公开表态分歧</h2>
+    <span class="strength">中 · 二次整理</span>
+  </div>
+  <div class="spread">
+    <div class="cause">
+      <p class="col-head"><b>因</b>　今天出现的信号</p>
+      <div class="signal"><p class="t">英伟达代表向伊利诺伊州众议员 Bill Foster 表示，从技术上讲可以实施《芯片安全法案》所要求的反走私措施；而行业组织公开质疑其可行性。</p><p class="src">MIT Technology Review · 2026-11-12T20:16 · <a href="https://www.technologyreview.com/2026/11/12/1148483/nvidia-chip-tracking/" target="_blank" rel="noopener noreferrer">原文</a></p></div><div class="signal"><p class="t">Hacker News 上出现英伟达员工请愿要求黄仁勋回归的帖子，获得较多关注。</p><p class="src">Hacker News · 2026-11-13T02:16 · <a href="https://www.wired.com/story/nvidia-employees-petition-for-jensen-huangs-return/" target="_blank" rel="noopener noreferrer">原文</a></p></div><div class="signal"><p class="t">少数派早报标题提及英伟达 CEO 黄仁勋宣布辞职。</p><p class="src">少数派 · 2026-11-13T00:48 · <a href="https://sspai.com/post/118966" target="_blank" rel="noopener noreferrer">原文</a></p></div>
+    </div>
+    <div class="axis"><span class="dot"></span></div>
+    <div class="effect">
+      <p class="col-head"><b>果</b>　我由此推断</p>
+      <ul><li>英伟达在芯片追踪问题上存在私下确认可行与行业公开质疑之间的张力，可能影响相关立法推进的舆论环境。</li><li>高管变动传闻与员工请愿同时出现，公司治理稳定性可能成为市场关注点，但具体走向无法从现有信号判断。</li></ul>
+    </div>
+  </div>
+  <div class="reasoning">
+    <p class="label">我的链路</p>
+    <p>三条信号均围绕英伟达：一条涉及芯片追踪的技术可行性表态，两条涉及高管去留传闻，可能共同影响外界对公司战略连续性的判断。</p>
+    <p class="doubt">可能看错：高管辞职与员工请愿的信息来自早报标题和论坛帖子，未经公司正式确认，事实基础较弱。 本条基于 3 条信号、未核验。</p>
+  </div>
+</section>
+<section class="chain">
+  <div class="chain-head">
+    <span class="chain-no">链三</span>
+    <h2 class="chain-title">云服务与供应链的脆弱性暴露</h2>
+    <span class="strength">弱 · 二次整理</span>
+  </div>
+  <div class="spread">
+    <div class="cause">
+      <p class="col-head"><b>因</b>　今天出现的信号</p>
+      <div class="signal"><p class="t">微软平台包括 Outlook 出现大范围中断，许多用户无法正常使用邮箱账户。</p><p class="src">NPR · 2026-11-13T01:26 · <a href="https://www.npr.org/2026/11/12/nx-s1-6039343/is-outlook-down-widespread-outage-hits-microsoft-email-and-other-apps" target="_blank" rel="noopener noreferrer">原文</a></p></div><div class="signal"><p class="t">塔塔电子位于印度泰米尔纳德邦的工厂发生三名合同工死亡事故，工人在检查外部纳滤罐时吸入气体；该工厂为苹果 iPhone 生产零部件。</p><p class="src">Solidot · 2026-11-12T14:28 · <a href="https://www.solidot.org/story?sid=85873" target="_blank" rel="noopener noreferrer">原文</a></p></div>
+    </div>
+    <div class="axis"><span class="dot"></span></div>
+    <div class="effect">
+      <p class="col-head"><b>果</b>　我由此推断</p>
+      <ul><li>大型云服务和关键制造节点都可能因单点故障或安全事故影响终端用户和品牌供应链。</li><li>苹果将生产扩展至中国以外地区的过程中，印度工厂的安全与环境管理问题可能持续受到审视。</li></ul>
+    </div>
+  </div>
+  <div class="reasoning">
+    <p class="label">我的链路</p>
+    <p>两条信号分别代表数字基础设施（微软邮箱中断）和物理供应链（印度苹果代工厂事故）的意外中断，共同说明关键节点的脆弱性，但二者之间没有直接因果联系。</p>
+    <p class="doubt">可能看错：把云服务中断和工厂事故放在同一链条下，可能只是主题上的松散类比，而非真正的共同信号。 本条基于 2 条信号、未核验。</p>
   </div>
 </section>
 
 <section class="algorithm">
   <h2>今日算法链</h2>
-  <p>输入 14 条 / 7 个源；DeepSeek 二次整理为 2 条链、引用 5 条信号；本页由 DeepSeek 二次翻译/整理，不是原文摘抄；云端通线不读个人档案；条目未核验；强度只是启发式提示。</p>
+  <p>输入 14 条 / 7 个源；DeepSeek 二次整理为 3 条链、引用 7 条信号；本页由 DeepSeek 二次翻译/整理，不是原文摘抄；云端通线不读个人档案；条目未核验；强度只是启发式提示。</p>
   <p class="muted">不按点击历史排序；不自动外发除 Server酱 以外的内容；所有条目与推断均未核验。</p>
 </section>
 <footer class="foot">

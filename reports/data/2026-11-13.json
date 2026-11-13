@@ -2,58 +2,94 @@
  "day": "2026-11-13",
  "items": [
   {
-   "id": 121,
-   "title": "Rust 1.100.0",
-   "summary": "Article URL: https://github.com/rust-lang/rust/releases/tag/1.100.0 Comments URL: https://news.ycombinator.com/item?id=50471793 Points: 50 # Comments: 3",
-   "feed_name": "Hacker News",
-   "published_at": "2026-11-12T18:24:06+00:00",
-   "fetched_at": "2026-11-12T18:43:02+00:00",
-   "url": "https://github.com/rust-lang/rust/releases/tag/1.100.0"
-  },
-  {
-   "id": 122,
-   "title": "Outlook is down, and so is Microsoft's status page",
-   "summary": "Article URL: https://gvwire.com/2026/11/12/microsoft-outlook-down-for-thousands-of-users-downdetector-shows/ Comments URL: https://news.ycombinator.com/item?id=50471731 Points: 39 # Comments: 8",
-   "feed_name": "Hacker News",
-   "published_at": "2026-11-12T18:20:48+00:00",
-   "fetched_at": "2026-11-12T18:43:02+00:00",
-   "url": "https://gvwire.com/2026/11/12/microsoft-outlook-down-for-thousands-of-users-downdetector-shows/"
-  },
-  {
-   "id": 141,
-   "title": "Casualties continue to rise after Brooklyn building collapses",
-   "summary": "First responders continue to search for survivors after a building in Brooklyn collapsed, leaving at least eight dead and dozens injured.",
-   "feed_name": "NPR",
-   "published_at": "2026-11-12T18:15:00+00:00",
-   "fetched_at": "2026-11-12T18:43:02+00:00",
-   "url": "https://www.npr.org/sections/the-picture-show/2026/11/12/g-s1-153229/brooklyn-building-collapse-photos"
-  },
-  {
-   "id": 142,
-   "title": "Democrats want to stop Trump's arch, golf course and more. What are their options?",
-   "summary": "As Trump's arch and other projects make their way through the courts, many critics are looking to Congress to stop them. Democrats have a few tools, including funding and oversight.",
-   "feed_name": "NPR",
-   "published_at": "2026-11-12T17:13:54+00:00",
-   "fetched_at": "2026-11-12T18:43:02+00:00",
-   "url": "https://www.npr.org/2026/11/12/nx-s1-6034539/democrats-congress-trump-arch-ballroom-funding-oversight"
-  },
-  {
    "id": 11,
-   "title": "AMD 发布肾上腺素 26.11.1 可选驱动：修复 SSD 异常写入问题，公布多项已知游戏兼容问题",
-   "summary": "IT之家 11 月 13 日消息，AMD Software: Adrenalin Edition 26.11.1 可选版（Optional）显卡驱动现已发布，本次更新重点修复了此前广受关注的系统盘异常写入问题，同时公布了多项游戏与平台兼容方面的已知问题及临时解决方案。 问题修复 修复 Radeon RX 7000 系列及以上显卡在系统空闲时， 持续对系统盘进行异常写入 的问题；该问题此前被报道写入速率可达 0.3MB/s 至 5MB/s，单日累计写入量最高超 400GB，可能影响 SSD 寿命。 修复移动或调整应用窗口大小时，触发系统盘异常写入的问题。 已知问题与临时方案 在 Radeon RX 7000 系列显卡上游玩《刺客信条：黑旗重制版》时，可能间歇性出现应用崩溃或驱动超时； 在 Radeon RX 5000 系列显卡上游玩《战争雷霆》时可能间歇性出现驱动超时，遇到该问题的用户建议回退至 AMD Software: Adrenalin Edition 26.9.1； 部分 Radeon RX 9000 系列显卡在副显示器播放视频时，若同时开启 AMD FSR 超分辨率、Radeo",
+   "title": "Apple Sports 应用 4.6 更新：支持中超联赛，实时比分与赛程可查",
+   "summary": "IT之家 11 月 13 日消息，苹果 Apple Sports 应用于 11 月 12 日更新至 4.6 版本，正式加入中国足球超级联赛的赛事支持，用户现可在该应用中关注中超联赛的实时比分与赛程。 此次更新同时引入 UFC 赛事内容。据更新日志，Apple Sports 为男子和女子 UFC 赛事提供每场比赛的完整卡片，可查看多轮角逐的动态更新以及击打部位热力图。足球联赛阵容继续扩充，除中超外，本次新增的还有俄罗斯足球超级联赛和瑞典足球超级联赛。 IT之家注：实时活动（Live Activities）是 iOS 的一项锁屏功能，可在不打开应用的情况下持续显示比赛比分等动态信息。 Apple Sports 本身定位为实时比分与统计数据工具。用户可关注球队、联赛、赛区、对阵表和锦标赛，主页视图会按关注内容个性化呈现，也可将小组件添加到主屏幕以快速查看比分和临近赛程。 该应用与苹果其他服务存在联动：在 Apple TV 上观看直播赛事时可同步体育信息，重大报道则可通过 Apple 新闻跟进。应用免费，适用于运行 iOS 18 或更高版本的 iPhone 机型，功能需通过 Wi-Fi 或蜂窝",
    "feed_name": "IT之家",
-   "published_at": "2026-11-12T16:30:42+00:00",
-   "fetched_at": "2026-11-12T18:42:59+00:00",
-   "url": "https://www.ithome.com/1/026/442.htm"
+   "published_at": "2026-11-13T03:24:49+00:00",
+   "fetched_at": "2026-11-13T03:32:39+00:00",
+   "url": "https://www.ithome.com/1/026/589.htm"
   },
   {
    "id": 12,
-   "title": "Epic 喜加一：《斗阵骑士 Knightica》游戏免费领取",
-   "summary": "IT之家 11 月 13 日消息，Epic 本周送出的游戏是《斗阵骑士 Knightica》，下周送出的游戏是《Alien: Isolation》，《Mark of the Deep》。 领取链接： 《斗阵骑士 Knightica》 IT之家附《斗阵骑士 Knightica》游戏简介： 《Knightica》是一款回合制类 Roguelike 自走棋游戏，在这里，各类身负绝技的单位将为你所用，集结成团，听你号令。征招、部署部队，带领大家为解放王国而战。尽情探索它们的协同效果、收集恶魔精魂、迎战危险怪物，一步步领导你的军队走向胜利！ 组建军队，运筹帷幄 单位的队形各异，大小不同，禀赋各有千秋，每一支都蓄势待发，等候你的征召！至于怎么部署位置，调整朝向，充分发挥各自的作用，全部由你决定！你是想要成为不死军团的领袖，还是选择将身家性命托付给魔法师公会呢？ 你的选择，至关重要 从指挥官、部队到物品，再到军队的前进道路，你将面临重重选择。前面那个古怪的商店是否值得一探？你觉得自己是否已经准备妥当，能与精英恶魔正面对决？每一局都是一次全新的冒险，让你可以不断尝试出精彩的组合，绝对不会无聊。 不断尝",
+   "title": "小米超级岛官宣支持《王者荣耀》手游，复活时间实时提醒",
+   "summary": "IT之家 11 月 13 日消息，小米澎湃 OS 今日宣布，小米超级岛现已支持《王者荣耀》，复活时间实时提醒。 官方海报显示，为保障使用体验，用户需要将手机管家升级至 13.8.0 版本及以上，游戏空间升级至 9.52.55 版本及以上； 使用王者荣耀上岛功能需升级至小米澎湃 OS 4 。不同机型、版本对上述功能的支持情况及升级情况请以实际为准。 IT之家注意到，小米在去年 8 月发布的 澎湃 OS 3 中推出了“超级岛”功能 ，接入实时导航、航班进度查询、查看包裹状态、显示取餐码、查看打车信息等多项功能。",
    "feed_name": "IT之家",
-   "published_at": "2026-11-12T16:05:20+00:00",
-   "fetched_at": "2026-11-12T18:42:59+00:00",
-   "url": "https://www.ithome.com/1/026/440.htm"
+   "published_at": "2026-11-13T03:21:33+00:00",
+   "fetched_at": "2026-11-13T03:32:39+00:00",
+   "url": "https://www.ithome.com/1/026/588.htm"
+  },
+  {
+   "id": 121,
+   "title": "Africa's solar revolution is vast and speedy",
+   "summary": "Article URL: https://www.economist.com/middle-east-and-africa/2026/11/12/africas-solar-revolution-is-vast-and-speedy Comments URL: https://news.ycombinator.com/item?id=50477331 Points: 61 # Comments: 7",
+   "feed_name": "Hacker News",
+   "published_at": "2026-11-13T02:28:15+00:00",
+   "fetched_at": "2026-11-13T03:32:46+00:00",
+   "url": "https://www.economist.com/middle-east-and-africa/2026/11/12/africas-solar-revolution-is-vast-and-speedy"
+  },
+  {
+   "id": 122,
+   "title": "Nvidia employees petition to bring back Jensen Huang",
+   "summary": "Article URL: https://www.wired.com/story/nvidia-employees-petition-for-jensen-huangs-return/ Comments URL: https://news.ycombinator.com/item?id=50477231 Points: 110 # Comments: 72",
+   "feed_name": "Hacker News",
+   "published_at": "2026-11-13T02:16:24+00:00",
+   "fetched_at": "2026-11-13T03:32:46+00:00",
+   "url": "https://www.wired.com/story/nvidia-employees-petition-for-jensen-huangs-return/"
+  },
+  {
+   "id": 141,
+   "title": "Is Outlook down? Widespread outage hits Microsoft email and other apps",
+   "summary": "A widespread outage has hit Microsoft platforms including Outlook, with many users encountering trouble using their email accounts.",
+   "feed_name": "NPR",
+   "published_at": "2026-11-13T01:26:24+00:00",
+   "fetched_at": "2026-11-13T03:32:46+00:00",
+   "url": "https://www.npr.org/2026/11/12/nx-s1-6039343/is-outlook-down-widespread-outage-hits-microsoft-email-and-other-apps"
+  },
+  {
+   "id": 1,
+   "title": "派早报：英伟达 CEO 黄仁勋宣布辞职等",
+   "summary": "2026 年金摇杆奖获奖名单公布，Apex Compute 推出跨平台 AI 帧生成技术 ANR 等。 查看全文",
+   "feed_name": "少数派",
+   "published_at": "2026-11-13T00:48:17+00:00",
+   "fetched_at": "2026-11-13T03:32:39+00:00",
+   "url": "https://sspai.com/post/118966"
+  },
+  {
+   "id": 91,
+   "title": "早报｜黄仁勋仍为英伟达最大个人股东/豆包工作接入多款第三方模型/微信「看一看」测试短剧入口",
+   "summary": "· 接近腾讯人士称「裁员 50%」传闻不实，管理层提出两条 AI 转型路线 · 张雪：今年已经挣到了「一个小目标」 · Claude 10 月网站访问量增近 24%，增幅超过 ChatGPT 和 Gemini #欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。",
+   "feed_name": "爱范儿",
+   "published_at": "2026-11-13T00:00:46+00:00",
+   "fetched_at": "2026-11-13T03:32:41+00:00",
+   "url": "https://www.ifanr.com/1689292?utm_source=rss&utm_medium=rss&utm_campaign="
+  },
+  {
+   "id": 142,
+   "title": "Cindy Holscher wins in Kansas, holding governor's office for Democrats",
+   "summary": "Holscher, a state senator, overcame a more well-known Republican who had Trump's endorsement in the state that has gone to the GOP in most other statewide races.",
+   "feed_name": "NPR",
+   "published_at": "2026-11-12T23:36:19+00:00",
+   "fetched_at": "2026-11-13T03:32:46+00:00",
+   "url": "https://www.npr.org/2026/11/12/g-s1-151239/kansas-governor-midterms-holscher-masterson"
+  },
+  {
+   "id": 92,
+   "title": "刚刚，Gemini 4 新模型叒来了，终于人人可用",
+   "summary": "更快更便宜还更聪明 #欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。",
+   "feed_name": "爱范儿",
+   "published_at": "2026-11-12T23:11:11+00:00",
+   "fetched_at": "2026-11-13T03:32:41+00:00",
+   "url": "https://www.ifanr.com/1689267?utm_source=rss&utm_medium=rss&utm_campaign="
+  },
+  {
+   "id": 111,
+   "title": "Nvidia privately confirmed it could track chips to fight smuggling, even as industry publicly questioned feasibility",
+   "summary": "Representatives from Nvidia told Illinois representative Bill Foster that it would be technically possible to implement the anti-smuggling measures called for in the Chip Security Act, Foster told MIT Technology Review in an interview on Thursday, even while an industry group claimed they were “potentially infeasible.” Foster, a Democrat who serves on the Committee on…",
+   "feed_name": "MIT Technology Review",
+   "published_at": "2026-11-12T20:16:24+00:00",
+   "fetched_at": "2026-11-13T03:32:41+00:00",
+   "url": "https://www.technologyreview.com/2026/11/12/1148483/nvidia-chip-tracking/"
   },
   {
    "id": 71,
@@ -61,17 +97,8 @@
    "summary": "根据尼尔森的 Gracenote 对美国、巴西、法国、德国、墨西哥和英国的 3000 名 18 岁及以上的流媒体用户进行的调查：虽然流媒体平台内容无比丰富，但用户经常找不到想要看的内容。逾 51% 的受访者表示：内容和流媒体服务的极度丰富，反而让人更难找到想看的东西。19.2% 的受访者表示，他们总是或经常遇到这种情况：不知道该看什么，也找不到想看的内容，最终只能去做别的事。27.4% 的受访者表示，他们总是或经常在试图观看特定节目时却因无法在流媒体平台上找到它，最终只好放弃。47% 的受访者表示，他们花在寻找观看内容上的时间比一年前更多了，平均耗时 12 分钟。72.3% 的受访者表示，他们希望拥有一份整合所有已订阅流媒体平台中可用节目的完整指南。",
    "feed_name": "Solidot",
    "published_at": "2026-11-12T14:42:28+00:00",
-   "fetched_at": "2026-11-12T18:43:00+00:00",
+   "fetched_at": "2026-11-13T03:32:40+00:00",
    "url": "https://www.solidot.org/story?sid=85874"
-  },
-  {
-   "id": 91,
-   "title": "突发！黄仁勋辞任 CEO，英伟达迎来历史性换帅",
-   "summary": "黑皮衣传奇谢幕 #欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。",
-   "feed_name": "爱范儿",
-   "published_at": "2026-11-12T14:36:47+00:00",
-   "fetched_at": "2026-11-12T18:43:02+00:00",
-   "url": "https://www.ifanr.com/1689249?utm_source=rss&utm_medium=rss&utm_campaign="
   },
   {
    "id": 72,
@@ -79,53 +106,26 @@
    "summary": "塔塔电子位于泰米尔纳德邦、为苹果公司 iPhone 生产零部件的工厂发生三名处理废水处理设施的合同工死亡事故。事故发生于周一晚间，地点位于 Krishnagiri 的 Hosur。工人在检查一个外部纳滤罐时吸入了气体导致了悲剧的发生。三名工人被送往一家私立医院，医生在他们抵达时确认其已经死亡。塔塔电子承担了印度约 40% 的 iPhone 组装工作，其余由富士康负责。近几个月塔塔电子的 iPhone 业务面临诸多挑战，包括遭遇勒索软件攻击，以及引发了水污染的担忧。随着苹果将生产扩大到中国之外地区，印度已成为一个关键的制造枢纽，目前全球约四分之一的 iPhone 产自印度。",
    "feed_name": "Solidot",
    "published_at": "2026-11-12T14:28:40+00:00",
-   "fetched_at": "2026-11-12T18:43:00+00:00",
+   "fetched_at": "2026-11-13T03:32:40+00:00",
    "url": "https://www.solidot.org/story?sid=85873"
   },
   {
-   "id": 92,
-   "title": "26.99 万元起！腾势 N8 上市，内饰最美的比亚迪来了",
-   "summary": "这还是熟悉的比亚迪吗？ #欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。",
-   "feed_name": "爱范儿",
-   "published_at": "2026-11-12T13:39:12+00:00",
-   "fetched_at": "2026-11-12T18:43:02+00:00",
-   "url": "https://www.ifanr.com/1689232?utm_source=rss&utm_medium=rss&utm_campaign="
-  },
-  {
-   "id": 111,
+   "id": 112,
    "title": "The Download: COP31’s climate challenge and the quest for immortality",
    "summary": "This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. What to know about this year’s UN climate talks Thousands of delegates, lobbyists, and journalists have gathered in Antalya, Turkey, for COP31, the annual UN climate talks. But this year’s negotiations…",
    "feed_name": "MIT Technology Review",
    "published_at": "2026-11-12T13:10:00+00:00",
-   "fetched_at": "2026-11-12T18:43:02+00:00",
+   "fetched_at": "2026-11-13T03:32:41+00:00",
    "url": "https://www.technologyreview.com/2026/11/12/1148444/the-download-cop31-climate-talks-cognitive-immortality/"
   },
   {
-   "id": 1,
+   "id": 2,
    "title": "城市漫步指南｜夏末大阪，「青黄不接」的时节刚刚好",
    "summary": "在炎热但逐渐清爽的夏末，我和女朋友去了一趟日本。我尝试用眼用心记录下所见所感，转写成文字。当我重新阅读这些词句，闭上眼睛，仿佛又回到了关西。我希望能把这份心情与光景，也分享给你。4:3/3:4比例的图 ... 查看全文",
    "feed_name": "少数派",
    "published_at": "2026-11-12T08:37:25+00:00",
-   "fetched_at": "2026-11-12T18:42:58+00:00",
+   "fetched_at": "2026-11-13T03:32:39+00:00",
    "url": "https://sspai.com/post/118366"
-  },
-  {
-   "id": 2,
-   "title": "Mac 选购指南 2026 冬季版",
-   "summary": "内存、存储涨价但又得换 Mac？记得收下这份选购指南。 查看全文",
-   "feed_name": "少数派",
-   "published_at": "2026-11-12T06:42:04+00:00",
-   "fetched_at": "2026-11-12T18:42:58+00:00",
-   "url": "https://sspai.com/post/85735"
-  },
-  {
-   "id": 112,
-   "title": "What to know about this year’s UN climate talks",
-   "summary": "It’s that time of year again: Thousands of delegates, lobbyists, and journalists are gathered for the annual UN climate talks, taking place this time in Antalya, Turkey. COP31 officially kicked off on November 8, marking the beginning of negotiations on one of the biggest stages of the climate world. Turkey and Australia are cohosting this…",
-   "feed_name": "MIT Technology Review",
-   "published_at": "2026-11-11T17:00:00+00:00",
-   "fetched_at": "2026-11-12T18:43:02+00:00",
-   "url": "https://www.technologyreview.com/2026/11/11/1148308/un-climate-talks/"
   }
  ]
 }
