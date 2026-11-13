@@ -238,7 +238,8 @@ def _source_list(items: list[dict]) -> str:
 def render_daily_page(items: list[dict], day: str | None = None, *, title: str = "今日事报",
                       period_start: str | None = None, period_end: str | None = None,
                       weekly: bool = False, synthesis: dict | None = None,
-                      bearing_cards: list[dict] | None = None) -> str:
+                      bearing_cards: list[dict] | None = None,
+                      personal: bool = False) -> str:
     day = day or period_end or datetime.now(LOCAL_TZ).date().isoformat()
     date.fromisoformat(day)
     if weekly:
@@ -261,18 +262,24 @@ def render_daily_page(items: list[dict], day: str | None = None, *, title: str =
     else:
         thesis = f"{scope}没有足够的候选信号；只保留位置，不强行造链。"
     used_count = sum(len(group) for _, group in chains)
+    scope_note = "本地个体线不读保险箱" if personal else "云端通线不读个人档案"
     algorithm = (
         (f"汇总 {len(items)} 条 / " if weekly else f"输入 {len(items)} 条 / ")
         + f"{len({item.get('feed_name') or item.get('feed_id') for item in items})} 个源；"
         f"入链 {used_count} 条、存目 {len(items) - used_count} 条；"
-        "按主题聚类取前三；云端通线不读个人档案；条目未核验；强度只是启发式提示。"
+        f"按主题聚类取前三；{scope_note}；条目未核验；强度只是启发式提示。"
     )
     period_line = f"{period_start} ~ {period_end}" if weekly else day
-    kicker = f"{title} · 周报" if weekly else f"{title} · 云端通线"
+    if weekly:
+        kicker = f"{title} · 周报"
+        lede = "本周由日报汇总；因与果摆在下面，链路完整写出。周报不读你的档案，这是通线版本。"
+    elif personal:
+        kicker = f"{title} · 个体线"
+        lede = "这页在本地生成：读档案特征，不读保险箱；新闻只是因源之一，承因在前，因果链在后。"
+    else:
+        kicker = f"{title} · 云端通线"
+        lede = ("因与果都摆在下面；中间的链路完整写出。云端不读你的档案，所以这是通线版本；个体线仍在本地。")
     section_title = "本周算法链" if weekly else "今日算法链"
-    lede = ("本周由日报汇总；因与果摆在下面，链路完整写出。云端不读你的档案，这是通线版本。"
-            if weekly else
-            "因与果都摆在下面；中间的链路完整写出。云端不读你的档案，所以这是通线版本；个体线仍在本地。")
     chain_html = []
     bearing_html = render_bearing_section(bearing_cards) if bearing_cards else ""
     if synthesis:
@@ -297,7 +304,7 @@ def render_daily_page(items: list[dict], day: str | None = None, *, title: str =
             (f"汇总 {len(items)} 条 / " if weekly else f"输入 {len(items)} 条 / ")
             + f"{len({item.get('feed_name') or item.get('feed_id') for item in items})} 个源；"
             f"DeepSeek 二次整理为 {len(chain_html)} 条链、引用 {used_count} 条信号；"
-            "本页由 DeepSeek 二次翻译/整理，不是原文摘抄；云端通线不读个人档案；条目未核验；"
+            f"本页由 DeepSeek 二次翻译/整理，不是原文摘抄；{scope_note}；条目未核验；"
             "强度只是启发式提示。"
         )
     else:
@@ -408,7 +415,7 @@ h1 {{ margin:0; font-size:42px; letter-spacing:.06em; }}
 </section>
 <footer class="foot">
   <span>推断，不是结论。核验、结算、预测在本地账簿另做。</span>
-  <span>{_text(period_line)} · 通线</span>
+  <span>{_text(period_line)} · {_text('个体线' if personal else '通线')}</span>
 </footer>
 </div></body></html>
 """

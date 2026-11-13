@@ -73,6 +73,13 @@ def test_daily_page_can_include_bearing_cards():
     assert "承因 1" in text
 
 
+def test_daily_page_personal_label():
+    text = render_daily_page(items(), "2026-11-13", personal=True)
+    assert "个体线" in text
+    assert "云端通线" not in text
+    assert "本地个体线不读保险箱" in text
+
+
 def test_daily_page_empty_is_honest():
     text = render_daily_page([], "2026-11-13")
     assert "今日事报" in text

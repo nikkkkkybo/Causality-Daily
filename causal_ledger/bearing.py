@@ -335,15 +335,8 @@ def build_bearing(features: dict, items: list[dict], day: str,
             continue
         seen.add(key)
         deduped.append(signal)
-    # one per concrete domain; universal signals ("*") stay separate by family
-    by_domain = {}
-    universal = []
-    for signal in deduped:
-        if signal.domain == "*":
-            universal.append(signal)
-        elif signal.domain not in by_domain:
-            by_domain[signal.domain] = signal
-    candidates = universal + list(by_domain.values())
+    # deduped already keeps one (domain, family); do not collapse across families
+    candidates = deduped
     # diversity: one time card, one personal card, one world/lens card if present
     groups = {
         "time": [s for s in candidates if s.family == "time"],
