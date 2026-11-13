@@ -90,6 +90,16 @@ h1 { margin:0; font-size:42px; letter-spacing:.06em; }
 <section class="bearing">
   <div class="bearing-head">
     <span class="no">承因 1</span>
+    <span class="tag">通用 · 缓承 · 强度 0.55</span>
+  </div>
+  <p class="carrier">时间、现金流</p>
+  <p class="path">通道：约束 → 行动边界</p>
+  <p class="action">先绕开硬约束：时间、现金流；今天不硬碰。</p>
+  <p class="meta">时窗：today　·　可能错：约束是否仍有效，需要你本人确认。</p>
+</section>
+<section class="bearing">
+  <div class="bearing-head">
+    <span class="no">承因 2</span>
     <span class="tag">通用 · 观察 · 强度 0.45</span>
   </div>
   <p class="carrier">收束日</p>
@@ -99,7 +109,17 @@ h1 { margin:0; font-size:42px; letter-spacing:.06em; }
 </section>
 <section class="bearing">
   <div class="bearing-head">
-    <span class="no">承因 2</span>
+    <span class="no">承因 3</span>
+    <span class="tag">内在 · 缓承 · 强度 0.90</span>
+  </div>
+  <p class="carrier">高负荷</p>
+  <p class="path">通道：负荷 → 决策阈值</p>
+  <p class="action">降低不可逆承诺，先做可逆的小步。</p>
+  <p class="meta">时窗：today　·　可能错：负荷来自自评，可能低估或高估。</p>
+</section>
+<section class="bearing">
+  <div class="bearing-head">
+    <span class="no">承因 4</span>
     <span class="tag">事业 · 宜承 · 强度 0.90</span>
   </div>
   <p class="carrier">事业权重 0.90</p>
@@ -109,7 +129,7 @@ h1 { margin:0; font-size:42px; letter-spacing:.06em; }
 </section>
 <section class="bearing">
   <div class="bearing-head">
-    <span class="no">承因 3</span>
+    <span class="no">承因 5</span>
     <span class="tag">事业 · 观察 · 强度 1.00</span>
   </div>
   <p class="carrier">派早报：英伟达 CEO 黄仁勋宣布辞职等</p>
@@ -119,7 +139,7 @@ h1 { margin:0; font-size:42px; letter-spacing:.06em; }
 </section>
 <section class="bearing">
   <div class="bearing-head">
-    <span class="no">承因 4</span>
+    <span class="no">承因 6</span>
     <span class="tag">通用 · 宜承 · 强度 0.45</span>
   </div>
   <p class="carrier">建除十二神·定（定案/承诺）</p>
@@ -129,17 +149,7 @@ h1 { margin:0; font-size:42px; letter-spacing:.06em; }
 </section>
 <section class="bearing">
   <div class="bearing-head">
-    <span class="no">承因 5</span>
-    <span class="tag">学习 · 宜承 · 强度 0.70</span>
-  </div>
-  <p class="carrier">学习权重 0.70</p>
-  <p class="path">通道：长期权重 → 学习</p>
-  <p class="action">给学习留一个明确的时段，别被杂事挤掉。</p>
-  <p class="meta">时窗：today　·　可能错：权重来自档案，不是你今天的实际状态。</p>
-</section>
-<section class="bearing">
-  <div class="bearing-head">
-    <span class="no">承因 6</span>
+    <span class="no">承因 7</span>
     <span class="tag">内在 · 观察 · 强度 0.45</span>
   </div>
   <p class="carrier">今日辛日 · 我克</p>
@@ -202,7 +212,7 @@ h1 { margin:0; font-size:42px; letter-spacing:.06em; }
 </section>
 <footer class="foot">
   <span>推断，不是结论。核验、结算、预测在本地账簿另做。</span>
-  <span>2026-11-13 · 通线</span>
+  <span>2026-11-13 · 个体线</span>
 </footer>
 
 <section style="max-width:1040px;margin:36px auto 0;padding:22px 24px;border:1px solid #d8d0c0;background:#fffdf8;font:13px/1.8 sans-serif;color:#3a352d;">
@@ -217,8 +227,11 @@ h1 { margin:0; font-size:42px; letter-spacing:.06em; }
         不是完整命盘。</li>
     <li><b>信号 → 信息因</b>：条目文本按领域关键词归类；相关不等于因果，
         先给“核对”而不是结论。</li>
-    <li><b>选择</b>：按“时间 / 个人 / 世界 / 透镜”各取一张，最多 4 张；
-        样板为展示两种传统透镜，放到 5+1 张。</li>
+    <li><b>选择</b>：先风险/约束，再时间窗、个人支撑、位置/主线、世界信息、传统透镜；
+        每类取一张，最多 4 张；样板为展示两种传统透镜，放到 7 张。</li>
+    <li><b>因源地基</b>：已接时间/档案/信息/备注/建除/日主；
+        六爻、六曜、占星、Panchang 是插件位；紫微/完整四柱是明确缺口，
+        不用假数据填。查看：<code>bearing --coverage</code>。</li>
     <li><b>因果链</b>：样板链为手写示意；生产版由 DeepSeek 合成，
         或退回确定性聚类。</li>
     <li><b>渲染</b>：同一套 `daily_page`，承因卡在链之前，世界信号在后。</li>

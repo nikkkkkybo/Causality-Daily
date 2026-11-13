@@ -44,6 +44,12 @@ def test_build_bearing_caps_and_dedupes():
     assert any(card["family"] in ("position", "structure", "psych") for card in cards)
 
 
+def test_notes_become_action_card():
+    cards = bearing.build_bearing(FEATURES, [], "2026-11-13",
+                                  notes=[{"day": "2026-11-12", "text": "想多留意思路"}])
+    assert any(card["family"] == "action" for card in cards)
+
+
 def test_day_pillar_and_traditional_lens():
     assert bearing.day_pillar("2000-01-01")[:2] == ("戊", "午")
     signals = bearing.traditional_signals("2026-11-13", "1990-01-01")

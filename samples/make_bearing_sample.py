@@ -70,11 +70,10 @@ SYNTHESIS = {
 }
 
 
-def add_day_master(cards: list[dict]) -> None:
-    if any("命理" in card["source"] for card in cards):
-        return
+def add_traditional_lenses(cards: list[dict]) -> None:
+    existing = {card["source"] for card in cards}
     for signal in traditional_signals(DAY, "1990-01-01"):
-        if "命理" not in signal.source:
+        if signal.family != "lens" or signal.source in existing:
             continue
         cards.append({
             "family": signal.family, "source": signal.source, "domain": signal.domain,
@@ -91,7 +90,7 @@ def add_day_master(cards: list[dict]) -> None:
 def main() -> None:
     items = json.loads((ROOT / "reports/data/2026-11-13.json").read_text(encoding="utf-8"))["items"]
     cards = build_bearing(FEATURES, items, DAY, birth="1990-01-01", max_cards=5)
-    add_day_master(cards)
+    add_traditional_lenses(cards)
     html = render_daily_page(items, DAY, title="今日事报 · 样板",
                              synthesis=SYNTHESIS, bearing_cards=cards, personal=True)
 
@@ -116,8 +115,11 @@ def main() -> None:
         不是完整命盘。</li>
     <li><b>信号 → 信息因</b>：条目文本按领域关键词归类；相关不等于因果，
         先给“核对”而不是结论。</li>
-    <li><b>选择</b>：按“时间 / 个人 / 世界 / 透镜”各取一张，最多 4 张；
-        样板为展示两种传统透镜，放到 5+1 张。</li>
+    <li><b>选择</b>：先风险/约束，再时间窗、个人支撑、位置/主线、世界信息、传统透镜；
+        每类取一张，最多 4 张；样板为展示两种传统透镜，放到 7 张。</li>
+    <li><b>因源地基</b>：已接时间/档案/信息/备注/建除/日主；
+        六爻、六曜、占星、Panchang 是插件位；紫微/完整四柱是明确缺口，
+        不用假数据填。查看：<code>bearing --coverage</code>。</li>
     <li><b>因果链</b>：样板链为手写示意；生产版由 DeepSeek 合成，
         或退回确定性聚类。</li>
     <li><b>渲染</b>：同一套 `daily_page`，承因卡在链之前，世界信号在后。</li>

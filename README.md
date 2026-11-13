@@ -27,7 +27,7 @@ python -m causal_ledger --db demo.sqlite3 claims
 - DeepSeek 二次合成：加 `DEEPSEEK_API_KEY` 后由模型翻译/改写/成链；无 key 自动回退确定性版本。
 - 个人承因原型：`bearing` 把日期、档案、信息、外部透镜（黄历/命理等 JSON）归一化为「今日承因」卡；新闻只是因源之一。
 - 传统透镜：内置简化建除十二神；可选 `--birth YYYY-MM-DD` 给日主关系提示（启发式，不是完整命盘）。
-- 样板：[samples/个人承因日报样板.html](samples/个人承因日报样板.html)；产出链路见 [docs/承因样板产出链路.md](docs/承因样板产出链路.md)。
+- 样板：[samples/个人承因日报样板.html](samples/个人承因日报样板.html)；产出链路见 [docs/承因样板产出链路.md](docs/承因样板产出链路.md)、地基见 [docs/承因地基.md](docs/承因地基.md)。
 - 周报：周一 07:30 自动汇总上一周；周报保留，日报归档；见 [docs/周报与保留策略.md](docs/周报与保留策略.md)；
 - 新旧格式边界见 [docs/新旧对照.md](docs/新旧对照.md)。
 

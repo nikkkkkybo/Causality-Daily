@@ -104,7 +104,7 @@ def traditional_signals(day: str, birth: str | None = None) -> list[CauseSignal]
         f"建除十二神·{label}（{activity}）",
         f"日期 → 建除 → {activity}", action,
         "只取建除一层，节气按近似边界；不含神煞/宜忌全表，不是事件预测。",
-        window="today", hidden=True)]
+        window="today", hidden=True, priority=60)]
     if birth:
         try:
             b = date.fromisoformat(birth)
@@ -156,16 +156,18 @@ class CauseSignal:
     window: str = ""
     evidence: list[str] = field(default_factory=list)
     hidden: bool = False
+    priority: int = 50
 
 
 def _signal(source, family, domain, polarity, strength, carrier, path, action,
-            uncertainty, window="", evidence=None, hidden=False) -> CauseSignal:
+            uncertainty, window="", evidence=None, hidden=False, priority=50) -> CauseSignal:
     return CauseSignal(
         source=source, family=family, domain=domain, polarity=polarity,
         strength=max(0.0, min(1.0, float(strength))), carrier=carrier,
         path=path, action=action,
         effect=f"今日之果：{action}", uncertainty=uncertainty,
         window=window or "today", evidence=list(evidence or []), hidden=hidden,
+        priority=int(priority),
     )
 
 
@@ -177,22 +179,22 @@ def temporal_signals(day: str, features: dict | None = None) -> list[CauseSignal
         signals.append(_signal(
             "历法·星期", "time", "*", "watch", 0.45,
             f"{label}日", "本周节奏 → 今天的安排", action,
-            "只是节奏提示，不是事件预测。", window="today"))
+            "只是节奏提示，不是事件预测。", window="today", priority=80))
     label, action = _SEASON[d.month]
     signals.append(_signal(
         "历法·季节", "time", "*", "watch", 0.4,
         f"{label}期", "季节 → 你的节奏", action,
-        "季节划分是粗略启发式，不解释个人事件。", window="season"))
+        "季节划分是粗略启发式，不解释个人事件。", window="season", priority=75))
     if d.day >= 25:
         signals.append(_signal(
             "历法·月末", "time", "*", "watch", 0.5,
             "结算窗口", "月末 → 收尾/对账", "先做收尾与对账，别把未闭合项拖到下月。",
-            "按自然月近似，不涉及个人命理。", window="month-end"))
+            "按自然月近似，不涉及个人命理。", window="month-end", priority=85))
     elif d.day <= 3:
         signals.append(_signal(
             "历法·月初", "time", "*", "favor", 0.45,
             "新周期", "月初 → 定调", "给本月定一个主目标，别同时开太多线。",
-            "按自然月近似，不涉及个人命理。", window="month-start"))
+            "按自然月近似，不涉及个人命理。", window="month-start", priority=85))
     return signals
 
 
@@ -210,7 +212,7 @@ def profile_signals(features: dict) -> list[CauseSignal]:
             f"{label}权重 {float(weight):.2f}", f"长期权重 → {label}",
             f"给{label}留一个明确的时段，别被杂事挤掉。",
             "权重来自档案，不是你今天的实际状态。",
-            window="today", evidence=["profile.domains"]))
+            window="today", evidence=["profile.domains"], priority=70))
     constraints = [c for c in (features.get("constraints") or []) if c]
     if constraints:
         text = "、".join(constraints[:2])
@@ -218,7 +220,7 @@ def profile_signals(features: dict) -> list[CauseSignal]:
             "个人约束", "structure", "*", "avoid", 0.55,
             text, f"约束 → 行动边界", f"先绕开硬约束：{text}；今天不硬碰。",
             "约束是否仍有效，需要你本人确认。", window="today",
-            evidence=["profile.constraints"]))
+            evidence=["profile.constraints"], priority=100))
     load = features.get("load")
     if load is not None:
         try:
@@ -232,13 +234,13 @@ def profile_signals(features: dict) -> list[CauseSignal]:
             "心身负荷", "psych", "inner", "avoid", min(1.0, load),
             "高负荷", "负荷 → 决策阈值", "降低不可逆承诺，先做可逆的小步。",
             "负荷来自自评，可能低估或高估。", window="today",
-            evidence=["profile.load"]))
+            evidence=["profile.load"], priority=90))
     elif load is not None and load <= 0.3:
         signals.append(_signal(
             "心身余量", "psych", "inner", "favor", 0.4,
             "有余量", "余量 → 可推进", "今天可以推进一件平时拖着的重要事。",
             "余量来自自评，不是医学判断。", window="today",
-            evidence=["profile.load"]))
+            evidence=["profile.load"], priority=65))
     goals = features.get("goals") or {}
     goal = str(goals.get("goal") or "").strip()
     if goal:
@@ -246,7 +248,32 @@ def profile_signals(features: dict) -> list[CauseSignal]:
             "个人目标", "position", "career", "favor", 0.5,
             goal[:40], f"目标 → 今天的取舍", "先问：今天这件事是否服务于你的主目标。",
             "目标可能已变化，需定期复评。", window="today",
-            evidence=["profile.goal"]))
+            evidence=["profile.goal"], priority=75))
+    phase = str(features.get("phase") or "").strip()
+    role = str(features.get("role") or "").strip()
+    if phase or role:
+        signals.append(_signal(
+            "位置/阶段", "structure", "*", "watch", 0.45,
+            "、".join(x for x in (role, phase) if x)[:40],
+            "角色/阶段 → 取舍", "先按当前角色和阶段安排，不按理想状态硬排。",
+            "角色/阶段来自档案，可能已变化。", window="today",
+            evidence=["profile.role", "profile.phase"], priority=70))
+    relations = [str(x) for x in (features.get("relations") or []) if str(x).strip()]
+    if relations:
+        signals.append(_signal(
+            "关键关系", "relation", "relationship", "watch", 0.4,
+            "、".join(relations[:2])[:40], "关系 → 今天的优先级",
+            "今天优先处理其中一段关键关系，别广撒网。",
+            "关系名单来自档案，不代表今天必须行动。", window="today",
+            evidence=["profile.relations"], priority=65))
+    change_stage = str(features.get("change_stage") or "").strip()
+    if change_stage:
+        signals.append(_signal(
+            "改变阶段", "psych", "inner", "watch", 0.4,
+            change_stage[:30], "阶段 → 动作大小",
+            "按当前改变阶段选动作：准备期先收集，行动期先小步。",
+            "阶段来自自评，不是临床判断。", window="today",
+            evidence=["profile.change_stage"], priority=60))
     return signals
 
 
@@ -276,11 +303,32 @@ def news_signals(items: list[dict], features: dict, limit: int = 6) -> list[Caus
                 title, f"{source} → {label}",
                 "先核对：这条信号是否真的触及你的项目/决策；不急着下结论。",
                 "条目未核验；相关不等于因果。", window="today",
-                evidence=[f"item:{item.get('id')}"], hidden=False))
+                evidence=[f"item:{item.get('id')}"], hidden=False, priority=60))
             break
         if len(signals) >= limit:
             break
     return signals
+
+
+def notes_signals(notes: list[dict], features: dict) -> list[CauseSignal]:
+    """Turn the latest end-of-report note into an action-family cause."""
+    from .personalize import classify_domains
+
+    if not notes:
+        return []
+    latest = notes[0]
+    text = str(latest.get("text") or "").strip()
+    if not text:
+        return []
+    hits = classify_domains(text)
+    domain = next(iter(hits), "inner")
+    label = DOMAIN_LABELS.get(domain, domain)
+    return [_signal(
+        "末尾备注", "action", domain, "watch", 0.45,
+        text[:50], f"备注 → {label} → 今天", 
+        "把这条意向落到今天一个具体动作，别只停在想法。",
+        "备注是自述，不是事实；可能只是一时情绪。", window="today",
+        evidence=["note.latest"], priority=95)]
 
 
 def load_lens_file(path) -> list[CauseSignal]:
@@ -305,7 +353,7 @@ def load_lens_file(path) -> list[CauseSignal]:
             str(row.get("uncertainty") or "外部透镜，未核验。"),
             window=str(row.get("window") or "today"),
             evidence=[str(x) for x in (row.get("evidence") or [])],
-            hidden=True))
+            hidden=True, priority=int(row.get("priority") or 55)))
     return out
 
 
@@ -317,13 +365,15 @@ def _score(signal: CauseSignal, features: dict) -> float:
 
 def build_bearing(features: dict, items: list[dict], day: str,
                   lens_signals: list[CauseSignal] | None = None,
-                  max_cards: int = MAX_CARDS, birth: str | None = None) -> list[dict]:
+                  max_cards: int = MAX_CARDS, birth: str | None = None,
+                  notes: list[dict] | None = None) -> list[dict]:
     """Build at most max_cards personal bearing cards."""
     features = features or {}
     candidates = []
     candidates.extend(temporal_signals(day, features))
     candidates.extend(traditional_signals(day, birth))
     candidates.extend(profile_signals(features))
+    candidates.extend(notes_signals(notes or [], features))
     candidates.extend(news_signals(items or [], features))
     candidates.extend(lens_signals or [])
     # drop duplicates by (domain, family)
@@ -337,18 +387,23 @@ def build_bearing(features: dict, items: list[dict], day: str,
         deduped.append(signal)
     # deduped already keeps one (domain, family); do not collapse across families
     candidates = deduped
-    # diversity: one time card, one personal card, one world/lens card if present
+    # priority ladder: risk/constraint → time → position → world → lens → support
     groups = {
+        "risk": [s for s in candidates if
+                 (s.family == "structure" and s.polarity == "avoid") or
+                 (s.family == "psych" and s.priority >= 90)],
         "time": [s for s in candidates if s.family == "time"],
-        "personal": [s for s in candidates if s.family in ("position", "structure", "psych")],
+        "position": [s for s in candidates if s.family == "position"],
         "world": [s for s in candidates if s.family == "world"],
         "lens": [s for s in candidates if s.family == "lens"],
+        "support": [s for s in candidates if s.family in ("psych", "relation", "action")],
     }
     selected = []
-    for name in ("time", "personal", "world", "lens"):
+    for name in ("risk", "time", "support", "position", "world", "lens"):
         group = groups[name]
+        group = [s for s in group if s not in selected]
         if group:
-            selected.append(max(group, key=lambda s: _score(s, features)))
+            selected.append(max(group, key=lambda s: (s.priority, _score(s, features))))
     for signal in sorted(candidates, key=lambda s: _score(s, features), reverse=True):
         if len(selected) >= max(1, int(max_cards)):
             break
@@ -363,7 +418,7 @@ def build_bearing(features: dict, items: list[dict], day: str,
         "carrier": s.carrier, "path": s.path,
         "action": s.action, "effect": s.effect,
         "uncertainty": s.uncertainty, "evidence": s.evidence,
-        "hidden": s.hidden,
+        "hidden": s.hidden, "priority": s.priority,
     } for s in selected]
 
 
