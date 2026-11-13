@@ -44,6 +44,15 @@ def test_build_bearing_caps_and_dedupes():
     assert any(card["family"] in ("position", "structure", "psych") for card in cards)
 
 
+def test_day_pillar_and_traditional_lens():
+    assert bearing.day_pillar("2000-01-01")[:2] == ("戊", "午")
+    signals = bearing.traditional_signals("2026-11-13", "1990-01-01")
+    assert signals and all(s.hidden for s in signals)
+    assert any("建除" in s.source for s in signals)
+    assert any("命理" in s.source for s in signals)
+    assert all("不是事件预测" in s.uncertainty or "不是命运" in s.uncertainty for s in signals)
+
+
 def test_lens_file_and_html(tmp_path):
     lens = tmp_path / "lens.json"
     lens.write_text(json.dumps({"signals": [{

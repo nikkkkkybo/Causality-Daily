@@ -299,7 +299,7 @@ def cmd_bearing(args, conn):
     features, note = effective_features(conn, stored["features"])
     items = recommend(conn, days=args.days, limit=args.limit, per_source=args.per_source)
     lenses = load_lens_file(args.lens) if args.lens else []
-    cards = build_bearing(features, items, day, lens_signals=lenses)
+    cards = build_bearing(features, items, day, lens_signals=lenses, birth=args.birth)
     if note:
         print(note)
     if args.json:
@@ -919,6 +919,7 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--limit", type=int, default=20, help="最多信息条数（1到100）")
     p.add_argument("--per-source", type=int, default=2, help="每来源最多条数（1到100）")
     p.add_argument("--lens", metavar="FILE", help="可选：外部透镜归一化信号 JSON（黄历/命理/占星等）")
+    p.add_argument("--birth", metavar="YYYY-MM-DD", help="可选：出生日期，用于简化的日主关系（只读，不存）")
     p.add_argument("--json", action="store_true", help="输出 JSON")
     p.add_argument("--html", metavar="FILE", help="另存个人承因 HTML（不覆盖已有文件）")
     p.set_defaults(fn=cmd_bearing)

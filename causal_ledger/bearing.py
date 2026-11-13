@@ -40,6 +40,106 @@ _SEASON = {
     2: ("蓄力", "冬季适合复盘与蓄力，不逼自己持续输出。"),
 }
 
+STEMS = "甲乙丙丁戊己庚辛壬癸"
+BRANCHES = "子丑寅卯辰巳午未申酉戌亥"
+STEM_ELEMENTS = {
+    "甲": "木", "乙": "木", "丙": "火", "丁": "火", "戊": "土",
+    "己": "土", "庚": "金", "辛": "金", "壬": "水", "癸": "水",
+}
+JIANCHU = [
+    ("建", "favor", "定调/开局", "先定今天的主线，再开新动作。"),
+    ("除", "favor", "清理/去除", "先清掉一个旧尾巴，再谈推进。"),
+    ("满", "favor", "收满/完成", "把已经做到八成的事收满。"),
+    ("平", "watch", "维持/平推", "今天适合平推，不急着定输赢。"),
+    ("定", "favor", "定案/承诺", "适合把可逆的事定下来；不可逆的再等。"),
+    ("执", "watch", "坚持/守成", "守住已有节奏，不临时改方向。"),
+    ("破", "avoid", "破局/不可逆", "今天先不做不可逆的破局决定。"),
+    ("危", "avoid", "冒险/高处", "今天不登高、不押大注，先降风险。"),
+    ("成", "favor", "收成/定稿", "适合定稿、交付、收结果。"),
+    ("收", "favor", "收束/回收", "把摊子收回来，别继续扩张。"),
+    ("开", "favor", "开启/打开", "适合开一个可逆的小口子。"),
+    ("闭", "avoid", "封闭/收尾", "今天适合收尾，不适合强行开新局。"),
+]
+
+
+def _jdn(d: date) -> int:
+    a = (14 - d.month) // 12
+    y = d.year + 4800 - a
+    m = d.month + 12 * a - 3
+    return d.day + (153 * m + 2) // 5 + 365 * y + y // 4 - y // 100 + y // 400 - 32045
+
+
+def day_pillar(day: str) -> tuple[str, str, int]:
+    """Sexagenary day pillar; exact for the Gregorian calendar."""
+    d = date.fromisoformat(day)
+    index = (_jdn(d) + 49) % 60
+    return STEMS[index % 10], BRANCHES[index % 12], index
+
+
+def _month_branch(d: date) -> int:
+    """Approximate month branch by solar-term boundaries (off by ≤1 day)."""
+    md = (d.month, d.day)
+    boundaries = [
+        ((1, 6), 1), ((2, 4), 2), ((3, 6), 3), ((4, 5), 4),
+        ((5, 6), 5), ((6, 6), 6), ((7, 7), 7), ((8, 8), 8),
+        ((9, 8), 9), ((10, 8), 10), ((11, 7), 11), ((12, 7), 0),
+    ]
+    branch = 1  # 丑 before 小寒
+    for (m, day), value in boundaries:
+        if md >= (m, day):
+            branch = value
+    return branch
+
+
+def traditional_signals(day: str, birth: str | None = None) -> list[CauseSignal]:
+    """Simplified 黄历/命理 lens: 建除 + 日主关系. Heuristic, not event prediction."""
+    d = date.fromisoformat(day)
+    stem, branch, _ = day_pillar(day)
+    month_branch = _month_branch(d)
+    day_branch_index = BRANCHES.index(branch)
+    jianchu_index = (day_branch_index - month_branch) % 12
+    label, polarity, activity, action = JIANCHU[jianchu_index]
+    signals = [_signal(
+        f"黄历·建除（{stem}{branch}日）", "lens", "*", polarity, 0.45,
+        f"建除十二神·{label}（{activity}）",
+        f"日期 → 建除 → {activity}", action,
+        "只取建除一层，节气按近似边界；不含神煞/宜忌全表，不是事件预测。",
+        window="today", hidden=True)]
+    if birth:
+        try:
+            b = date.fromisoformat(birth)
+        except ValueError:
+            return signals
+        bstem, _, _ = day_pillar(birth)
+        b_element = STEM_ELEMENTS.get(bstem, "")
+        t_element = STEM_ELEMENTS.get(stem, "")
+        if not b_element or not t_element or b > d:
+            return signals
+        # relation of today's stem element to the birth day-master element
+        generates = {"木": "火", "火": "土", "土": "金", "金": "水", "水": "木"}
+        controls = {"木": "土", "火": "金", "土": "水", "金": "木", "水": "火"}
+        if t_element == b_element:
+            relation, polarity, strength, action = (
+                "同气", "favor", 0.5, "今天适合推进需要持续力的事，别把同气日耗在杂事上。")
+        elif generates.get(b_element) == t_element:
+            relation, polarity, strength, action = (
+                "泄", "watch", 0.4, "今天适合输出与表达，但别透支；做完一段就收。")
+        elif generates.get(t_element) == b_element:
+            relation, polarity, strength, action = (
+                "生我", "favor", 0.55, "今天适合补基础、找支持；把难事放在有人/有资源的地方。")
+        elif controls.get(b_element) == t_element:
+            relation, polarity, strength, action = (
+                "我克", "watch", 0.45, "今天适合处理可控的硬任务，别把控制欲带到关系里。")
+        else:
+            relation, polarity, strength, action = (
+                "克我", "avoid", 0.6, "今天先降负荷，避免不可逆决定；冲突延后处理。")
+        signals.append(_signal(
+            f"命理·日主（{bstem}日主）", "lens", "inner", polarity, strength,
+            f"今日{stem}日 · {relation}", f"日干五行 → 日主关系（{relation}）",
+            action, "只用日干五行，不含完整命盘/大运；启发式，不是命运判断。",
+            window="today", hidden=True))
+    return signals
+
 
 @dataclass
 class CauseSignal:
@@ -217,11 +317,12 @@ def _score(signal: CauseSignal, features: dict) -> float:
 
 def build_bearing(features: dict, items: list[dict], day: str,
                   lens_signals: list[CauseSignal] | None = None,
-                  max_cards: int = MAX_CARDS) -> list[dict]:
+                  max_cards: int = MAX_CARDS, birth: str | None = None) -> list[dict]:
     """Build at most max_cards personal bearing cards."""
     features = features or {}
     candidates = []
     candidates.extend(temporal_signals(day, features))
+    candidates.extend(traditional_signals(day, birth))
     candidates.extend(profile_signals(features))
     candidates.extend(news_signals(items or [], features))
     candidates.extend(lens_signals or [])
