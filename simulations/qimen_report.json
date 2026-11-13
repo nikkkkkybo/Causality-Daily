@@ -1,0 +1,71 @@
+{
+  "person": {
+    "name": "林岚（虚构）",
+    "domains": {
+      "career": 0.85,
+      "health": 0.55,
+      "learning": 0.6,
+      "relationship": 0.45
+    },
+    "constraints": [
+      "时间",
+      "现金流"
+    ],
+    "load": 0.65,
+    "goals": {
+      "goal": "把工作从执行转向定义问题"
+    },
+    "role": "产品负责人",
+    "phase": "转型期",
+    "relations": [
+      "直属上级",
+      "核心客户"
+    ],
+    "change_stage": "准备"
+  },
+  "note": "虚构人物 + 本地模拟透镜；不读取/修改 D:\\ai奇门，不代表真实效果。",
+  "baseline": {
+    "days": 30,
+    "cards": 0,
+    "avg_cards": 0.0,
+    "families": {},
+    "family_days": {},
+    "empty_days": 30,
+    "repeat_action_rate": 0,
+    "top_carrier_changes": 0,
+    "risk_first_days": 0,
+    "load": 1.0,
+    "progress": 18.8,
+    "risk_events": 9
+  },
+  "bearing": {
+    "days": 30,
+    "cards": 120,
+    "avg_cards": 4.0,
+    "families": {
+      "time": 27,
+      "psych": 22,
+      "lens": 15,
+      "position": 28,
+      "world": 14,
+      "structure": 10,
+      "action": 4
+    },
+    "family_days": {
+      "lens": 15,
+      "time": 27,
+      "position": 24,
+      "psych": 22,
+      "world": 14,
+      "structure": 10,
+      "action": 4
+    },
+    "empty_days": 0,
+    "repeat_action_rate": 0.533,
+    "top_carrier_changes": 11,
+    "risk_first_days": 21,
+    "load": 0.61,
+    "progress": 33.9,
+    "risk_events": 5
+  }
+}

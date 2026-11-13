@@ -171,16 +171,53 @@ def _signal(source, family, domain, polarity, strength, carrier, path, action,
     )
 
 
+def _pick(day: str | None, key: str, variants: list[str]) -> str:
+    """Deterministic variety: same context doesn't repeat the exact wording."""
+    d = date.fromisoformat(day) if day else date.today()
+    index = (d.toordinal() + sum(ord(ch) for ch in key)) % len(variants)
+    return variants[index]
+
+
+WEEKDAY_VARIANTS = {
+    "开局": ["先排优先级，不急着开新战线。", "先定今天只做成的三件事，再开新动作。",
+             "先清一个卡点，再谈新计划。", "先给本周定一个主线，别被消息牵着走。"],
+    "收束": ["把本周未闭合的事收口，别把尾巴带进周末。", "先交掉一个拖着的尾巴，再考虑新任务。",
+             "今天适合收尾，不适合再开新坑。", "把能交付的先交付，别追求完美。"],
+    "恢复": ["把时间还给恢复与关系，不安排高消耗硬仗。", "今天少安排一件硬事，留出恢复的缝。",
+             "先恢复，再谈产出；今天不硬撑。", "把节奏放慢，处理低消耗的事。"],
+}
+SEASON_VARIANTS = {
+    "展开": ["春季适合试错与小步展开，别一次押太大。", "先开一个小口子试，别把整条线压上。",
+             "先做可逆的小实验，再决定要不要加码。", "这个季节适合试错，不适合 all-in。"],
+    "扩张": ["夏季适合推进，但要预留消耗后的恢复。", "今天可以推进，但留一段恢复时间。",
+             "趁势推进可以，别把日程排满。", "先推进一件，再留缓冲，不连续硬冲。"],
+    "收束": ["秋季适合兑现与收口，把摊子收回到主线。", "先收一个结果，再谈扩张。",
+             "把分散的线收回来，集中交付。", "今天适合结算，不适合再铺新摊。"],
+    "蓄力": ["冬季适合复盘与蓄力，不逼自己持续输出。", "今天先补底层，不硬冲产出。",
+             "先复盘，再决定下一步；不急着证明。", "把节奏放慢，补基础比冲量有用。"],
+}
+NEWS_ACTIONS = [
+    "先核对：这条信号是否真的触及你的项目/决策；不急着下结论。",
+    "先看它有没有改变你的成本/时间；没改变就别跟进。",
+    "先记下，等第二条独立信号再说。",
+    "先问：这条消息会改变你本周的哪个决定？答不上来就先放着。",
+    "先查来源和时间；旧的、孤立的，先不进链。",
+    "先看它是否影响你的现金流/交付，不影响就跳过。",
+]
+
+
 def temporal_signals(day: str, features: dict | None = None) -> list[CauseSignal]:
     d = date.fromisoformat(day)
     signals = []
     if d.weekday() in _WEEKDAY:
-        label, action = _WEEKDAY[d.weekday()]
+        label, _action = _WEEKDAY[d.weekday()]
+        action = _pick(day, label, WEEKDAY_VARIANTS.get(label, [_action]))
         signals.append(_signal(
             "历法·星期", "time", "*", "watch", 0.45,
             f"{label}日", "本周节奏 → 今天的安排", action,
             "只是节奏提示，不是事件预测。", window="today", priority=80))
-    label, action = _SEASON[d.month]
+    label, _action = _SEASON[d.month]
+    action = _pick(day, label, SEASON_VARIANTS.get(label, [_action]))
     signals.append(_signal(
         "历法·季节", "time", "*", "watch", 0.4,
         f"{label}期", "季节 → 你的节奏", action,
@@ -198,7 +235,7 @@ def temporal_signals(day: str, features: dict | None = None) -> list[CauseSignal
     return signals
 
 
-def profile_signals(features: dict) -> list[CauseSignal]:
+def profile_signals(features: dict, day: str | None = None) -> list[CauseSignal]:
     features = features or {}
     signals = []
     domains = features.get("domains") or {}
@@ -207,20 +244,37 @@ def profile_signals(features: dict) -> list[CauseSignal]:
         if float(weight) < 0.35:
             continue
         label = DOMAIN_LABELS.get(domain, domain)
+        action = _pick(day, domain, [
+            f"给{label}留一个明确的时段，别被杂事挤掉。",
+            f"先为{label}定一个今天能交付的小结果。",
+            f"把{label}放进今天第一段专注时间。",
+            f"先为{label}做一件可逆的小事。",
+            f"给{label}设一个结束时间，避免无限拖。",
+            f"今天只推进{label}的一小步，不铺开。",
+            f"先问{label}今天最该做的一件事，然后只做那件。",
+            f"把{label}从待办里拿出来，放到日程里。",
+        ])
         signals.append(_signal(
             "个人基线", "position", domain, "favor", float(weight),
             f"{label}权重 {float(weight):.2f}", f"长期权重 → {label}",
-            f"给{label}留一个明确的时段，别被杂事挤掉。",
+            action,
             "权重来自档案，不是你今天的实际状态。",
             window="today", evidence=["profile.domains"], priority=70))
     constraints = [c for c in (features.get("constraints") or []) if c]
     if constraints:
         text = "、".join(constraints[:2])
+        action = _pick(day, "constraint", [
+            f"先绕开硬约束：{text}；今天不硬碰。",
+            f"今天排计划时把{text}当边界，不做例外。",
+            f"遇到和{text}冲突的事，先停下换低消耗路径。",
+            f"先按{text}做减法，别先做加法。",
+            f"今天不挑战{text}，把冲突延后。",
+        ])
         signals.append(_signal(
             "个人约束", "structure", "*", "avoid", 0.55,
-            text, f"约束 → 行动边界", f"先绕开硬约束：{text}；今天不硬碰。",
+            text, "约束 → 行动边界", action,
             "约束是否仍有效，需要你本人确认。", window="today",
-            evidence=["profile.constraints"], priority=100))
+            evidence=["profile.constraints"], priority=60))
     load = features.get("load")
     if load is not None:
         try:
@@ -230,9 +284,17 @@ def profile_signals(features: dict) -> list[CauseSignal]:
         if load is not None and load > 1.0:
             load = min(1.0, load / 3.0)  # questionnaire uses 0–3
     if load is not None and load >= 0.6:
+        action = _pick(day, "load-high", [
+            "降低不可逆承诺，先做可逆的小步。",
+            "今天把决策压到最低，只处理必须的。",
+            "先降负荷：砍掉一个可砍的会或任务。",
+            "今天不接新承诺，先把已有的事收窄。",
+            "先睡/先休息，再谈效率；今天不硬撑。",
+            "把今天的目标砍半，留出恢复余量。",
+        ])
         signals.append(_signal(
             "心身负荷", "psych", "inner", "avoid", min(1.0, load),
-            "高负荷", "负荷 → 决策阈值", "降低不可逆承诺，先做可逆的小步。",
+            "高负荷", "负荷 → 决策阈值", action,
             "负荷来自自评，可能低估或高估。", window="today",
             evidence=["profile.load"], priority=90))
     elif load is not None and load <= 0.3:
@@ -244,9 +306,14 @@ def profile_signals(features: dict) -> list[CauseSignal]:
     goals = features.get("goals") or {}
     goal = str(goals.get("goal") or "").strip()
     if goal:
+        action = _pick(day, "goal", [
+            "先问：今天这件事是否服务于你的主目标。",
+            "今天先做一件能推进主目标的可逆动作。",
+            "把主目标写在一句话里，再决定今天接不接新事。",
+        ])
         signals.append(_signal(
             "个人目标", "position", "career", "favor", 0.5,
-            goal[:40], f"目标 → 今天的取舍", "先问：今天这件事是否服务于你的主目标。",
+            goal[:40], f"目标 → 今天的取舍", action,
             "目标可能已变化，需定期复评。", window="today",
             evidence=["profile.goal"], priority=75))
     phase = str(features.get("phase") or "").strip()
@@ -277,7 +344,8 @@ def profile_signals(features: dict) -> list[CauseSignal]:
     return signals
 
 
-def news_signals(items: list[dict], features: dict, limit: int = 6) -> list[CauseSignal]:
+def news_signals(items: list[dict], features: dict, limit: int = 6,
+                 day: str | None = None) -> list[CauseSignal]:
     from .personalize import classify_domains
 
     features = features or {}
@@ -301,7 +369,7 @@ def news_signals(items: list[dict], features: dict, limit: int = 6) -> list[Caus
                 f"信息·{source}", "world", domain, "watch",
                 min(1.0, 0.35 + weight),
                 title, f"{source} → {label}",
-                "先核对：这条信号是否真的触及你的项目/决策；不急着下结论。",
+                _pick(day, label, NEWS_ACTIONS),
                 "条目未核验；相关不等于因果。", window="today",
                 evidence=[f"item:{item.get('id')}"], hidden=False, priority=60))
             break
@@ -366,15 +434,16 @@ def _score(signal: CauseSignal, features: dict) -> float:
 def build_bearing(features: dict, items: list[dict], day: str,
                   lens_signals: list[CauseSignal] | None = None,
                   max_cards: int = MAX_CARDS, birth: str | None = None,
-                  notes: list[dict] | None = None) -> list[dict]:
+                  notes: list[dict] | None = None,
+                  recent_actions: list[str] | None = None) -> list[dict]:
     """Build at most max_cards personal bearing cards."""
     features = features or {}
     candidates = []
     candidates.extend(temporal_signals(day, features))
     candidates.extend(traditional_signals(day, birth))
-    candidates.extend(profile_signals(features))
+    candidates.extend(profile_signals(features, day))
     candidates.extend(notes_signals(notes or [], features))
-    candidates.extend(news_signals(items or [], features))
+    candidates.extend(news_signals(items or [], features, day=day))
     candidates.extend(lens_signals or [])
     # drop duplicates by (domain, family)
     seen = set()
@@ -387,29 +456,68 @@ def build_bearing(features: dict, items: list[dict], day: str,
         deduped.append(signal)
     # deduped already keeps one (domain, family); do not collapse across families
     candidates = deduped
-    # priority ladder: risk/constraint → time → position → world → lens → support
-    groups = {
-        "risk": [s for s in candidates if
-                 (s.family == "structure" and s.polarity == "avoid") or
-                 (s.family == "psych" and s.priority >= 90)],
-        "time": [s for s in candidates if s.family == "time"],
-        "position": [s for s in candidates if s.family == "position"],
-        "world": [s for s in candidates if s.family == "world"],
-        "lens": [s for s in candidates if s.family == "lens"],
-        "support": [s for s in candidates if s.family in ("psych", "relation", "action")],
-    }
+    # priority ladder with activation + rotation:
+    # risk only when load/avoid signals activate it; external slot alternates world/lens.
+    d = date.fromisoformat(day)
+    try:
+        load = float(features.get("load") or 0)
+    except (TypeError, ValueError):
+        load = 0
+    if load > 1.0:
+        load = min(1.0, load / 3.0)
+    avoid_external = any(s.polarity == "avoid" for s in candidates
+                         if s.family in ("world", "lens", "action"))
+    risk_active = load >= 0.8 or avoid_external
+    risk = [s for s in candidates if
+            (s.family == "structure") or (s.family == "psych" and s.priority >= 90)]
+    time_group = [s for s in candidates if s.family == "time"]
+    position = [s for s in candidates if s.family == "position"]
+    support = [s for s in candidates if s.family in ("psych", "relation", "action")]
+    world = [s for s in candidates if s.family == "world"]
+    lens = [s for s in candidates if s.family == "lens"]
     selected = []
-    for name in ("risk", "time", "support", "position", "world", "lens"):
-        group = groups[name]
+    if risk_active and risk:
+        risk_sorted = sorted(risk, key=lambda s: (s.priority, _score(s, features)), reverse=True)
+        selected.append(risk_sorted[d.toordinal() % min(2, len(risk_sorted))])
+
+    def _best(group):
         group = [s for s in group if s not in selected]
-        if group:
-            selected.append(max(group, key=lambda s: (s.priority, _score(s, features))))
-    for signal in sorted(candidates, key=lambda s: _score(s, features), reverse=True):
+        return max(group, key=lambda s: (s.priority, _score(s, features))) if group else None
+
+    time_signal = _best(time_group)
+    personal = _best(position + support)
+    prefer_world = d.toordinal() % 2 == 0
+    external = _best((world if prefer_world else lens) or (lens if prefer_world else world))
+    # risk first when active; otherwise rotate the first slot to avoid a fixed top card
+    if risk_active:
+        order = [time_signal, personal, external]
+    else:
+        rotation = d.toordinal() % 3
+        order = ([personal, time_signal, external] if rotation == 0 else
+                 [time_signal, personal, external] if rotation == 1 else
+                 [external, personal, time_signal])
+    for signal in order:
+        if signal is not None and signal not in selected:
+            selected.append(signal)
+    fallback = [s for s in sorted(candidates, key=lambda s: (s.priority, _score(s, features)),
+                                  reverse=True) if s not in selected]
+    for signal in fallback:
         if len(selected) >= max(1, int(max_cards)):
             break
-        if signal not in selected:
-            selected.append(signal)
+        selected.append(signal)
     selected = selected[:max(1, int(max_cards))]
+    # avoid repeating the exact same action on consecutive days when a viable
+    # alternative exists; history is supplied by the caller, not stored here.
+    if recent_actions:
+        recent = set(recent_actions)
+        used = list(selected)
+        for index, signal in enumerate(list(selected)):
+            if signal.action not in recent:
+                continue
+            alt = next((s for s in fallback if s not in used and s.action not in recent), None)
+            if alt is not None:
+                selected[index] = alt
+                used.append(alt)
     return [{
         "family": s.family, "source": s.source, "domain": s.domain,
         "domain_label": DOMAIN_LABELS.get(s.domain, "通用"),
