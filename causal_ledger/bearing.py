@@ -10,7 +10,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from datetime import date
 
-MAX_CARDS = 3
+MAX_CARDS = 4
 
 DOMAIN_LABELS = {
     "career": "事业", "wealth": "财务", "health": "健康",
@@ -348,10 +348,11 @@ def build_bearing(features: dict, items: list[dict], day: str,
     groups = {
         "time": [s for s in candidates if s.family == "time"],
         "personal": [s for s in candidates if s.family in ("position", "structure", "psych")],
-        "world": [s for s in candidates if s.family in ("world", "lens")],
+        "world": [s for s in candidates if s.family == "world"],
+        "lens": [s for s in candidates if s.family == "lens"],
     }
     selected = []
-    for name in ("time", "personal", "world"):
+    for name in ("time", "personal", "world", "lens"):
         group = groups[name]
         if group:
             selected.append(max(group, key=lambda s: _score(s, features)))

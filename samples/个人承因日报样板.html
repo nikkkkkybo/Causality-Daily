@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>今日事报 · 样板 · 2026-11-13</title>
+<style>
+:root { --paper:#f6f2ea; --ink:#1b1a17; --soft:#4a463e; --muted:#8a8376;
+  --line:#d8d0c0; --red:#9e3b2e; }
+* { box-sizing:border-box; }
+body { margin:0; background:radial-gradient(1200px 600px at 10% -10%, #fbf8f2, transparent 60%), var(--paper);
+  color:var(--ink); font:16px/1.8 "Songti SC","Noto Serif SC",Georgia,serif; }
+.page { max-width:1040px; margin:0 auto; padding:52px 30px 70px; }
+.masthead { display:flex; align-items:flex-end; justify-content:space-between; gap:20px;
+  border-bottom:1px solid var(--ink); padding-bottom:16px; }
+.kicker { font-size:12px; letter-spacing:.26em; color:var(--red); margin-bottom:8px; }
+h1 { margin:0; font-size:42px; letter-spacing:.06em; }
+.date { color:var(--muted); font-size:13px; letter-spacing:.14em; margin-top:8px; }
+.seal { width:52px; height:52px; border:1.5px solid var(--red); color:var(--red);
+  display:grid; place-items:center; font-size:14px; letter-spacing:.18em;
+  writing-mode:vertical-rl; text-orientation:upright; }
+.thesis { margin:30px 0 6px; font-size:20px; line-height:1.8; }
+.lede { color:var(--soft); font-size:13.5px; margin:0 0 28px; }
+.bearing-block { margin:26px 0 30px; border-top:1px solid var(--line); border-bottom:1px solid var(--line); padding:16px 0 6px; }
+.bearing-block h2 { margin:0 0 10px; font-size:20px; letter-spacing:.08em; color:var(--red); }
+.bearing-block .bearing { padding:12px 0 14px; border-top:1px dotted var(--line); }
+.bearing-block .bearing-head { display:flex; justify-content:space-between; gap:12px; align-items:baseline; }
+.bearing-block .no { color:var(--red); font-size:12px; letter-spacing:.12em; }
+.bearing-block .tag, .bearing-block .path, .bearing-block .meta { color:var(--muted); font-size:12px; }
+.bearing-block .carrier { margin:6px 0 2px; font-size:18px; }
+.bearing-block .action { margin:8px 0; }
+.chain { margin:36px 0 0; }
+.chain-head { display:flex; align-items:baseline; gap:12px; border-top:1px solid var(--line); padding-top:16px; }
+.chain-no { font-size:12px; letter-spacing:.28em; color:var(--red); }
+.chain-title { margin:0; font-size:25px; letter-spacing:.05em; }
+.strength { margin-left:auto; font-size:12px; letter-spacing:.12em; color:var(--muted); }
+.spread { display:grid; grid-template-columns:minmax(0,1fr) 40px minmax(0,1fr); margin-top:18px; }
+.cause,.effect { padding:0 2px; }
+.axis { position:relative; display:flex; justify-content:center; }
+.axis::before { content:""; position:absolute; top:6px; bottom:6px; width:1px;
+  background:linear-gradient(var(--line), var(--soft), var(--line)); opacity:.5; }
+.axis .dot { width:7px; height:7px; border-radius:50%; background:var(--red); margin-top:40px;
+  position:relative; z-index:1; box-shadow:0 0 0 5px var(--paper); }
+.col-head { font-size:12.5px; letter-spacing:.2em; color:var(--muted); margin:0 0 10px; }
+.col-head b { color:var(--ink); letter-spacing:.08em; }
+.signal { margin:0 0 14px; }
+.signal .t { font-size:16px; line-height:1.65; margin:0; }
+.signal .src { margin:4px 0 0; font-size:12px; color:var(--muted); }
+.signal .src a { color:var(--muted); text-decoration:none; border-bottom:1px dotted var(--muted); }
+.signal .src a:hover { color:var(--red); border-color:var(--red); }
+.effect ul { list-style:none; margin:0; padding:0; }
+.effect li { position:relative; padding-left:1.1em; margin:0 0 10px; font-size:15.5px; }
+.effect li::before { content:"—"; position:absolute; left:0; color:#b8604f; }
+.reasoning { margin:16px 0 0; padding:14px 16px; border:1px solid var(--line); background:rgba(255,255,255,.3); }
+.reasoning .label { margin:0 0 6px; font-size:12px; letter-spacing:.22em; color:var(--red); }
+.reasoning p { margin:0 0 6px; font-size:14px; color:var(--soft); }
+.reasoning .doubt { color:var(--muted); font-size:12.5px; }
+.algorithm { margin-top:44px; border-top:1px solid var(--ink); padding-top:18px; }
+.algorithm h2 { font-size:20px; margin:0 0 8px; letter-spacing:.06em; }
+.algorithm p { margin:0 0 6px; color:var(--soft); font-size:13.5px; }
+.algorithm .muted { color:var(--muted); font-size:12.5px; }
+.sources { margin-top:30px; border-top:1px solid var(--line); padding-top:16px; }
+.sources h2 { font-size:19px; margin:0 0 10px; letter-spacing:.05em; }
+.sources ul { list-style:none; margin:0; padding:0; }
+.sources li { display:flex; justify-content:space-between; gap:14px; padding:7px 0;
+  border-bottom:1px dashed var(--line); font-size:13px; }
+.sources .src-title { color:var(--ink); }
+.sources .src-meta { color:var(--muted); white-space:nowrap; font-size:12px; }
+.sources a { color:var(--muted); text-decoration:none; border-bottom:1px dotted var(--muted); }
+.foot { margin-top:34px; padding-top:12px; border-top:1px solid var(--line);
+  color:var(--muted); font-size:12px; display:flex; justify-content:space-between; gap:16px; }
+@media (max-width:760px) {
+  .page { padding:32px 18px 54px; }
+  h1 { font-size:32px; }
+  .spread { grid-template-columns:1fr; }
+  .axis { display:none; }
+  .effect { margin-top:16px; }
+  .foot { flex-direction:column; }
+}
+</style></head><body><div class="page"><div style="max-width:1040px;margin:18px auto 0;padding:10px 16px;border:1px solid #d8d0c0;background:#fff8e8;color:#6b5a3e;font:13px/1.7 sans-serif;">样板说明：以下使用真实公开信号 + 虚构档案（事业/健康/学习、负荷、约束），只演示“今日承因 → 因果链 → 今日之果”的结构，不是对当日的真实判断。</div>
+<header class="masthead">
+  <div>
+    <div class="kicker">今日事报 · 样板 · 云端通线</div>
+    <h1>今日事报 · 样板</h1>
+    <div class="date">2026-11-13 · 14 条信号 · 取 2 条链</div>
+  </div>
+  <div class="seal" aria-hidden="true">事报</div>
+</header>
+<p class="thesis">今天的信号不在单条新闻，而在 AI 能力继续平台化、平台可靠性同时承压；对个人而言，真正要承的是注意力和项目节奏。</p>
+<p class="lede">因与果都摆在下面；中间的链路完整写出。云端不读你的档案，所以这是通线版本；个体线仍在本地。</p>
+<section class="bearing-block"><h2>今日承因</h2>
+<section class="bearing">
+  <div class="bearing-head">
+    <span class="no">承因 1</span>
+    <span class="tag">通用 · 观察 · 强度 0.45</span>
+  </div>
+  <p class="carrier">收束日</p>
+  <p class="path">通道：本周节奏 → 今天的安排</p>
+  <p class="action">把本周未闭合的事收口，别把尾巴带进周末。</p>
+  <p class="meta">时窗：today　·　可能错：只是节奏提示，不是事件预测。</p>
+</section>
+<section class="bearing">
+  <div class="bearing-head">
+    <span class="no">承因 2</span>
+    <span class="tag">学习 · 宜承 · 强度 0.70</span>
+  </div>
+  <p class="carrier">学习权重 0.70</p>
+  <p class="path">通道：长期权重 → 学习</p>
+  <p class="action">给学习留一个明确的时段，别被杂事挤掉。</p>
+  <p class="meta">时窗：today　·　可能错：权重来自档案，不是你今天的实际状态。</p>
+</section>
+<section class="bearing">
+  <div class="bearing-head">
+    <span class="no">承因 3</span>
+    <span class="tag">事业 · 观察 · 强度 1.00</span>
+  </div>
+  <p class="carrier">派早报：英伟达 CEO 黄仁勋宣布辞职等</p>
+  <p class="path">通道：少数派 → 事业</p>
+  <p class="action">先核对：这条信号是否真的触及你的项目/决策；不急着下结论。</p>
+  <p class="meta">时窗：today　·　可能错：条目未核验；相关不等于因果。</p>
+</section>
+<section class="bearing">
+  <div class="bearing-head">
+    <span class="no">承因 4</span>
+    <span class="tag">通用 · 宜承 · 强度 0.45</span>
+  </div>
+  <p class="carrier">建除十二神·定（定案/承诺）</p>
+  <p class="path">通道：日期 → 建除 → 定案/承诺</p>
+  <p class="action">适合把可逆的事定下来；不可逆的再等。</p>
+  <p class="meta">时窗：today　·　可能错：只取建除一层，节气按近似边界；不含神煞/宜忌全表，不是事件预测。</p>
+</section>
+<section class="bearing">
+  <div class="bearing-head">
+    <span class="no">承因 5</span>
+    <span class="tag">健康 · 观察 · 强度 0.85</span>
+  </div>
+  <p class="carrier">印度苹果代工厂发生三名合同工死亡事故</p>
+  <p class="path">通道：Solidot → 健康</p>
+  <p class="action">先核对：这条信号是否真的触及你的项目/决策；不急着下结论。</p>
+  <p class="meta">时窗：today　·　可能错：条目未核验；相关不等于因果。</p>
+</section>
+<section class="bearing">
+  <div class="bearing-head">
+    <span class="no">承因 6</span>
+    <span class="tag">内在 · 观察 · 强度 0.45</span>
+  </div>
+  <p class="carrier">今日辛日 · 我克</p>
+  <p class="path">通道：日干五行 → 日主关系（我克）</p>
+  <p class="action">今天适合处理可控的硬任务，别把控制欲带到关系里。</p>
+  <p class="meta">时窗：today　·　可能错：只用日干五行，不含完整命盘/大运；启发式，不是命运判断。</p>
+</section></section>
+
+<section class="chain">
+  <div class="chain-head">
+    <span class="chain-no">链一</span>
+    <h2 class="chain-title">AI 平台化</h2>
+    <span class="strength">中 · 二次整理</span>
+  </div>
+  <div class="spread">
+    <div class="cause">
+      <p class="col-head"><b>因</b>　今天出现的信号</p>
+      <div class="signal"><p class="t">一条早报把英伟达股权、豆包接入第三方模型、微信短剧入口放在一起，说明大厂在同时调整资本叙事与分发入口。</p><p class="src">爱范儿 · 2026-11-13T00:00 · <a href="https://www.ifanr.com/1689292?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=" target="_blank" rel="noopener noreferrer">原文</a></p></div><div class="signal"><p class="t">Gemini 新模型以“人人可用”为卖点，模型能力继续被包装成平台级入口。</p><p class="src">爱范儿 · 2026-11-12T23:11 · <a href="https://www.ifanr.com/1689267?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=" target="_blank" rel="noopener noreferrer">原文</a></p></div><div class="signal"><p class="t">英伟达 CEO 辞职的传闻与澄清，和算力供给、公司治理的讨论缠在一起。</p><p class="src">少数派 · 2026-11-13T00:48 · <a href="https://sspai.com/post/118966" target="_blank" rel="noopener noreferrer">原文</a></p></div>
+    </div>
+    <div class="axis"><span class="dot"></span></div>
+    <div class="effect">
+      <p class="col-head"><b>果</b>　我由此推断</p>
+      <ul><li>模型竞争正在从“谁更强”转向“谁先进入日常入口”。</li><li>对个人项目而言，选平台比选模型更影响分发成本。</li></ul>
+    </div>
+  </div>
+  <div class="reasoning">
+    <p class="label">我的链路</p>
+    <p>三条信号都指向同一件事：能力被平台化、入口被重新分配；这是启发式连接，不是同一事件。</p>
+    <p class="doubt">可能看错：也可能只是同一天的密集发布，并不存在统一节奏。 本条基于 3 条信号、未核验。</p>
+  </div>
+</section>
+<section class="chain">
+  <div class="chain-head">
+    <span class="chain-no">链二</span>
+    <h2 class="chain-title">可靠性承压</h2>
+    <span class="strength">弱 · 二次整理</span>
+  </div>
+  <div class="spread">
+    <div class="cause">
+      <p class="col-head"><b>因</b>　今天出现的信号</p>
+      <div class="signal"><p class="t">流媒体内容越多，用户越难找到想看的东西，平均找片时间上升。</p><p class="src">Solidot · 2026-11-12T14:42 · <a href="https://www.solidot.org/story?sid=85874" target="_blank" rel="noopener noreferrer">原文</a></p></div><div class="signal"><p class="t">印度苹果代工厂发生合同工死亡事故，供应链安全与产能集中度再次被放到一起。</p><p class="src">Solidot · 2026-11-12T14:28 · <a href="https://www.solidot.org/story?sid=85873" target="_blank" rel="noopener noreferrer">原文</a></p></div>
+    </div>
+    <div class="axis"><span class="dot"></span></div>
+    <div class="effect">
+      <p class="col-head"><b>果</b>　我由此推断</p>
+      <ul><li>规模扩张之后，发现机制与安全底线会成为新的瓶颈。</li><li>对个人而言，先检查自己依赖的平台/供应链有没有单点。</li></ul>
+    </div>
+  </div>
+  <div class="reasoning">
+    <p class="label">我的链路</p>
+    <p>两条信号分属内容与制造，但都指向“规模变大后可靠性变贵”；只是弱连接。</p>
+    <p class="doubt">可能看错：跨行业类比可能过度概括，不能当成同一因果链。 本条基于 2 条信号、未核验。</p>
+  </div>
+</section>
+
+<section class="algorithm">
+  <h2>今日算法链</h2>
+  <p>输入 14 条 / 7 个源；DeepSeek 二次整理为 2 条链、引用 5 条信号；本页由 DeepSeek 二次翻译/整理，不是原文摘抄；云端通线不读个人档案；条目未核验；强度只是启发式提示。</p>
+  <p class="muted">不按点击历史排序；不自动外发除 Server酱 以外的内容；所有条目与推断均未核验。</p>
+</section>
+<footer class="foot">
+  <span>推断，不是结论。核验、结算、预测在本地账簿另做。</span>
+  <span>2026-11-13 · 通线</span>
+</footer>
+</div></body></html>

@@ -37,7 +37,7 @@ def test_build_bearing_caps_and_dedupes():
         {"id": 2, "title": "健康与睡眠", "summary": "恢复", "feed_name": "源B"},
     ]
     cards = bearing.build_bearing(FEATURES, items, "2026-11-13")
-    assert 1 <= len(cards) <= 3
+    assert 1 <= len(cards) <= 4
     domains = [card["domain"] for card in cards]
     assert len(domains) == len(set(domains))
     assert any(card["family"] == "time" for card in cards)
