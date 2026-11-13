@@ -14,6 +14,8 @@ from html import escape
 from urllib.parse import urlsplit
 from zoneinfo import ZoneInfo
 
+from .bearing import render_bearing_section
+
 LOCAL_TZ = ZoneInfo("Asia/Shanghai")
 
 THEMES = (
@@ -235,7 +237,8 @@ def _source_list(items: list[dict]) -> str:
 
 def render_daily_page(items: list[dict], day: str | None = None, *, title: str = "今日事报",
                       period_start: str | None = None, period_end: str | None = None,
-                      weekly: bool = False, synthesis: dict | None = None) -> str:
+                      weekly: bool = False, synthesis: dict | None = None,
+                      bearing_cards: list[dict] | None = None) -> str:
     day = day or period_end or datetime.now(LOCAL_TZ).date().isoformat()
     date.fromisoformat(day)
     if weekly:
@@ -271,6 +274,7 @@ def render_daily_page(items: list[dict], day: str | None = None, *, title: str =
             if weekly else
             "因与果都摆在下面；中间的链路完整写出。云端不读你的档案，所以这是通线版本；个体线仍在本地。")
     chain_html = []
+    bearing_html = render_bearing_section(bearing_cards) if bearing_cards else ""
     if synthesis:
         item_by_id = {item.get("id"): item for item in items}
         used_count = 0
@@ -327,6 +331,14 @@ h1 {{ margin:0; font-size:42px; letter-spacing:.06em; }}
   writing-mode:vertical-rl; text-orientation:upright; }}
 .thesis {{ margin:30px 0 6px; font-size:20px; line-height:1.8; }}
 .lede {{ color:var(--soft); font-size:13.5px; margin:0 0 28px; }}
+.bearing-block {{ margin:26px 0 30px; border-top:1px solid var(--line); border-bottom:1px solid var(--line); padding:16px 0 6px; }}
+.bearing-block h2 {{ margin:0 0 10px; font-size:20px; letter-spacing:.08em; color:var(--red); }}
+.bearing-block .bearing {{ padding:12px 0 14px; border-top:1px dotted var(--line); }}
+.bearing-block .bearing-head {{ display:flex; justify-content:space-between; gap:12px; align-items:baseline; }}
+.bearing-block .no {{ color:var(--red); font-size:12px; letter-spacing:.12em; }}
+.bearing-block .tag, .bearing-block .path, .bearing-block .meta {{ color:var(--muted); font-size:12px; }}
+.bearing-block .carrier {{ margin:6px 0 2px; font-size:18px; }}
+.bearing-block .action {{ margin:8px 0; }}
 .chain {{ margin:36px 0 0; }}
 .chain-head {{ display:flex; align-items:baseline; gap:12px; border-top:1px solid var(--line); padding-top:16px; }}
 .chain-no {{ font-size:12px; letter-spacing:.28em; color:var(--red); }}
@@ -386,6 +398,7 @@ h1 {{ margin:0; font-size:42px; letter-spacing:.06em; }}
 </header>
 <p class="thesis">{_text(thesis)}</p>
 <p class="lede">{_text(lede)}</p>
+{bearing_html}
 {"".join(chain_html) if chain_html else f'<p class="lede">{scope}没有可用候选；不强行造链。</p>'}
 {_source_list(items) if weekly else ''}
 <section class="algorithm">

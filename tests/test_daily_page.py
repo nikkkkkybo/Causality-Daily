@@ -57,6 +57,22 @@ def test_daily_page_escapes_and_rejects_unsafe_links():
     assert "原文" not in text  # unsafe link is dropped
 
 
+def test_daily_page_can_include_bearing_cards():
+    cards = [{
+        "family": "position", "source": "个人基线", "domain": "career",
+        "domain_label": "事业", "polarity": "favor", "polarity_label": "宜承",
+        "strength": 0.8, "window": "today", "carrier": "项目节点",
+        "path": "长期权重 → 事业", "action": "上午先做定义问题。",
+        "effect": "今日之果：上午先做定义问题。", "uncertainty": "权重不是当天状态。",
+        "evidence": ["profile.domains"], "hidden": False,
+    }]
+    text = render_daily_page(items(), "2026-11-13", bearing_cards=cards)
+    assert "今日承因" in text
+    assert "项目节点" in text
+    assert "上午先做定义问题" in text
+    assert "承因 1" in text
+
+
 def test_daily_page_empty_is_honest():
     text = render_daily_page([], "2026-11-13")
     assert "今日事报" in text

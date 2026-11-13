@@ -14,7 +14,7 @@ from causal_ledger.feeds import add_subscription, store_feed
 from causal_ledger.report import render_brief
 
 ROOT = Path(__file__).resolve().parents[1]
-NOW = datetime(2026, 11, 11, 12, tzinfo=timezone.utc)
+NOW = datetime.now(timezone.utc)
 
 
 def rss(*items):

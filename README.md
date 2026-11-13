@@ -25,6 +25,7 @@ python -m causal_ledger --db demo.sqlite3 claims
 - 本地单应用（`serve`）：阅读往期、提交末尾备注；
 - 零月费云发布（`cloud` + GitHub Actions + Pages + 可选多通道推送：邮件 / ntfy / Bark / Telegram / ServerChan），发布新版《今日事报》链式页；
 - DeepSeek 二次合成：加 `DEEPSEEK_API_KEY` 后由模型翻译/改写/成链；无 key 自动回退确定性版本。
+- 个人承因原型：`bearing` 把日期、档案、信息、外部透镜（黄历/命理等 JSON）归一化为「今日承因」卡；新闻只是因源之一。
 - 周报：周一 07:30 自动汇总上一周；周报保留，日报归档；见 [docs/周报与保留策略.md](docs/周报与保留策略.md)；
 - 新旧格式边界见 [docs/新旧对照.md](docs/新旧对照.md)。
 

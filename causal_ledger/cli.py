@@ -283,6 +283,47 @@ def cmd_read(args, conn):
     print(f"条目 I#{args.id} 已读；不表示内容已核实")
 
 
+def cmd_bearing(args, conn):
+    from .bearing import build_bearing, load_lens_file, render_bearing_html
+    from .calibrate import effective_features
+    from .feeds import recommend
+    from .profile import load_profile
+
+    try:
+        day = date.fromisoformat(args.day).isoformat()
+    except (TypeError, ValueError):
+        raise ValueError("--day 必须是 YYYY-MM-DD") from None
+    stored = load_profile(conn)
+    if stored is None:
+        raise ValueError("个人承因需要先导入档案：python -m causal_ledger profile import <问卷导出.json>")
+    features, note = effective_features(conn, stored["features"])
+    items = recommend(conn, days=args.days, limit=args.limit, per_source=args.per_source)
+    lenses = load_lens_file(args.lens) if args.lens else []
+    cards = build_bearing(features, items, day, lens_signals=lenses)
+    if note:
+        print(note)
+    if args.json:
+        print(json.dumps({"day": day, "cards": cards}, ensure_ascii=False, indent=2))
+    else:
+        print(f"个人承因 · {day}（因 → 承 → 果）")
+        if not cards:
+            print("今日无强承因；不硬造。")
+        for i, card in enumerate(cards, 1):
+            print(f"\n[承因 {i}] {card['domain_label']} · {card['polarity_label']} · 强度 {card['strength']:.2f}")
+            print(f"载体：{card['carrier']}")
+            print(f"通道：{card['path']}")
+            print(f"今日之果：{card['action']}")
+            print(f"可能错：{card['uncertainty']}")
+    if args.html:
+        target = Path(args.html)
+        if target.exists():
+            raise FileExistsError(f"承因输出已存在，不覆盖：{target}")
+        if not target.parent.is_dir():
+            raise ValueError("承因输出目录不存在，请先创建目录")
+        target.write_text(render_bearing_html(day, cards), encoding="utf-8")
+        print(f"个人承因页已保存：{target}")
+
+
 def cmd_daily(args, conn):
     from .profile import choose_mode, load_profile
 
@@ -871,6 +912,16 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--days", type=int, default=7, help="回看天数（1到90）")
     p.add_argument("--apply", action="store_true", help="确认写入；不加则只预览")
     p.set_defaults(fn=cmd_calibrate)
+
+    p = sub.add_parser("bearing", help="个人承因：日期/档案/信息/外部透镜 → 今日承因卡（不读保险箱）")
+    p.add_argument("--day", default=date.today().isoformat(), help="日期 YYYY-MM-DD（默认今天）")
+    p.add_argument("--days", type=int, default=2, help="信息回看天数（1到365）")
+    p.add_argument("--limit", type=int, default=20, help="最多信息条数（1到100）")
+    p.add_argument("--per-source", type=int, default=2, help="每来源最多条数（1到100）")
+    p.add_argument("--lens", metavar="FILE", help="可选：外部透镜归一化信号 JSON（黄历/命理/占星等）")
+    p.add_argument("--json", action="store_true", help="输出 JSON")
+    p.add_argument("--html", metavar="FILE", help="另存个人承因 HTML（不覆盖已有文件）")
+    p.set_defaults(fn=cmd_bearing)
 
     p = sub.add_parser("cloud", help="零月费云发布：生成静态日报/归档并可推 Server酱（不读档案/保险箱）")
     p.add_argument("--config", default="config/feeds.json", help="订阅配置 JSON")
