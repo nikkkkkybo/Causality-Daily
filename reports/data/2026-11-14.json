@@ -1,0 +1,131 @@
+{
+ "day": "2026-11-14",
+ "items": [
+  {
+   "id": 11,
+   "title": "荣耀被曝测试多款豪威影像传感器，“最顶”主摄为 2 亿像素 OVB0D",
+   "summary": "IT之家 11 月 14 日消息，据博主 @数码闲聊站 今日爆料，荣耀手机正在测试多款豪威旗下的影像传感器。 据其透露，目前测试“最顶”的主摄为 200Mp 1/1.12\" OVB0D LOFIC 1X-2X ，中高端主摄为 200Mp 1/1.55\" OV52F，中高端潜望长焦为 64Mp 1/2\" OV64D，原生方形前摄为 68Mp OV68F。 IT之家注意到，豪威于去年 12 月发布 OVB0D 手机 CMOS 传感器 ，旨在对标索尼 LYTIA 901。OVB0D 传感器拥有 40 万 full-well（满阱容量，每个像素能容纳的最大电荷量）、108dB 动态范围、二代 DCG（双转换增益）和 LOFIC（横向溢出积分电容）等“黑科技”，可在极限 HDR 场景下展现更佳效果。 IT之家注：LOFIC（lateral overflow integration capacitors，横向溢出积分电容）是一种次世代 HDR 成像技术，通过在单像素中整合线性与对数两种电荷容纳方式，提升 CMOS 传感器动态范围，可缓解图像过曝的问题，让手机在大光比场景下提供更丰富细节的照片。 值",
+   "feed_name": "IT之家",
+   "published_at": "2026-11-14T03:03:47+00:00",
+   "fetched_at": "2026-11-14T03:29:40+00:00",
+   "url": "https://www.ithome.com/1/027/067.htm"
+  },
+  {
+   "id": 12,
+   "title": "“苹果最暗产品”：苹果首款智能家居中枢 HomeView 屏幕最低仅 0.3 尼特",
+   "summary": "IT之家 11 月 14 日消息，昨日（11 月 13 日）在接受 TechRadar 采访时，苹果硬件工程副总裁 Matthew Costello 表示， 苹果首款智能家居中枢 HomeView 屏幕最低仅 0.3 尼特，高管笑称是“最暗的苹果产品”。 IT之家翻译 Costello 采访时回应内容如下： 我非常喜欢 HomeView，这是我们迄今为止设计的产品中最暗的产品，最低亮度降至 0.3 尼特。 所以官方来说，我打造的是苹果公司有史以来最暗的产品。我不知道这是好事还是坏事，但我对此非常自豪。 尼特（nit）是描述屏幕亮度的单位，1 尼特等于 1 坎德拉／平方米。数值越小，意味着在相同测量条件下，屏幕表面朝观看方向发出的光越弱。 对于调暗屏幕亮度，Costello 表示由于 HomeView 需要摆在床边，在夜间点亮后如果太亮，可能会影响用户的睡眠，因此需要降低暗光环境中的存在感。",
+   "feed_name": "IT之家",
+   "published_at": "2026-11-14T02:57:26+00:00",
+   "fetched_at": "2026-11-14T03:29:40+00:00",
+   "url": "https://www.ithome.com/1/027/066.htm"
+  },
+  {
+   "id": 121,
+   "title": "Nvidia Allegedly Engineered Scarcity by Funding AI Startups to Buy Its GPUs",
+   "summary": "Article URL: https://www.techpowerup.com/354814/nvidia-allegedly-engineered-scarcity-by-funding-ai-startups-to-buy-its-gpus Comments URL: https://news.ycombinator.com/item?id=50493251 Points: 13 # Comments: 1",
+   "feed_name": "Hacker News",
+   "published_at": "2026-11-14T02:52:59+00:00",
+   "fetched_at": "2026-11-14T03:29:43+00:00",
+   "url": "https://www.techpowerup.com/354814/nvidia-allegedly-engineered-scarcity-by-funding-ai-startups-to-buy-its-gpus"
+  },
+  {
+   "id": 122,
+   "title": "Ggml v1.0.0",
+   "summary": "Article URL: https://github.com/ggml-org/ggml/releases/tag/v1.0.0 Comments URL: https://news.ycombinator.com/item?id=50493062 Points: 12 # Comments: 0",
+   "feed_name": "Hacker News",
+   "published_at": "2026-11-14T02:28:29+00:00",
+   "fetched_at": "2026-11-14T03:29:43+00:00",
+   "url": "https://github.com/ggml-org/ggml/releases/tag/v1.0.0"
+  },
+  {
+   "id": 141,
+   "title": "DHS head Markwayne Mullin says there is not a threat to the U.S. amid FAA ground stop",
+   "summary": "Department of Homeland Security Secretary Markwayne Mullin spoke to at the White House on Friday afternoon after the FAA issues a total ground stop. NPR was there for the briefing.",
+   "feed_name": "NPR",
+   "published_at": "2026-11-13T22:36:46+00:00",
+   "fetched_at": "2026-11-14T03:29:43+00:00",
+   "url": "https://www.npr.org/2026/11/13/nx-s1-6040418/dhs-head-markwayne-mullin-says-there-is-not-a-threat-to-the-u-s-amid-faa-ground-stop"
+  },
+  {
+   "id": 142,
+   "title": "Stuck on the tarmac without information: Travelers share their ground stop experiences",
+   "summary": "Passengers stuck on airplanes on tarmacs across the country during the FAA ground stop on Friday share their stories.",
+   "feed_name": "NPR",
+   "published_at": "2026-11-13T22:36:45+00:00",
+   "fetched_at": "2026-11-14T03:29:43+00:00",
+   "url": "https://www.npr.org/2026/11/13/nx-s1-6040397/stuck-on-the-tarmac-without-information-travelers-share-their-ground-stop-experiences"
+  },
+  {
+   "id": 91,
+   "title": "余承东公布华为问界新合作模式！新 M8 同步上市，起售价 37.98 万元",
+   "summary": "新 M8 的升级，主打「实用主义」。 #欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。",
+   "feed_name": "爱范儿",
+   "published_at": "2026-11-13T18:19:36+00:00",
+   "fetched_at": "2026-11-14T03:29:43+00:00",
+   "url": "https://www.ifanr.com/1689432?utm_source=rss&utm_medium=rss&utm_campaign="
+  },
+  {
+   "id": 71,
+   "title": "旅行者 1 号距离地球的距离达到一光日",
+   "summary": "北京时间 11 月 18 日 18 时 16 分 07 秒，旅行者 1 号与地球的距离将达到约 259 亿公里，相当于光在真空中传播 24 小时的距离，也就是“一光日”。如果将一光年划分为 365 个刻度，每格代表一个光日，那么 1977 年 9 月 5 日启程的旅行者 1 号，经过近半个世纪的飞行，终于抵达了第一格。今年 10 月，旅行者 1 号曾经历一场短暂的通信中断。NASA JPL 称，18 日和 19 日，NASA 深空网络连续两次未能收到探测器预期发出的信号。直到 20 日，信号才重新出现，异常原因仍在调查中。对于一艘运行近半个世纪的探测器而言，设备老化始终是地面团队面临的挑战。旅行者 1 号依靠三台放射性同位素热电发生器供电，利用钚-238 衰变释放的热量产生电能。随着发电功率逐年下降，电力日益紧张。两艘旅行者探测器的可用电功率每年约减少 4 瓦，工程师必须精打细算地安排每一瓦电。旅行者 1 号发射时搭载了 10 台专用科学仪器，如今仅剩磁强计和等离子体波动仪仍在运行。",
+   "feed_name": "Solidot",
+   "published_at": "2026-11-13T17:14:47+00:00",
+   "fetched_at": "2026-11-14T03:29:41+00:00",
+   "url": "https://www.solidot.org/story?sid=85883"
+  },
+  {
+   "id": 72,
+   "title": "非洲加速发展太阳能",
+   "summary": "在津巴布韦首都哈拉雷（Harare）的一个工业区，如果想要寻找一个新的发电项目，你需要抬起头。Limpopo Way Power 太阳能发电站没有传统的独立厂区，而是将一排排太阳能电池板铺在两座仓库的屋顶上，它通过协议向工厂供电。在非洲和亚洲的很多地区，太阳能革命随处可见。能源智库 Ember 的报告预测，2026 年非洲太阳能新增装机量有望达到 17 GW，同比增长 45%。报告作者之一的 African Tech Futures Lab 研究总监 Joel Nana 表示，我们正见证一场自下而上的革命。多种因素共同推动了非洲太阳能的普及：光伏电池板成本的下降、市电供应的不稳定性、日益加剧的全国性能源危机，发电机所用柴油成本的上涨，以及非洲大部分地区拥有充足且稳定的日照。Deloitte 南非公司的 Jayne Mammatt 表示，非洲很多国家缺乏完善的电网或稳定的电力供应，而太阳能技术已相当成熟，成为一种可在本地直接部署的切实可行的方案。非洲太阳能增长量的 75% 是小型太阳能发电装置，Solar as a Service（缩写 SaaS）就是其中一种活跃的模式。非洲仅有 10%",
+   "feed_name": "Solidot",
+   "published_at": "2026-11-13T17:07:22+00:00",
+   "fetched_at": "2026-11-14T03:29:41+00:00",
+   "url": "https://www.solidot.org/story?sid=85882"
+  },
+  {
+   "id": 92,
+   "title": "iPhone 20 爆料汇总：一整块玻璃，藏着苹果下一个十年",
+   "summary": "iPhone 20 会是一台伟大的产品吗？ #欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。",
+   "feed_name": "爱范儿",
+   "published_at": "2026-11-13T15:44:48+00:00",
+   "fetched_at": "2026-11-14T03:29:43+00:00",
+   "url": "https://www.ifanr.com/1689409?utm_source=rss&utm_medium=rss&utm_campaign="
+  },
+  {
+   "id": 111,
+   "title": "The Download: Silicon Valley’s blind spot and Nvidia’s chip-tracking plan",
+   "summary": "This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. Silicon Valley claims to know the future. So why did it get the midterms so wrong? —Aaron Zamost, a tech communications consultant and a former executive at Square The self-styled visionaries…",
+   "feed_name": "MIT Technology Review",
+   "published_at": "2026-11-13T13:10:00+00:00",
+   "fetched_at": "2026-11-14T03:29:43+00:00",
+   "url": "https://www.technologyreview.com/2026/11/13/1148551/the-download-silicon-valley-midterms-nvidia-chip-tracking/"
+  },
+  {
+   "id": 112,
+   "title": "More autonomy, fewer NDAs: Volunteers have new requests for brain implant trials",
+   "summary": "Scientists have been working on ways to decode brain activity for decades. Teams have developed brain implants that can be used to control robotic limbs and computers, and even to “speak.” The people who volunteer for trials of those devices play a vital role in that research, and they ought to be recognized for their…",
+   "feed_name": "MIT Technology Review",
+   "published_at": "2026-11-13T10:00:00+00:00",
+   "fetched_at": "2026-11-14T03:29:43+00:00",
+   "url": "https://www.technologyreview.com/2026/11/13/1148474/more-autonomy-fewer-ndas-volunteers-have-new-requests-for-brain-implant-trials/"
+  },
+  {
+   "id": 1,
+   "title": "本周看什么 | 最近值得一看的 10 部作品",
+   "summary": "📅本周新预告《银翼杀手2099》终极预告11月10日，剧集《银翼杀手2099》发布了终极预告，将于11月25日上线PrimeVideo。亨特·莎弗、杨紫琼主演，2099年的洛杉矶，为了彻底结束逃亡生活 ... 查看全文",
+   "feed_name": "少数派",
+   "published_at": "2026-11-13T09:39:22+00:00",
+   "fetched_at": "2026-11-14T03:29:39+00:00",
+   "url": "https://sspai.com/post/118999"
+  },
+  {
+   "id": 2,
+   "title": "研究生如何用 AI 辅助完成一篇综述：我的科研写作工具与实践经验",
+   "summary": "AI 改变的不是科研写作本身，而是我们完成科研写作时的工作方式。 查看全文",
+   "feed_name": "少数派",
+   "published_at": "2026-11-13T07:00:00+00:00",
+   "fetched_at": "2026-11-14T03:29:39+00:00",
+   "url": "https://sspai.com/post/118153"
+  }
+ ]
+}

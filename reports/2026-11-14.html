@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>今日事报 · 2026-11-14</title>
+<style>
+:root { --paper:#f6f2ea; --ink:#1b1a17; --soft:#4a463e; --muted:#8a8376;
+  --line:#d8d0c0; --red:#9e3b2e; }
+* { box-sizing:border-box; }
+body { margin:0; background:radial-gradient(1200px 600px at 10% -10%, #fbf8f2, transparent 60%), var(--paper);
+  color:var(--ink); font:16px/1.8 "Songti SC","Noto Serif SC",Georgia,serif; }
+.page { max-width:1040px; margin:0 auto; padding:52px 30px 70px; }
+.masthead { display:flex; align-items:flex-end; justify-content:space-between; gap:20px;
+  border-bottom:1px solid var(--ink); padding-bottom:16px; }
+.kicker { font-size:12px; letter-spacing:.26em; color:var(--red); margin-bottom:8px; }
+h1 { margin:0; font-size:42px; letter-spacing:.06em; }
+.date { color:var(--muted); font-size:13px; letter-spacing:.14em; margin-top:8px; }
+.seal { width:52px; height:52px; border:1.5px solid var(--red); color:var(--red);
+  display:grid; place-items:center; font-size:14px; letter-spacing:.18em;
+  writing-mode:vertical-rl; text-orientation:upright; }
+.thesis { margin:30px 0 6px; font-size:20px; line-height:1.8; }
+.lede { color:var(--soft); font-size:13.5px; margin:0 0 28px; }
+.bearing-block { margin:26px 0 30px; border-top:1px solid var(--line); border-bottom:1px solid var(--line); padding:16px 0 6px; }
+.bearing-block h2 { margin:0 0 10px; font-size:20px; letter-spacing:.08em; color:var(--red); }
+.bearing-block .bearing { padding:12px 0 14px; border-top:1px dotted var(--line); }
+.bearing-block .bearing-head { display:flex; justify-content:space-between; gap:12px; align-items:baseline; }
+.bearing-block .no { color:var(--red); font-size:12px; letter-spacing:.12em; }
+.bearing-block .tag, .bearing-block .path, .bearing-block .meta { color:var(--muted); font-size:12px; }
+.bearing-block .carrier { margin:6px 0 2px; font-size:18px; }
+.bearing-block .action { margin:8px 0; }
+.chain { margin:36px 0 0; }
+.chain-head { display:flex; align-items:baseline; gap:12px; border-top:1px solid var(--line); padding-top:16px; }
+.chain-no { font-size:12px; letter-spacing:.28em; color:var(--red); }
+.chain-title { margin:0; font-size:25px; letter-spacing:.05em; }
+.strength { margin-left:auto; font-size:12px; letter-spacing:.12em; color:var(--muted); }
+.spread { display:grid; grid-template-columns:minmax(0,1fr) 40px minmax(0,1fr); margin-top:18px; }
+.cause,.effect { padding:0 2px; }
+.axis { position:relative; display:flex; justify-content:center; }
+.axis::before { content:""; position:absolute; top:6px; bottom:6px; width:1px;
+  background:linear-gradient(var(--line), var(--soft), var(--line)); opacity:.5; }
+.axis .dot { width:7px; height:7px; border-radius:50%; background:var(--red); margin-top:40px;
+  position:relative; z-index:1; box-shadow:0 0 0 5px var(--paper); }
+.col-head { font-size:12.5px; letter-spacing:.2em; color:var(--muted); margin:0 0 10px; }
+.col-head b { color:var(--ink); letter-spacing:.08em; }
+.signal { margin:0 0 14px; }
+.signal .t { font-size:16px; line-height:1.65; margin:0; }
+.signal .src { margin:4px 0 0; font-size:12px; color:var(--muted); }
+.signal .src a { color:var(--muted); text-decoration:none; border-bottom:1px dotted var(--muted); }
+.signal .src a:hover { color:var(--red); border-color:var(--red); }
+.effect ul { list-style:none; margin:0; padding:0; }
+.effect li { position:relative; padding-left:1.1em; margin:0 0 10px; font-size:15.5px; }
+.effect li::before { content:"—"; position:absolute; left:0; color:#b8604f; }
+.reasoning { margin:16px 0 0; padding:14px 16px; border:1px solid var(--line); background:rgba(255,255,255,.3); }
+.reasoning .label { margin:0 0 6px; font-size:12px; letter-spacing:.22em; color:var(--red); }
+.reasoning p { margin:0 0 6px; font-size:14px; color:var(--soft); }
+.reasoning .doubt { color:var(--muted); font-size:12.5px; }
+.algorithm { margin-top:44px; border-top:1px solid var(--ink); padding-top:18px; }
+.algorithm h2 { font-size:20px; margin:0 0 8px; letter-spacing:.06em; }
+.algorithm p { margin:0 0 6px; color:var(--soft); font-size:13.5px; }
+.algorithm .muted { color:var(--muted); font-size:12.5px; }
+.sources { margin-top:30px; border-top:1px solid var(--line); padding-top:16px; }
+.sources h2 { font-size:19px; margin:0 0 10px; letter-spacing:.05em; }
+.sources ul { list-style:none; margin:0; padding:0; }
+.sources li { display:flex; justify-content:space-between; gap:14px; padding:7px 0;
+  border-bottom:1px dashed var(--line); font-size:13px; }
+.sources .src-title { color:var(--ink); }
+.sources .src-meta { color:var(--muted); white-space:nowrap; font-size:12px; }
+.sources a { color:var(--muted); text-decoration:none; border-bottom:1px dotted var(--muted); }
+.foot { margin-top:34px; padding-top:12px; border-top:1px solid var(--line);
+  color:var(--muted); font-size:12px; display:flex; justify-content:space-between; gap:16px; }
+@media (max-width:760px) {
+  .page { padding:32px 18px 54px; }
+  h1 { font-size:32px; }
+  .spread { grid-template-columns:1fr; }
+  .axis { display:none; }
+  .effect { margin-top:16px; }
+  .foot { flex-direction:column; }
+}
+</style></head><body><div class="page">
+<header class="masthead">
+  <div>
+    <div class="kicker">今日事报 · 云端通线</div>
+    <h1>今日事报</h1>
+    <div class="date">2026-11-14 · 14 条信号 · 取 3 条链</div>
+  </div>
+  <div class="seal" aria-hidden="true">事报</div>
+</header>
+<p class="thesis">今日信号没有单一主线，更像几条各自推进的硬件与基础设施线索：手机影像供应链在提前卡位，智能家居交互在往更细的体验参数走，而 AI 算力与航空运行则暴露出系统性的紧张与脆弱。</p>
+<p class="lede">因与果都摆在下面；中间的链路完整写出。云端不读你的档案，所以这是通线版本；个体线仍在本地。</p>
+
+
+<section class="chain">
+  <div class="chain-head">
+    <span class="chain-no">链一</span>
+    <h2 class="chain-title">手机影像供应链卡位</h2>
+    <span class="strength">中 · 二次整理</span>
+  </div>
+  <div class="spread">
+    <div class="cause">
+      <p class="col-head"><b>因</b>　今天出现的信号</p>
+      <div class="signal"><p class="t">荣耀被曝正在测试多款豪威影像传感器，其中最高规格主摄为 2 亿像素的 OVB0D，另有中高端主摄、潜望长焦和前摄方案同步测试。</p><p class="src">IT之家 · 2026-11-14T03:03 · <a href="https://www.ithome.com/1/027/067.htm" target="_blank" rel="noopener noreferrer">原文</a></p></div><div class="signal"><p class="t">爱范儿汇总了 iPhone 20 的爆料，核心叙事指向“一整块玻璃”的形态变化，并把它与苹果下一个十年挂钩。</p><p class="src">爱范儿 · 2026-11-13T15:44 · <a href="https://www.ifanr.com/1689409?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=" target="_blank" rel="noopener noreferrer">原文</a></p></div>
+    </div>
+    <div class="axis"><span class="dot"></span></div>
+    <div class="effect">
+      <p class="col-head"><b>果</b>　我由此推断</p>
+      <ul><li>手机厂商在影像硬件上的备选方案变多，供应链竞争可能从单一主摄转向多焦段、多传感器的组合比拼。</li><li>爆料驱动的产品预期仍在提前释放，消费者对下一代旗舰的想象更多集中在形态与影像，而非单一参数。</li></ul>
+    </div>
+  </div>
+  <div class="reasoning">
+    <p class="label">我的链路</p>
+    <p>两条信号都涉及下一代手机的硬件方向，一条来自供应链测试，一条来自产品形态爆料，放在一起可以看出手机厂商在影像与外观上同时做前置布局。</p>
+    <p class="doubt">可能看错：爆料本身未经官方确认，供应链测试也不等于最终量产方案，实际产品可能大幅调整。 本条基于 2 条信号、未核验。</p>
+  </div>
+</section>
+<section class="chain">
+  <div class="chain-head">
+    <span class="chain-no">链二</span>
+    <h2 class="chain-title">AI 算力与芯片追踪</h2>
+    <span class="strength">弱 · 二次整理</span>
+  </div>
+  <div class="spread">
+    <div class="cause">
+      <p class="col-head"><b>因</b>　今天出现的信号</p>
+      <div class="signal"><p class="t">有文章指控英伟达通过资助 AI 初创公司购买其 GPU 来人为制造稀缺。</p><p class="src">Hacker News · 2026-11-14T02:52 · <a href="https://www.techpowerup.com/354814/nvidia-allegedly-engineered-scarcity-by-funding-ai-startups-to-buy-its-gpus" target="_blank" rel="noopener noreferrer">原文</a></p></div><div class="signal"><p class="t">MIT Technology Review 的每日简报提到硅谷对中期选举的判断失准，并涉及英伟达的芯片追踪计划。</p><p class="src">MIT Technology Review · 2026-11-13T13:10 · <a href="https://www.technologyreview.com/2026/11/13/1148551/the-download-silicon-valley-midterms-nvidia-chip-tracking/" target="_blank" rel="noopener noreferrer">原文</a></p></div>
+    </div>
+    <div class="axis"><span class="dot"></span></div>
+    <div class="effect">
+      <p class="col-head"><b>果</b>　我由此推断</p>
+      <ul><li>围绕 AI 芯片供需的讨论可能从性能转向采购行为和分配机制，芯片追踪成为被关注的治理工具。</li><li>如果稀缺被质疑为人为安排，云厂商和初创公司的采购策略可能面临更多审视，但短期难以改变算力紧张的感受。</li></ul>
+    </div>
+  </div>
+  <div class="reasoning">
+    <p class="label">我的链路</p>
+    <p>两条信号都指向英伟达在 AI 算力生态中的中心位置，一条谈稀缺成因，一条谈芯片追踪，属于同一议题的不同侧面。</p>
+    <p class="doubt">可能看错：“资助初创买 GPU”目前只是指控，芯片追踪计划的具体范围也不清楚，两者未必有直接因果关系。 本条基于 2 条信号、未核验。</p>
+  </div>
+</section>
+<section class="chain">
+  <div class="chain-head">
+    <span class="chain-no">链三</span>
+    <h2 class="chain-title">航空停飞与信息真空</h2>
+    <span class="strength">中 · 二次整理</span>
+  </div>
+  <div class="spread">
+    <div class="cause">
+      <p class="col-head"><b>因</b>　今天出现的信号</p>
+      <div class="signal"><p class="t">美国国土安全部部长 Markwayne Mullin 在 FAA 发布全面停飞后表示，美国没有面临威胁。</p><p class="src">NPR · 2026-11-13T22:36 · <a href="https://www.npr.org/2026/11/13/nx-s1-6040418/dhs-head-markwayne-mullin-says-there-is-not-a-threat-to-the-u-s-amid-faa-ground-stop" target="_blank" rel="noopener noreferrer">原文</a></p></div><div class="signal"><p class="t">NPR 收集了停飞期间滞留停机坪的旅客经历，核心问题是旅客在飞机上得不到足够信息。</p><p class="src">NPR · 2026-11-13T22:36 · <a href="https://www.npr.org/2026/11/13/nx-s1-6040397/stuck-on-the-tarmac-without-information-travelers-share-their-ground-stop-experiences" target="_blank" rel="noopener noreferrer">原文</a></p></div>
+    </div>
+    <div class="axis"><span class="dot"></span></div>
+    <div class="effect">
+      <p class="col-head"><b>果</b>　我由此推断</p>
+      <ul><li>官方对安全威胁的否认与旅客的信息匮乏形成反差，公众对停飞原因和决策过程的追问可能持续。</li><li>航空运行中断的体验问题被放大，信息发布机制而非单纯安全事件成为舆论焦点。</li></ul>
+    </div>
+  </div>
+  <div class="reasoning">
+    <p class="label">我的链路</p>
+    <p>两条信号来自同一停飞事件，一条是官方表态，一条是旅客体验，合起来看是“运行中断加信息不对称”的组合。</p>
+    <p class="doubt">可能看错：停飞的具体原因和范围在信号中不完整，官方表态也可能只覆盖安全维度，不能据此推断事件全貌。 本条基于 2 条信号、未核验。</p>
+  </div>
+</section>
+
+<section class="algorithm">
+  <h2>今日算法链</h2>
+  <p>输入 14 条 / 7 个源；DeepSeek 二次整理为 3 条链、引用 6 条信号；本页由 DeepSeek 二次翻译/整理，不是原文摘抄；云端通线不读个人档案；条目未核验；强度只是启发式提示。</p>
+  <p class="muted">不按点击历史排序；不自动外发除 Server酱 以外的内容；所有条目与推断均未核验。</p>
+</section>
+<footer class="foot">
+  <span>推断，不是结论。核验、结算、预测在本地账簿另做。</span>
+  <span>2026-11-14 · 通线</span>
+</footer>
+</div></body></html>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>今日事报 · 2026-11-13</title>
+<title>今日事报 · 2026-11-14</title>
 <style>
 :root { --paper:#f6f2ea; --ink:#1b1a17; --soft:#4a463e; --muted:#8a8376;
   --line:#d8d0c0; --red:#9e3b2e; }
@@ -19,6 +19,14 @@ h1 { margin:0; font-size:42px; letter-spacing:.06em; }
   writing-mode:vertical-rl; text-orientation:upright; }
 .thesis { margin:30px 0 6px; font-size:20px; line-height:1.8; }
 .lede { color:var(--soft); font-size:13.5px; margin:0 0 28px; }
+.bearing-block { margin:26px 0 30px; border-top:1px solid var(--line); border-bottom:1px solid var(--line); padding:16px 0 6px; }
+.bearing-block h2 { margin:0 0 10px; font-size:20px; letter-spacing:.08em; color:var(--red); }
+.bearing-block .bearing { padding:12px 0 14px; border-top:1px dotted var(--line); }
+.bearing-block .bearing-head { display:flex; justify-content:space-between; gap:12px; align-items:baseline; }
+.bearing-block .no { color:var(--red); font-size:12px; letter-spacing:.12em; }
+.bearing-block .tag, .bearing-block .path, .bearing-block .meta { color:var(--muted); font-size:12px; }
+.bearing-block .carrier { margin:6px 0 2px; font-size:18px; }
+.bearing-block .action { margin:8px 0; }
 .chain { margin:36px 0 0; }
 .chain-head { display:flex; align-items:baseline; gap:12px; border-top:1px solid var(--line); padding-top:16px; }
 .chain-no { font-size:12px; letter-spacing:.28em; color:var(--red); }
@@ -72,90 +80,91 @@ h1 { margin:0; font-size:42px; letter-spacing:.06em; }
   <div>
     <div class="kicker">今日事报 · 云端通线</div>
     <h1>今日事报</h1>
-    <div class="date">2026-11-13 · 14 条信号 · 取 3 条链</div>
+    <div class="date">2026-11-14 · 14 条信号 · 取 3 条链</div>
   </div>
   <div class="seal" aria-hidden="true">事报</div>
 </header>
-<p class="thesis">今日信号集中在平台与基础设施的可见性：消费端功能更新让赛事和游戏状态更显眼，而企业端芯片追踪、云服务中断和供应链事故则暴露了系统运行的不透明与脆弱。</p>
+<p class="thesis">今日信号没有单一主线，更像几条各自推进的硬件与基础设施线索：手机影像供应链在提前卡位，智能家居交互在往更细的体验参数走，而 AI 算力与航空运行则暴露出系统性的紧张与脆弱。</p>
 <p class="lede">因与果都摆在下面；中间的链路完整写出。云端不读你的档案，所以这是通线版本；个体线仍在本地。</p>
+
 
 <section class="chain">
   <div class="chain-head">
     <span class="chain-no">链一</span>
-    <h2 class="chain-title">平台功能向实时状态延伸</h2>
+    <h2 class="chain-title">手机影像供应链卡位</h2>
     <span class="strength">中 · 二次整理</span>
   </div>
   <div class="spread">
     <div class="cause">
       <p class="col-head"><b>因</b>　今天出现的信号</p>
-      <div class="signal"><p class="t">Apple Sports 应用更新至 4.6 版本，新增中国足球超级联赛、俄罗斯和瑞典足球超级联赛的赛事支持，并引入 UFC 赛事内容，可查看实时比分、赛程和击打部位热力图。</p><p class="src">IT之家 · 2026-11-13T03:24 · <a href="https://www.ithome.com/1/026/589.htm" target="_blank" rel="noopener noreferrer">原文</a></p></div><div class="signal"><p class="t">小米澎湃 OS 宣布超级岛支持《王者荣耀》，可实时提醒复活时间，但需将手机管家和游戏空间升级至指定版本，且需澎湃 OS 4。</p><p class="src">IT之家 · 2026-11-13T03:21 · <a href="https://www.ithome.com/1/026/588.htm" target="_blank" rel="noopener noreferrer">原文</a></p></div>
+      <div class="signal"><p class="t">荣耀被曝正在测试多款豪威影像传感器，其中最高规格主摄为 2 亿像素的 OVB0D，另有中高端主摄、潜望长焦和前摄方案同步测试。</p><p class="src">IT之家 · 2026-11-14T03:03 · <a href="https://www.ithome.com/1/027/067.htm" target="_blank" rel="noopener noreferrer">原文</a></p></div><div class="signal"><p class="t">爱范儿汇总了 iPhone 20 的爆料，核心叙事指向“一整块玻璃”的形态变化，并把它与苹果下一个十年挂钩。</p><p class="src">爱范儿 · 2026-11-13T15:44 · <a href="https://www.ifanr.com/1689409?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=" target="_blank" rel="noopener noreferrer">原文</a></p></div>
     </div>
     <div class="axis"><span class="dot"></span></div>
     <div class="effect">
       <p class="col-head"><b>果</b>　我由此推断</p>
-      <ul><li>消费电子厂商正把实时赛事和游戏状态作为系统级入口来运营，而非仅停留在应用内。</li><li>此类功能对系统版本和配套应用版本有明确依赖，实际覆盖范围可能受机型与升级节奏限制。</li></ul>
+      <ul><li>手机厂商在影像硬件上的备选方案变多，供应链竞争可能从单一主摄转向多焦段、多传感器的组合比拼。</li><li>爆料驱动的产品预期仍在提前释放，消费者对下一代旗舰的想象更多集中在形态与影像，而非单一参数。</li></ul>
     </div>
   </div>
   <div class="reasoning">
     <p class="label">我的链路</p>
-    <p>两条信号都指向手机操作系统或预装应用将外部实时数据（比分、复活倒计时）提升为锁屏或系统级可见信息，属于同一产品逻辑。</p>
-    <p class="doubt">可能看错：两条信号分别来自苹果和小米，生态封闭且用户群不同，未必构成行业统一趋势。 本条基于 2 条信号、未核验。</p>
+    <p>两条信号都涉及下一代手机的硬件方向，一条来自供应链测试，一条来自产品形态爆料，放在一起可以看出手机厂商在影像与外观上同时做前置布局。</p>
+    <p class="doubt">可能看错：爆料本身未经官方确认，供应链测试也不等于最终量产方案，实际产品可能大幅调整。 本条基于 2 条信号、未核验。</p>
   </div>
 </section>
 <section class="chain">
   <div class="chain-head">
     <span class="chain-no">链二</span>
-    <h2 class="chain-title">芯片追踪可行性与公开表态分歧</h2>
-    <span class="strength">中 · 二次整理</span>
-  </div>
-  <div class="spread">
-    <div class="cause">
-      <p class="col-head"><b>因</b>　今天出现的信号</p>
-      <div class="signal"><p class="t">英伟达代表向伊利诺伊州众议员 Bill Foster 表示，从技术上讲可以实施《芯片安全法案》所要求的反走私措施；而行业组织公开质疑其可行性。</p><p class="src">MIT Technology Review · 2026-11-12T20:16 · <a href="https://www.technologyreview.com/2026/11/12/1148483/nvidia-chip-tracking/" target="_blank" rel="noopener noreferrer">原文</a></p></div><div class="signal"><p class="t">Hacker News 上出现英伟达员工请愿要求黄仁勋回归的帖子，获得较多关注。</p><p class="src">Hacker News · 2026-11-13T02:16 · <a href="https://www.wired.com/story/nvidia-employees-petition-for-jensen-huangs-return/" target="_blank" rel="noopener noreferrer">原文</a></p></div><div class="signal"><p class="t">少数派早报标题提及英伟达 CEO 黄仁勋宣布辞职。</p><p class="src">少数派 · 2026-11-13T00:48 · <a href="https://sspai.com/post/118966" target="_blank" rel="noopener noreferrer">原文</a></p></div>
-    </div>
-    <div class="axis"><span class="dot"></span></div>
-    <div class="effect">
-      <p class="col-head"><b>果</b>　我由此推断</p>
-      <ul><li>英伟达在芯片追踪问题上存在私下确认可行与行业公开质疑之间的张力，可能影响相关立法推进的舆论环境。</li><li>高管变动传闻与员工请愿同时出现，公司治理稳定性可能成为市场关注点，但具体走向无法从现有信号判断。</li></ul>
-    </div>
-  </div>
-  <div class="reasoning">
-    <p class="label">我的链路</p>
-    <p>三条信号均围绕英伟达：一条涉及芯片追踪的技术可行性表态，两条涉及高管去留传闻，可能共同影响外界对公司战略连续性的判断。</p>
-    <p class="doubt">可能看错：高管辞职与员工请愿的信息来自早报标题和论坛帖子，未经公司正式确认，事实基础较弱。 本条基于 3 条信号、未核验。</p>
-  </div>
-</section>
-<section class="chain">
-  <div class="chain-head">
-    <span class="chain-no">链三</span>
-    <h2 class="chain-title">云服务与供应链的脆弱性暴露</h2>
+    <h2 class="chain-title">AI 算力与芯片追踪</h2>
     <span class="strength">弱 · 二次整理</span>
   </div>
   <div class="spread">
     <div class="cause">
       <p class="col-head"><b>因</b>　今天出现的信号</p>
-      <div class="signal"><p class="t">微软平台包括 Outlook 出现大范围中断，许多用户无法正常使用邮箱账户。</p><p class="src">NPR · 2026-11-13T01:26 · <a href="https://www.npr.org/2026/11/12/nx-s1-6039343/is-outlook-down-widespread-outage-hits-microsoft-email-and-other-apps" target="_blank" rel="noopener noreferrer">原文</a></p></div><div class="signal"><p class="t">塔塔电子位于印度泰米尔纳德邦的工厂发生三名合同工死亡事故，工人在检查外部纳滤罐时吸入气体；该工厂为苹果 iPhone 生产零部件。</p><p class="src">Solidot · 2026-11-12T14:28 · <a href="https://www.solidot.org/story?sid=85873" target="_blank" rel="noopener noreferrer">原文</a></p></div>
+      <div class="signal"><p class="t">有文章指控英伟达通过资助 AI 初创公司购买其 GPU 来人为制造稀缺。</p><p class="src">Hacker News · 2026-11-14T02:52 · <a href="https://www.techpowerup.com/354814/nvidia-allegedly-engineered-scarcity-by-funding-ai-startups-to-buy-its-gpus" target="_blank" rel="noopener noreferrer">原文</a></p></div><div class="signal"><p class="t">MIT Technology Review 的每日简报提到硅谷对中期选举的判断失准，并涉及英伟达的芯片追踪计划。</p><p class="src">MIT Technology Review · 2026-11-13T13:10 · <a href="https://www.technologyreview.com/2026/11/13/1148551/the-download-silicon-valley-midterms-nvidia-chip-tracking/" target="_blank" rel="noopener noreferrer">原文</a></p></div>
     </div>
     <div class="axis"><span class="dot"></span></div>
     <div class="effect">
       <p class="col-head"><b>果</b>　我由此推断</p>
-      <ul><li>大型云服务和关键制造节点都可能因单点故障或安全事故影响终端用户和品牌供应链。</li><li>苹果将生产扩展至中国以外地区的过程中，印度工厂的安全与环境管理问题可能持续受到审视。</li></ul>
+      <ul><li>围绕 AI 芯片供需的讨论可能从性能转向采购行为和分配机制，芯片追踪成为被关注的治理工具。</li><li>如果稀缺被质疑为人为安排，云厂商和初创公司的采购策略可能面临更多审视，但短期难以改变算力紧张的感受。</li></ul>
     </div>
   </div>
   <div class="reasoning">
     <p class="label">我的链路</p>
-    <p>两条信号分别代表数字基础设施（微软邮箱中断）和物理供应链（印度苹果代工厂事故）的意外中断，共同说明关键节点的脆弱性，但二者之间没有直接因果联系。</p>
-    <p class="doubt">可能看错：把云服务中断和工厂事故放在同一链条下，可能只是主题上的松散类比，而非真正的共同信号。 本条基于 2 条信号、未核验。</p>
+    <p>两条信号都指向英伟达在 AI 算力生态中的中心位置，一条谈稀缺成因，一条谈芯片追踪，属于同一议题的不同侧面。</p>
+    <p class="doubt">可能看错：“资助初创买 GPU”目前只是指控，芯片追踪计划的具体范围也不清楚，两者未必有直接因果关系。 本条基于 2 条信号、未核验。</p>
+  </div>
+</section>
+<section class="chain">
+  <div class="chain-head">
+    <span class="chain-no">链三</span>
+    <h2 class="chain-title">航空停飞与信息真空</h2>
+    <span class="strength">中 · 二次整理</span>
+  </div>
+  <div class="spread">
+    <div class="cause">
+      <p class="col-head"><b>因</b>　今天出现的信号</p>
+      <div class="signal"><p class="t">美国国土安全部部长 Markwayne Mullin 在 FAA 发布全面停飞后表示，美国没有面临威胁。</p><p class="src">NPR · 2026-11-13T22:36 · <a href="https://www.npr.org/2026/11/13/nx-s1-6040418/dhs-head-markwayne-mullin-says-there-is-not-a-threat-to-the-u-s-amid-faa-ground-stop" target="_blank" rel="noopener noreferrer">原文</a></p></div><div class="signal"><p class="t">NPR 收集了停飞期间滞留停机坪的旅客经历，核心问题是旅客在飞机上得不到足够信息。</p><p class="src">NPR · 2026-11-13T22:36 · <a href="https://www.npr.org/2026/11/13/nx-s1-6040397/stuck-on-the-tarmac-without-information-travelers-share-their-ground-stop-experiences" target="_blank" rel="noopener noreferrer">原文</a></p></div>
+    </div>
+    <div class="axis"><span class="dot"></span></div>
+    <div class="effect">
+      <p class="col-head"><b>果</b>　我由此推断</p>
+      <ul><li>官方对安全威胁的否认与旅客的信息匮乏形成反差，公众对停飞原因和决策过程的追问可能持续。</li><li>航空运行中断的体验问题被放大，信息发布机制而非单纯安全事件成为舆论焦点。</li></ul>
+    </div>
+  </div>
+  <div class="reasoning">
+    <p class="label">我的链路</p>
+    <p>两条信号来自同一停飞事件，一条是官方表态，一条是旅客体验，合起来看是“运行中断加信息不对称”的组合。</p>
+    <p class="doubt">可能看错：停飞的具体原因和范围在信号中不完整，官方表态也可能只覆盖安全维度，不能据此推断事件全貌。 本条基于 2 条信号、未核验。</p>
   </div>
 </section>
 
 <section class="algorithm">
   <h2>今日算法链</h2>
-  <p>输入 14 条 / 7 个源；DeepSeek 二次整理为 3 条链、引用 7 条信号；本页由 DeepSeek 二次翻译/整理，不是原文摘抄；云端通线不读个人档案；条目未核验；强度只是启发式提示。</p>
+  <p>输入 14 条 / 7 个源；DeepSeek 二次整理为 3 条链、引用 6 条信号；本页由 DeepSeek 二次翻译/整理，不是原文摘抄；云端通线不读个人档案；条目未核验；强度只是启发式提示。</p>
   <p class="muted">不按点击历史排序；不自动外发除 Server酱 以外的内容；所有条目与推断均未核验。</p>
 </section>
 <footer class="foot">
   <span>推断，不是结论。核验、结算、预测在本地账簿另做。</span>
-  <span>2026-11-13 · 通线</span>
+  <span>2026-11-14 · 通线</span>
 </footer>
 </div></body></html>
