@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>本周事报 · 2026-11-15</title>
+<style>
+:root { --paper:#f6f2ea; --ink:#1b1a17; --soft:#4a463e; --muted:#8a8376;
+  --line:#d8d0c0; --red:#9e3b2e; }
+* { box-sizing:border-box; }
+body { margin:0; background:radial-gradient(1200px 600px at 10% -10%, #fbf8f2, transparent 60%), var(--paper);
+  color:var(--ink); font:16px/1.8 "Songti SC","Noto Serif SC",Georgia,serif; }
+.page { max-width:1040px; margin:0 auto; padding:52px 30px 70px; }
+.masthead { display:flex; align-items:flex-end; justify-content:space-between; gap:20px;
+  border-bottom:1px solid var(--ink); padding-bottom:16px; }
+.kicker { font-size:12px; letter-spacing:.26em; color:var(--red); margin-bottom:8px; }
+h1 { margin:0; font-size:42px; letter-spacing:.06em; }
+.date { color:var(--muted); font-size:13px; letter-spacing:.14em; margin-top:8px; }
+.seal { width:52px; height:52px; border:1.5px solid var(--red); color:var(--red);
+  display:grid; place-items:center; font-size:14px; letter-spacing:.18em;
+  writing-mode:vertical-rl; text-orientation:upright; }
+.thesis { margin:30px 0 6px; font-size:20px; line-height:1.8; }
+.lede { color:var(--soft); font-size:13.5px; margin:0 0 28px; }
+.bearing-block { margin:26px 0 30px; border-top:1px solid var(--line); border-bottom:1px solid var(--line); padding:16px 0 6px; }
+.bearing-block h2 { margin:0 0 10px; font-size:20px; letter-spacing:.08em; color:var(--red); }
+.bearing-block .bearing { padding:12px 0 14px; border-top:1px dotted var(--line); }
+.bearing-block .bearing-head { display:flex; justify-content:space-between; gap:12px; align-items:baseline; }
+.bearing-block .no { color:var(--red); font-size:12px; letter-spacing:.12em; }
+.bearing-block .tag, .bearing-block .path, .bearing-block .meta { color:var(--muted); font-size:12px; }
+.bearing-block .carrier { margin:6px 0 2px; font-size:18px; }
+.bearing-block .action { margin:8px 0; }
+.chain { margin:36px 0 0; }
+.chain-head { display:flex; align-items:baseline; gap:12px; border-top:1px solid var(--line); padding-top:16px; }
+.chain-no { font-size:12px; letter-spacing:.28em; color:var(--red); }
+.chain-title { margin:0; font-size:25px; letter-spacing:.05em; }
+.strength { margin-left:auto; font-size:12px; letter-spacing:.12em; color:var(--muted); }
+.spread { display:grid; grid-template-columns:minmax(0,1fr) 40px minmax(0,1fr); margin-top:18px; }
+.cause,.effect { padding:0 2px; }
+.axis { position:relative; display:flex; justify-content:center; }
+.axis::before { content:""; position:absolute; top:6px; bottom:6px; width:1px;
+  background:linear-gradient(var(--line), var(--soft), var(--line)); opacity:.5; }
+.axis .dot { width:7px; height:7px; border-radius:50%; background:var(--red); margin-top:40px;
+  position:relative; z-index:1; box-shadow:0 0 0 5px var(--paper); }
+.col-head { font-size:12.5px; letter-spacing:.2em; color:var(--muted); margin:0 0 10px; }
+.col-head b { color:var(--ink); letter-spacing:.08em; }
+.signal { margin:0 0 14px; }
+.signal .t { font-size:16px; line-height:1.65; margin:0; }
+.signal .src { margin:4px 0 0; font-size:12px; color:var(--muted); }
+.signal .src a { color:var(--muted); text-decoration:none; border-bottom:1px dotted var(--muted); }
+.signal .src a:hover { color:var(--red); border-color:var(--red); }
+.effect ul { list-style:none; margin:0; padding:0; }
+.effect li { position:relative; padding-left:1.1em; margin:0 0 10px; font-size:15.5px; }
+.effect li::before { content:"—"; position:absolute; left:0; color:#b8604f; }
+.reasoning { margin:16px 0 0; padding:14px 16px; border:1px solid var(--line); background:rgba(255,255,255,.3); }
+.reasoning .label { margin:0 0 6px; font-size:12px; letter-spacing:.22em; color:var(--red); }
+.reasoning p { margin:0 0 6px; font-size:14px; color:var(--soft); }
+.reasoning .doubt { color:var(--muted); font-size:12.5px; }
+.algorithm { margin-top:44px; border-top:1px solid var(--ink); padding-top:18px; }
+.algorithm h2 { font-size:20px; margin:0 0 8px; letter-spacing:.06em; }
+.algorithm p { margin:0 0 6px; color:var(--soft); font-size:13.5px; }
+.algorithm .muted { color:var(--muted); font-size:12.5px; }
+.sources { margin-top:30px; border-top:1px solid var(--line); padding-top:16px; }
+.sources h2 { font-size:19px; margin:0 0 10px; letter-spacing:.05em; }
+.sources ul { list-style:none; margin:0; padding:0; }
+.sources li { display:flex; justify-content:space-between; gap:14px; padding:7px 0;
+  border-bottom:1px dashed var(--line); font-size:13px; }
+.sources .src-title { color:var(--ink); }
+.sources .src-meta { color:var(--muted); white-space:nowrap; font-size:12px; }
+.sources a { color:var(--muted); text-decoration:none; border-bottom:1px dotted var(--muted); }
+.foot { margin-top:34px; padding-top:12px; border-top:1px solid var(--line);
+  color:var(--muted); font-size:12px; display:flex; justify-content:space-between; gap:16px; }
+@media (max-width:760px) {
+  .page { padding:32px 18px 54px; }
+  h1 { font-size:32px; }
+  .spread { grid-template-columns:1fr; }
+  .axis { display:none; }
+  .effect { margin-top:16px; }
+  .foot { flex-direction:column; }
+}
+</style></head><body><div class="page">
+<header class="masthead">
+  <div>
+    <div class="kicker">本周事报 · 周报</div>
+    <h1>本周事报</h1>
+    <div class="date">2026-11-09 ~ 2026-11-15 · 39 条信号 · 取 3 条链</div>
+  </div>
+  <div class="seal" aria-hidden="true">事报</div>
+</header>
+<p class="thesis">本周信号分散，但一条可辨的暗线是：平台与厂商正把「实时状态」和「可追踪性」做进产品与供应链——从赛事比分、游戏复活提醒到芯片追踪与流媒体查找困难，信息越丰富，用户与监管对「找得到、看得见」的要求反而越尖锐。</p>
+<p class="lede">本周由日报汇总；因与果摆在下面，链路完整写出。周报不读你的档案，这是通线版本。</p>
+
+
+<section class="chain">
+  <div class="chain-head">
+    <span class="chain-no">链一</span>
+    <h2 class="chain-title">实时状态进锁屏</h2>
+    <span class="strength">中 · 二次整理</span>
+  </div>
+  <div class="spread">
+    <div class="cause">
+      <p class="col-head"><b>因</b>　今天出现的信号</p>
+      <div class="signal"><p class="t">Apple Sports 4.6 版加入中超、俄超、瑞典超及 UFC 赛事，用户可在应用内查看实时比分与赛程，并配合 iOS 实时活动在锁屏持续显示。</p><p class="src">IT之家 · 2026-11-15T02:27 · <a href="https://www.ithome.com/1/027/281.htm" target="_blank" rel="noopener noreferrer">原文</a></p></div><div class="signal"><p class="t">小米澎湃 OS 宣布超级岛支持《王者荣耀》，可实时提醒复活时间，但需手机管家、游戏空间及系统版本达到指定要求。</p><p class="src">IT之家 · 2026-11-15T02:15 · <a href="https://www.ithome.com/1/027/280.htm" target="_blank" rel="noopener noreferrer">原文</a></p></div>
+    </div>
+    <div class="axis"><span class="dot"></span></div>
+    <div class="effect">
+      <p class="col-head"><b>果</b>　我由此推断</p>
+      <ul><li>手机厂商与系统平台正把「实时动态」从应用内推到锁屏/状态栏，作为差异化卖点。</li><li>体育与游戏这类高频、强时效场景，可能成为实时活动功能争夺用户注意力的首批试验田。</li><li>功能可用性受版本与机型限制，实际体验可能因设备碎片化而参差。</li></ul>
+    </div>
+  </div>
+  <div class="reasoning">
+    <p class="label">我的链路</p>
+    <p>两条信号都指向同一产品方向：把实时比分/倒计时做成系统级常驻信息，属于启发式归类，而非同一事件。</p>
+    <p class="doubt">可能看错：两者分属不同平台与场景，未必构成同一趋势，可能只是各自常规功能更新。 本条基于 2 条信号、未核验。</p>
+  </div>
+</section>
+<section class="chain">
+  <div class="chain-head">
+    <span class="chain-no">链二</span>
+    <h2 class="chain-title">芯片追踪与供给争议</h2>
+    <span class="strength">中 · 二次整理</span>
+  </div>
+  <div class="spread">
+    <div class="cause">
+      <p class="col-head"><b>因</b>　今天出现的信号</p>
+      <div class="signal"><p class="t">英伟达代表向伊利诺伊州议员 Bill Foster 表示，实施《芯片安全法案》所要求的反走私追踪措施在技术上可行，尽管行业团体公开质疑可行性。</p><p class="src">MIT Technology Review · 2026-11-13T13:10 · <a href="https://www.technologyreview.com/2026/11/13/1148551/the-download-silicon-valley-midterms-nvidia-chip-tracking/" target="_blank" rel="noopener noreferrer">原文</a></p></div><div class="signal"><p class="t">有报道称英伟达通过资助 AI 初创公司购买其 GPU 来人为制造稀缺，该说法在 Hacker News 上引发讨论。</p><p class="src">Hacker News · 2026-11-15T02:00 · <a href="https://www.eff.org/deeplinks/2026/11/were-asking-appeals-court-require-warrant-alpr-searches" target="_blank" rel="noopener noreferrer">原文</a></p></div><div class="signal"><p class="t">Hacker News 出现「英伟达员工请愿让黄仁勋回归」的帖子，获得较多关注。</p><p class="src">Hacker News · 2026-11-15T00:56 · <a href="https://bobbiec.github.io/jamaican-font.html" target="_blank" rel="noopener noreferrer">原文</a></p></div>
+    </div>
+    <div class="axis"><span class="dot"></span></div>
+    <div class="effect">
+      <p class="col-head"><b>果</b>　我由此推断</p>
+      <ul><li>围绕英伟达的讨论正从产品性能转向供给行为与合规能力，监管与舆论压力可能同时上升。</li><li>若追踪措施被确认可行，芯片流向的可审计性可能成为出口管制的新抓手。</li><li>员工请愿与资助传闻均属外部文本，其真实性未在信号内交叉验证，不宜当作既定事实。</li></ul>
+    </div>
+  </div>
+  <div class="reasoning">
+    <p class="label">我的链路</p>
+    <p>三条信号都围绕英伟达的供给、合规与内部治理，放在一起可看出舆论焦点从「卖什么」转向「怎么卖、卖给谁」。</p>
+    <p class="doubt">可能看错：资助买 GPU 与员工请愿均来自单一来源，可能被夸大或误读，链条的因果强度有限。 本条基于 3 条信号、未核验。</p>
+  </div>
+</section>
+<section class="chain">
+  <div class="chain-head">
+    <span class="chain-no">链三</span>
+    <h2 class="chain-title">内容越多越难找</h2>
+    <span class="strength">弱 · 二次整理</span>
+  </div>
+  <div class="spread">
+    <div class="cause">
+      <p class="col-head"><b>因</b>　今天出现的信号</p>
+      <div class="signal"><p class="t">尼尔森 Gracenote 对六国 3000 名流媒体用户的调查显示，逾半数受访者认为内容极度丰富反而更难找到想看的东西，部分人最终放弃观看。</p><p class="src">Solidot · 2026-11-14T16:52 · <a href="https://www.solidot.org/story?sid=85889" target="_blank" rel="noopener noreferrer">原文</a></p></div><div class="signal"><p class="t">少数派「本周看什么」栏目继续以人工策展方式推荐近期值得一看的影视作品。</p><p class="src">少数派 · 2026-11-14T07:40 · <a href="https://sspai.com/post/118276" target="_blank" rel="noopener noreferrer">原文</a></p></div>
+    </div>
+    <div class="axis"><span class="dot"></span></div>
+    <div class="effect">
+      <p class="col-head"><b>果</b>　我由此推断</p>
+      <ul><li>流媒体平台的内容发现难题，可能为人工策展、聚合推荐类产品留出空间。</li><li>用户寻找内容的时间成本上升，可能影响平台留存与观看时长。</li><li>两者分属调查与媒体栏目，只能说明「策展」仍有需求，不能证明因果。</li></ul>
+    </div>
+  </div>
+  <div class="reasoning">
+    <p class="label">我的链路</p>
+    <p>一条是用户查找困难的调查，一条是人工推荐栏目，二者共同指向内容过载下的发现机制缺口，属弱关联。</p>
+    <p class="doubt">可能看错：调查覆盖六国、样本有限，且推荐栏目本身不代表用户行为，链条证据偏薄。 本条基于 2 条信号、未核验。</p>
+  </div>
+</section>
+<section class="sources"><h2>本周信号清单（保留出处）</h2><ul><li><span class="src-title">Apple Sports 应用 4.6 更新：支持中超联赛，实时比分与赛程可查</span><span class="src-meta">IT之家 · 2026-11-13T03:24 · <a href="https://www.ithome.com/1/026/589.htm" target="_blank" rel="noopener noreferrer">原文</a></span></li><li><span class="src-title">小米超级岛官宣支持《王者荣耀》手游，复活时间实时提醒</span><span class="src-meta">IT之家 · 2026-11-13T03:21 · <a href="https://www.ithome.com/1/026/588.htm" target="_blank" rel="noopener noreferrer">原文</a></span></li><li><span class="src-title">Africa&#x27;s solar revolution is vast and speedy</span><span class="src-meta">Hacker News · 2026-11-13T02:28 · <a href="https://www.economist.com/middle-east-and-africa/2026/11/12/africas-solar-revolution-is-vast-and-speedy" target="_blank" rel="noopener noreferrer">原文</a></span></li><li><span class="src-title">Nvidia employees petition to bring back Jensen Huang</span><span class="src-meta">Hacker News · 2026-11-13T02:16 · <a href="https://www.wired.com/story/nvidia-employees-petition-for-jensen-huangs-return/" target="_blank" rel="noopener noreferrer">原文</a></span></li><li><span class="src-title">Is Outlook down? Widespread outage hits Microsoft email and other apps</span><span class="src-meta">NPR · 2026-11-13T01:26 · <a href="https://www.npr.org/2026/11/12/nx-s1-6039343/is-outlook-down-widespread-outage-hits-microsoft-email-and-other-apps" target="_blank" rel="noopener noreferrer">原文</a></span></li><li><span class="src-title">派早报：英伟达 CEO 黄仁勋宣布辞职等</span><span class="src-meta">少数派 · 2026-11-13T00:48 · <a href="https://sspai.com/post/118966" target="_blank" rel="noopener noreferrer">原文</a></span></li><li><span class="src-title">早报｜黄仁勋仍为英伟达最大个人股东/豆包工作接入多款第三方模型/微信「看一看」测试短剧入口</span><span class="src-meta">爱范儿 · 2026-11-13T00:00 · <a href="https://www.ifanr.com/1689292?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=" target="_blank" rel="noopener noreferrer">原文</a></span></li><li><span class="src-title">Cindy Holscher wins in Kansas, holding governor&#x27;s office for Democrats</span><span class="src-meta">NPR · 2026-11-12T23:36 · <a href="https://www.npr.org/2026/11/12/g-s1-151239/kansas-governor-midterms-holscher-masterson" target="_blank" rel="noopener noreferrer">原文</a></span></li><li><span class="src-title">刚刚，Gemini 4 新模型叒来了，终于人人可用</span><span class="src-meta">爱范儿 · 2026-11-12T23:11 · <a href="https://www.ifanr.com/1689267?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=" target="_blank" rel="noopener noreferrer">原文</a></span></li><li><span class="src-title">Nvidia privately confirmed it could track chips to fight smuggling, even as industry publicly questioned feasibility</span><span class="src-meta">MIT Technology Review · 2026-11-12T20:16 · <a href="https://www.technologyreview.com/2026/11/12/1148483/nvidia-chip-tracking/" target="_blank" rel="noopener noreferrer">原文</a></span></li><li><span class="src-title">用户抱怨难以在流媒体服务上找到想看的内容</span><span class="src-meta">Solidot · 2026-11-12T14:42 · <a href="https://www.solidot.org/story?sid=85874" target="_blank" rel="noopener noreferrer">原文</a></span></li><li><span class="src-title">印度苹果代工厂发生三名合同工死亡事故</span><span class="src-meta">Solidot · 2026-11-12T14:28 · <a href="https://www.solidot.org/story?sid=85873" target="_blank" rel="noopener noreferrer">原文</a></span></li><li><span class="src-title">The Download: COP31’s climate challenge and the quest for immortality</span><span class="src-meta">MIT Technology Review · 2026-11-12T13:10 · <a href="https://www.technologyreview.com/2026/11/12/1148444/the-download-cop31-climate-talks-cognitive-immortality/" target="_blank" rel="noopener noreferrer">原文</a></span></li><li><span class="src-title">城市漫步指南｜夏末大阪，「青黄不接」的时节刚刚好</span><span class="src-meta">少数派 · 2026-11-12T08:37 · <a href="https://sspai.com/post/118366" target="_blank" rel="noopener noreferrer">原文</a></span></li><li><span class="src-title">荣耀被曝测试多款豪威影像传感器，“最顶”主摄为 2 亿像素 OVB0D</span><span class="src-meta">IT之家 · 2026-11-14T03:03 · <a href="https://www.ithome.com/1/027/067.htm" target="_blank" rel="noopener noreferrer">原文</a></span></li><li><span class="src-title">“苹果最暗产品”：苹果首款智能家居中枢 HomeView 屏幕最低仅 0.3 尼特</span><span class="src-meta">IT之家 · 2026-11-14T02:57 · <a href="https://www.ithome.com/1/027/066.htm" target="_blank" rel="noopener noreferrer">原文</a></span></li><li><span class="src-title">Nvidia Allegedly Engineered Scarcity by Funding AI Startups to Buy Its GPUs</span><span class="src-meta">Hacker News · 2026-11-14T02:52 · <a href="https://www.techpowerup.com/354814/nvidia-allegedly-engineered-scarcity-by-funding-ai-startups-to-buy-its-gpus" target="_blank" rel="noopener noreferrer">原文</a></span></li><li><span class="src-title">Ggml v1.0.0</span><span class="src-meta">Hacker News · 2026-11-14T02:28 · <a href="https://github.com/ggml-org/ggml/releases/tag/v1.0.0" target="_blank" rel="noopener noreferrer">原文</a></span></li><li><span class="src-title">DHS head Markwayne Mullin says there is not a threat to the U.S. amid FAA ground stop</span><span class="src-meta">NPR · 2026-11-13T22:36 · <a href="https://www.npr.org/2026/11/13/nx-s1-6040418/dhs-head-markwayne-mullin-says-there-is-not-a-threat-to-the-u-s-amid-faa-ground-stop" target="_blank" rel="noopener noreferrer">原文</a></span></li><li><span class="src-title">Stuck on the tarmac without information: Travelers share their ground stop experiences</span><span class="src-meta">NPR · 2026-11-13T22:36 · <a href="https://www.npr.org/2026/11/13/nx-s1-6040397/stuck-on-the-tarmac-without-information-travelers-share-their-ground-stop-experiences" target="_blank" rel="noopener noreferrer">原文</a></span></li><li><span class="src-title">余承东公布华为问界新合作模式！新 M8 同步上市，起售价 37.98 万元</span><span class="src-meta">爱范儿 · 2026-11-13T18:19 · <a href="https://www.ifanr.com/1689432?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=" target="_blank" rel="noopener noreferrer">原文</a></span></li><li><span class="src-title">旅行者 1 号距离地球的距离达到一光日</span><span class="src-meta">Solidot · 2026-11-13T17:14 · <a href="https://www.solidot.org/story?sid=85883" target="_blank" rel="noopener noreferrer">原文</a></span></li><li><span class="src-title">非洲加速发展太阳能</span><span class="src-meta">Solidot · 2026-11-13T17:07 · <a href="https://www.solidot.org/story?sid=85882" target="_blank" rel="noopener noreferrer">原文</a></span></li><li><span class="src-title">iPhone 20 爆料汇总：一整块玻璃，藏着苹果下一个十年</span><span class="src-meta">爱范儿 · 2026-11-13T15:44 · <a href="https://www.ifanr.com/1689409?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=" target="_blank" rel="noopener noreferrer">原文</a></span></li><li><span class="src-title">The Download: Silicon Valley’s blind spot and Nvidia’s chip-tracking plan</span><span class="src-meta">MIT Technology Review · 2026-11-13T13:10 · <a href="https://www.technologyreview.com/2026/11/13/1148551/the-download-silicon-valley-midterms-nvidia-chip-tracking/" target="_blank" rel="noopener noreferrer">原文</a></span></li><li><span class="src-title">More autonomy, fewer NDAs: Volunteers have new requests for brain implant trials</span><span class="src-meta">MIT Technology Review · 2026-11-13T10:00 · <a href="https://www.technologyreview.com/2026/11/13/1148474/more-autonomy-fewer-ndas-volunteers-have-new-requests-for-brain-implant-trials/" target="_blank" rel="noopener noreferrer">原文</a></span></li><li><span class="src-title">本周看什么 | 最近值得一看的 10 部作品</span><span class="src-meta">少数派 · 2026-11-13T09:39 · <a href="https://sspai.com/post/118999" target="_blank" rel="noopener noreferrer">原文</a></span></li><li><span class="src-title">研究生如何用 AI 辅助完成一篇综述：我的科研写作工具与实践经验</span><span class="src-meta">少数派 · 2026-11-13T07:00 · <a href="https://sspai.com/post/118153" target="_blank" rel="noopener noreferrer">原文</a></span></li><li><span class="src-title">刚刚，马斯克再创历史，人类首次用「筷子」夹住星舰飞船</span><span class="src-meta">爱范儿 · 2026-11-15T02:47 · <a href="https://www.ifanr.com/1689501?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=" target="_blank" rel="noopener noreferrer">原文</a></span></li><li><span class="src-title">山西首条设计时速 350 公里高铁进入联调联试，雄忻高铁预计明年 3 月底具备开通条件</span><span class="src-meta">IT之家 · 2026-11-15T02:27 · <a href="https://www.ithome.com/1/027/281.htm" target="_blank" rel="noopener noreferrer">原文</a></span></li><li><span class="src-title">NINJUTSO 推出 TEN AIR PRO 鼠标：搭载 50K 传感器，599 元</span><span class="src-meta">IT之家 · 2026-11-15T02:15 · <a href="https://www.ithome.com/1/027/280.htm" target="_blank" rel="noopener noreferrer">原文</a></span></li><li><span class="src-title">We&#x27;re Asking an Appeals Court to Require a Warrant for ALPR Searches</span><span class="src-meta">Hacker News · 2026-11-15T02:00 · <a href="https://www.eff.org/deeplinks/2026/11/were-asking-appeals-court-require-warrant-alpr-searches" target="_blank" rel="noopener noreferrer">原文</a></span></li><li><span class="src-title">FAA ground stop disrupts college football</span><span class="src-meta">NPR · 2026-11-15T01:13 · <a href="https://www.npr.org/2026/11/14/nx-s1-6041115/faa-ground-stop-college-football-delays" target="_blank" rel="noopener noreferrer">原文</a></span></li><li><span class="src-title">Show HN: A custom font based on the Jamaican flag alphabet</span><span class="src-meta">Hacker News · 2026-11-15T00:56 · <a href="https://bobbiec.github.io/jamaican-font.html" target="_blank" rel="noopener noreferrer">原文</a></span></li><li><span class="src-title">Florida city cancels St. Patrick&#x27;s Day parade, citing new anti-DEI law</span><span class="src-meta">NPR · 2026-11-15T00:03 · <a href="https://www.npr.org/2026/11/14/nx-s1-6041093/st-patricks-day-parade-canceled-florida-dei" target="_blank" rel="noopener noreferrer">原文</a></span></li><li><span class="src-title">美国失去麻疹消除地位</span><span class="src-meta">Solidot · 2026-11-14T16:52 · <a href="https://www.solidot.org/story?sid=85889" target="_blank" rel="noopener noreferrer">原文</a></span></li><li><span class="src-title">天问四号将尝试登陆木卫四</span><span class="src-meta">Solidot · 2026-11-14T14:12 · <a href="https://www.solidot.org/story?sid=85887" target="_blank" rel="noopener noreferrer">原文</a></span></li><li><span class="src-title">怀旧手记｜索尼 CLIE：千禧年的高端 Palm OS PDA</span><span class="src-meta">少数派 · 2026-11-14T07:40 · <a href="https://sspai.com/post/118276" target="_blank" rel="noopener noreferrer">原文</a></span></li><li><span class="src-title">早报｜英伟达员工请愿黄仁勋回归/余承东重申华为与赛力斯分工/Microsoft 365故障延续至48小时</span><span class="src-meta">爱范儿 · 2026-11-14T00:00 · <a href="https://www.ifanr.com/1689450?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=" target="_blank" rel="noopener noreferrer">原文</a></span></li></ul></section>
+<section class="algorithm">
+  <h2>本周算法链</h2>
+  <p>汇总 39 条 / 7 个源；DeepSeek 二次整理为 3 条链、引用 7 条信号；本页由 DeepSeek 二次翻译/整理，不是原文摘抄；云端通线不读个人档案；条目未核验；强度只是启发式提示。</p>
+  <p class="muted">不按点击历史排序；不自动外发除 Server酱 以外的内容；所有条目与推断均未核验。</p>
+</section>
+<footer class="foot">
+  <span>推断，不是结论。核验、结算、预测在本地账簿另做。</span>
+  <span>2026-11-09 ~ 2026-11-15 · 通线</span>
+</footer>
+</div></body></html>
