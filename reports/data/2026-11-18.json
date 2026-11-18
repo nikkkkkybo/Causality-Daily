@@ -1,0 +1,131 @@
+{
+ "day": "2026-11-18",
+ "items": [
+  {
+   "id": 11,
+   "title": "腾讯混元 Hy4 flash 模型官宣开源",
+   "summary": "IT之家 11 月 18 日消息， 腾讯混元今日宣布开源 Hy4 flash 模型 ，包含 Hy4 flash、Hy4 flash-FP8 和 Hy4 flash Base，开发者可在 GitHub、 Hugging Face、ModelScope 和 GitCode 下载部署。 腾讯混元官方预告， 正在加速开源 Hy4 模型 ，敬请期待。 Hy4 flash 定位迄今性价比最高的 Hy 模型 ，总参数量 224B，其中包含 64B Engram 参数，每个 token 激活 12B 参数，支持多模态输入与 100 万 token 上下文长度，API 价格较 Hy4 大幅降低。 Hy4 flash 已在腾讯云 TokenHub、WorkBuddy、元宝、企业微信、QQ、ima、Marvis 等产品上线。 IT之家附 Hy4 flash 开源地址如下： GitHub ： https://github.com/Tencent-Hunyuan/Hy4-flash HuggingFace ： https://huggingface.co/tencent/Hy4-flash Modelscope",
+   "feed_name": "IT之家",
+   "published_at": "2026-11-18T04:36:17+00:00",
+   "fetched_at": "2026-11-18T04:40:20+00:00",
+   "url": "https://www.ithome.com/1/028/701.htm"
+  },
+  {
+   "id": 12,
+   "title": "波士顿动力人形机器人首次进入半导体制造领域，Atlas 明年在格罗方德工厂测试",
+   "summary": "IT之家 11 月 18 日消息，据外媒 Interesting Engineering 昨天报道，波士顿动力 Atlas 人形机器人即将首次进入半导体制造领域，格罗方德（GlobalFoundries）正准备从 2027 年初开始在旗下工厂测试 Atlas。 IT之家从原报道获悉，波士顿动力的四足机器人 Spot 此前已在格罗方德工厂投入运营。双方将在此合作中评估人形机器人“进厂打工”的潜在应用场景，并计划对特定任务展开早期测试。 对波士顿动力而言，此次合作意味着 Atlas 测试范围将从汽车行业进一步扩展，未来人形机器人真的有可能“进厂打工”。目前两家公司尚未透露 Atlas 将执行哪些具体任务，也没有公布参与该项目的机器人数量。",
+   "feed_name": "IT之家",
+   "published_at": "2026-11-18T04:32:15+00:00",
+   "fetched_at": "2026-11-18T04:40:20+00:00",
+   "url": "https://www.ithome.com/1/028/700.htm"
+  },
+  {
+   "id": 91,
+   "title": "即梦 Seedance 2.5 大升级，AI 视频生成终于有了自己的 4K 生产线",
+   "summary": "从 AI 出片，走向 AI 交片 #欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。",
+   "feed_name": "爱范儿",
+   "published_at": "2026-11-18T04:00:43+00:00",
+   "fetched_at": "2026-11-18T04:40:23+00:00",
+   "url": "https://www.ifanr.com/1690033?utm_source=rss&utm_medium=rss&utm_campaign="
+  },
+  {
+   "id": 121,
+   "title": "Climate change is making some African deserts greener",
+   "summary": "Article URL: https://www.economist.com/middle-east-and-africa/2026/11/17/climate-change-is-making-some-african-deserts-greener Comments URL: https://news.ycombinator.com/item?id=50541613 Points: 8 # Comments: 1",
+   "feed_name": "Hacker News",
+   "published_at": "2026-11-18T03:47:04+00:00",
+   "fetched_at": "2026-11-18T04:40:29+00:00",
+   "url": "https://www.economist.com/middle-east-and-africa/2026/11/17/climate-change-is-making-some-african-deserts-greener"
+  },
+  {
+   "id": 92,
+   "title": "曾经的纯电超跑之王 Rimac Nevera 宣布停产，CEO 转头造出了 16 缸的布加迪新旗舰",
+   "summary": "Rimac 已经拿到了大结果。 #欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。",
+   "feed_name": "爱范儿",
+   "published_at": "2026-11-18T03:40:19+00:00",
+   "fetched_at": "2026-11-18T04:40:23+00:00",
+   "url": "https://www.ifanr.com/1690064?utm_source=rss&utm_medium=rss&utm_campaign="
+  },
+  {
+   "id": 122,
+   "title": "H-1B Executive Actions in 2026 [pdf]",
+   "summary": "Article URL: https://www.everycrsreport.com/files/2026-10-14_IN12747_fcb1389788aa7b9102b795882af042e85d20532c.pdf Comments URL: https://news.ycombinator.com/item?id=50541550 Points: 3 # Comments: 0",
+   "feed_name": "Hacker News",
+   "published_at": "2026-11-18T03:37:35+00:00",
+   "fetched_at": "2026-11-18T04:40:29+00:00",
+   "url": "https://www.everycrsreport.com/files/2026-10-14_IN12747_fcb1389788aa7b9102b795882af042e85d20532c.pdf"
+  },
+  {
+   "id": 141,
+   "title": "Mary Peltola flips Alaska's Senate seat into Democrats' column",
+   "summary": "Former Democratic Rep. Mary Peltola has narrowly won Alaska's U.S. Senate race, toppling the Republican incumbent, according to a race call by The Associated Press.",
+   "feed_name": "NPR",
+   "published_at": "2026-11-18T03:27:23+00:00",
+   "fetched_at": "2026-11-18T04:40:29+00:00",
+   "url": "https://www.npr.org/2026/11/17/g-s1-151567/alaska-senate-results-peltola-sullivan"
+  },
+  {
+   "id": 1,
+   "title": "跟着老板自驾去海南是种什么体验？明日公园 vlog 回顾",
+   "summary": "从深圳一路开车到广东最南端的徐闻，再和车分别乘坐渡轮，穿过地理课本里的琼州海峡。终于抵达海南后，老板却告诉我们这趟旅程真正的目的地，竟然是…… 查看全文",
+   "feed_name": "少数派",
+   "published_at": "2026-11-18T03:00:00+00:00",
+   "fetched_at": "2026-11-18T04:40:18+00:00",
+   "url": "https://sspai.com/post/119193"
+  },
+  {
+   "id": 2,
+   "title": "兼顾随身阅读与自主开发的 4.7 英寸墨水屏设备：小纸 Pico 现货上架少数派",
+   "summary": "想找一台可以随身带着读书的墨水屏设备，也想自己改改界面、不被系统「绑架」？近期思维重置团队上架的小纸 Pico 墨水屏开发板是一个值得留意的选择。 查看全文",
+   "feed_name": "少数派",
+   "published_at": "2026-11-18T02:30:00+00:00",
+   "fetched_at": "2026-11-18T04:40:18+00:00",
+   "url": "https://sspai.com/post/118975"
+  },
+  {
+   "id": 111,
+   "title": "Roundtables: Inside the Quest for Cognitive Immortality",
+   "summary": "Listen to the session or watch below In an effort to reach an elusive continuity of the self, some far-thinking technologists are working on ways to keep your brain going—even beyond death. Science editor Mary Beth Griggs and senior editor for biomedicine Antonio Regalado explore possible paths to keep your mind going, including gradual brain…",
+   "feed_name": "MIT Technology Review",
+   "published_at": "2026-11-17T18:46:47+00:00",
+   "fetched_at": "2026-11-18T04:40:23+00:00",
+   "url": "https://www.technologyreview.com/2026/11/17/1148049/roundtables-inside-the-quest-for-cognitive-immortality/"
+  },
+  {
+   "id": 142,
+   "title": "Iran launches a third round of strikes on Bahrain, host of U.S. Navy's 5th Fleet",
+   "summary": "Iran fired drones on Tuesday at a U.S. radar facility in Bahrain, and the U.S. retaliated by firing at Iranian targets along an important shipping route.",
+   "feed_name": "NPR",
+   "published_at": "2026-11-17T18:34:31+00:00",
+   "fetched_at": "2026-11-18T04:40:29+00:00",
+   "url": "https://www.npr.org/2026/11/17/nx-s1-6044255/us-iran-war-latest-bahrain"
+  },
+  {
+   "id": 112,
+   "title": "Hydropower hit record lows in the US Southwest this summer",
+   "summary": "The US Southwest generated 28% less electricity via hydropower between April and August than the 10-year average, according to new data from the US Energy Information Administration. Most hydropower plants in the US rely on dams to hold back water, creating reservoirs. The water can be released through turbines, generating electricity on demand. But an…",
+   "feed_name": "MIT Technology Review",
+   "published_at": "2026-11-17T17:52:10+00:00",
+   "fetched_at": "2026-11-18T04:40:23+00:00",
+   "url": "https://www.technologyreview.com/2026/11/17/1148742/hydropower-drought-colorado-river/"
+  },
+  {
+   "id": 71,
+   "title": "学校禁止手机有助于提高学生成绩",
+   "summary": "美国学生的成绩从十多年前开始下滑，这一时间趋势与智能手机的流行基本一致，引发了对智能手机在学生成绩下滑中所扮演角色的疑问。很多美国州和学校开始执行手机禁令。最新研究显示，手机禁令略微提升了学生成绩。研究调查了 2021-2026 年间就读于 4600 所学校的 330 万名三至十年级的美国学生，使用 MAP 测试成绩，比较了实施严格手机禁令的学校与未实施禁令学校的学生的学业表现。研究发现，手机禁令学校学生至少部分考试成绩略有提高——少许提升幅度更大——且有证据表明，这种提高会随着时间的推移而增加。研究人员解释说，正如成绩的下降会逐年累积一样，进步也可能是渐进的。美国已有 46 个州对学校使用手机实施禁令或限制。各州规定不尽相同，学校的执行力度也各有差异。",
+   "feed_name": "Solidot",
+   "published_at": "2026-11-17T16:24:55+00:00",
+   "fetched_at": "2026-11-18T04:40:22+00:00",
+   "url": "https://www.solidot.org/story?sid=85915"
+  },
+  {
+   "id": 72,
+   "title": "加州理工数学教授不再根据作业打分，因为作业很容易用 AI 完成",
+   "summary": "加州理工教授 Yi Ni 教的是学校每一位学生都必须修的数学必修课，他仍然采用传统的授课方法，没有用笔记本电脑和投影仪，而是在黑板上写满粉笔字。在加州理工任教 17 年的 Ni 教授表示不再根据作业题目做的是否正确打分，因为学生可以使用 AI 完成作业。他现在只根据作业是否完成打分。他说，如今教育的一大问题是所有大学数学作业都可以用 AI 完成。一名数学专业学生表示自己不使用 AI，因为一旦参加线下考试就会暴露自己对 AI 的依赖。Ni 教授表示无法判断学生是否使用 AI 完成作业。因为不同于 AI 生成的有特征的文本，AI 程序非常擅长用数学语言解数学题目。",
+   "feed_name": "Solidot",
+   "published_at": "2026-11-17T10:22:40+00:00",
+   "fetched_at": "2026-11-18T04:40:22+00:00",
+   "url": "https://www.solidot.org/story?sid=85914"
+  }
+ ]
+}
