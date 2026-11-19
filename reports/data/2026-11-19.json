@@ -1,0 +1,131 @@
+{
+ "day": "2026-11-19",
+ "items": [
+  {
+   "id": 11,
+   "title": "机械革命企业桌面 AI 主机大师之路 X10 发售，32999 元起",
+   "summary": "IT之家 11 月 19 日消息，机械革命 (Mechrevo) 现已启动企业桌面 AI 主机大师之路 X10 的销售。该型号 基于 NVIDIA（英伟达）RTX Spark 超级芯片 ，64GB + 1TB 款 32,999 元、128GB + 2TB 款 49,999 元。 大师之路 X10 三维 155×158×51 (mm)，体积 1.25L、质量 1.42kg；机身为全金属 CNC，搭配金色铝框六边形蜂窝前网；内置双涡轮风扇 + 70 鳍片散热系统， 支持 140W TDP 性能释放 。 其拥有 300GB/s 的内存带宽、1 Pflops 的 FP4 稀疏 AI 算力， 享受 AI 软件生态 DAY 0 支持 ；配备 Wi-Fi 7 & 蓝牙 5.4 无线网卡；提供 4 个 USB-C、1 个 HDMI 2.1、1 个 10GbE RJ-45，还配置 Kensington 锁孔。 京东 机械革命 大师之路 X10 32999 元起 直达链接",
+   "feed_name": "IT之家",
+   "published_at": "2026-11-19T04:08:39+00:00",
+   "fetched_at": "2026-11-19T04:26:34+00:00",
+   "url": "https://www.ithome.com/1/029/262.htm"
+  },
+  {
+   "id": 12,
+   "title": "网易《逆水寒：新世界》首个“赛事月”官宣，12 月 7 日【万仞争锋】与【寒棋杯】同步开启",
+   "summary": "IT之家 11 月 19 日消息，网易《逆水寒：新世界》官宣，逆水寒首个“赛事月”将于 4.2.2 新版本正式开启。 12 月 7 日，【万仞争锋】与【寒棋杯】同步开启 ，渠道服正式加入赛场，【万仞争锋】首度开放直邀名额。 【万仞争锋】与【寒棋杯】将正式支持 渠道服参赛 ，成为逆水寒迄今为止参赛范围最大、含金量最高的顶尖赛事。 除了规模，含金量最高还体现在赛制方面： 【万仞争锋】将首度开放直邀机制 ，帮会联赛积分榜与俱乐部积分榜共产生 16 个名额。各大帮会在联赛中流的汗、俱乐部曾经拼出来的荣耀，都能换成小组赛的门票。同时，从海选真刀真枪杀出重围的黑马，也多了一分凭本事逆天改命的机会，避免了“提前撞上夺冠热门”的可能性。最终，四大赛区的冠军，还将进行一场“终极之战”。 【寒棋杯】方面 ，第四赛季「九霄龙吟」才刚满月：所有弈手都将从同一起点出发，拼的就是最纯粹的理解与决策。全新的“龙图”“龙魂神器”，也将为对局增添无限的可能性。 双赛同启，福利也要加倍。 本次万仞与寒棋的应援战令首次彻底打通 。 无论为俱乐部助威，还是为棋手喝彩，都可拿满战令奖励。购买并升级战令，可收获铜钱、鉴石神凿等极",
+   "feed_name": "IT之家",
+   "published_at": "2026-11-19T04:08:04+00:00",
+   "fetched_at": "2026-11-19T04:26:34+00:00",
+   "url": "https://www.ithome.com/1/029/260.htm"
+  },
+  {
+   "id": 91,
+   "title": "刚拒绝黄仁勋回归，英伟达官宣全员加薪，热门接班人曝光",
+   "summary": "英伟达何去何从 #欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。",
+   "feed_name": "爱范儿",
+   "published_at": "2026-11-19T02:59:25+00:00",
+   "fetched_at": "2026-11-19T04:26:37+00:00",
+   "url": "https://www.ifanr.com/1690288?utm_source=rss&utm_medium=rss&utm_campaign="
+  },
+  {
+   "id": 1,
+   "title": "徒步旅行指南 | 玉龙虎跳峡与天堂雨崩",
+   "summary": "Matrix首页推荐Matrix是少数派的写作社区，我们主张分享真实的产品体验，有实用价值的经验与思考。我们会不定期挑选Matrix最优质的文章，展示来自用户的最真实的体验和观点。文章代表作者个人观点 ... 查看全文",
+   "feed_name": "少数派",
+   "published_at": "2026-11-19T02:58:08+00:00",
+   "fetched_at": "2026-11-19T04:26:34+00:00",
+   "url": "https://sspai.com/post/119039"
+  },
+  {
+   "id": 121,
+   "title": "AI will not make you rich (2025)",
+   "summary": "Article URL: https://colossus.com/article/ai-will-not-make-you-rich/ Comments URL: https://news.ycombinator.com/item?id=50555093 Points: 72 # Comments: 44",
+   "feed_name": "Hacker News",
+   "published_at": "2026-11-19T01:51:28+00:00",
+   "fetched_at": "2026-11-19T04:26:38+00:00",
+   "url": "https://colossus.com/article/ai-will-not-make-you-rich/"
+  },
+  {
+   "id": 122,
+   "title": "FailTrace – Reproduce a failed GitHub Actions run locally from its URL",
+   "summary": "Article URL: https://github.com/Ri4dH/failtrace Comments URL: https://news.ycombinator.com/item?id=50554941 Points: 12 # Comments: 1",
+   "feed_name": "Hacker News",
+   "published_at": "2026-11-19T01:30:43+00:00",
+   "fetched_at": "2026-11-19T04:26:38+00:00",
+   "url": "https://github.com/Ri4dH/failtrace"
+  },
+  {
+   "id": 92,
+   "title": "早报｜GTA6开售，评分破纪录/大疆多款相机涨价/豆包工作三个月日活破800万",
+   "summary": "· Google 发布 Gemini 4 Neon，主打复杂任务与更低单次成本 · 英伟达员工大会：董事会不让黄仁勋回归，临时 CEO 承诺涨薪 · 英特尔再裁全球 IT 员工，继续推进组织精简 #欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。",
+   "feed_name": "爱范儿",
+   "published_at": "2026-11-19T00:36:04+00:00",
+   "fetched_at": "2026-11-19T04:26:37+00:00",
+   "url": "https://www.ifanr.com/1690255?utm_source=rss&utm_medium=rss&utm_campaign="
+  },
+  {
+   "id": 2,
+   "title": "派早报：Apple 年度应用、TGA 2026 分别公布入围名单等",
+   "summary": "AMD 更新虚幻引擎 FSR 插件、Google Wallet 登陆 iOS 等。 查看全文",
+   "feed_name": "少数派",
+   "published_at": "2026-11-19T00:29:30+00:00",
+   "fetched_at": "2026-11-19T04:26:34+00:00",
+   "url": "https://sspai.com/post/119239"
+  },
+  {
+   "id": 141,
+   "title": "Anthropic IPO raises record $81.3 billion on strong AI demand",
+   "summary": "The five-year-old artificial intelligence powerhouse priced its initial public offering at $83 a share, shrugging off growing concern about a possible AI bubble and volatility in tech stocks.",
+   "feed_name": "NPR",
+   "published_at": "2026-11-18T23:54:56+00:00",
+   "fetched_at": "2026-11-19T04:26:38+00:00",
+   "url": "https://www.npr.org/2026/11/18/nx-s1-6046212/anthropic-record-ipo-price"
+  },
+  {
+   "id": 142,
+   "title": "The law releasing the Epstein files passed one year ago. What do his victims say?",
+   "summary": "It's been a year since the House passed the Epstein Files Transparency Act, forcing the Justice Department to release millions of files connected to the convicted sex offender. His victims speak out.",
+   "feed_name": "NPR",
+   "published_at": "2026-11-18T22:27:43+00:00",
+   "fetched_at": "2026-11-19T04:26:38+00:00",
+   "url": "https://www.npr.org/2026/11/18/nx-s1-6041708/the-law-releasing-the-epstein-files-passed-one-year-ago-what-do-his-victims-say"
+  },
+  {
+   "id": 71,
+   "title": "剑桥词典的 2026 年度单词是“人”",
+   "summary": "随着 AI 不断模糊人与机器之间的界限，全世界开始重新争论何谓“人”。剑桥词典的 2026 年度单词就是“人（human）”。在剑桥词典中，人被定义为“具有人特有的品质、缺点和情感，区别于神、动物或机器”。剑桥大学 AI 治理与人权专家 Rachel Adams 教授表示，AI 让我们重新面对困扰了人类几千年的问题：我们是谁？身为人类意味着什么？问题的答案从未固定，但提出问题本身正是人类所共有的特质。”“AI 将成为对人类的一场深刻考验。它确实存在加剧现有不平等的风险，但同时也具备解决这些问题的潜力。”",
+   "feed_name": "Solidot",
+   "published_at": "2026-11-18T16:12:14+00:00",
+   "fetched_at": "2026-11-19T04:26:36+00:00",
+   "url": "https://www.solidot.org/story?sid=85927"
+  },
+  {
+   "id": 72,
+   "title": "特斯拉以 3 万美元向客户出售 Cybercab 然后每月收 299 美元",
+   "summary": "特斯拉宣布以 3 万美元向特选客户出售无人驾驶汽车 Cybercab，然后每月必须支付 299 美元否则汽车不会启动。Cybercab 类似 Waymo 旗下的无人驾驶出租车，没有方向盘也没有刹车踏板，但不同的是 Waymo 的汽车提供的网约车服务，而特斯拉计划将其提供给少许客户。分析师认为这类似花 3 万美元买下一个特许经营权。特斯拉称，如果 Cybercab 车主未能按时足额缴纳费用，汽车会停止工作。如果车主试图在不支持该服务的区域（目前仅限于佛罗里达州和德克萨斯州部分城市）使用汽车，它同样无法工作。如果车主有任何被认定为未经授权或不当的行为，特斯拉有权暂停或取消其订阅，届时汽车将停止工作。如果汽车失去网络连接，它同样会停止工作。此外未经特斯拉书面同意车主不得出售或转让汽车。特斯拉还建议 13 岁以下儿童不要乘坐 Cybercab，并明确禁止儿童在没有成年人陪同的情况下单独乘车。",
+   "feed_name": "Solidot",
+   "published_at": "2026-11-18T15:29:11+00:00",
+   "fetched_at": "2026-11-19T04:26:36+00:00",
+   "url": "https://www.solidot.org/story?sid=85926"
+  },
+  {
+   "id": 111,
+   "title": "The AI Hype Index: AI is everywhere",
+   "summary": "Like a nasty rash, AI seems to spread everywhere. Google crams AI Overviews down your throat even though it costs the company billions of dollars in lost ad revenue. Leave your apartment, and you might pass two people heaving an AI-powered humanoid robot up the stairs to clean someone’s rooms. Go to the supermarket, and…",
+   "feed_name": "MIT Technology Review",
+   "published_at": "2026-11-18T14:42:44+00:00",
+   "fetched_at": "2026-11-19T04:26:37+00:00",
+   "url": "https://www.technologyreview.com/2026/11/18/1148650/ai-hype-index-ai-is-everywhere/"
+  },
+  {
+   "id": 112,
+   "title": "The Download: AI learns to smell and hydropower struggles",
+   "summary": "This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. This smell startup says its AI nose is as good as a human’s In a New Jersey lab, researchers are trying to sniff every odor on Earth. Their careful notes—“nutty,” “peachy,”…",
+   "feed_name": "MIT Technology Review",
+   "published_at": "2026-11-18T13:10:00+00:00",
+   "fetched_at": "2026-11-19T04:26:37+00:00",
+   "url": "https://www.technologyreview.com/2026/11/18/1148845/the-download-ai-learns-to-smell-hydropower-struggles/"
+  }
+ ]
+}

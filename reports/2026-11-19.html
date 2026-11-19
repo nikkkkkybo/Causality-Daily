@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>今日事报 · 2026-11-19</title>
+<style>
+:root { --paper:#f6f2ea; --ink:#1b1a17; --soft:#4a463e; --muted:#8a8376;
+  --line:#d8d0c0; --red:#9e3b2e; }
+* { box-sizing:border-box; }
+body { margin:0; background:radial-gradient(1200px 600px at 10% -10%, #fbf8f2, transparent 60%), var(--paper);
+  color:var(--ink); font:16px/1.8 "Songti SC","Noto Serif SC",Georgia,serif; }
+.page { max-width:1040px; margin:0 auto; padding:52px 30px 70px; }
+.masthead { display:flex; align-items:flex-end; justify-content:space-between; gap:20px;
+  border-bottom:1px solid var(--ink); padding-bottom:16px; }
+.kicker { font-size:12px; letter-spacing:.26em; color:var(--red); margin-bottom:8px; }
+h1 { margin:0; font-size:42px; letter-spacing:.06em; }
+.date { color:var(--muted); font-size:13px; letter-spacing:.14em; margin-top:8px; }
+.seal { width:52px; height:52px; border:1.5px solid var(--red); color:var(--red);
+  display:grid; place-items:center; font-size:14px; letter-spacing:.18em;
+  writing-mode:vertical-rl; text-orientation:upright; }
+.thesis { margin:30px 0 6px; font-size:20px; line-height:1.8; }
+.lede { color:var(--soft); font-size:13.5px; margin:0 0 28px; }
+.bearing-block { margin:26px 0 30px; border-top:1px solid var(--line); border-bottom:1px solid var(--line); padding:16px 0 6px; }
+.bearing-block h2 { margin:0 0 10px; font-size:20px; letter-spacing:.08em; color:var(--red); }
+.bearing-block .bearing { padding:12px 0 14px; border-top:1px dotted var(--line); }
+.bearing-block .bearing-head { display:flex; justify-content:space-between; gap:12px; align-items:baseline; }
+.bearing-block .no { color:var(--red); font-size:12px; letter-spacing:.12em; }
+.bearing-block .tag, .bearing-block .path, .bearing-block .meta { color:var(--muted); font-size:12px; }
+.bearing-block .carrier { margin:6px 0 2px; font-size:18px; }
+.bearing-block .action { margin:8px 0; }
+.chain { margin:36px 0 0; }
+.chain-head { display:flex; align-items:baseline; gap:12px; border-top:1px solid var(--line); padding-top:16px; }
+.chain-no { font-size:12px; letter-spacing:.28em; color:var(--red); }
+.chain-title { margin:0; font-size:25px; letter-spacing:.05em; }
+.strength { margin-left:auto; font-size:12px; letter-spacing:.12em; color:var(--muted); }
+.spread { display:grid; grid-template-columns:minmax(0,1fr) 40px minmax(0,1fr); margin-top:18px; }
+.cause,.effect { padding:0 2px; }
+.axis { position:relative; display:flex; justify-content:center; }
+.axis::before { content:""; position:absolute; top:6px; bottom:6px; width:1px;
+  background:linear-gradient(var(--line), var(--soft), var(--line)); opacity:.5; }
+.axis .dot { width:7px; height:7px; border-radius:50%; background:var(--red); margin-top:40px;
+  position:relative; z-index:1; box-shadow:0 0 0 5px var(--paper); }
+.col-head { font-size:12.5px; letter-spacing:.2em; color:var(--muted); margin:0 0 10px; }
+.col-head b { color:var(--ink); letter-spacing:.08em; }
+.signal { margin:0 0 14px; }
+.signal .t { font-size:16px; line-height:1.65; margin:0; }
+.signal .src { margin:4px 0 0; font-size:12px; color:var(--muted); }
+.signal .src a { color:var(--muted); text-decoration:none; border-bottom:1px dotted var(--muted); }
+.signal .src a:hover { color:var(--red); border-color:var(--red); }
+.effect ul { list-style:none; margin:0; padding:0; }
+.effect li { position:relative; padding-left:1.1em; margin:0 0 10px; font-size:15.5px; }
+.effect li::before { content:"—"; position:absolute; left:0; color:#b8604f; }
+.reasoning { margin:16px 0 0; padding:14px 16px; border:1px solid var(--line); background:rgba(255,255,255,.3); }
+.reasoning .label { margin:0 0 6px; font-size:12px; letter-spacing:.22em; color:var(--red); }
+.reasoning p { margin:0 0 6px; font-size:14px; color:var(--soft); }
+.reasoning .doubt { color:var(--muted); font-size:12.5px; }
+.algorithm { margin-top:44px; border-top:1px solid var(--ink); padding-top:18px; }
+.algorithm h2 { font-size:20px; margin:0 0 8px; letter-spacing:.06em; }
+.algorithm p { margin:0 0 6px; color:var(--soft); font-size:13.5px; }
+.algorithm .muted { color:var(--muted); font-size:12.5px; }
+.sources { margin-top:30px; border-top:1px solid var(--line); padding-top:16px; }
+.sources h2 { font-size:19px; margin:0 0 10px; letter-spacing:.05em; }
+.sources ul { list-style:none; margin:0; padding:0; }
+.sources li { display:flex; justify-content:space-between; gap:14px; padding:7px 0;
+  border-bottom:1px dashed var(--line); font-size:13px; }
+.sources .src-title { color:var(--ink); }
+.sources .src-meta { color:var(--muted); white-space:nowrap; font-size:12px; }
+.sources a { color:var(--muted); text-decoration:none; border-bottom:1px dotted var(--muted); }
+.foot { margin-top:34px; padding-top:12px; border-top:1px solid var(--line);
+  color:var(--muted); font-size:12px; display:flex; justify-content:space-between; gap:16px; }
+@media (max-width:760px) {
+  .page { padding:32px 18px 54px; }
+  h1 { font-size:32px; }
+  .spread { grid-template-columns:1fr; }
+  .axis { display:none; }
+  .effect { margin-top:16px; }
+  .foot { flex-direction:column; }
+}
+</style></head><body><div class="page">
+<header class="masthead">
+  <div>
+    <div class="kicker">今日事报 · 云端通线</div>
+    <h1>今日事报</h1>
+    <div class="date">2026-11-19 · 14 条信号 · 取 2 条链</div>
+  </div>
+  <div class="seal" aria-hidden="true">事报</div>
+</header>
+<p class="thesis">AI 同时向硬件、资本与日常语义渗透，但同日的信号也显示其回报与边界仍不确定。</p>
+<p class="lede">因与果都摆在下面；中间的链路完整写出。云端不读你的档案，所以这是通线版本；个体线仍在本地。</p>
+
+
+<section class="chain">
+  <div class="chain-head">
+    <span class="chain-no">链一</span>
+    <h2 class="chain-title">AI 硬件与资本升温</h2>
+    <span class="strength">中 · 二次整理</span>
+  </div>
+  <div class="spread">
+    <div class="cause">
+      <p class="col-head"><b>因</b>　今天出现的信号</p>
+      <div class="signal"><p class="t">机械革命开售企业桌面 AI 主机大师之路 X10，基于英伟达 RTX Spark 超级芯片，64GB+1TB 款 32999 元起，128GB+2TB 款 49999 元，支持 140W TDP 与 1 Pflops FP4 稀疏 AI 算力。</p><p class="src">IT之家 · 2026-11-19T04:08 · <a href="https://www.ithome.com/1/029/262.htm" target="_blank" rel="noopener noreferrer">原文</a></p></div><div class="signal"><p class="t">Anthropic 以每股 83 美元完成 IPO，募资 813 亿美元，报道称其面对 AI 泡沫担忧与科技股波动仍获强劲需求。</p><p class="src">NPR · 2026-11-18T23:54 · <a href="https://www.npr.org/2026/11/18/nx-s1-6046212/anthropic-record-ipo-price" target="_blank" rel="noopener noreferrer">原文</a></p></div><div class="signal"><p class="t">爱范儿早报提到 Google 发布 Gemini 4 Neon，主打复杂任务与更低单次成本；同日英伟达员工大会传出董事会不让黄仁勋回归、临时 CEO 承诺涨薪。</p><p class="src">爱范儿 · 2026-11-19T00:36 · <a href="https://www.ifanr.com/1690255?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=" target="_blank" rel="noopener noreferrer">原文</a></p></div>
+    </div>
+    <div class="axis"><span class="dot"></span></div>
+    <div class="effect">
+      <p class="col-head"><b>果</b>　我由此推断</p>
+      <ul><li>AI 算力正从云端向桌面/企业本地设备延伸，硬件厂商在推高单价的专业化产品。</li><li>一级市场对 AI 公司的资金供给仍强，但报道本身也把“泡沫担忧”列为背景，说明热度与疑虑并存。</li><li>模型侧强调更低单次成本，可能推动应用端更关注推理经济性而非单纯参数规模。</li></ul>
+    </div>
+  </div>
+  <div class="reasoning">
+    <p class="label">我的链路</p>
+    <p>三条信号分别落在 AI 硬件、AI 融资和模型发布/公司治理上，共同指向 AI 产业链仍在扩张，但扩张伴随成本与治理变量。</p>
+    <p class="doubt">可能看错：把硬件发售、IPO 和模型发布并置为同一趋势，可能高估它们之间的直接因果联系。 本条基于 3 条信号、未核验。</p>
+  </div>
+</section>
+<section class="chain">
+  <div class="chain-head">
+    <span class="chain-no">链二</span>
+    <h2 class="chain-title">AI 边界争议浮现</h2>
+    <span class="strength">弱 · 二次整理</span>
+  </div>
+  <div class="spread">
+    <div class="cause">
+      <p class="col-head"><b>因</b>　今天出现的信号</p>
+      <div class="signal"><p class="t">剑桥词典将 2026 年度单词定为“人”，背景是 AI 模糊人与机器界限，专家称 AI 让人重新面对“我们是谁”的问题。</p><p class="src">Solidot · 2026-11-18T16:12 · <a href="https://www.solidot.org/story?sid=85927" target="_blank" rel="noopener noreferrer">原文</a></p></div><div class="signal"><p class="t">Hacker News 上出现文章《AI will not make you rich》，讨论 AI 与财富的关系。</p><p class="src">Hacker News · 2026-11-19T01:51 · <a href="https://colossus.com/article/ai-will-not-make-you-rich/" target="_blank" rel="noopener noreferrer">原文</a></p></div><div class="signal"><p class="t">MIT Technology Review 的 AI 热度指数称 AI 无处不在，并举例 Google 强推 AI Overviews 却损失广告收入。</p><p class="src">MIT Technology Review · 2026-11-18T14:42 · <a href="https://www.technologyreview.com/2026/11/18/1148650/ai-hype-index-ai-is-everywhere/" target="_blank" rel="noopener noreferrer">原文</a></p></div>
+    </div>
+    <div class="axis"><span class="dot"></span></div>
+    <div class="effect">
+      <p class="col-head"><b>果</b>　我由此推断</p>
+      <ul><li>围绕 AI 的公共讨论正从“能力展示”转向“边界与代价”，包括人的定义、经济回报和产品体验。</li><li>若 AI 功能被强行嵌入既有产品并损害原有收入，用户与平台的摩擦可能增加。</li><li>对 AI 造富叙事的怀疑与词典层面的语义反思，可能共同削弱无条件乐观情绪。</li></ul>
+    </div>
+  </div>
+  <div class="reasoning">
+    <p class="label">我的链路</p>
+    <p>三条信号都涉及对 AI 的反思性讨论，而非单纯产品发布，因此归为同一弱链。</p>
+    <p class="doubt">可能看错：这些多为评论或文化现象，未必能转化为可观测的市场或政策变化。 本条基于 3 条信号、未核验。</p>
+  </div>
+</section>
+
+<section class="algorithm">
+  <h2>今日算法链</h2>
+  <p>输入 14 条 / 7 个源；DeepSeek 二次整理为 2 条链、引用 6 条信号；本页由 DeepSeek 二次翻译/整理，不是原文摘抄；云端通线不读个人档案；条目未核验；强度只是启发式提示。</p>
+  <p class="muted">不按点击历史排序；不自动外发除 Server酱 以外的内容；所有条目与推断均未核验。</p>
+</section>
+<footer class="foot">
+  <span>推断，不是结论。核验、结算、预测在本地账簿另做。</span>
+  <span>2026-11-19 · 通线</span>
+</footer>
+</div></body></html>
