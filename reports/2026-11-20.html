@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>今日事报 · 2026-11-20</title>
+<style>
+:root { --paper:#f6f2ea; --ink:#1b1a17; --soft:#4a463e; --muted:#8a8376;
+  --line:#d8d0c0; --red:#9e3b2e; }
+* { box-sizing:border-box; }
+body { margin:0; background:radial-gradient(1200px 600px at 10% -10%, #fbf8f2, transparent 60%), var(--paper);
+  color:var(--ink); font:16px/1.8 "Songti SC","Noto Serif SC",Georgia,serif; }
+.page { max-width:1040px; margin:0 auto; padding:52px 30px 70px; }
+.masthead { display:flex; align-items:flex-end; justify-content:space-between; gap:20px;
+  border-bottom:1px solid var(--ink); padding-bottom:16px; }
+.kicker { font-size:12px; letter-spacing:.26em; color:var(--red); margin-bottom:8px; }
+h1 { margin:0; font-size:42px; letter-spacing:.06em; }
+.date { color:var(--muted); font-size:13px; letter-spacing:.14em; margin-top:8px; }
+.seal { width:52px; height:52px; border:1.5px solid var(--red); color:var(--red);
+  display:grid; place-items:center; font-size:14px; letter-spacing:.18em;
+  writing-mode:vertical-rl; text-orientation:upright; }
+.thesis { margin:30px 0 6px; font-size:20px; line-height:1.8; }
+.lede { color:var(--soft); font-size:13.5px; margin:0 0 28px; }
+.bearing-block { margin:26px 0 30px; border-top:1px solid var(--line); border-bottom:1px solid var(--line); padding:16px 0 6px; }
+.bearing-block h2 { margin:0 0 10px; font-size:20px; letter-spacing:.08em; color:var(--red); }
+.bearing-block .bearing { padding:12px 0 14px; border-top:1px dotted var(--line); }
+.bearing-block .bearing-head { display:flex; justify-content:space-between; gap:12px; align-items:baseline; }
+.bearing-block .no { color:var(--red); font-size:12px; letter-spacing:.12em; }
+.bearing-block .tag, .bearing-block .path, .bearing-block .meta { color:var(--muted); font-size:12px; }
+.bearing-block .carrier { margin:6px 0 2px; font-size:18px; }
+.bearing-block .action { margin:8px 0; }
+.chain { margin:36px 0 0; }
+.chain-head { display:flex; align-items:baseline; gap:12px; border-top:1px solid var(--line); padding-top:16px; }
+.chain-no { font-size:12px; letter-spacing:.28em; color:var(--red); }
+.chain-title { margin:0; font-size:25px; letter-spacing:.05em; }
+.strength { margin-left:auto; font-size:12px; letter-spacing:.12em; color:var(--muted); }
+.spread { display:grid; grid-template-columns:minmax(0,1fr) 40px minmax(0,1fr); margin-top:18px; }
+.cause,.effect { padding:0 2px; }
+.axis { position:relative; display:flex; justify-content:center; }
+.axis::before { content:""; position:absolute; top:6px; bottom:6px; width:1px;
+  background:linear-gradient(var(--line), var(--soft), var(--line)); opacity:.5; }
+.axis .dot { width:7px; height:7px; border-radius:50%; background:var(--red); margin-top:40px;
+  position:relative; z-index:1; box-shadow:0 0 0 5px var(--paper); }
+.col-head { font-size:12.5px; letter-spacing:.2em; color:var(--muted); margin:0 0 10px; }
+.col-head b { color:var(--ink); letter-spacing:.08em; }
+.signal { margin:0 0 14px; }
+.signal .t { font-size:16px; line-height:1.65; margin:0; }
+.signal .src { margin:4px 0 0; font-size:12px; color:var(--muted); }
+.signal .src a { color:var(--muted); text-decoration:none; border-bottom:1px dotted var(--muted); }
+.signal .src a:hover { color:var(--red); border-color:var(--red); }
+.effect ul { list-style:none; margin:0; padding:0; }
+.effect li { position:relative; padding-left:1.1em; margin:0 0 10px; font-size:15.5px; }
+.effect li::before { content:"—"; position:absolute; left:0; color:#b8604f; }
+.reasoning { margin:16px 0 0; padding:14px 16px; border:1px solid var(--line); background:rgba(255,255,255,.3); }
+.reasoning .label { margin:0 0 6px; font-size:12px; letter-spacing:.22em; color:var(--red); }
+.reasoning p { margin:0 0 6px; font-size:14px; color:var(--soft); }
+.reasoning .doubt { color:var(--muted); font-size:12.5px; }
+.algorithm { margin-top:44px; border-top:1px solid var(--ink); padding-top:18px; }
+.algorithm h2 { font-size:20px; margin:0 0 8px; letter-spacing:.06em; }
+.algorithm p { margin:0 0 6px; color:var(--soft); font-size:13.5px; }
+.algorithm .muted { color:var(--muted); font-size:12.5px; }
+.sources { margin-top:30px; border-top:1px solid var(--line); padding-top:16px; }
+.sources h2 { font-size:19px; margin:0 0 10px; letter-spacing:.05em; }
+.sources ul { list-style:none; margin:0; padding:0; }
+.sources li { display:flex; justify-content:space-between; gap:14px; padding:7px 0;
+  border-bottom:1px dashed var(--line); font-size:13px; }
+.sources .src-title { color:var(--ink); }
+.sources .src-meta { color:var(--muted); white-space:nowrap; font-size:12px; }
+.sources a { color:var(--muted); text-decoration:none; border-bottom:1px dotted var(--muted); }
+.foot { margin-top:34px; padding-top:12px; border-top:1px solid var(--line);
+  color:var(--muted); font-size:12px; display:flex; justify-content:space-between; gap:16px; }
+@media (max-width:760px) {
+  .page { padding:32px 18px 54px; }
+  h1 { font-size:32px; }
+  .spread { grid-template-columns:1fr; }
+  .axis { display:none; }
+  .effect { margin-top:16px; }
+  .foot { flex-direction:column; }
+}
+</style></head><body><div class="page">
+<header class="masthead">
+  <div>
+    <div class="kicker">今日事报 · 云端通线</div>
+    <h1>今日事报</h1>
+    <div class="date">2026-11-20 · 14 条信号 · 取 3 条链</div>
+  </div>
+  <div class="seal" aria-hidden="true">事报</div>
+</header>
+<p class="thesis">今日信号指向同一方向：AI 正从模型层向系统层渗透，同时其基础设施代价开始被量化，而平台与协议层面的自主可控也在同步推进。</p>
+<p class="lede">因与果都摆在下面；中间的链路完整写出。云端不读你的档案，所以这是通线版本；个体线仍在本地。</p>
+
+
+<section class="chain">
+  <div class="chain-head">
+    <span class="chain-no">链一</span>
+    <h2 class="chain-title">AI 渗入系统与终端</h2>
+    <span class="strength">中 · 二次整理</span>
+  </div>
+  <div class="spread">
+    <div class="cause">
+      <p class="col-head"><b>因</b>　今天出现的信号</p>
+      <div class="signal"><p class="t">三星在 One UI 9.5 首个 Beta 中为天气应用酝酿 AI 升级，可在识别用户计划前往另一城市时提示查看目的地天气，背后涉及正在开发的 Personal Agent Core 系统，该系统结合多个 One UI 与 Google 应用的上下文信息。</p><p class="src">IT之家 · 2026-11-20T03:51 · <a href="https://www.ithome.com/1/029/842.htm" target="_blank" rel="noopener noreferrer">原文</a></p></div><div class="signal"><p class="t">爱范儿文章称 AI Agent 元年已至，苹果是最后一个入局的巨头。</p><p class="src">爱范儿 · 2026-11-20T01:17 · <a href="https://www.ifanr.com/1690510?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=" target="_blank" rel="noopener noreferrer">原文</a></p></div><div class="signal"><p class="t">派早报提到 Google 推出 Gemini 4 Neon 模型，Google Play 将强制应用适配折叠屏。</p><p class="src">少数派 · 2026-11-20T00:34 · <a href="https://sspai.com/post/119311" target="_blank" rel="noopener noreferrer">原文</a></p></div>
+    </div>
+    <div class="axis"><span class="dot"></span></div>
+    <div class="effect">
+      <p class="col-head"><b>果</b>　我由此推断</p>
+      <ul><li>AI 能力正从独立应用转向系统级上下文整合，手机厂商的竞争点可能从模型参数转向对用户场景的预判与串联。</li><li>若苹果被视为最后入局者，其后续动作可能影响 AI Agent 在移动端的普及节奏，但具体形态尚不明朗。</li></ul>
+    </div>
+  </div>
+  <div class="reasoning">
+    <p class="label">我的链路</p>
+    <p>三条信号都指向 AI 向操作系统与终端设备内置化，而非仅停留在聊天应用层面，属于同一趋势的不同侧面。</p>
+    <p class="doubt">可能看错：三星功能仍处 Beta 且细节有限，苹果的入局判断来自媒体评论而非官方信息，趋势可能被高估。 本条基于 3 条信号、未核验。</p>
+  </div>
+</section>
+<section class="chain">
+  <div class="chain-head">
+    <span class="chain-no">链二</span>
+    <h2 class="chain-title">AI 算力的能源账单</h2>
+    <span class="strength">中 · 二次整理</span>
+  </div>
+  <div class="spread">
+    <div class="cause">
+      <p class="col-head"><b>因</b>　今天出现的信号</p>
+      <div class="signal"><p class="t">国际能源署报告警告，到 2030 年数据中心碳排放量将增加七成，用电量达目前两倍；未来四年 AI 数据中心每年额外消耗 350 TWh 电力，超过英国全年总用电量。报告预计中国 AI 数据中心所需电力约半数来自燃煤电厂，美国约六成依赖天然气。</p><p class="src">Solidot · 2026-11-19T16:34 · <a href="https://www.solidot.org/story?sid=85937" target="_blank" rel="noopener noreferrer">原文</a></p></div><div class="signal"><p class="t">腾讯混元 Hy4 大模型正式开源，采用 MoE 架构，总参数 770B、激活参数 49B，上下文窗口突破 100 万 Token，混元 LLM 系列至此全量开放。</p><p class="src">IT之家 · 2026-11-20T03:47 · <a href="https://www.ithome.com/1/029/841.htm" target="_blank" rel="noopener noreferrer">原文</a></p></div>
+    </div>
+    <div class="axis"><span class="dot"></span></div>
+    <div class="effect">
+      <p class="col-head"><b>果</b>　我由此推断</p>
+      <ul><li>大模型开源与部署门槛降低，可能进一步推高推理侧算力需求，与 IEA 的用电与碳排放预测形成同向压力。</li><li>能源结构差异可能使不同地区 AI 基础设施的碳成本出现分化，但具体影响取决于实际部署规模。</li></ul>
+    </div>
+  </div>
+  <div class="reasoning">
+    <p class="label">我的链路</p>
+    <p>一边是模型供给扩大、部署更便利，另一边是机构对 AI 用电与排放的量化警告，两者共同勾勒 AI 扩张的资源约束。</p>
+    <p class="doubt">可能看错：IEA 报告为预测性质，开源模型的实际部署量与能耗强度无法从信号中确认，二者关联是启发式推断。 本条基于 2 条信号、未核验。</p>
+  </div>
+</section>
+<section class="chain">
+  <div class="chain-head">
+    <span class="chain-no">链三</span>
+    <h2 class="chain-title">通信自主与开源生态</h2>
+    <span class="strength">弱 · 二次整理</span>
+  </div>
+  <div class="spread">
+    <div class="cause">
+      <p class="col-head"><b>因</b>　今天出现的信号</p>
+      <div class="signal"><p class="t">欧盟委员会在 2025 年 12 月完成 Matrix 协议及 Element 客户端的概念验证，2026 年 9 月将基于 Matrix 的工具部署到每一台笔记本电脑，由委员会自行运营，服务逾 4 万名用户。</p><p class="src">Solidot · 2026-11-19T15:19 · <a href="https://www.solidot.org/story?sid=85936" target="_blank" rel="noopener noreferrer">原文</a></p></div><div class="signal"><p class="t">腾讯 Hy4 正式开源，权重在 GitHub、Hugging Face、ModelScope 和 GitCode 四个平台同步上线，开发者可自行下载部署。</p><p class="src">IT之家 · 2026-11-20T03:47 · <a href="https://www.ithome.com/1/029/841.htm" target="_blank" rel="noopener noreferrer">原文</a></p></div>
+    </div>
+    <div class="axis"><span class="dot"></span></div>
+    <div class="effect">
+      <p class="col-head"><b>果</b>　我由此推断</p>
+      <ul><li>政府机构与大型组织对自运营、可自主控制的通信与模型基础设施兴趣上升，可能推动开源协议与开源权重在组织内部的采用。</li><li>但两者分属通信协议与模型权重，是否形成同一股“自主可控”浪潮仍需更多信号验证。</li></ul>
+    </div>
+  </div>
+  <div class="reasoning">
+    <p class="label">我的链路</p>
+    <p>两条信号都涉及组织级自行部署与开源生态，但领域不同，只能作为弱关联的观察线索。</p>
+    <p class="doubt">可能看错：把通信协议自主与模型开源归为同一趋势，可能只是表面相似，缺乏直接因果联系。 本条基于 2 条信号、未核验。</p>
+  </div>
+</section>
+
+<section class="algorithm">
+  <h2>今日算法链</h2>
+  <p>输入 14 条 / 7 个源；DeepSeek 二次整理为 3 条链、引用 7 条信号；本页由 DeepSeek 二次翻译/整理，不是原文摘抄；云端通线不读个人档案；条目未核验；强度只是启发式提示。</p>
+  <p class="muted">不按点击历史排序；不自动外发除 Server酱 以外的内容；所有条目与推断均未核验。</p>
+</section>
+<footer class="foot">
+  <span>推断，不是结论。核验、结算、预测在本地账簿另做。</span>
+  <span>2026-11-20 · 通线</span>
+</footer>
+</div></body></html>
