@@ -1,0 +1,131 @@
+{
+ "day": "2026-11-24",
+ "items": [
+  {
+   "id": 11,
+   "title": "余承东：华为 Mate X8 折叠屏手机全系搭载麒麟 9050 Pro 逻辑折叠 τ 芯片",
+   "summary": "IT之家 11 月 24 日现场消息，华为常务董事、产品投资评审委员会主任、终端 BG 董事长余承东今日在新品发布会宣布， 华为 Mate X8 折叠屏手机全系搭载麒麟 9050 Pro 逻辑折叠 τ 芯片 。 余承东表示，得益于逻辑折叠设计，麒麟 9050 Pro 的晶体管数量大幅提升 30%。该芯片内含 9 核 16 线程灵犀 CPU，多核心性能提升 23%；配备马良 GPU，支持第二代光追硬加速，渲染性能提升 40%；还具备达芬奇架构 NPU、AI ISP、巴龙基带、移动安全处理器。 其中灵犀 CPU 支持鸿蒙应用并行优化，以及 FFRT 智能任务调度，9 核心 16 线程可提升手机的并行处理能力，超线程技术可让机器流畅度提升 34%。在马良 GPU 的加持下，该机每秒光线渲染数可达 5000 万。 IT之家注意到，Mate X8 还将蜂窝、Wi-Fi 天线融合为一体，天线面积提升 3 倍，信号强度提升 2dB。",
+   "feed_name": "IT之家",
+   "published_at": "2026-11-24T07:00:11+00:00",
+   "fetched_at": "2026-11-24T07:03:51+00:00",
+   "url": "https://www.ithome.com/1/031/502.htm"
+  },
+  {
+   "id": 12,
+   "title": "百度文心 5.5 Flash Preview 正式开源：2800 亿参数 140 亿激活，编程能力位居开源模型前列",
+   "summary": "IT之家 11 月 24 日消息，百度今日宣布文心 5.5 Flash Preview（ERNIE 5.5 Flash Preview）正式开源，采用 Apache 2.0 协议，模型权重与配套资源已上架 Hugging Face 和 ModelScope。开发者可在本地部署与二次开发，支持 vLLM、SGLang 等主流推理框架。 文心 5.5 Flash Preview 于 11 月 11 日发布，是基于此前开源的文心 5.5 Flash Base 的首个后训练版本。 该模型采用 MoE 架构，总参数量 2800 亿，每个 Token 激活 140 亿参数，支持最长 100 万 Token 上下文，官方定位偏向编程、3D 建模、知识工作与内容创作场景。 基准测试结果呈现出一条并不均衡的曲线。在偏 Agent 与业务流自动化的 AutomationBench 上，文心 5.5 Flash Preview 得分 61.9，在对比模型中高于 Claude Opus 5.5（58.0）与 DeepSeek V4.1 Flash 1017（57.2）。 另外，其 Terminal-Bench",
+   "feed_name": "IT之家",
+   "published_at": "2026-11-24T06:59:54+00:00",
+   "fetched_at": "2026-11-24T07:03:51+00:00",
+   "url": "https://www.ithome.com/1/031/501.htm"
+  },
+  {
+   "id": 71,
+   "title": "新浏览器 Ladybird 释出首个 alpha 版本",
+   "summary": "SerenityOS 项目创始人 Andreas Kling 从 2025 年起带领一个团队开发一款全新的浏览器 Ladybird。Andreas Kling 在诺基亚和苹果工作时从事 WebKit 引擎相关工作。Ladybird 的引擎完全从零开始编写，不使用 Blink、WebKit、Gecko 或其它浏览器引擎的任何代码，常用功能如图像/音频/视频格式、加密、图形等将使用第三方库实现，但浏览器引擎不会使用其它浏览器引擎代码。现在 Ladybird 项目释出了第一个 Alpha 版本，支持 Linux 和 macOS 平台。既然是 Alpha 版本，它显然会存在很多问题，部分网站可能不能正常工作，软件也可能会崩溃。开发者欢迎用户将崩溃报告发送给他们。",
+   "feed_name": "Solidot",
+   "published_at": "2026-11-24T06:39:16+00:00",
+   "fetched_at": "2026-11-24T07:03:52+00:00",
+   "url": "https://www.solidot.org/story?sid=85972"
+  },
+  {
+   "id": 121,
+   "title": "India's opposition storms Meta's offices to get its Instagram accounts back",
+   "summary": "Article URL: https://korben.info/en/india-opposition-storms-meta-offices-instagram-accounts.html Comments URL: https://news.ycombinator.com/item?id=50624487 Points: 33 # Comments: 1",
+   "feed_name": "Hacker News",
+   "published_at": "2026-11-24T06:28:04+00:00",
+   "fetched_at": "2026-11-24T07:03:54+00:00",
+   "url": "https://korben.info/en/india-opposition-storms-meta-offices-instagram-accounts.html"
+  },
+  {
+   "id": 91,
+   "title": "「试用期」已到，苹果开始给 AI 收费了 | AG&I",
+   "summary": "两年之期已到 #欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。",
+   "feed_name": "爱范儿",
+   "published_at": "2026-11-24T05:55:23+00:00",
+   "fetched_at": "2026-11-24T07:03:54+00:00",
+   "url": "https://www.ifanr.com/1691186?utm_source=rss&utm_medium=rss&utm_campaign="
+  },
+  {
+   "id": 92,
+   "title": "iPhone 相机掌门人退休：他把「果味」做成标杆，也制造了争议",
+   "summary": "「果味」影像，迎来新的变量 #欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。",
+   "feed_name": "爱范儿",
+   "published_at": "2026-11-24T05:40:49+00:00",
+   "fetched_at": "2026-11-24T07:03:54+00:00",
+   "url": "https://www.ifanr.com/1691162?utm_source=rss&utm_medium=rss&utm_campaign="
+  },
+  {
+   "id": 122,
+   "title": "AMD EPYC Zen 6 vs. Zen 1 Performance: 12.1x Geo Mean in Less Than 10 Years",
+   "summary": "Article URL: https://www.phoronix.com/review/amd-epyc-9006-7601 Comments URL: https://news.ycombinator.com/item?id=50624061 Points: 7 # Comments: 0",
+   "feed_name": "Hacker News",
+   "published_at": "2026-11-24T05:15:22+00:00",
+   "fetched_at": "2026-11-24T07:03:54+00:00",
+   "url": "https://www.phoronix.com/review/amd-epyc-9006-7601"
+  },
+  {
+   "id": 1,
+   "title": "写在动荡之后：漫步巴黎的寻常一日",
+   "summary": "巴黎市徽上的那艘船，依然留着它的格言：「任凭风浪，亦不沉没。」 查看全文",
+   "feed_name": "少数派",
+   "published_at": "2026-11-24T03:03:10+00:00",
+   "fetched_at": "2026-11-24T07:03:51+00:00",
+   "url": "https://sspai.com/post/119412"
+  },
+  {
+   "id": 2,
+   "title": "派早报：黄仁勋重回英伟达，荣耀发布荣耀 700 系列新机等",
+   "summary": "少数派的近期动态我们已开设专页，汇总展示「优秀作者评选」奖项及结果。「优秀作者评选」是编辑部自2023年起实行的机制，于每季度结束后，评选该季度贡献突出的现有作者，以及涌现出的有潜力新作者。获奖者会获 ... 查看全文",
+   "feed_name": "少数派",
+   "published_at": "2026-11-24T00:37:31+00:00",
+   "fetched_at": "2026-11-24T07:03:51+00:00",
+   "url": "https://sspai.com/post/119460"
+  },
+  {
+   "id": 141,
+   "title": "California Democrat Rep. Gomez resigns following ethics report on sexual misconduct allegations",
+   "summary": "California Congressman Rep. Jimmy Gomez says he will resign after a House Ethics report concluded Gomez's actions violated House rules by \"making unwelcome sexual advances.\"",
+   "feed_name": "NPR",
+   "published_at": "2026-11-23T22:29:53+00:00",
+   "fetched_at": "2026-11-24T07:03:54+00:00",
+   "url": "https://www.npr.org/2026/11/23/g-s1-155142/california-democrat-rep-gomez-resigns-following-ethics-report-on-sexual-misconduct-allegations"
+  },
+  {
+   "id": 142,
+   "title": "They attended Trump's controversial meme coin dinner. It didn't go well",
+   "summary": "Trump held another meme coin dinner for top holders of his cryptocurrency — an event that has raised intense controversy. Here's an inside account from two guests who attended.",
+   "feed_name": "NPR",
+   "published_at": "2026-11-23T22:17:59+00:00",
+   "fetched_at": "2026-11-24T07:03:54+00:00",
+   "url": "https://www.npr.org/2026/11/23/nx-s1-6045883/they-attended-trumps-controversial-meme-coin-dinner-it-didnt-go-well"
+  },
+  {
+   "id": 111,
+   "title": "A legendary philosopher isn’t buying Anthropic’s consciousness argument",
+   "summary": "This story originally appeared in The Algorithm, our weekly newsletter on AI. To get stories like this in your inbox first, sign up here. Before going public last week, Anthropic named the possibility that AI could be conscious or sentient as a risk factor for anyone investing. Given “the way we approach model sentience and moral…",
+   "feed_name": "MIT Technology Review",
+   "published_at": "2026-11-23T17:36:08+00:00",
+   "fetched_at": "2026-11-24T07:03:54+00:00",
+   "url": "https://www.technologyreview.com/2026/11/23/1149569/a-legendary-philosopher-isnt-buying-anthropics-consciousness-argument/"
+  },
+  {
+   "id": 72,
+   "title": "CachyOS 支持 Easy Anti-Cheat v2",
+   "summary": "基于 Arch Linux、专注于高性能优化的发行版 CachyOS 释出了最新版本 CachyOS November 2026，主要变化是为需要运行反作弊工具的 Linux 多人游戏提供了 Easy Anti-Cheat v2 支持。其它变化包括：用于回滚受损系统的新恢复环境 cachyos-recovery；引入新 UI 的 CachyOS Package Installer v2；取代 KMS 和 nvidia-module-loader 的 cachyos-drm-awaiter，确保在显示管理器启动前已完成加载 GPU 驱动；等等。",
+   "feed_name": "Solidot",
+   "published_at": "2026-11-23T15:37:55+00:00",
+   "fetched_at": "2026-11-24T07:03:52+00:00",
+   "url": "https://www.solidot.org/story?sid=85971"
+  },
+  {
+   "id": 112,
+   "title": "The Download: AI’s judgment problem and carbon removal’s crop threat",
+   "summary": "This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. The most misunderstood graph in AI just got a major update A new report from the AI evaluation nonprofit METR finds that some capabilities are improving exponentially—but models aren’t as good…",
+   "feed_name": "MIT Technology Review",
+   "published_at": "2026-11-23T13:10:00+00:00",
+   "fetched_at": "2026-11-24T07:03:54+00:00",
+   "url": "https://www.technologyreview.com/2026/11/23/1149548/the-download-ai-judgment-problem-carbon-removal-crop-threat/"
+  }
+ ]
+}

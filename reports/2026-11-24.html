@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>今日事报 · 2026-11-24</title>
+<style>
+:root { --paper:#f6f2ea; --ink:#1b1a17; --soft:#4a463e; --muted:#8a8376;
+  --line:#d8d0c0; --red:#9e3b2e; }
+* { box-sizing:border-box; }
+body { margin:0; background:radial-gradient(1200px 600px at 10% -10%, #fbf8f2, transparent 60%), var(--paper);
+  color:var(--ink); font:16px/1.8 "Songti SC","Noto Serif SC",Georgia,serif; }
+.page { max-width:1040px; margin:0 auto; padding:52px 30px 70px; }
+.masthead { display:flex; align-items:flex-end; justify-content:space-between; gap:20px;
+  border-bottom:1px solid var(--ink); padding-bottom:16px; }
+.kicker { font-size:12px; letter-spacing:.26em; color:var(--red); margin-bottom:8px; }
+h1 { margin:0; font-size:42px; letter-spacing:.06em; }
+.date { color:var(--muted); font-size:13px; letter-spacing:.14em; margin-top:8px; }
+.seal { width:52px; height:52px; border:1.5px solid var(--red); color:var(--red);
+  display:grid; place-items:center; font-size:14px; letter-spacing:.18em;
+  writing-mode:vertical-rl; text-orientation:upright; }
+.thesis { margin:30px 0 6px; font-size:20px; line-height:1.8; }
+.lede { color:var(--soft); font-size:13.5px; margin:0 0 28px; }
+.bearing-block { margin:26px 0 30px; border-top:1px solid var(--line); border-bottom:1px solid var(--line); padding:16px 0 6px; }
+.bearing-block h2 { margin:0 0 10px; font-size:20px; letter-spacing:.08em; color:var(--red); }
+.bearing-block .bearing { padding:12px 0 14px; border-top:1px dotted var(--line); }
+.bearing-block .bearing-head { display:flex; justify-content:space-between; gap:12px; align-items:baseline; }
+.bearing-block .no { color:var(--red); font-size:12px; letter-spacing:.12em; }
+.bearing-block .tag, .bearing-block .path, .bearing-block .meta { color:var(--muted); font-size:12px; }
+.bearing-block .carrier { margin:6px 0 2px; font-size:18px; }
+.bearing-block .action { margin:8px 0; }
+.chain { margin:36px 0 0; }
+.chain-head { display:flex; align-items:baseline; gap:12px; border-top:1px solid var(--line); padding-top:16px; }
+.chain-no { font-size:12px; letter-spacing:.28em; color:var(--red); }
+.chain-title { margin:0; font-size:25px; letter-spacing:.05em; }
+.strength { margin-left:auto; font-size:12px; letter-spacing:.12em; color:var(--muted); }
+.spread { display:grid; grid-template-columns:minmax(0,1fr) 40px minmax(0,1fr); margin-top:18px; }
+.cause,.effect { padding:0 2px; }
+.axis { position:relative; display:flex; justify-content:center; }
+.axis::before { content:""; position:absolute; top:6px; bottom:6px; width:1px;
+  background:linear-gradient(var(--line), var(--soft), var(--line)); opacity:.5; }
+.axis .dot { width:7px; height:7px; border-radius:50%; background:var(--red); margin-top:40px;
+  position:relative; z-index:1; box-shadow:0 0 0 5px var(--paper); }
+.col-head { font-size:12.5px; letter-spacing:.2em; color:var(--muted); margin:0 0 10px; }
+.col-head b { color:var(--ink); letter-spacing:.08em; }
+.signal { margin:0 0 14px; }
+.signal .t { font-size:16px; line-height:1.65; margin:0; }
+.signal .src { margin:4px 0 0; font-size:12px; color:var(--muted); }
+.signal .src a { color:var(--muted); text-decoration:none; border-bottom:1px dotted var(--muted); }
+.signal .src a:hover { color:var(--red); border-color:var(--red); }
+.effect ul { list-style:none; margin:0; padding:0; }
+.effect li { position:relative; padding-left:1.1em; margin:0 0 10px; font-size:15.5px; }
+.effect li::before { content:"—"; position:absolute; left:0; color:#b8604f; }
+.reasoning { margin:16px 0 0; padding:14px 16px; border:1px solid var(--line); background:rgba(255,255,255,.3); }
+.reasoning .label { margin:0 0 6px; font-size:12px; letter-spacing:.22em; color:var(--red); }
+.reasoning p { margin:0 0 6px; font-size:14px; color:var(--soft); }
+.reasoning .doubt { color:var(--muted); font-size:12.5px; }
+.algorithm { margin-top:44px; border-top:1px solid var(--ink); padding-top:18px; }
+.algorithm h2 { font-size:20px; margin:0 0 8px; letter-spacing:.06em; }
+.algorithm p { margin:0 0 6px; color:var(--soft); font-size:13.5px; }
+.algorithm .muted { color:var(--muted); font-size:12.5px; }
+.sources { margin-top:30px; border-top:1px solid var(--line); padding-top:16px; }
+.sources h2 { font-size:19px; margin:0 0 10px; letter-spacing:.05em; }
+.sources ul { list-style:none; margin:0; padding:0; }
+.sources li { display:flex; justify-content:space-between; gap:14px; padding:7px 0;
+  border-bottom:1px dashed var(--line); font-size:13px; }
+.sources .src-title { color:var(--ink); }
+.sources .src-meta { color:var(--muted); white-space:nowrap; font-size:12px; }
+.sources a { color:var(--muted); text-decoration:none; border-bottom:1px dotted var(--muted); }
+.foot { margin-top:34px; padding-top:12px; border-top:1px solid var(--line);
+  color:var(--muted); font-size:12px; display:flex; justify-content:space-between; gap:16px; }
+@media (max-width:760px) {
+  .page { padding:32px 18px 54px; }
+  h1 { font-size:32px; }
+  .spread { grid-template-columns:1fr; }
+  .axis { display:none; }
+  .effect { margin-top:16px; }
+  .foot { flex-direction:column; }
+}
+</style></head><body><div class="page">
+<header class="masthead">
+  <div>
+    <div class="kicker">今日事报 · 云端通线</div>
+    <h1>今日事报</h1>
+    <div class="date">2026-11-24 · 14 条信号 · 取 3 条链</div>
+  </div>
+  <div class="seal" aria-hidden="true">事报</div>
+</header>
+<p class="thesis">今日信号集中在硬件与模型能力的密集迭代，但彼此缺乏直接因果，更像各自赛道内的独立推进，而非同一趋势的共振。</p>
+<p class="lede">因与果都摆在下面；中间的链路完整写出。云端不读你的档案，所以这是通线版本；个体线仍在本地。</p>
+
+
+<section class="chain">
+  <div class="chain-head">
+    <span class="chain-no">链一</span>
+    <h2 class="chain-title">端侧芯片与开源模型并行</h2>
+    <span class="strength">弱 · 二次整理</span>
+  </div>
+  <div class="spread">
+    <div class="cause">
+      <p class="col-head"><b>因</b>　今天出现的信号</p>
+      <div class="signal"><p class="t">华为发布 Mate X8 折叠屏，全系搭载麒麟 9050 Pro 芯片，采用逻辑折叠设计，晶体管数量提升 30%，CPU 为 9 核 16 线程，多核性能提升 23%，GPU 渲染性能提升 40%。</p><p class="src">IT之家 · 2026-11-24T07:00 · <a href="https://www.ithome.com/1/031/502.htm" target="_blank" rel="noopener noreferrer">原文</a></p></div><div class="signal"><p class="t">百度开源文心 5.5 Flash Preview，采用 MoE 架构，总参数 2800 亿、每 Token 激活 140 亿，支持最长 100 万 Token，权重已上架 Hugging Face 和 ModelScope。</p><p class="src">IT之家 · 2026-11-24T06:59 · <a href="https://www.ithome.com/1/031/501.htm" target="_blank" rel="noopener noreferrer">原文</a></p></div>
+    </div>
+    <div class="axis"><span class="dot"></span></div>
+    <div class="effect">
+      <p class="col-head"><b>果</b>　我由此推断</p>
+      <ul><li>端侧算力与可本地部署的大模型能力在同一天各自推进，可能为手机端运行更大模型提供硬件与模型两端的条件。</li><li>开源模型权重开放后，第三方开发者可能尝试在端侧设备上做本地推理适配，但实际体验取决于芯片与框架的配合。</li></ul>
+    </div>
+  </div>
+  <div class="reasoning">
+    <p class="label">我的链路</p>
+    <p>两条信号都指向“更强算力+更大模型”的方向，但分属不同厂商与不同技术栈，只能作为启发式关联，不能视为协同动作。</p>
+    <p class="doubt">可能看错：华为芯片的端侧 AI 能力与百度开源模型之间没有直接适配证据，关联可能只是时间上的巧合。 本条基于 2 条信号、未核验。</p>
+  </div>
+</section>
+<section class="chain">
+  <div class="chain-head">
+    <span class="chain-no">链二</span>
+    <h2 class="chain-title">AI 商业化与争议并行</h2>
+    <span class="strength">弱 · 二次整理</span>
+  </div>
+  <div class="spread">
+    <div class="cause">
+      <p class="col-head"><b>因</b>　今天出现的信号</p>
+      <div class="signal"><p class="t">爱范儿报道称苹果的 AI 服务“试用期”已到，开始对 AI 收费。</p><p class="src">爱范儿 · 2026-11-24T05:55 · <a href="https://www.ifanr.com/1691186?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=" target="_blank" rel="noopener noreferrer">原文</a></p></div><div class="signal"><p class="t">MIT Technology Review 报道，Anthropic 在上市前将 AI 可能具有意识或感知能力列为投资风险因素，一位哲学家对此提出质疑。</p><p class="src">MIT Technology Review · 2026-11-23T17:36 · <a href="https://www.technologyreview.com/2026/11/23/1149569/a-legendary-philosopher-isnt-buying-anthropics-consciousness-argument/" target="_blank" rel="noopener noreferrer">原文</a></p></div>
+    </div>
+    <div class="axis"><span class="dot"></span></div>
+    <div class="effect">
+      <p class="col-head"><b>果</b>　我由此推断</p>
+      <ul><li>AI 服务从免费试用转向收费，可能改变用户对 AI 功能的价值预期与使用习惯。</li><li>头部 AI 公司将意识风险写入投资文件，可能引发监管与公众对 AI 责任边界的更多讨论。</li></ul>
+    </div>
+  </div>
+  <div class="reasoning">
+    <p class="label">我的链路</p>
+    <p>两条信号分别涉及 AI 的商业化定价与风险叙事，共同反映 AI 产品正从技术展示进入需要定价与责任界定的阶段。</p>
+    <p class="doubt">可能看错：苹果收费的具体范围与 Anthropic 的风险表述之间没有直接联系，放在一起可能过度概括。 本条基于 2 条信号、未核验。</p>
+  </div>
+</section>
+<section class="chain">
+  <div class="chain-head">
+    <span class="chain-no">链三</span>
+    <h2 class="chain-title">平台与政治摩擦</h2>
+    <span class="strength">弱 · 二次整理</span>
+  </div>
+  <div class="spread">
+    <div class="cause">
+      <p class="col-head"><b>因</b>　今天出现的信号</p>
+      <div class="signal"><p class="t">印度反对派人士前往 Meta 办公室抗议，要求恢复其 Instagram 账号。</p><p class="src">Hacker News · 2026-11-24T06:28 · <a href="https://korben.info/en/india-opposition-storms-meta-offices-instagram-accounts.html" target="_blank" rel="noopener noreferrer">原文</a></p></div><div class="signal"><p class="t">美国加州民主党众议员 Jimmy Gomez 在众议院道德委员会报告认定其行为违反众议院规则后宣布辞职。</p><p class="src">NPR · 2026-11-23T22:29 · <a href="https://www.npr.org/2026/11/23/g-s1-155142/california-democrat-rep-gomez-resigns-following-ethics-report-on-sexual-misconduct-allegations" target="_blank" rel="noopener noreferrer">原文</a></p></div>
+    </div>
+    <div class="axis"><span class="dot"></span></div>
+    <div class="effect">
+      <p class="col-head"><b>果</b>　我由此推断</p>
+      <ul><li>社交平台账号处置在政治场景中可能持续引发线下对抗与舆论压力。</li><li>议员因道德报告辞职可能影响所在选区的政治格局，但具体影响取决于后续程序。</li></ul>
+    </div>
+  </div>
+  <div class="reasoning">
+    <p class="label">我的链路</p>
+    <p>两条信号都涉及政治人物与平台/制度规则的冲突，但分属印度与美国的不同语境，只能作为弱关联观察。</p>
+    <p class="doubt">可能看错：印度反对派抗议与美议员辞职之间没有事实关联，强行并列可能误导。 本条基于 2 条信号、未核验。</p>
+  </div>
+</section>
+
+<section class="algorithm">
+  <h2>今日算法链</h2>
+  <p>输入 14 条 / 7 个源；DeepSeek 二次整理为 3 条链、引用 6 条信号；本页由 DeepSeek 二次翻译/整理，不是原文摘抄；云端通线不读个人档案；条目未核验；强度只是启发式提示。</p>
+  <p class="muted">不按点击历史排序；不自动外发除 Server酱 以外的内容；所有条目与推断均未核验。</p>
+</section>
+<footer class="foot">
+  <span>推断，不是结论。核验、结算、预测在本地账簿另做。</span>
+  <span>2026-11-24 · 通线</span>
+</footer>
+</div></body></html>
