@@ -1,0 +1,131 @@
+{
+ "day": "2026-11-26",
+ "items": [
+  {
+   "id": 11,
+   "title": "马斯克质疑称多数机器人演示是摆拍，Figure 接招用 41 秒视频回击",
+   "summary": "IT之家 11 月 26 日消息，人形机器人公司 Figure 于 11 月 24 日回应马斯克的“摆拍、预先编程”质疑， 发布一段 41 秒视频，展示 Figure 03 机器人在桌子被人为移动后，仍能重新定位并取回放在桌上的苹果。 11 月 18 日在 TomorrowX 峰会上，马斯克表示目前多数人形机器人演示并非真正的自主运行，通常是经过事先安排和预编程，缺乏真实环境中的自主适应能力。他举例表示“让机器人去拿一个苹果，然后把桌子挪走，它就拿不到苹果了。” 该测试可视为“环境变化泛化”测试，机器人不能只记住“苹果在某个固定坐标”，还要靠视觉感知、场景理解、重新规划路径和抓取策略，在桌子被移动后完成任务。马斯克还表示，特斯拉正在推进 Optimus 人形机器人，并计划在一两个月内展示一次未经摆拍、无需预编程动作的“真实”演示。 针对这一说法，Figure 首席执行官布雷特 · 阿德科克“接招”，在 X 平台发布了 41 秒视频。画面中，Figure 03 先按指令从桌上拿起苹果，将苹果放回桌面；在桌子被移到新位置后，机器人再次接到取回苹果的指令，随后走向新位置并成功完成动作。IT之",
+   "feed_name": "IT之家",
+   "published_at": "2026-11-26T04:55:46+00:00",
+   "fetched_at": "2026-11-26T05:22:32+00:00",
+   "url": "https://www.ithome.com/1/032/739.htm"
+  },
+  {
+   "id": 12,
+   "title": "HMD Rise 手机曝光：6.52 寸 720P LCD 屏、4GB 内存",
+   "summary": "IT之家 11 月 26 日消息，X 平台消息人士 @smashx_60 今日发文曝光 HMD Rise 手机的详细参数，该机预计将在印度电商平台 Flipkart 发售。 IT之家注意到， 这款手机预计将搭载 6.52 寸 HD+ IPS LCD 屏幕 ，采用紫光展锐 SC9863a1 处理器，提供 4GB 内存和 64GB/128GB 存储空间。 同时， 该手机带有 1300 万像素后置主摄 、 8 万像素辅助镜头 ，以及 500 万像素前置镜头。搭载 5000mAh 电池，支持 10W 充电。采用 Android 16 Go 操作系统。 此外，这款手机提供绿色、蓝色两种配色可选，带有 IP52、蓝牙 5.2、FM 收音机、3.5mm 耳机孔等外围配置。",
+   "feed_name": "IT之家",
+   "published_at": "2026-11-26T04:50:41+00:00",
+   "fetched_at": "2026-11-26T05:22:32+00:00",
+   "url": "https://www.ithome.com/1/032/738.htm"
+  },
+  {
+   "id": 91,
+   "title": "荣耀 700 Pro 上手：4099 元起，主流价位档里的手机异类",
+   "summary": "有诚意、有新意 #欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。",
+   "feed_name": "爱范儿",
+   "published_at": "2026-11-26T04:28:11+00:00",
+   "fetched_at": "2026-11-26T05:22:35+00:00",
+   "url": "https://www.ifanr.com/1695371?utm_source=rss&utm_medium=rss&utm_campaign"
+  },
+  {
+   "id": 92,
+   "title": "首款鸿蒙小折叠电脑正式发布，生态创新重新定义折叠电脑体验",
+   "summary": "未来随着更多生态伙伴的加入，鸿蒙电脑还将持续解锁更多场景化创新，为用户带来兼顾便携与高效的桌面生产力新选择。 #欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。",
+   "feed_name": "爱范儿",
+   "published_at": "2026-11-26T04:04:24+00:00",
+   "fetched_at": "2026-11-26T05:22:35+00:00",
+   "url": "https://www.ifanr.com/1695349?utm_source=rss&utm_medium=rss&utm_campaign"
+  },
+  {
+   "id": 121,
+   "title": "Qualcomm's Oryon 3 Reaches the Top",
+   "summary": "Article URL: https://chipsandcheese.com/p/qualcomms-oryon-3-reaches-the-top Comments URL: https://news.ycombinator.com/item?id=50651158 Points: 13 # Comments: 1",
+   "feed_name": "Hacker News",
+   "published_at": "2026-11-26T03:43:24+00:00",
+   "fetched_at": "2026-11-26T05:22:36+00:00",
+   "url": "https://chipsandcheese.com/p/qualcomms-oryon-3-reaches-the-top"
+  },
+  {
+   "id": 122,
+   "title": "OpenAI cuts GPT-6.2 usage: Astra hits limits 40% faster, Sol 25% faster",
+   "summary": "Article URL: https://twitter.com/thsottiaux/status/2125784147889393806 Comments URL: https://news.ycombinator.com/item?id=50651117 Points: 68 # Comments: 36",
+   "feed_name": "Hacker News",
+   "published_at": "2026-11-26T03:36:58+00:00",
+   "fetched_at": "2026-11-26T05:22:36+00:00",
+   "url": "https://twitter.com/thsottiaux/status/2125784147889393806"
+  },
+  {
+   "id": 1,
+   "title": "我用AI做了一张两千年的中国历史地图",
+   "summary": "希望这张地图，能陪更多人走一遍故纸堆里的万里江山。 查看全文",
+   "feed_name": "少数派",
+   "published_at": "2026-11-26T03:13:53+00:00",
+   "fetched_at": "2026-11-26T05:22:31+00:00",
+   "url": "https://sspai.com/post/117510"
+  },
+  {
+   "id": 2,
+   "title": "派早报：蔚来举办 2026 创新科技日、Tidal 将拒绝 AI 音乐等",
+   "summary": "阿里千问 Go 开放免费代打电话服务、Sand.ai 发布视频生成模型 MAGI-2 等。 查看全文",
+   "feed_name": "少数派",
+   "published_at": "2026-11-26T00:08:07+00:00",
+   "fetched_at": "2026-11-26T05:22:31+00:00",
+   "url": "https://sspai.com/post/119560"
+  },
+  {
+   "id": 141,
+   "title": "At this Little Free Bakery in Austin, neighbors come for the pastries and stay for community connection",
+   "summary": "The bakers behind these pop-up pastry drops aren't raking in the profits, but they are building a space for people to come together in polarized times.",
+   "feed_name": "NPR",
+   "published_at": "2026-11-25T21:02:58+00:00",
+   "fetched_at": "2026-11-26T05:22:37+00:00",
+   "url": "https://www.npr.org/2026/11/25/nx-s1-6005522/little-free-bakery-austin-community-connection"
+  },
+  {
+   "id": 142,
+   "title": "Group of Senate Democrats push to add freshman to leadership",
+   "summary": "Several Democratic senators have been signaling this move, saying the party needs to acknowledge the diverse class of incoming freshman that catapulted the party to victory in November.",
+   "feed_name": "NPR",
+   "published_at": "2026-11-25T17:30:47+00:00",
+   "fetched_at": "2026-11-26T05:22:37+00:00",
+   "url": "https://www.npr.org/2026/11/25/g-s1-155518/senate-democrats-freshman-leadership-schumer-van-hollen"
+  },
+  {
+   "id": 111,
+   "title": "How data centers are driving a US natural-gas boom",
+   "summary": "In May 2025, my colleague David Rotman wrote a feature story describing how AI could keep us dependent on natural gas. Just 18 months later, I’ve lost count of how many times he’s already been proved right. Sure, it’s technically possible to meet the world’s rising electricity demand with other power sources, including renewables like…",
+   "feed_name": "MIT Technology Review",
+   "published_at": "2026-11-25T17:00:00+00:00",
+   "fetched_at": "2026-11-26T05:22:35+00:00",
+   "url": "https://www.technologyreview.com/2026/11/25/1149836/data-centers-gas-power-plants/"
+  },
+  {
+   "id": 71,
+   "title": "EA Sports FC 利用 AI 数字重现已故解说员 John Motson 的声音",
+   "summary": "EA 透露其足球游戏《EA Sports FC 27》利用 AI 数字重现了已故解说员 John Motson 的声音。Motson 于 2023 年去世，他曾长期担任 BBC Sport 首席解说员，也曾为 EA 足球游戏解说。在其遗孀和儿子的许可下，EA 利用其过去的录音资料与生成式 AI 技术合成了他的声音。该内容将于 11 月 26 日上线《EA Sports FC 27》。EA 向 Motson 的家人支付了费用以获得使用其形象及重现其声音的权利，但未透露具体财务条款。",
+   "feed_name": "Solidot",
+   "published_at": "2026-11-25T15:54:33+00:00",
+   "fetched_at": "2026-11-26T05:22:33+00:00",
+   "url": "https://www.solidot.org/story?sid=85993"
+  },
+  {
+   "id": 72,
+   "title": "Claude 和 ChatGPT 在蛋白质结构预测和设计上挑战 AlphaFold",
+   "summary": "AI 生物科技公司 Phylo 研究员 Xinming Tu 本月初使用 OpenAI、Anthropic 和 Google 的大模型测试了它们预测鲜为人知细菌蛋白质序列的能力。他让分析程序运行了整晚，第二天对结果非常吃惊。Anthropic 最新版本的Claude 表现不仅优于其它大模型，而且超过了针对蛋白质序列训练过的专门工具。他与哈佛医学院的 Leo Chen 分享的这一发现在计算生物学界引发了热议。本周二 OpenAI 宣布其最新大模型成功设计出新蛋白质，在实验室合成和测试时部分新蛋白质的行为和预期一样。该研究引发了 生物 AI 未来的讨论，部分科学家预测 Claude 和 ChatGPT 之类的通用模型在蛋白质结构预测和设计等任务上可能会超越 AlphaFold 等专用工具。也有研究人员对此提出质疑，认为大模型展现出的部分能力可能只是训练数据的机械重复。",
+   "feed_name": "Solidot",
+   "published_at": "2026-11-25T15:26:31+00:00",
+   "fetched_at": "2026-11-26T05:22:33+00:00",
+   "url": "https://www.solidot.org/story?sid=85992"
+  },
+  {
+   "id": 112,
+   "title": "The Download: AI swamping open records, and firefighting for permafrost",
+   "summary": "This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. AI is straining America’s open records systems AI has intensified investors’ interest in public records. Over the last few years, venture-backed startups have raised upwards of $100 million to collect data…",
+   "feed_name": "MIT Technology Review",
+   "published_at": "2026-11-25T13:10:00+00:00",
+   "fetched_at": "2026-11-26T05:22:35+00:00",
+   "url": "https://www.technologyreview.com/2026/11/25/1149808/the-download-ai-open-records-permafrost-fires/"
+  }
+ ]
+}
