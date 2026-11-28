@@ -1,0 +1,131 @@
+{
+ "day": "2026-11-28",
+ "items": [
+  {
+   "id": 11,
+   "title": "马斯克：Grok Bot 的目标是让你可以构建整个公司",
+   "summary": "IT之家 11 月 28 日消息，今天（28 日）凌晨，埃隆 · 马斯克在 X 平台发文称：就像现实中的企业一样，使用 Grok Bot 时，打造具备专属职能的 Bot 非常重要。你可以设置一个管理 Bot 来监督、协调其余 Bot 的工作。和人类员工同理，如果让单个 Bot 承担过多繁杂任务，它就会顾此失彼。 随后，马斯克补充说：Grok Bot 的目标， 是让你能够构建完整的公司 。 Grok Bot 于 2026 年 8 月 11 日以测试版形式上线，定位为可执行任务的 AI 智能体，而非单纯的聊天机器人。其功能包括交互式购物卡片、订阅模板，以及可长期保存项目上下文的工作空间，试图覆盖个人效率和企业办公场景。 值得注意的是，Grok Bot 并未提供免费版本。据IT之家了解，马斯克此前公开表示，Grok Bot 的增长速度“比他见过的任何产品都要快”，并强调其没有免费层级；除试用用户外，使用者均需付费。",
+   "feed_name": "IT之家",
+   "published_at": "2026-11-28T04:21:13+00:00",
+   "fetched_at": "2026-11-28T04:54:52+00:00",
+   "url": "https://www.ithome.com/1/033/827.htm"
+  },
+  {
+   "id": 121,
+   "title": "Claude silently added rules to ignore users skintone preferences in our app",
+   "summary": "Article URL: https://twitter.com/jakozloski/status/2126281598517576049 Comments URL: https://news.ycombinator.com/item?id=50674489 Points: 20 # Comments: 0",
+   "feed_name": "Hacker News",
+   "published_at": "2026-11-28T03:55:15+00:00",
+   "fetched_at": "2026-11-28T04:55:00+00:00",
+   "url": "https://twitter.com/jakozloski/status/2126281598517576049"
+  },
+  {
+   "id": 1,
+   "title": "「黑五」值得买：不容错过的数码硬件优惠",
+   "summary": "除了软件服务，这个黑五还有这些硬件值得一看。 查看全文",
+   "feed_name": "少数派",
+   "published_at": "2026-11-28T03:30:00+00:00",
+   "fetched_at": "2026-11-28T04:54:50+00:00",
+   "url": "https://sspai.com/post/119651"
+  },
+  {
+   "id": 12,
+   "title": "“iPod 之父”法德尔：OpenAI 曾邀乔纳森 · 艾维打造实体 AI 设备，因为苹果永远不会提供数据",
+   "summary": "IT之家 11 月 28 日消息，当地时间 26 日，据《财富》杂志报道，托尼 · 法德尔透露，萨姆 · 奥尔特曼曾邀请苹果前设计主管乔纳森 · 艾夫为 OpenAI 打造一款实体设备，原因是 OpenAI 无法从运行其 AI 服务的 iPhone 中取得所需数据 。 法德尔曾与艾夫在苹果共事，因被誉为“iPod 之父”以及参与创造 iPhone 而广为人知。他创办了 Build Collective，此前还创立过 Nest Labs。 法德尔认为，OpenAI 之所以执意开发独立硬件，是因为它需要 获取现实物理世界的信息 ，而苹果出于隐私保护考虑，不愿向其开放 iPhone 中的这些数据。 他们必须自己开发产品，因为无法从手机中获取情境信息。为此，他们只能重新配备 GPS、麦克风、扬声器、摄像头、温度检测等各种功能，能想到的都得有，因为苹果不允许他们从手机中提取这些信息。 说到底，就是为了绕开苹果出于隐私保护而设置的种种限制。AI 掌握的情境信息越丰富，给出的答案就越好，用户也能更快得到答案。 苹果的各种产品掌握着你家中的全部情境信息，但这些数据你根本拿不到。出于隐私保护的限制，苹果",
+   "feed_name": "IT之家",
+   "published_at": "2026-11-28T03:22:22+00:00",
+   "fetched_at": "2026-11-28T04:54:52+00:00",
+   "url": "https://www.ithome.com/1/033/824.htm"
+  },
+  {
+   "id": 122,
+   "title": "Unkernel: Real Linux kernel, compiled to WebAssembly",
+   "summary": "Article URL: https://unkernel.dev Comments URL: https://news.ycombinator.com/item?id=50674218 Points: 39 # Comments: 4",
+   "feed_name": "Hacker News",
+   "published_at": "2026-11-28T03:19:20+00:00",
+   "fetched_at": "2026-11-28T04:55:00+00:00",
+   "url": "https://unkernel.dev"
+  },
+  {
+   "id": 2,
+   "title": "本月玩什么｜GTA VI、塞尔达传说 时之笛、魔兽世界：无限",
+   "summary": "以上便是部分近期值得探讨的新游信息汇总，个人角度仅供参考。本期不设特定有奖互动话题，欢迎你在评论区分享11月新作游玩体验，可以是本文出现的，也可以是本文未提及、但你特别想推荐给派友的。我们下期再见！> ... 查看全文",
+   "feed_name": "少数派",
+   "published_at": "2026-11-28T00:47:47+00:00",
+   "fetched_at": "2026-11-28T04:54:50+00:00",
+   "url": "https://sspai.com/post/119686"
+  },
+  {
+   "id": 91,
+   "title": "24.99 万元起！宝马新世代 i3 正式上市，纯电续航高达 1028km丨广州车展",
+   "summary": "新世代的宝马，依旧是「驾驶者之车」。 #欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。",
+   "feed_name": "爱范儿",
+   "published_at": "2026-11-27T16:41:37+00:00",
+   "fetched_at": "2026-11-28T04:54:56+00:00",
+   "url": "https://www.ifanr.com/1695987?utm_source=rss&utm_medium=rss&utm_campaign"
+  },
+  {
+   "id": 71,
+   "title": "Kimi 向科学家提供最高 2 万美元 API 免费额度",
+   "summary": "Kimi 大模型开发商月之暗面宣布了 Kimi for Science 项目，欢迎自然科学、工程学及相关交叉学科领域的研究人员加入。月之暗面表示，“科学始终源于人类的好奇心、严谨的探索精神，以及对未知世界的不懈追求。一个有价值的科学假设，往往需要经过大量的文献调研、数据分析和反复验证。而一次意料之外的发现，也可能成为下一项重大突破的起点。然而受限于时间、算力与人力资源，许多值得深入探索的想法，始终未能获得应有的关注与投入。我们相信 AI 能加速科学研究，拓展探索与发现的边界，帮助研究者突破时间、资源与研究方法的局限，让更多大胆而富有想象力的科学构想从可能走向现实。”月之暗面将向入选的研究人员提供最高 20,000 美元的 Kimi API 额度（约 70 亿 token），具体金额将根据研究需求及评估结果确定。",
+   "feed_name": "Solidot",
+   "published_at": "2026-11-27T16:14:48+00:00",
+   "fetched_at": "2026-11-28T04:54:54+00:00",
+   "url": "https://www.solidot.org/story?sid=86015"
+  },
+  {
+   "id": 72,
+   "title": "Take-Two 无法阻止用户利用 AI 将 GTA 6 移植到 PC 上",
+   "summary": "GTA 6 开发商 Rockstar 的母公司 Take-Two 与微软和索尼签署了独占协议，这款备受瞩目的大作目前只有主机版本，PC 版本发布时间未知。但在 AI 工具的帮助下 PC 玩家正以惊人的速度将 GTA 6 移植到 PC 上。Take-Two 已采取行动，试图遏制这一行为：他们通过 DMCA 通知从 GitHub 上删除了逾 3000 个相关库。但这并没有放缓 PC 版本的移植速度。移植者们已经能利用 AMD 中端显卡 9070XT 和 FSR 超分辨率技术在 Linux 上实现稳定运行 30+ FPS。",
+   "feed_name": "Solidot",
+   "published_at": "2026-11-27T15:59:17+00:00",
+   "fetched_at": "2026-11-28T04:54:54+00:00",
+   "url": "https://www.solidot.org/story?sid=86014"
+  },
+  {
+   "id": 92,
+   "title": "9.69 万元，奇瑞 QQ3 变身一辆可以开咖啡馆的「QQ 啡车」丨广州车展",
+   "summary": "生活方式，可大可小。 #欢迎关注爱范儿官方微信公众号：爱范儿（微信号：ifanr），更多精彩内容第一时间为您奉上。",
+   "feed_name": "爱范儿",
+   "published_at": "2026-11-27T15:29:34+00:00",
+   "fetched_at": "2026-11-28T04:54:56+00:00",
+   "url": "https://www.ifanr.com/1695964?utm_source=rss&utm_medium=rss&utm_campaign"
+  },
+  {
+   "id": 111,
+   "title": "The Download: Innovators Under 35 nominations are open, and a bionic window into the mind",
+   "summary": "This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. Our 2027 Innovators Under 35 competition is now open Every year, MIT Technology Review honors 35 of the world’s brightest young scientists, entrepreneurs, and inventors in our Innovators Under 35 list.…",
+   "feed_name": "MIT Technology Review",
+   "published_at": "2026-11-27T13:00:00+00:00",
+   "fetched_at": "2026-11-28T04:54:56+00:00",
+   "url": "https://www.technologyreview.com/2026/11/27/1149960/the-download-the-download-innovators-under-35-nominations-bionic-hand/"
+  },
+  {
+   "id": 141,
+   "title": "Thanksgiving storm batters East Coast. And, Black Friday sales to hit record levels",
+   "summary": "A powerful storm knocked out power for nearly 1 million customers and flooded streets. And, experts predict inflation will not dampen American spending for the holidays",
+   "feed_name": "NPR",
+   "published_at": "2026-11-27T11:59:02+00:00",
+   "fetched_at": "2026-11-28T04:55:00+00:00",
+   "url": "https://www.npr.org/2026/11/27/g-s1-156004/up-first-newsletter-thanksgiving-storm-black-friday-shopping-asylum-supreme-court"
+  },
+  {
+   "id": 142,
+   "title": "French cinema star Gérard Depardieu ordered to stand trial for rape and sexual assault",
+   "summary": "The case has become one of the most prominent in France's reckoning with sexual violence, as the #MeToo movement has faced resistance in the country, particularly in the arts.",
+   "feed_name": "NPR",
+   "published_at": "2026-11-27T11:49:50+00:00",
+   "fetched_at": "2026-11-28T04:55:00+00:00",
+   "url": "https://www.npr.org/2026/11/27/nx-s1-6055559/gerard-depardieu-trial-rape-france"
+  },
+  {
+   "id": 112,
+   "title": "Our 2027 Innovators Under 35 competition is now open",
+   "summary": "Every year, the editors at MIT Technology Review select 35 of the world’s top young scientists, entrepreneurs, and inventors to honor as our newest class of Innovators Under 35. And starting today, our 2027 competition is officially open for nominations. We’re on the hunt for researchers and founders who are engineering solutions to some of…",
+   "feed_name": "MIT Technology Review",
+   "published_at": "2026-11-27T10:48:47+00:00",
+   "fetched_at": "2026-11-28T04:54:56+00:00",
+   "url": "https://www.technologyreview.com/2026/11/27/1149857/2027-innovators-under-35-competition-nominate/"
+  }
+ ]
+}
